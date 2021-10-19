@@ -36,7 +36,7 @@ const MegaMall = () => {
           <Image
             source={require('../../../assets/images/mega_mall_title.png')}
             style={{
-              width: width * 0.5,
+              width: width * 0.25,
 
               resizeMode: 'contain',
             }}

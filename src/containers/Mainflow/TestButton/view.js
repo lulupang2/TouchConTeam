@@ -33,6 +33,8 @@ const view = ({navigation}) => {
         onPress={() => navigation.push('ScanHistory')}
       />
       <Button title="Go Intro3" onPress={() => navigation.push('Intro3')} />
+      <Button title="Go Intro2" onPress={() => navigation.push('Intro2')} />
+      <Button title="Go Intro1" onPress={() => navigation.push('Intro1')} />
       <Button title="Go MyCoupon" onPress={() => navigation.push('MyCoupon')} />
       <Button
         title="Go ScanResult"
@@ -46,6 +48,14 @@ const view = ({navigation}) => {
         title="Go GfCaolion"
         onPress={() => navigation.push('GfCaolion')}
       />
+      <Button
+        title="Go TestButton2"
+        onPress={() => navigation.push('TestButton2')}
+      />
+      <Button
+        title="Go TouchconCh"
+        onPress={() => navigation.push('TouchConCh')}
+      />
       <Button title="Go GfGukBab" onPress={() => navigation.push('GfGukBab')} />
       <Button
         title="Go GfMegaMall"
@@ -54,6 +64,19 @@ const view = ({navigation}) => {
       <Button
         title="Go TestThumbnail"
         onPress={() => navigation.push('TestThumbnail')}
+      />
+
+      <Button title="Go Pinchg" onPress={() => navigation.push('Pinchg')} />
+      <Button title="Go Pinlogin" onPress={() => navigation.push('Pinlogin')} />
+      <Button title="Go Pinsign" onPress={() => navigation.push('Pinsign')} />
+
+      <Button
+        title="Go MarketingInfo"
+        onPress={() => navigation.push('MarketingInfo')}
+      />
+      <Button
+        title="Go TcConnMana"
+        onPress={() => navigation.push('TcConnMana')}
       />
     </View>
   );

@@ -49,7 +49,7 @@ const view = ({navigation}) => {
           right: width * 0.1,
         }}
       />
-
+      {/* 터치토큰으로 무엇을 할 수 있나요? start */}
       <Image
         source={require('../../../assets/images/qna_detail.png')}
         style={{
@@ -60,6 +60,9 @@ const view = ({navigation}) => {
           right: width * 0.05,
         }}
       />
+      {/* 터치토큰으로 무엇을 할 수 있나요? end */}
+
+      
       <Image
         source={require('../../../assets/images/qna_gas.png')}
         style={{

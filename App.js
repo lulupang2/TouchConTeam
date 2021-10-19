@@ -36,6 +36,7 @@ import MyCoupon from './src/containers/Mainflow/MyCoupon/view';
 import RandomSc from './src/containers/Mainflow/RandomSc/view';
 import ScanResult from './src/containers/Mainflow/ScanResult/view';
 import TestButton from './src/containers/Mainflow/TestButton/view';
+
 import SignOut from './src/containers/Mainflow/SignOut/view';
 import TestThumbnail from './src/containers/Mainflow/TestThumbnail/view';
 
@@ -69,6 +70,22 @@ function App() {
           options={{headerShown: false}}
         />
         {/* Intro 3 end*/}
+
+        {/* Intro 2 start*/}
+        <Stack.Screen
+          name="Intro2"
+          component={Intro2}
+          options={{headerShown: false}}
+        />
+        {/* Intro 2 end*/}
+
+        {/* Intro 1 start*/}
+        <Stack.Screen
+          name="Intro1"
+          component={Intro1}
+          options={{headerShown: false}}
+        />
+        {/* Intro 2 end*/}
 
         {/* 메인화면 start */}
         <Stack.Screen
@@ -264,6 +281,13 @@ function App() {
           options={{headerShown: false}}
         />
         {/*---- 터치콘  end---- */}
+        {/* ----- 터치콘전환  start-------- */}
+        <Stack.Screen
+          name="TouchConCh"
+          component={TouchConCh}
+          options={{headerShown: false}}
+        />
+        {/*---- 터치콘전환  end---- */}
       </Stack.Navigator>
     </NavigationContainer>
   );

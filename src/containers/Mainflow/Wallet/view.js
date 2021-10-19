@@ -66,6 +66,7 @@ const view = () => {
           justifyContent: 'space-between',
           alignSelf: 'center',
         }}>
+        {/* 최상 color bar start */}
         <Image
           source={require('../../../assets/images/wallet_bar.png')}
           style={{
@@ -73,6 +74,7 @@ const view = () => {
             width: width * 1,
           }}
         />
+        {/* 최상반 color bar end */}
         <View
           style={{
             display: 'flex',
@@ -89,6 +91,7 @@ const view = () => {
             }}
           />
         </View>
+        {/* 지갑 주소 복사하기 버튼 start */}
         <TouchableOpacity>
           <Image
             source={require('../../../assets/images/btn_wallet_addr_cp.png')}
@@ -101,6 +104,7 @@ const view = () => {
             }}
           />
         </TouchableOpacity>
+        {/* 지갑 주소 복사하기 버튼 end */}
         <Image
           source={require('../../../assets/images/wallet_bar.png')}
           style={{
@@ -120,6 +124,7 @@ const view = () => {
             right: width * -0.05,
           }}
         />
+        {/* 거래소 가기 버튼 start */}
         <TouchableOpacity>
           <Image
             source={require('../../../assets/images/btn_mv_exch.png')}
@@ -132,6 +137,8 @@ const view = () => {
             }}
           />
         </TouchableOpacity>
+        {/* 거래소 가기 버튼 end */}
+
         <Image
           source={require('../../../assets/images/ethereum_current.png')}
           style={{

@@ -18,7 +18,7 @@ const vw = width / 100;
 const view = ({navigation}) => {
   return (
     <View>
-      {/* ------배경 color 주황 start------ */}
+      {/* ------배경 color  start------ */}
       <Image
         source={require('../../../assets/images/my_cp_back_color.png')}
         style={{
@@ -28,7 +28,7 @@ const view = ({navigation}) => {
           top: height * -0.08,
         }}
       />
-      {/* ------배경 color 주황 end------ */}
+      {/* ------배경 color  end------ */}
 
       {/*------ < 내쿠폰 전환X 시작---- */}
       <View
@@ -54,7 +54,7 @@ const view = ({navigation}) => {
         {/* close 버튼 선택시 최초화면으로 이동 */}
         <TouchableOpacity onPress={() => navigation.popToTop()}>
           <Image
-            source={require('../../../assets/images/btn_close_thum.png')}
+            source={'../../../assets/images/btn_close_thum.png'}
             style={{
               resizeMode: 'contain',
               width: width * 0.1,

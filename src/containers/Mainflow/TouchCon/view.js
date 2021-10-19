@@ -28,6 +28,7 @@ const view = () => {
           right: width * 0.35,
         }}
       />
+      {/* 뒤로가기 버튼 start */}
       <Image
         source={require('../../../assets/images/btn_back.png')}
         style={{
@@ -38,6 +39,7 @@ const view = () => {
           right: width * 0.85,
         }}
       />
+      {/* 뒤로가기 버튼 end */}
       <TouchableOpacity>
         <Image
           source={require('../../../assets/images/btn_close_thum.png')}
@@ -69,6 +71,8 @@ const view = () => {
           }}
         />
       </ImageBackground>
+
+      {/* 상단 배경 start  */}
       <Image
         source={require('../../../assets/images/tc_btn_back.png')}
         style={{
@@ -78,6 +82,7 @@ const view = () => {
           top: height * -0.05,
         }}
       />
+      {/* 상단 배경 end */}
       <Image
         source={require('../../../assets/images/tc_wallet_title.png')}
         style={{
@@ -98,6 +103,7 @@ const view = () => {
           alignSelf: 'center',
           width: width * 0.94,
         }}>
+        {/* Touch 결제 start */}
         <Image
           source={require('../../../assets/images/btn_touch_pay.png')}
           style={{
@@ -106,6 +112,9 @@ const view = () => {
           }}
         />
 
+        {/* Touch 결제 end */}
+        {/* 지갑생성 start*/}
+
         <Image
           source={require('../../../assets/images/btn_create_wallet.png')}
           style={{
@@ -113,7 +122,8 @@ const view = () => {
             width: width * 0.2,
           }}
         />
-
+        {/* 지갑생성 end */}
+        {/* 터치콘 전환 start */}
         <Image
           source={require('../../../assets/images/btn_ch_touchcon.png')}
           style={{
@@ -121,7 +131,9 @@ const view = () => {
             width: width * 0.2,
           }}
         />
+        {/* 터치콘 전환 end */}
 
+        {/* 스캔보기 start */}
         <Image
           source={require('../../../assets/images/btn_watch_scan.png')}
           style={{
@@ -129,6 +141,7 @@ const view = () => {
             width: width * 0.2,
           }}
         />
+        {/* 스캔보기 end */}
       </View>
       <View
         style={{
@@ -144,6 +157,8 @@ const view = () => {
           style={{
             width: width * 0.5,
           }}></View>
+
+        {/* 가운데 qr 이미지 start */}
         <Image
           source={require('../../../assets/images/wallet_qr_code.png')}
           style={{
@@ -151,6 +166,7 @@ const view = () => {
             width: width * 0.4,
           }}
         />
+        {/* 가운데 qr 이미지 start */}
         <View
           style={{
             width: width * 0.5,
@@ -175,6 +191,7 @@ const view = () => {
           flexDirection: 'row',
           alignSelf: 'center',
         }}>
+        {/* bottom 복사 버튼 start */}
         <Image
           source={require('../../../assets/images/btn_copy.png')}
           style={{
@@ -182,7 +199,10 @@ const view = () => {
             width: width * 0.25,
           }}
         />
+        {/* bottom 복사 버튼 end */}
         <View style={{width: width * 0.06}}></View>
+
+        {/* bottom 전달 버튼 start */}
         <Image
           source={require('../../../assets/images/btn_pass.png')}
           style={{
@@ -190,6 +210,7 @@ const view = () => {
             width: width * 0.25,
           }}
         />
+        {/* bottom 전달 버튼 end */}
       </View>
     </View>
   );

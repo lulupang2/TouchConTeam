@@ -80,6 +80,8 @@ const view = ({navigation}) => {
           }}
         />
       </View>
+
+      {/* 지금 스캔하기 버튼 start */}
       <TouchableOpacity
         onPress={() => navigation.push('RandomSc')}
         style={{
@@ -94,6 +96,7 @@ const view = ({navigation}) => {
           style={{resizeMode: 'contain', width: width * 0.9}}
         />
       </TouchableOpacity>
+      {/* 지금 스캔하기 버튼 end */}
     </View>
   );
 };

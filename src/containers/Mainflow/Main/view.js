@@ -6,6 +6,7 @@ import {
   Dimensions,
   Image,
   TouchableOpacity,
+  TouchableNativeFeedback,
   ImageBackground,
 } from 'react-native';
 import Navbar from '../../../components/Navbar/view';
@@ -28,6 +29,7 @@ export default function Main() {
           width: width,
           height: height * 0.16,
         }}>
+        {/* 최상단 터치콘 박스 로고와 함께 있음 start */}
         <TouchableOpacity>
           <Image
             source={require('../../../assets/images/touch_wallet.png')}
@@ -38,6 +40,9 @@ export default function Main() {
             }}
           />
         </TouchableOpacity>
+        {/* 최상단 터치콘 박스 로고와 함께 있음 end */}
+
+        {/* 우측 스켄 이미지 start */}
         <TouchableOpacity>
           <Image
             source={require('../../../assets/images/scan.png')}
@@ -48,12 +53,17 @@ export default function Main() {
             }}
           />
         </TouchableOpacity>
+        {/* 우측 스켄 이미지 end*/}
       </View>
 
       <ImageBackground
         source={require('../../../assets/images/bulletin.png')}
         style={{width: width, height: height * 0.035}}>
         {/* 공지 글 들어올 자리 */}
+
+        <Text style={{textAlign: 'center', fontWeight: '900'}}>
+          [공지] 신규 광고주 제휴안내 2021.04.20
+        </Text>
       </ImageBackground>
       {/* 이벤트 스와이프 */}
       <Image
@@ -112,17 +122,23 @@ export default function Main() {
           right: width * 0.05,
         }}
       />
-      <Image
-        source={require('../../../assets/images/btn_shopping_plus.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 0.9,
-          height: height * 0.5,
-          position: 'absolute',
-          top: height * 0.6,
-          right: width * 0.05,
-        }}
-      />
+      {/* 터치 쇼핑몰 쇼핑하기 start */}
+      <TouchableNativeFeedback>
+        <Image
+          source={require('../../../assets/images/btn_shopping_plus.png')}
+          style={{
+            resizeMode: 'contain',
+            width: width * 0.9,
+            height: height * 0.5,
+            position: 'absolute',
+            top: height * 0.6,
+            right: width * 0.05,
+          }}
+        />
+      </TouchableNativeFeedback>
+      {/* 터치 쇼핑몰 쇼핑하기 end */}
+
+      {/* 최하단 : 나의 리워드 text start */}
       <Image
         source={require('../../../assets/images/main_bottom.png')}
         style={{
@@ -133,6 +149,7 @@ export default function Main() {
           top: height * 0.716,
         }}
       />
+      {/* 최하단 : 나의 리워드 text */}
     </View>
   );
 }

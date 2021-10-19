@@ -42,6 +42,11 @@ const view = ({navigation}) => {
         title="Go Thumbnail4"
         onPress={() => navigation.navigate('Thumbnail4')}
       />
+
+      <Button
+        title="Go TcConnMana"
+        onPress={() => navigation.navigate('TcConnMana')}
+      />
     </View>
   );
 };

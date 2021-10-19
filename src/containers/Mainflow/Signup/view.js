@@ -390,7 +390,7 @@ function Signup(props) {
       {/* 주의사항 */}
       <View style={{marginLeft: width * 0.05}}>
         <Image
-          source={require('../../../assets/images/caution.png')}
+          source={require('../../../assets/images/signup_caution.png')}
           style={{
             width: width * 0.85,
             resizeMode: 'contain',
@@ -403,7 +403,7 @@ function Signup(props) {
       <View style={{marginLeft: width * 0.05}}>
         <TouchableOpacity onPress={gobtn}>
           <Image
-            source={require('../../../assets/images/next_button.png')}
+            source={require('../../../assets/images/btn_next.png')}
             style={{
               width: width * 0.85,
               resizeMode: 'contain',

@@ -27,7 +27,7 @@ export default function Intro1() {
         }}
       />
       <Image
-        source={require('../../../assets/images/touch_reward.png')}
+        source={require('../../../assets/images/intro1_text.png')}
         style={{
           marginTop: height * 0.05,
           height: height * 0.1,
@@ -40,14 +40,6 @@ export default function Intro1() {
         style={{
           height: height * 0.25,
           width: width * 0.25,
-          resizeMode: 'contain',
-        }}
-      />
-      <Image
-        source={require('../../../assets/images/random_reward.png')}
-        style={{
-          height: height * 0.03,
-          width: width * 0.3,
           resizeMode: 'contain',
         }}
       />

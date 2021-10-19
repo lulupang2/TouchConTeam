@@ -17,7 +17,7 @@ export default function Intro3({navigation}) {
   return (
     <View style={styles.third_container}>
       <Image
-        source={require('../../../assets/images/pic3_4.png')}
+        source={require('../../../assets/images/dot_next_ani3.png')}
         style={{
           marginTop: height * 0.1,
           height: height * 0.03,
@@ -26,7 +26,7 @@ export default function Intro3({navigation}) {
         }}
       />
       <Image
-        source={require('../../../assets/images/pic3_2.png')}
+        source={require('../../../assets/images/intro3_header_text.png')}
         style={{
           marginTop: height * 0.05,
           height: height * 0.1,
@@ -53,7 +53,7 @@ export default function Intro3({navigation}) {
       />
       <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
         <Image
-          source={require('../../../assets/images/pic3_6.png')}
+          source={require('../../../assets/images/btn_intro3_start.png')}
           style={{
             marginTop: height * 0.25,
             height: height * 0.3,

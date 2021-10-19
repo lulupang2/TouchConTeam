@@ -39,6 +39,8 @@ const view = () => {
           top: height * 0.01,
         }}
       />
+
+      {/* TOC 스테킹하기 배경 start */}
       <Image
         source={require('../../../assets/images/stacking_back.png')}
         style={{
@@ -49,6 +51,9 @@ const view = () => {
           right: width * 0.05,
         }}
       />
+      {/* TOC 스테킹하기 배경 end */}
+
+      {/* TOC 스테킹하기 신청 버튼 start */}
       <TouchableOpacity>
         <Image
           source={require('../../../assets/images/btn_stacking.png')}
@@ -62,7 +67,9 @@ const view = () => {
           }}
         />
       </TouchableOpacity>
+      {/* TOC 스테킹하기 신청 버튼 end */}
 
+      {/* 본문 위 스테킹 계산하기 star */}
       <Image
         source={require('../../../assets/images/stacking_title.png')}
         style={{
@@ -74,6 +81,7 @@ const view = () => {
           right: width * 0.25,
         }}
       />
+      {/* 본문위 스테킹 계산하기 end */}
       <TouchableOpacity>
         <Image
           source={require('../../../assets/images/stacking_text.png')}

@@ -6,8 +6,8 @@ import {
   Dimensions,
   ImageBackground,
   Image,
-  TouchableOpacity,
   SafeAreaView,
+  TouchableNativeFeedback,
 } from 'react-native';
 
 const {width, height} = Dimensions.get('window');
@@ -18,6 +18,7 @@ const vh = height / 100;
 export default function Navbar() {
   return (
     <SafeAreaView style={{width: width, height: height * 0.06}}>
+      {/* Navbar 바탕컬러 start */}
       <ImageBackground
         source={require('../../assets/images/nav_back.png')}
         style={{
@@ -35,7 +36,7 @@ export default function Navbar() {
             marginLeft: width * 0.05,
           }}
         />
-        <TouchableOpacity>
+        <TouchableNativeFeedback>
           <Image
             source={require('../../assets/images/nav_ham.png')}
             style={{
@@ -45,8 +46,9 @@ export default function Navbar() {
               marginLeft: width * 0.43,
             }}
           />
-        </TouchableOpacity>
+        </TouchableNativeFeedback>
       </ImageBackground>
+      {/* Navbar 바탕컬러 end */}
     </SafeAreaView>
   );
 }

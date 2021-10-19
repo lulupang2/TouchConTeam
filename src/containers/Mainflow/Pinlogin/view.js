@@ -18,7 +18,7 @@ const vw = width / 100;
 function Orange() {
   return (
     <Image
-      source={require('../../../assets/images/orangecircle.png')}
+      source={require('../../../assets/images/green_circle.png')}
       style={{
         width: width * 0.03,
         height: height * 0.03,
@@ -61,6 +61,7 @@ export default function Pinlogin() {
   return (
     <View style={styles.pinglogin_container}>
       <View style={{marginTop: height * 0.1}}>
+        {/* PIN 번호 간편 로그인 */}
         <Image
           source={require('../../../assets/images/pintext.png')}
           style={{
@@ -69,6 +70,7 @@ export default function Pinlogin() {
             resizeMode: 'contain',
           }}
         />
+        {/* PIN 번호 간편 로그인 */}
       </View>
       <View style={styles.password_con}>
         {pwd.length >= 1 ? <Orange /> : <Gray />}
@@ -94,6 +96,7 @@ export default function Pinlogin() {
 
       <View>
         <TouchableOpacity>
+          {/* PIN 번호 분실 text start */}
           <Image
             source={require('../../../assets/images/pinnumber.png')}
             style={{
@@ -102,6 +105,7 @@ export default function Pinlogin() {
               resizeMode: 'contain',
             }}
           />
+          {/* PIN 번호 분실 text end */}
         </TouchableOpacity>
       </View>
     </View>

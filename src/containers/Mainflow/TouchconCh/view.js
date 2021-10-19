@@ -84,6 +84,7 @@ const view = () => {
             top: height * -0.13,
           }}
         />
+        {/* 전환하기 버튼 start */}
         <TouchableOpacity>
           <Image
             source={require('../../../assets/images/btn_exchange.png')}
@@ -96,8 +97,9 @@ const view = () => {
             }}
           />
         </TouchableOpacity>
+        {/* 전환하기 버튼 end */}
         <Image
-          source={require('../../../assets/images/caution.png')}
+          source={require('../../../assets/images/signup_caution.png')}
           style={{
             resizeMode: 'contain',
             width: width * 0.8,

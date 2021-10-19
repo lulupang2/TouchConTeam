@@ -36,7 +36,7 @@ const Caolion = () => {
           }}>
           <Image
             source={require('../../../assets/images/caolion.png')}
-            style={{width: width * 0.5, resizeMode: 'contain'}}
+            style={{width: width * 0.25, resizeMode: 'contain'}}
           />
           <TouchableOpacity>
             <Image

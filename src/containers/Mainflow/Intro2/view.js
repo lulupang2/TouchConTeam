@@ -10,7 +10,7 @@ export default function Intro2() {
   return (
     <View style={styles.two_conatiner}>
       <Image
-        source={require('../../../assets/images/pic2_2.png')}
+        source={require('../../../assets/images/dot_next_ani.png')}
         style={{
           marginTop: height * 0.1,
           height: height * 0.03,
@@ -28,7 +28,7 @@ export default function Intro2() {
         }}
       />
       <Image
-        source={require('../../../assets/images/pic2_1.png')}
+        source={require('../../../assets/images/intro2_img.png')}
         style={{
           height: height * 0.25,
           width: width * 0.6,
@@ -36,7 +36,7 @@ export default function Intro2() {
         }}
       />
       <Image
-        source={require('../../../assets/images/pic2_4.png')}
+        source={require('../../../assets/images/intro2_bottom_text.png')}
         style={{
           height: height * 0.05,
           width: width * 0.73,
