@@ -36,7 +36,6 @@ import MyCoupon from './src/containers/Mainflow/MyCoupon/view';
 import RandomSc from './src/containers/Mainflow/RandomSc/view';
 import ScanResult from './src/containers/Mainflow/ScanResult/view';
 import TestButton from './src/containers/Mainflow/TestButton/view';
-
 import SignOut from './src/containers/Mainflow/SignOut/view';
 import TestThumbnail from './src/containers/Mainflow/TestThumbnail/view';
 

@@ -55,7 +55,9 @@ const view = ({navigation}) => {
           right: width * 0.8,
         }}
       />
-      {/* 제목 이미지 start */}
+      {/* 제목 이미지 end
+      
+      */}
       {/* 1:1 문의하기 등록 버튼 start */}
       <TouchableNativeFeedback
         onPress={() => navigation.navigate('TestButton')}>
