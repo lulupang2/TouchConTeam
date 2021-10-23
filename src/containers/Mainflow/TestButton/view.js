@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Button,
+  ScrollView,
 } from 'react-native';
 
 const {height, width} = Dimensions.get('window');
@@ -18,14 +19,11 @@ const vw = width / 100;
 
 const view = ({navigation}) => {
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        justifyContent: 'space-between',
-      }}>
-      <Button title="Go Main" onPress={() => navigation.push('Main')} />
+    <ScrollView
+      contentContainerStyle={{alignItems: 'center'}}
+      style={{flex: 1}}
+    >
+      <Button title="Go Main" onPress={() => navigation.push('MainStack')} />
       <Button title="Go TouchCon" onPress={() => navigation.push('TouchCon')} />
       <Button title="Go Wallet" onPress={() => navigation.push('Wallet')} />
       <Button
@@ -78,7 +76,7 @@ const view = ({navigation}) => {
         title="Go TcConnMana"
         onPress={() => navigation.push('TcConnMana')}
       />
-    </View>
+    </ScrollView>
   );
 };
 

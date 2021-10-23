@@ -1,108 +1,88 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  ImageBackground,
-  Image,
-  TouchableOpacity,
-  SafeAreaView,
-  TouchableNativeFeedback,
-} from 'react-native';
+import {Image} from 'react-native';
+import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
+import RowView from '../../../components/RowView';
+import {NormalBoldLabel} from '../../../components/Label';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Touchable from '../../../components/Touchable';
 
-const {height, width} = Dimensions.get('window');
-
-const vh = height / 100;
-const vw = width / 100;
+const MENU = [
+  {id: 1, title: '터치토큰 연결 관리', path: 'TcConnMana'},
+  {id: 2, title: 'PIN번호 변경', path: 'Pinchg'},
+  {id: 3, title: '마케팅정보 알림', path: 'MarketingInfo'},
+  {id: 4, title: '탈퇴하기', path: 'SignOut'},
+];
 
 const view = ({navigation}) => {
   return (
-    <View>
+    <WhiteSafeAreaView>
       <Image
-        source={require('../../../assets/images/myInfo_title.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 1,
-        }}
+        source={require('../../../assets/images/nav_back.png')}
+        style={{height: 2}}
       />
-      {/* 최상단 뒤로가기 버튼 start */}
-      <TouchableNativeFeedback onPress={() => navigation.goBack()}>
-        <Image
-          source={require('../../../assets/images/btn_back.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 0.1,
-            position: 'absolute',
-            top: height * 0.001,
-            right: width * 0.85,
-          }}
+      <RowView
+        style={{
+          paddingTop: 22,
+          paddingHorizontal: 24,
+          justifyContent: 'space-between',
+          borderBottomWidth: 1,
+          borderBottomColor: '#c4c4c4',
+          paddingBottom: 18,
+        }}
+      >
+        <NormalBoldLabel text={'이메일'} />
+        <NormalBoldLabel
+          text={'ngm1224@gmail.com'}
+          style={{fontSize: 20, lineHeight: 24}}
         />
-      </TouchableNativeFeedback>
-      {/* 최상단 뒤로가기 버튼 end*/}
-      <Image
-        source={require('../../../assets/images/myInfo_email.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 1,
-        }}
-      />
+      </RowView>
+
+      {MENU.map(menu => (
+        <Menu
+          key={menu.id}
+          title={menu.title}
+          onPress={() => navigation.navigate(menu.path)}
+        />
+      ))}
+
       {/* 터치토큰(터치콘인듯함) 연결 관리 start */}
-      <TouchableNativeFeedback
-        onPress={() => navigation.navigate('TcConnMana')}>
-        <Image
-          source={require('../../../assets/images/btn_tc_conn_ma.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 1,
-            position: 'absolute',
-            top: height * 0.17,
-          }}
-        />
-      </TouchableNativeFeedback>
+      {/*<TouchableNativeFeedback*/}
+      {/*  onPress={() => navigation.navigate('TcConnMana')}*/}
+      {/*>*/}
+      {/*  <Image*/}
+      {/*    source={require('../../../assets/images/btn_tc_conn_ma.png')}*/}
+      {/*    style={{*/}
+      {/*      resizeMode: 'contain',*/}
+      {/*      width: width * 1,*/}
+      {/*      position: 'absolute',*/}
+      {/*      top: height * 0.17,*/}
+      {/*    }}*/}
+      {/*  />*/}
+      {/*</TouchableNativeFeedback>*/}
       {/* 터치토큰 연결 관리 end*/}
-      {/* PIN번호 변경 버튼 start (버튼이동 미해결)*/}
-      <TouchableNativeFeedback onPress={() => navigation.navigate('Pinchg')}>
-        <Image
-          source={require('../../../assets/images/btn_ipn_ch.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 1,
-            position: 'absolute',
-            top: height * 0.24,
-          }}
-        />
-      </TouchableNativeFeedback>
-      {/* PIN번로 변경 버튼 end */}
-      {/* 마케팅 정보 알림 버튼 가기 start */}
-      <TouchableNativeFeedback
-        onPress={() => navigation.navigate('MarketingInfo')}>
-        <Image
-          source={require('../../../assets/images/btn_to_marketing_bell.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 1,
-            position: 'absolute',
-            top: height * 0.32,
-          }}
-        />
-      </TouchableNativeFeedback>
-      {/* 마케팅 정보 알림 가기 버튼 end*/}
-      {/* 회원 탈퇴러 가기 버튼 start */}
-      <TouchableNativeFeedback onPress={() => navigation.navigate('SignOut')}>
-        <Image
-          source={require('../../../assets/images/btn_to_sign_out.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 1,
-            position: 'absolute',
-            top: height * 0.39,
-          }}
-        />
-      </TouchableNativeFeedback>
-      {/* 회원 탈퇴하러 가기 버튼 startt */}
-    </View>
+    </WhiteSafeAreaView>
   );
 };
 
 export default view;
+
+const Menu = ({onPress, title}) => {
+  return (
+    <Touchable
+      onPress={onPress}
+      style={{
+        paddingTop: 15,
+        paddingHorizontal: 24,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        borderBottomWidth: 1,
+        borderBottomColor: '#c4c4c4',
+        paddingBottom: 14,
+      }}
+    >
+      <NormalBoldLabel text={title} />
+      <AntDesign name={'right'} size={24} color={'#000'} />
+    </Touchable>
+  );
+};

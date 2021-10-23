@@ -9,7 +9,6 @@ import Signup from './src/containers/Mainflow/Signup/view';
 import Pinlogin from './src/containers/Mainflow/Pinlogin/view';
 import Pinchg from './src/containers/Mainflow/Pinchg/view';
 import Pinsign from './src/containers/Mainflow/Pinsign/view';
-import Main from './src/containers/Mainflow/Main/view';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import GfGukBab from './src/containers/Mainflow/GfGukBab/GukBab';
 import GfMegaMall from './src/containers/Mainflow/GfMegaMall/MegaMall';
@@ -38,14 +37,40 @@ import ScanResult from './src/containers/Mainflow/ScanResult/view';
 import TestButton from './src/containers/Mainflow/TestButton/view';
 import SignOut from './src/containers/Mainflow/SignOut/view';
 import TestThumbnail from './src/containers/Mainflow/TestThumbnail/view';
-
+import {DrawerStack} from './src/containers/Navigator/DrawerStack';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 const Stack = createStackNavigator();
 const Tab = createMaterialTopTabNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="TestButton">
+      <Stack.Navigator
+        initialRouteName="TestButton"
+        screenOptions={{
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontSize: 20,
+            lineHeight: 24,
+            color: '#000',
+            fontWeight: 'bold',
+            // fontFamily: 'NotoSansKR-Regular',
+          },
+          headerStyle: {
+            shadowOffset: {height: 0, width: 0},
+            backgroundColor: '#fff',
+          },
+          headerBackImage: () => (
+            <AntDesign
+              name="left"
+              size={24}
+              color={'#000'}
+              style={{padding: 4, alignSelf: 'center'}}
+            />
+          ),
+          headerBackTitleVisible: false,
+        }}
+      >
         {/* 버튼 모음  start */}
         <Stack.Screen
           name="TestButton"
@@ -88,8 +113,8 @@ function App() {
 
         {/* 메인화면 start */}
         <Stack.Screen
-          name="Main"
-          component={Main}
+          name="MainStack"
+          component={DrawerStack}
           options={{headerShown: false}}
         />
         {/* 메인화면 end */}
@@ -198,7 +223,7 @@ function App() {
         <Stack.Screen
           name="MyInfo"
           component={MyInfo}
-          options={{headerShown: false}}
+          options={{title: '내 정보'}}
         />
 
         <Stack.Screen
@@ -299,7 +324,8 @@ function MyTabs() {
       tabBar={() => null}
       screenOptions={{
         tabBarShowLabel: false,
-      }}>
+      }}
+    >
       <Tab.Screen name="Intro1" component={Intro1} />
       <Tab.Screen name="Intro2" component={Intro2} />
       <Tab.Screen name="Intro3" component={Intro3} />
