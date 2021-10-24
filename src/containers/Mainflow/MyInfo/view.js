@@ -3,8 +3,7 @@ import {Image} from 'react-native';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import RowView from '../../../components/RowView';
 import {NormalBoldLabel} from '../../../components/Label';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Touchable from '../../../components/Touchable';
+import {MenuItem} from '../../../components/MenuItem';
 
 const MENU = [
   {id: 1, title: '터치토큰 연결 관리', path: 'TcConnMana'},
@@ -38,7 +37,7 @@ const view = ({navigation}) => {
       </RowView>
 
       {MENU.map(menu => (
-        <Menu
+        <MenuItem
           key={menu.id}
           title={menu.title}
           onPress={() => navigation.navigate(menu.path)}
@@ -65,24 +64,3 @@ const view = ({navigation}) => {
 };
 
 export default view;
-
-const Menu = ({onPress, title}) => {
-  return (
-    <Touchable
-      onPress={onPress}
-      style={{
-        paddingTop: 15,
-        paddingHorizontal: 24,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        borderBottomWidth: 1,
-        borderBottomColor: '#c4c4c4',
-        paddingBottom: 14,
-      }}
-    >
-      <NormalBoldLabel text={title} />
-      <AntDesign name={'right'} size={24} color={'#000'} />
-    </Touchable>
-  );
-};

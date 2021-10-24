@@ -9,6 +9,21 @@ export const DrawerStack = () => {
   return (
     <DrawerNavigator.Navigator
       initialRouteName="Main"
+      drawerPosition="right"
+      screenOptions={{
+        drawerPosition: 'right',
+        // drawerHideStatusBarOnOpen: true,
+        drawerStyle: {
+          width: '73%',
+          drawerInactiveBackgroundColor: 'rgba(0,0,0,0.45)',
+        },
+      }}
+      //
+      // defaultStatus="close"
+      // screenOptions={{
+      //   drawerPosition: 'right',
+      //   // drawerType: 'front',
+      // }}
       drawerContent={props => <RightDrawer />}
     >
       <DrawerNavigator.Screen

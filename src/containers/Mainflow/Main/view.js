@@ -50,8 +50,10 @@ export default function Main() {
           <Image
             source={require('../../../assets/images/scan.png')}
             style={{
-              width: width * 0.24,
-              height: height * 0.24,
+              width: 86,
+              height: 86,
+              // width: width * 0.24,
+              // height: height * 0.24,
               resizeMode: 'contain',
             }}
           />
