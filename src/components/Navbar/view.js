@@ -26,7 +26,8 @@ export default function Navbar() {
           height: height * 0.06,
           flexDirection: 'row',
           alignItems: 'center',
-        }}>
+        }}
+      >
         <Image
           source={require('../../assets/images/nav_logo.png')}
           style={{

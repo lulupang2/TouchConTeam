@@ -24,7 +24,8 @@ const view = ({navigation}) => {
         alignItems: 'center',
         justifyContent: 'center',
         justifyContent: 'space-between',
-      }}>
+      }}
+    >
       <Button title="Go Main" onPress={() => navigation.push('Main')} />
       <Button title="Go TouchCon" onPress={() => navigation.push('TouchCon')} />
       <Button title="Go Wallet" onPress={() => navigation.push('Wallet')} />

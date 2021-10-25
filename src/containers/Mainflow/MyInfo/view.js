@@ -49,7 +49,8 @@ const view = ({navigation}) => {
       />
       {/* 터치토큰(터치콘인듯함) 연결 관리 start */}
       <TouchableNativeFeedback
-        onPress={() => navigation.navigate('TcConnMana')}>
+        onPress={() => navigation.navigate('TcConnMana')}
+      >
         <Image
           source={require('../../../assets/images/btn_tc_conn_ma.png')}
           style={{
@@ -76,7 +77,8 @@ const view = ({navigation}) => {
       {/* PIN번로 변경 버튼 end */}
       {/* 마케팅 정보 알림 버튼 가기 start */}
       <TouchableNativeFeedback
-        onPress={() => navigation.navigate('MarketingInfo')}>
+        onPress={() => navigation.navigate('MarketingInfo')}
+      >
         <Image
           source={require('../../../assets/images/btn_to_marketing_bell.png')}
           style={{
