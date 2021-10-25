@@ -1,9 +1,10 @@
 import React from 'react';
-import {Image} from 'react-native';
+import {Image, View} from 'react-native';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import RowView from '../../../components/RowView';
 import {NormalBoldLabel} from '../../../components/Label';
 import {MenuItem} from '../../../components/MenuItem';
+import HeaderBottomLine from '../../../components/HeaderBottomLine';
 
 const MENU = [
   {id: 1, title: '터치토큰 연결 관리', path: 'TcConnMana'},
@@ -15,10 +16,7 @@ const MENU = [
 const view = ({navigation}) => {
   return (
     <WhiteSafeAreaView>
-      <Image
-        source={require('../../../assets/images/nav_back.png')}
-        style={{height: 2}}
-      />
+      <HeaderBottomLine />
       <RowView
         style={{
           paddingTop: 22,

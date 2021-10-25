@@ -10,6 +10,7 @@ import {
   TouchableNativeFeedback,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import RowView from '../RowView';
 
 const {width, height} = Dimensions.get('window');
 
@@ -19,15 +20,14 @@ const vh = height / 100;
 export default function Navbar() {
   const navigation = useNavigation();
   return (
-    <SafeAreaView style={{width: width, height: height * 0.06}}>
+    <>
+      {/*<SafeAreaView style={{width: width, height: height * 0.06}}>*/}
       {/* Navbar 바탕컬러 start */}
-      <ImageBackground
-        source={require('../../assets/images/nav_back.png')}
+      <RowView
         style={{
-          width: width,
-          height: height * 0.06,
-          flexDirection: 'row',
-          alignItems: 'center',
+          backgroundColor: '#FD7F36',
+          // width: width,
+          // height: height * 0.06,
         }}
       >
         <Image
@@ -50,9 +50,9 @@ export default function Navbar() {
             }}
           />
         </TouchableNativeFeedback>
-      </ImageBackground>
+      </RowView>
       {/* Navbar 바탕컬러 end */}
-    </SafeAreaView>
+    </>
   );
 }
 
