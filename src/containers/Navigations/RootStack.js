@@ -197,7 +197,7 @@ const RootStack = () => (
     <Stack.Screen
       name="TcStory"
       component={TcStory}
-      options={{headerShown: false}}
+      options={{title: '터치콘 이야기'}}
     />
 
     <Stack.Screen
