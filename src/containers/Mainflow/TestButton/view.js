@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Button,
+  ScrollView,
 } from 'react-native';
 
 const {height, width} = Dimensions.get('window');
@@ -18,68 +19,82 @@ const vw = width / 100;
 
 const view = ({navigation}) => {
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        justifyContent: 'space-between',
-      }}
+    <ScrollView
+      contentContainerStyle={{alignItems: 'center'}}
+      style={{flex: 1}}
     >
-      <Button title="Go Main" onPress={() => navigation.push('Main')} />
-      <Button title="Go TouchCon" onPress={() => navigation.push('TouchCon')} />
-      <Button title="Go Wallet" onPress={() => navigation.push('Wallet')} />
+      <Button title="Go Main" onPress={() => navigation.navigate('Main')} />
+      <Button
+        title="Go TouchCon"
+        onPress={() => navigation.navigate('TouchCon')}
+      />
+      <Button title="Go Wallet" onPress={() => navigation.navigate('Wallet')} />
       <Button
         title="Go ScanHistory"
-        onPress={() => navigation.push('ScanHistory')}
+        onPress={() => navigation.navigate('ScanHistory')}
       />
-      <Button title="Go Intro3" onPress={() => navigation.push('Intro3')} />
-      <Button title="Go Intro2" onPress={() => navigation.push('Intro2')} />
-      <Button title="Go Intro1" onPress={() => navigation.push('Intro1')} />
-      <Button title="Go MyCoupon" onPress={() => navigation.push('MyCoupon')} />
+      <Button title="Go Intro3" onPress={() => navigation.navigate('Intro3')} />
+      <Button title="Go Intro2" onPress={() => navigation.navigate('Intro2')} />
+      <Button title="Go Intro1" onPress={() => navigation.navigate('Intro1')} />
+      <Button
+        title="Go MyCoupon"
+        onPress={() => navigation.navigate('MyCoupon')}
+      />
       <Button
         title="Go ScanResult"
-        onPress={() => navigation.push('ScanResult')}
+        onPress={() => navigation.navigate('ScanResult')}
       />
-      <Button title="Go MyInfo" onPress={() => navigation.push('MyInfo')} />
-      <Button title="Go QnA" onPress={() => navigation.push('QnA')} />
-      <Button title="Go TcStory" onPress={() => navigation.push('TcStory')} />
-      <Button title="Go Policy" onPress={() => navigation.push('Policy')} />
+      <Button title="Go MyInfo" onPress={() => navigation.navigate('MyInfo')} />
+      <Button title="Go QnA" onPress={() => navigation.navigate('QnA')} />
+      <Button
+        title="Go TcStory"
+        onPress={() => navigation.navigate('TcStory')}
+      />
+      <Button title="Go Policy" onPress={() => navigation.navigate('Policy')} />
       <Button
         title="Go GfCaolion"
-        onPress={() => navigation.push('GfCaolion')}
+        onPress={() => navigation.navigate('GfCaolion')}
       />
       <Button
         title="Go TestButton2"
-        onPress={() => navigation.push('TestButton2')}
+        onPress={() => navigation.navigate('TestButton2')}
       />
       <Button
         title="Go TouchconCh"
-        onPress={() => navigation.push('TouchConCh')}
+        onPress={() => navigation.navigate('TouchConCh')}
       />
-      <Button title="Go GfGukBab" onPress={() => navigation.push('GfGukBab')} />
+      <Button
+        title="Go GfGukBab"
+        onPress={() => navigation.navigate('GfGukBab')}
+      />
       <Button
         title="Go GfMegaMall"
-        onPress={() => navigation.push('GfMegaMall')}
+        onPress={() => navigation.navigate('GfMegaMall')}
       />
       <Button
         title="Go TestThumbnail"
-        onPress={() => navigation.push('TestThumbnail')}
+        onPress={() => navigation.navigate('TestThumbnail')}
       />
 
-      <Button title="Go Pinchg" onPress={() => navigation.push('Pinchg')} />
-      <Button title="Go Pinlogin" onPress={() => navigation.push('Pinlogin')} />
-      <Button title="Go Pinsign" onPress={() => navigation.push('Pinsign')} />
+      <Button title="Go Pinchg" onPress={() => navigation.navigate('Pinchg')} />
+      <Button
+        title="Go Pinlogin"
+        onPress={() => navigation.navigate('Pinlogin')}
+      />
+      <Button
+        title="Go Pinsign"
+        onPress={() => navigation.navigate('Pinsign')}
+      />
 
       <Button
         title="Go MarketingInfo"
-        onPress={() => navigation.push('MarketingInfo')}
+        onPress={() => navigation.navigate('MarketingInfo')}
       />
       <Button
         title="Go TcConnMana"
-        onPress={() => navigation.push('TcConnMana')}
+        onPress={() => navigation.navigate('TcConnMana')}
       />
-    </View>
+    </ScrollView>
   );
 };
 

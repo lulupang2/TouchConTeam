@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -18,6 +18,8 @@ const vw = width / 100;
 const vh = height / 100;
 
 export default function Main() {
+  const [drawer, setDrawer] = useState(null);
+
   return (
     <View>
       <Navbar />
@@ -48,8 +50,10 @@ export default function Main() {
           <Image
             source={require('../../../assets/images/scan.png')}
             style={{
-              width: width * 0.24,
-              height: height * 0.24,
+              width: 86,
+              height: 86,
+              // width: width * 0.24,
+              // height: height * 0.24,
               resizeMode: 'contain',
             }}
           />
