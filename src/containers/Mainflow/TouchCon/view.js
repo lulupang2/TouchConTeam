@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
+import WhiteSafeAreaView from "../../../components/WhiteSafeAreaView";
 
 const {height, width} = Dimensions.get('window');
 
@@ -17,69 +18,13 @@ const vw = width / 100;
 
 const view = () => {
   return (
-    <View>
-      <Image
-        source={require('../../../assets/images/tc_wallet_title.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 0.3,
-          position: 'absolute',
-          top: height * 0.02,
-          right: width * 0.35,
-        }}
-      />
-      {/* 뒤로가기 버튼 start */}
-      <Image
-        source={require('../../../assets/images/btn_back.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 0.1,
-          position: 'absolute',
-          top: height * 0.001,
-          right: width * 0.85,
-        }}
-      />
-      {/* 뒤로가기 버튼 end */}
-      <TouchableOpacity>
-        <Image
-          source={require('../../../assets/images/btn_close_thum.png')}
-          style={{
-            resizeMode: 'contain',
-            position: 'absolute',
-            right: width * 0.05,
-            top: height * 0.01,
-            width: width * 0.1,
-          }}
-        />
-      </TouchableOpacity>
-      <ImageBackground
-        source={require('../../../assets/images/btn_back.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 0.1,
-          position: 'absolute',
-          right: width * 0.85,
-        }}>
-        <Image
-          source={require('../../../assets/images/tc_wallet_title.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 0.2,
-            position: 'absolute',
-            top: height * 0.45,
-            right: width * 0.7,
-          }}
-        />
-      </ImageBackground>
-
+    <WhiteSafeAreaView>
       {/* 상단 배경 start  */}
       <Image
         source={require('../../../assets/images/tc_btn_back.png')}
         style={{
           resizeMode: 'contain',
-          width: width * 1,
-          position: 'absolute',
-          top: height * -0.05,
+          width,
         }}
       />
       {/* 상단 배경 end */}
@@ -212,7 +157,7 @@ const view = () => {
         />
         {/* bottom 전달 버튼 end */}
       </View>
-    </View>
+    </WhiteSafeAreaView>
   );
 };
 

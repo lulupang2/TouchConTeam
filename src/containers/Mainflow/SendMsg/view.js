@@ -31,7 +31,8 @@ const view = ({navigation}) => {
           borderBottomWidth: 1,
           borderBottomColor: '#c4c4c4',
           paddingBottom: 18,
-        }}></RowView>
+        }}
+      ></RowView>
     </WhiteSafeAreaView>
 
     // <View>

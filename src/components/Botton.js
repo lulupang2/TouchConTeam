@@ -13,7 +13,8 @@ export const LongButton = ({text, tcStyle}) => {
       }}
       onPress={() => {
         alert('버튼작동');
-      }}>
+      }}
+    >
       <Text
         style={{
           textAlign: 'center',
@@ -21,7 +22,8 @@ export const LongButton = ({text, tcStyle}) => {
           fontSize: 20,
           fontWeight: 'bold',
           color: 'white',
-        }}>
+        }}
+      >
         {text}
       </Text>
     </TouchableOpacity>

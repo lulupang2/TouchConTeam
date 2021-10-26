@@ -67,7 +67,8 @@ const RootStack = () => (
         />
       ),
       headerBackTitleVisible: false,
-    }}>
+    }}
+  >
     {/* 버튼 모음  start */}
     <Stack.Screen
       name="TestButton"
@@ -228,7 +229,7 @@ const RootStack = () => (
     <Stack.Screen
       name="Shopping"
       component={Shopping}
-      options={{headerShown: false}}
+      options={{title: '터치 쇼핑몰 쇼핑하기'}}
     />
     <Stack.Screen
       name="Thumbnail1"
@@ -301,7 +302,7 @@ const RootStack = () => (
     <Stack.Screen
       name="TouchCon"
       component={TouchCon}
-      options={{headerShown: false}}
+      options={{title: '터치콘 지갑'}}
     />
     {/*---- 터치콘  end---- */}
     {/* ----- 터치콘전환  start-------- */}
@@ -321,7 +322,8 @@ function MyTabs() {
       tabBar={() => null}
       screenOptions={{
         tabBarShowLabel: false,
-      }}>
+      }}
+    >
       <Tab.Screen name="Intro1" component={Intro1} />
       <Tab.Screen name="Intro2" component={Intro2} />
       <Tab.Screen name="Intro3" component={Intro3} />
