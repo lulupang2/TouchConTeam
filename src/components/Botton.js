@@ -1,18 +1,29 @@
 import React from 'react';
-import {Button} from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
 
-export const LongButtion = ({style, btnName}) => {
+export const LongButton = ({text, tcStyle}) => {
   return (
-    <Button style={{background: '#FD7F36', borderRadius: '10', ...style}}>
-      {btnName}
-    </Button>
-  );
-};
-
-export const NormalLabel = ({text, style}) => {
-  return (
-    <Text style={{fontSize: 15, lineHeight: 19, color: '#000', ...style}}>
-      {text}
-    </Text>
+    <TouchableOpacity
+      style={{
+        backgroundColor: '#FD7F36',
+        width: '70%',
+        height: '7%',
+        borderRadius: 30,
+        ...tcStyle,
+      }}
+      onPress={() => {
+        alert('버튼작동');
+      }}>
+      <Text
+        style={{
+          textAlign: 'center',
+          paddingTop: 13,
+          fontSize: 20,
+          fontWeight: 'bold',
+          color: 'white',
+        }}>
+        {text}
+      </Text>
+    </TouchableOpacity>
   );
 };
