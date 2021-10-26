@@ -25,8 +25,7 @@ const view = ({navigation}) => {
           borderBottomWidth: 1,
           borderBottomColor: '#c4c4c4',
           paddingBottom: 18,
-        }}
-      >
+        }}>
         <NormalBoldLabel text={'이메일'} />
         <NormalBoldLabel
           text={'ngm1224@gmail.com'}

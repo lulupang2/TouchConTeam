@@ -30,8 +30,7 @@ export default function Main() {
           justifyContent: 'space-evenly',
           width: width,
           height: height * 0.16,
-        }}
-      >
+        }}>
         {/* 최상단 터치콘 박스 로고와 함께 있음 start */}
         <TouchableOpacity>
           <Image
@@ -63,8 +62,7 @@ export default function Main() {
 
       <ImageBackground
         source={require('../../../assets/images/bulletin.png')}
-        style={{width: width, height: height * 0.035}}
-      >
+        style={{width: width, height: height * 0.035}}>
         {/* 공지 글 들어올 자리 */}
 
         <Text style={{textAlign: 'center', fontWeight: '900'}}>

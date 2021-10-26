@@ -67,8 +67,7 @@ const RootStack = () => (
         />
       ),
       headerBackTitleVisible: false,
-    }}
-  >
+    }}>
     {/* 버튼 모음  start */}
     <Stack.Screen
       name="TestButton"
@@ -124,11 +123,11 @@ const RootStack = () => (
       options={{headerShown: false}}
     />
     {/* ------ 지갑생성 (터치콘 지갑) end */}
-    {/* Sign Out start(회워탈퇴) */}
+    {/* Sign Out start(회원탈퇴) */}
     <Stack.Screen
       name="SignOut"
       component={SignOut}
-      options={{headerShown: false}}
+      options={{title: '계정탈퇴'}}
     />
 
     {/* Sign Out start(회워탈퇴) */}
@@ -181,17 +180,17 @@ const RootStack = () => (
       component={TcConnMana}
       options={{headerShown: false}}
     />
-
+    {/* 마켓팅 정보 알림 */}
     <Stack.Screen
       name="MarketingInfo"
       component={MarketingInfo}
-      options={{headerShown: false}}
+      options={{title: '마켓팅 정보 알림'}}
     />
-
+    {/* 약관 및 개인정보처리 방침*/}
     <Stack.Screen
       name="Policy"
       component={Policy}
-      options={{headerShown: false}}
+      options={{title: '약관 및 개인정보처리 방침'}}
     />
 
     <Stack.Screen
@@ -199,19 +198,25 @@ const RootStack = () => (
       component={TcStory}
       options={{title: '터치콘 이야기'}}
     />
-
+    {/* 1:1 문의하기 */}
     <Stack.Screen
       name="SendMsg"
       component={SendMsg}
-      options={{headerShown: false}}
+      options={{title: '1:1 문의하기'}}
     />
 
-    <Stack.Screen name="QnA" component={QnA} options={{headerShown: false}} />
+    {/* 내 정보 > 자주묻는 질문 페이지  */}
+    <Stack.Screen
+      name="QnA"
+      component={QnA}
+      options={{title: '자주 묻는 질문'}}
+    />
 
+    {/* 공지사항 */}
     <Stack.Screen
       name="Notice"
       component={Notice}
-      options={{headerShown: false}}
+      options={{title: '공지사항'}}
     />
 
     <Stack.Screen
@@ -316,8 +321,7 @@ function MyTabs() {
       tabBar={() => null}
       screenOptions={{
         tabBarShowLabel: false,
-      }}
-    >
+      }}>
       <Tab.Screen name="Intro1" component={Intro1} />
       <Tab.Screen name="Intro2" component={Intro2} />
       <Tab.Screen name="Intro3" component={Intro3} />

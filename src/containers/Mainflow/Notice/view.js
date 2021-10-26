@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
+import HeaderBottomLine from '../../../components/HeaderBottomLine';
+import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 
 const {height, width} = Dimensions.get('window');
 
@@ -17,45 +19,14 @@ const vw = width / 100;
 
 const view = () => {
   return (
-    <View>
-      <Image
-        source={require('../../../assets/images/notice_title.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 1,
-          position: 'absolute',
-          top: height * 0.0001,
-        }}
-      />
-
-      <Image
-        source={require('../../../assets/images/btn_back.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 0.1,
-          position: 'absolute',
-          top: height * 0.02,
-          right: width * 0.85,
-        }}
-      />
-
-      <Image
-        source={require('../../../assets/images/btn_back.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 0.1,
-          position: 'absolute',
-          top: height * 0.02,
-          right: width * 0.85,
-        }}
-      />
+    <WhiteSafeAreaView>
+      <HeaderBottomLine />
       <Image
         source={require('../../../assets/images/notice_list.png')}
         style={{
           resizeMode: 'contain',
           width: width * 1,
           position: 'absolute',
-          top: height * 0.1,
         }}
       />
       <Image
@@ -85,7 +56,77 @@ const view = () => {
           top: height * 0.65,
         }}
       />
-    </View>
+    </WhiteSafeAreaView>
+
+    // <View>
+    //   <Image
+    //     source={require('../../../assets/images/notice_title.png')}
+    //     style={{
+    //       resizeMode: 'contain',
+    //       width: width * 1,
+    //       position: 'absolute',
+    //       top: height * 0.0001,
+    //     }}
+    //   />
+
+    //   <Image
+    //     source={require('../../../assets/images/btn_back.png')}
+    //     style={{
+    //       resizeMode: 'contain',
+    //       width: width * 0.1,
+    //       position: 'absolute',
+    //       top: height * 0.02,
+    //       right: width * 0.85,
+    //     }}
+    //   />
+
+    //   <Image
+    //     source={require('../../../assets/images/btn_back.png')}
+    //     style={{
+    //       resizeMode: 'contain',
+    //       width: width * 0.1,
+    //       position: 'absolute',
+    //       top: height * 0.02,
+    //       right: width * 0.85,
+    //     }}
+    //   />
+    //   <Image
+    //     source={require('../../../assets/images/notice_list.png')}
+    //     style={{
+    //       resizeMode: 'contain',
+    //       width: width * 1,
+    //       position: 'absolute',
+    //       top: height * 0.1,
+    //     }}
+    //   />
+    //   <Image
+    //     source={require('../../../assets/images/notice_list.png')}
+    //     style={{
+    //       resizeMode: 'contain',
+    //       width: width * 1,
+    //       position: 'absolute',
+    //       top: height * 0.1,
+    //     }}
+    //   />
+    //   <Image
+    //     source={require('../../../assets/images/notice_detail.png')}
+    //     style={{
+    //       resizeMode: 'contain',
+    //       width: width * 1,
+    //       position: 'absolute',
+    //       top: height * 0.005,
+    //     }}
+    //   />
+    //   <Image
+    //     source={require('../../../assets/images/notice_list.png')}
+    //     style={{
+    //       resizeMode: 'contain',
+    //       width: width * 1,
+    //       position: 'absolute',
+    //       top: height * 0.65,
+    //     }}
+    //   />
+    // </View>
   );
 };
 
