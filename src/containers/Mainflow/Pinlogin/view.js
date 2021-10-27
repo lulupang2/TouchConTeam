@@ -41,7 +41,7 @@ function Gray() {
   );
 }
 
-export default function Pinlogin() {
+export default function Pinlogin({navigation}) {
   const [pwd, onChangePwd] = React.useState('');
   const [test, setTest] = useState('0000000');
   const [pwdbool, setPwdbool] = useState(0);
@@ -50,6 +50,7 @@ export default function Pinlogin() {
     console.log('rrr', pwdbool);
     if (pwd === test) {
       console.log('login success');
+      navigation.navigate("MainStack")
     } else {
       setPwdbool(pwdbool + 1);
       console.log('login fail');
@@ -90,6 +91,7 @@ export default function Pinlogin() {
           secureTextEntry={true}
           keyboardType={'number-pad'}
           caretHidden={true}
+          autoFocus={true}
           // onKeyPress 비밀번호 확인 작업
         />
       </View>

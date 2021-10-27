@@ -15,14 +15,15 @@ const {height, width} = Dimensions.get('window');
 const vh = height / 100;
 const vw = width / 100;
 
-const view = () => {
+const view = ({navigation}) => {
   return (
     <View>
-      <Image
+      {/* <Image
         source={require('../../../assets/images/shopping_title.png')}
         style={{
           resizeMode: 'contain',
-          width: width * 1,
+          width: width * 0.3,
+          padding: height * 0.045,
         }}
       />
 
@@ -46,7 +47,47 @@ const view = () => {
           top: height * 0.001,
           right: width * 0.85,
         }}
-      />
+      /> */}
+      <View
+        style={{
+          resizeMode: 'contain',
+          position: 'absolute',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignSelf: 'center',
+        }}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+        >
+          <Image
+            source={require('../../../assets/images/btn_back.png')}
+            style={{
+              resizeMode: 'contain',
+              width: width * 0.1,
+            }}
+          />
+        </TouchableOpacity>
+        <View style={{width: width * 0.24}}></View>
+        <Image
+          source={require('../../../assets/images/shopping_title.png')}
+          style={{
+            resizeMode: 'contain',
+            width: width * 0.3,
+            padding: height * 0.045,
+          }}
+        />
+        <View style={{width: width * 0.2}}></View>
+        <TouchableOpacity>
+          <Image
+            source={require('../../../assets/images/btn_close_thum.png')}
+            style={{
+              resizeMode: 'contain',
+              width: width * 0.1,
+            }}
+          />
+        </TouchableOpacity>
+      </View>
       <View
         style={{display: 'flex', flexDirection: 'row', alignSelf: 'center'}}>
         <Image

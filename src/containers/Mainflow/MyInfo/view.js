@@ -1,10 +1,10 @@
 import React from 'react';
-import {Image, View} from 'react-native';
+import {Image} from 'react-native';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import RowView from '../../../components/RowView';
 import {NormalBoldLabel} from '../../../components/Label';
-import {MenuItem} from '../../../components/MenuItem';
-import HeaderBottomLine from '../../../components/HeaderBottomLine';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Touchable from '../../../components/Touchable';
 
 const MENU = [
   {id: 1, title: '터치토큰 연결 관리', path: 'TcConnMana'},
@@ -16,7 +16,10 @@ const MENU = [
 const view = ({navigation}) => {
   return (
     <WhiteSafeAreaView>
-      <HeaderBottomLine />
+      <Image
+        source={require('../../../assets/images/nav_back.png')}
+        style={{height: 2}}
+      />
       <RowView
         style={{
           paddingTop: 22,
@@ -25,7 +28,8 @@ const view = ({navigation}) => {
           borderBottomWidth: 1,
           borderBottomColor: '#c4c4c4',
           paddingBottom: 18,
-        }}>
+        }}
+      >
         <NormalBoldLabel text={'이메일'} />
         <NormalBoldLabel
           text={'ngm1224@gmail.com'}
@@ -34,7 +38,7 @@ const view = ({navigation}) => {
       </RowView>
 
       {MENU.map(menu => (
-        <MenuItem
+        <Menu
           key={menu.id}
           title={menu.title}
           onPress={() => navigation.navigate(menu.path)}
@@ -61,3 +65,24 @@ const view = ({navigation}) => {
 };
 
 export default view;
+
+const Menu = ({onPress, title}) => {
+  return (
+    <Touchable
+      onPress={onPress}
+      style={{
+        paddingTop: 15,
+        paddingHorizontal: 24,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        borderBottomWidth: 1,
+        borderBottomColor: '#c4c4c4',
+        paddingBottom: 14,
+      }}
+    >
+      <NormalBoldLabel text={title} />
+      <AntDesign name={'right'} size={24} color={'#000'} />
+    </Touchable>
+  );
+};

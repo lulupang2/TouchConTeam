@@ -27,16 +27,14 @@ const GukBab = () => {
         style={{
           alignItems: 'center',
           alignContent: 'center',
-        }}
-      >
+        }}>
         <View
           style={{
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-evenly',
             width: width * 1,
-          }}
-        >
+          }}>
           <Image
             source={require('../../../assets/images/gukbab_title.png')}
             style={{

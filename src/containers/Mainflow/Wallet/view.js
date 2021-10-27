@@ -15,7 +15,7 @@ const {height, width} = Dimensions.get('window');
 const vh = height / 100;
 const vw = width / 100;
 
-const view = () => {
+const view = ({navigation}) => {
   return (
     <View>
       <View
@@ -27,7 +27,9 @@ const view = () => {
           justifyContent: 'space-between',
           alignSelf: 'center',
         }}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+        >
           <Image
             source={require('../../../assets/images/btn_back.png')}
             style={{

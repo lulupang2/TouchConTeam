@@ -12,12 +12,8 @@ Backend: haehun
 Stack explain
 React Native
 
-yarn install && npx pod-install
-
 ToDo
-TocuchCon 디자인 변경, 스캔부분 <ImageBackGorund> 적용필요, 일부 버튼 다시 적용중 ,screen stack 변경중 
+TocuchCon 디자인 변경, 스캔부분 <ImageBackGorund> 적용필요, 일부 버튼 다시 적용중
 TouchCon Design modify, Scan Part <ImageBackGorund> Need Apply, Some part of the button Apply,Modify again
   
 Thanks to all the Team 
-  
- 

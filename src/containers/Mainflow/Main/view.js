@@ -17,7 +17,7 @@ const {width, height} = Dimensions.get('window');
 const vw = width / 100;
 const vh = height / 100;
 
-export default function Main() {
+export default function Main({navigation}) {
   const [drawer, setDrawer] = useState(null);
 
   return (
@@ -30,9 +30,12 @@ export default function Main() {
           justifyContent: 'space-evenly',
           width: width,
           height: height * 0.16,
-        }}>
+        }}
+      >
         {/* 최상단 터치콘 박스 로고와 함께 있음 start */}
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('TouchCon')}
+        >
           <Image
             source={require('../../../assets/images/touch_wallet.png')}
             style={{
@@ -49,10 +52,8 @@ export default function Main() {
           <Image
             source={require('../../../assets/images/scan.png')}
             style={{
-              width: 86,
-              height: 86,
-              // width: width * 0.24,
-              // height: height * 0.24,
+              width: width * 0.24,
+              height: height * 0.24,
               resizeMode: 'contain',
             }}
           />
@@ -62,7 +63,8 @@ export default function Main() {
 
       <ImageBackground
         source={require('../../../assets/images/bulletin.png')}
-        style={{width: width, height: height * 0.035}}>
+        style={{width: width, height: height * 0.035}}
+      >
         {/* 공지 글 들어올 자리 */}
 
         <Text style={{textAlign: 'center', fontWeight: '900'}}>
@@ -74,72 +76,66 @@ export default function Main() {
         source={require('../../../assets/images/main_swpe.png')}
         style={{
           width: width * 1,
-          resizeMode: 'contain',
-          position: 'absolute',
-          top: height * 0.189,
+          // resizeMode: 'contain',
+          // position: 'absolute',
+          // top: height * 0.189,
+          // backgroundColor: 'red',
+          height: height * 0.15,
+          // margin: 0,
         }}
       />
-      <Image
-        source={require('../../../assets/images/stacking_back.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 0.9,
-          position: 'absolute',
-          top: height * 0.38,
-          right: width * 0.05,
-        }}
-      />
-      <TouchableOpacity>
+      <View style={{flexDirection: 'row'}}>
         <Image
-          source={require('../../../assets/images/btn_stacking.png')}
+          source={require('../../../assets/images/stacking_back.png')}
           style={{
             resizeMode: 'contain',
-            width: width * 0.2,
-            height: height * 0.04,
-            position: 'absolute',
-            top: height * 0.175,
-            right: width * 0.05,
-            zIndex: 10,
+            width: width * 0.9,
+            // position: 'absolute',
+            // top: height * 0.38,
+            // right: width * 0.05,
+            marginLeft: width * 0.05,
           }}
         />
-      </TouchableOpacity>
-
+        <TouchableOpacity>
+          <Image
+            source={require('../../../assets/images/btn_stacking.png')}
+            style={{
+              resizeMode: 'contain',
+              width: width * 0.2,
+              height: height * 0.04,
+              position: 'absolute',
+              top: height * 0.048,
+              right: width * 0.05,
+            }}
+          />
+        </TouchableOpacity>
+      </View>
       <Image
         source={require('../../../assets/images/main_ad_text.png')}
         style={{
           resizeMode: 'contain',
           width: width * 0.9,
-          height: height * 0.5,
-          position: 'absolute',
-          top: height * 0.4,
-          right: width * 0.05,
-        }}
-      />
-      <Image
-        source={require('../../../assets/images/main_ad_text.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 0.9,
-          height: height * 0.5,
-          position: 'absolute',
-          top: height * 0.4,
-          right: width * 0.05,
+          height: height * 0.3,
+          marginLeft: width * 0.05,
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       />
       {/* 터치 쇼핑몰 쇼핑하기 start */}
-      <TouchableNativeFeedback>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Shopping')}
+        style={{zIndex: 1,}}
+      >
         <Image
           source={require('../../../assets/images/btn_shopping_plus.png')}
           style={{
             resizeMode: 'contain',
             width: width * 0.9,
-            height: height * 0.5,
-            position: 'absolute',
-            top: height * 0.6,
-            right: width * 0.05,
+            height: height * 0.1,
+            marginLeft: width * 0.05,
           }}
         />
-      </TouchableNativeFeedback>
+      </TouchableOpacity>
       {/* 터치 쇼핑몰 쇼핑하기 end */}
 
       {/* 최하단 : 나의 리워드 text start */}
