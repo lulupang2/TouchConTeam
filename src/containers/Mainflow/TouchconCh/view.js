@@ -8,69 +8,37 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
+  TextInput,
 } from 'react-native';
-import HeaderBottomLine from '../../../components/HeaderBottomLine';
-
-const {height, width} = Dimensions.get('window');
-
-const vh = height / 100;
-const vw = width / 100;
+import {HeaderWalletBottomLine} from '../../../components/HeaderBottomLine';
+import {LongButton} from '../../../components/Botton';
+import {NormalLabel} from '../../../components/Label';
 
 const view = () => {
   return (
     <View>
-      <HeaderBottomLine />
-      <View
-        style={{
-          resizeMode: 'contain',
-          position: 'absolute',
-          top: height * -0.07,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          alignSelf: 'center',
-        }}>
-        <Image
-          source={require('../../../assets/images/tc_ch_background.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 1,
-          }}
-        />
-        <Image
-          source={require('../../../assets/images/tc_ch_post.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 1,
-            position: 'relative',
-            top: height * -0.13,
-          }}
-        />
-        {/* 전환하기 버튼 start */}
-        <TouchableOpacity>
-          <Image
-            source={require('../../../assets/images/btn_exchange.png')}
-            style={{
-              resizeMode: 'contain',
-              width: width * 0.9,
-              position: 'relative',
-              top: height * -0.14,
-              right: width * -0.05,
-            }}
-          />
-        </TouchableOpacity>
-        {/* 전환하기 버튼 end */}
-        <Image
-          source={require('../../../assets/images/signup_caution.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 0.8,
-            position: 'relative',
-            top: height * -0.18,
-            right: width * -0.08,
-          }}
-        />
-      </View>
+      <HeaderWalletBottomLine />
+      <TextInput style={{borderWidth: 1, marginTop: 35}} />
+      <LongButton
+        text={'전환하기'}
+        tcStyle={{
+          marginTop: 35,
+          marginLeft: 35,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      />
+      <NormalLabel
+        text={
+          '[유의사항]\n' +
+          '개인정보 입력에 유의해 주세요.\n' +
+          '터치토큰 이외의 주소로는 공금되지 않아요.\n' +
+          '터치토큰을 전송할 경우에는 이더리움 가스비가\n' +
+          '필요합니다.\n' +
+          '미리 이더리움을 충전해 놓으시길 바랍니다.'
+        }
+        style={{marginTop: 35, alignSelf: 'center'}}
+      />
     </View>
   );
 };

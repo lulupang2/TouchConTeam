@@ -27,3 +27,37 @@ export const LongButton = ({text, tcStyle, txStyle}) => {
     </TouchableOpacity>
   );
 };
+
+// ===============================
+
+// 지갑 부분 원형 버튼 컴포넌트
+
+export const CircleButton = ({text, tcStyle, txStyle}) => {
+  return (
+    <TouchableOpacity
+      style={{
+        backgroundColor: '#000000',
+        width: 70,
+        height: 70,
+        borderRadius: 100,
+        ...tcStyle,
+      }}
+      onPress={() => {
+        alert('버튼작동');
+      }}>
+      <Text
+        style={{
+          textAlign: 'center',
+          fontSize: 16,
+          fontWeight: 'bold',
+          color: 'white',
+          justifyContent: 'center',
+          alignItems: 'center',
+          paddingTop: 10,
+          ...txStyle,
+        }}>
+        {text}
+      </Text>
+    </TouchableOpacity>
+  );
+};
