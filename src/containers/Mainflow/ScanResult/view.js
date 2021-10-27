@@ -30,14 +30,16 @@ const view = ({navigation}) => {
           }}
           onPress={() => {
             alert('버튼작동');
-          }}>
+          }}
+        >
           <Text
             style={{
               textAlign: 'center',
               fontSize: 20,
               fontWeight: 'bold',
               color: '#FD7F36',
-            }}>
+            }}
+          >
             적립하기
           </Text>
           <View>

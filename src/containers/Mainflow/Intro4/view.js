@@ -15,7 +15,8 @@ export default function Intro3({navigation}) {
     <ImageBackground
       source={require('../../../assets/images/intro2_back.png')}
       resizeMode="cover"
-      style={{width: '100%', height: '100%'}}>
+      style={{width: '100%', height: '100%'}}
+    >
       <Image
         source={require('../../../assets/images/intro4_h2.png')}
         style={styles.h2}

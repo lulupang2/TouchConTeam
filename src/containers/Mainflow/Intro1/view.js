@@ -15,11 +15,13 @@ export default function Intro1() {
     <ImageBackground
       source={require('../../../assets/images/start_back.png')}
       resizeMode="cover"
-      style={{width: '100%', height: '100%'}}>
+      style={{width: '100%', height: '100%'}}
+    >
       <Text style={styles.uptext}>글로벌 최초 디지털 자산 랜던 리워드</Text>
       <TouchableOpacity
         style={styles.midback}
-        onPress={() => alert('버튼 클릭')}>
+        onPress={() => alert('버튼 클릭')}
+      >
         <Text style={styles.midbtn}>RAMDOM</Text>
       </TouchableOpacity>
       <Image

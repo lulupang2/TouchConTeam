@@ -26,7 +26,8 @@ const view = ({navigation}) => {
           justifyContent: 'space-between',
           position: 'absolute',
           top: height * 0.1,
-        }}>
+        }}
+      >
         <Image
           source={require('../../../assets/images/random_sc.png')}
           style={{
@@ -59,7 +60,8 @@ const view = ({navigation}) => {
           justifyContent: 'space-between',
           position: 'absolute',
           top: height * 0.7,
-        }}>
+        }}
+      >
         <TouchableOpacity>
           <Image
             source={require('../../../assets/images/btn_random_sc_out.png')}
@@ -71,7 +73,8 @@ const view = ({navigation}) => {
           <View
             style={{
               width: width * 0.25,
-            }}></View>
+            }}
+          ></View>
         </TouchableOpacity>
         <Image
           source={require('../../../assets/images/random_bar.png')}
@@ -84,12 +87,14 @@ const view = ({navigation}) => {
         <View
           style={{
             width: width * 0.05,
-          }}></View>
+          }}
+        ></View>
         <TouchableOpacity>
           <View
             style={{
               width: width * 0.25,
-            }}></View>
+            }}
+          ></View>
           <Image
             source={require('../../../assets/images/btn_random_sc_in.png')}
             style={{
@@ -109,7 +114,8 @@ const view = ({navigation}) => {
         <View
           style={{
             width: width * 0.05,
-          }}></View>
+          }}
+        ></View>
         <TouchableOpacity>
           <Image
             source={require('../../../assets/images/btn_random_sc_hi.png')}

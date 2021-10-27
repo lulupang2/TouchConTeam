@@ -31,7 +31,8 @@ const view = ({navigation}) => {
           paddingTop: 22,
           paddingHorizontal: 24,
           paddingBottom: 18,
-        }}>
+        }}
+      >
         <View
           style={{
             backgroundColor: '#fd7f36',
@@ -39,7 +40,8 @@ const view = ({navigation}) => {
             width: 7,
             borderRadius: 6,
             marginLeft: -5,
-          }}></View>
+          }}
+        ></View>
         <Text style={styles.text}>제목</Text>
         <TitleInput />
       </RowView>

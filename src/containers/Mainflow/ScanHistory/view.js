@@ -29,7 +29,8 @@ const view = () => {
           flexDirection: 'column',
           justifyContent: 'space-between',
           alignSelf: 'center',
-        }}>
+        }}
+      >
         <Image
           source={require('../../../assets/images/tc_hi_under_bar.png')}
           style={{

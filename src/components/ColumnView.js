@@ -8,7 +8,8 @@ const ColumnView = ({children, style}) => {
         display: 'flex',
         flexDirection: 'column',
         ...style,
-      }}>
+      }}
+    >
       {children}
     </View>
   );

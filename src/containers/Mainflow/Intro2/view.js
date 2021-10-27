@@ -13,7 +13,8 @@ export default function Intro2() {
     <ImageBackground
       source={require('../../../assets/images/intro2_back.png')}
       resizeMode="cover"
-      style={{width: '100%', height: '100%'}}>
+      style={{width: '100%', height: '100%'}}
+    >
       <Image
         source={require('../../../assets/images/intro2_h2.png')}
         style={styles.h2}
@@ -28,7 +29,8 @@ export default function Intro2() {
           marginLeft: 47,
           position: 'relative',
           top: -50,
-        }}>
+        }}
+      >
         터치콘에서 세로운 보상의 세계를 만나보세요!
       </Text>
       <Image
