@@ -16,7 +16,7 @@ export default function Intro3({navigation}) {
       resizeMode="cover"
       style={{width: '100%', height: '100%'}}>
       <Image
-        source={require('../../../assets/images/intro2_clover.png')}
+        source={require('../../../assets/images/intro2_h2.png')}
         style={{resizeMode: 'contain'}}
       />
       <Text
