@@ -31,7 +31,7 @@ export default function Intro1() {
           resizeMode: 'contain',
           alignSelf: 'center',
           position: 'relative',
-          top: -190,
+          top: -210,
         }}
       />
       <Image
@@ -43,9 +43,12 @@ export default function Intro1() {
           resizeMode: 'contain',
           alignSelf: 'center',
           position: 'absolute',
-          top: 180,
+          top: 190,
         }}
       />
+      <Text style={styles.samllText}>
+        DIGITAL ASSET REWORD SYSTEM @ TOUCHCON
+      </Text>
     </ImageBackground>
   );
 }
@@ -71,5 +74,14 @@ const styles = StyleSheet.create({
     height: 30,
     alignSelf: 'center',
     borderRadius: 20,
+  },
+  samllText: {
+    height: '100%',
+    width: '100%',
+    fontSize: 7,
+    fontWeight: 'bold',
+    position: 'absolute',
+    top: 630,
+    left: 120,
   },
 });
