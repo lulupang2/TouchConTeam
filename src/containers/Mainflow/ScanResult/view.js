@@ -10,94 +10,54 @@ import {
   SafeAreaView,
   TouchableNativeFeedback,
 } from 'react-native';
-
-const {height, width} = Dimensions.get('window');
-
-const vh = height / 100;
-const vw = width / 100;
+import {LongButton} from '../../../components/Botton';
 
 const view = ({navigation}) => {
   return (
-    <View>
-      {/* 축하합니다! 배경화면 start */}
-      <View
-        style={{
-          position: 'absolute',
-          top: height * -0.05,
-          right: width * 0.05,
-        }}>
-        <Image
-          source={require('../../../assets/images/sc_result_background.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 0.9,
-            height: height * 0.65,
-          }}
-        />
-        {/* 축하합니다. 배경확면 end */}
+    <View style={styles.back}>
+      <View>
+        <Text>축하합니다.</Text>
 
-        {/* 적립하기 버튼 start */}
-        <TouchableNativeFeedback>
-          <Image
-            source={require('../../../assets/images/btn_sc_result_save.png')}
+        <TouchableOpacity
+          style={{
+            backgroundColor: '#FFFFFF',
+            width: 327,
+            height: 50,
+            borderRadius: 30,
+            justifyContent: 'center',
+            alignItems: 'center',
+            alignSelf: 'center',
+          }}
+          onPress={() => {
+            alert('버튼작동');
+          }}>
+          <Text
             style={{
-              resizeMode: 'contain',
-              width: width * 0.8,
-              height: height * 0.1,
-              position: 'relative',
-              top: height * -0.15,
-              right: width * -0.05,
-            }}
-          />
-        </TouchableNativeFeedback>
-        {/* 적립하기 버튼 end */}
+              textAlign: 'center',
+              fontSize: 20,
+              fontWeight: 'bold',
+              color: '#FD7F36',
+            }}>
+            적립하기
+          </Text>
+          <View>
+            {' '}
+            <LongButton />
+          </View>
+        </TouchableOpacity>
       </View>
-
-      {/* 화면 닫기 버튼 start */}
-      <TouchableNativeFeedback onPress={() => navigation.popToTop()}>
-        <Image
-          source={require('../../../assets/images/btn_close_thum.png')}
-          style={{
-            resizeMode: 'contain',
-            position: 'absolute',
-            right: width * 0.1,
-            width: width * 0.1,
-          }}
-        />
-      </TouchableNativeFeedback>
-      {/* 화면 닫기 버튼 end */}
-
-      {/* 현재 적립액 start */}
-      <Image
-        source={require('../../../assets/images/sc_result_save_money.png')}
-        style={{
-          resizeMode: 'contain',
-          position: 'absolute',
-          width: width * 0.7,
-          top: height * 0.55,
-          right: width * 0.14,
-        }}
-      />
-      {/* 현재 적립액 end */}
-
-      {/* 나의 지갑가기 버튼 start */}
-      <TouchableNativeFeedback onPress={() => navigation.push('Wallet')}>
-        <Image
-          source={require('../../../assets/images/btn_wallet_go.png')}
-          style={{
-            resizeMode: 'contain',
-            position: 'absolute',
-            right: width * 0.1,
-            width: width * 0.75,
-            top: height * 0.8,
-            right: width * 0.12,
-          }}
-        />
-      </TouchableNativeFeedback>
-
-      {/* 나의 지갑 버튼 end*/}
     </View>
   );
 };
 
 export default view;
+
+const styles = StyleSheet.create({
+  back: {
+    width: 390,
+    height: 350,
+    backgroundColor: '#FD7F36',
+    borderBottomLeftRadius: 35,
+    borderBottomRightRadius: 35,
+  },
+});

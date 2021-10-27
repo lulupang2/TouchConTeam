@@ -18,52 +18,6 @@ const vw = width / 100;
 const view = ({navigation}) => {
   return (
     <View>
-      {/* ------배경 color  start------ */}
-      <Image
-        source={require('../../../assets/images/my_cp_back_color.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 1,
-          position: 'absolute',
-          top: height * -0.08,
-        }}
-      />
-      {/* ------배경 color  end------ */}
-
-      {/*------ < 내쿠폰 전환X 시작---- */}
-      <View
-        style={{
-          resizeMode: 'contain',
-          position: 'absolute',
-          top: height * 0.03,
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignSelf: 'center',
-        }}>
-        <View style={{width: width * 0.2}}></View>
-        <Image
-          source={require('../../../assets/images/random_sc_title.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 0.5,
-            padding: height * 0.045,
-          }}
-        />
-        <View style={{width: width * 0.1}}></View>
-        {/* close 버튼 선택시 최초화면으로 이동 */}
-        <TouchableOpacity onPress={() => navigation.popToTop()}>
-          <Image
-            source={'../../../assets/images/btn_close_thum.png'}
-            style={{
-              resizeMode: 'contain',
-              width: width * 0.1,
-            }}
-          />
-        </TouchableOpacity>
-      </View>
-      {/*------ < 내 쿠폰 X 끝---- */}
-
       <View
         style={{
           display: 'flex',

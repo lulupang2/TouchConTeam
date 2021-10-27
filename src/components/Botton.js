@@ -9,6 +9,9 @@ export const LongButton = ({text, tcStyle, txStyle}) => {
         width: 327,
         height: 50,
         borderRadius: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
         ...tcStyle,
       }}
       onPress={() => {
@@ -40,6 +43,8 @@ export const CircleButton = ({text, tcStyle, txStyle}) => {
         width: 70,
         height: 70,
         borderRadius: 100,
+        justifyContent: 'center',
+        alignItems: 'center',
         ...tcStyle,
       }}
       onPress={() => {
@@ -51,8 +56,6 @@ export const CircleButton = ({text, tcStyle, txStyle}) => {
           fontSize: 16,
           fontWeight: 'bold',
           color: 'white',
-          justifyContent: 'center',
-          alignItems: 'center',
           paddingTop: 10,
           ...txStyle,
         }}>
