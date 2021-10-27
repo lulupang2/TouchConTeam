@@ -6,7 +6,8 @@ export const LongButton = ({text, tcStyle, txStyle}) => {
     <TouchableOpacity
       style={{
         backgroundColor: '#FD7F36',
-        width: 327,
+        width: '85%',
+        // width: 327,
         height: 50,
         borderRadius: 30,
         justifyContent: 'center',
