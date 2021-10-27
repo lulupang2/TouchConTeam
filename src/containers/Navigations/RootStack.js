@@ -37,6 +37,7 @@ import MyCoupon from '../Mainflow/MyCoupon/view';
 import ScanHistory from '../Mainflow/ScanHistory/view';
 import TouchCon from '../Mainflow/TouchCon/view';
 import TouchConCh from '../Mainflow/TouchconCh/view';
+import Intro4 from '../Mainflow/Intro4/view';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 const Stack = createStackNavigator();
@@ -67,8 +68,7 @@ const RootStack = () => (
         />
       ),
       headerBackTitleVisible: false,
-    }}
-  >
+    }}>
     {/* 버튼 모음  start */}
     <Stack.Screen
       name="TestButton"
@@ -175,11 +175,11 @@ const RootStack = () => (
       component={Thumbnail3}
       options={{headerShown: false}}
     />
-
+    {/* 터치콘 연결관리 */}
     <Stack.Screen
       name="TcConnMana"
       component={TcConnMana}
-      options={{headerShown: false}}
+      options={{title: '터치콘 연결 관리'}}
     />
     {/* 마켓팅 정보 알림 */}
     <Stack.Screen
@@ -229,7 +229,7 @@ const RootStack = () => (
     <Stack.Screen
       name="Shopping"
       component={Shopping}
-      options={{title: '터치 쇼핑몰 쇼핑하기'}}
+      options={{headerShown: false}}
     />
     <Stack.Screen
       name="Thumbnail1"
@@ -302,7 +302,7 @@ const RootStack = () => (
     <Stack.Screen
       name="TouchCon"
       component={TouchCon}
-      options={{title: '터치콘 지갑'}}
+      options={{headerShown: false}}
     />
     {/*---- 터치콘  end---- */}
     {/* ----- 터치콘전환  start-------- */}
@@ -312,6 +312,11 @@ const RootStack = () => (
       options={{headerShown: false}}
     />
     {/*---- 터치콘전환  end---- */}
+    <Stack.Screen
+      name="Intro4"
+      component={Intro4}
+      options={{headerShown: false}}
+    />
   </Stack.Navigator>
 );
 
@@ -322,8 +327,7 @@ function MyTabs() {
       tabBar={() => null}
       screenOptions={{
         tabBarShowLabel: false,
-      }}
-    >
+      }}>
       <Tab.Screen name="Intro1" component={Intro1} />
       <Tab.Screen name="Intro2" component={Intro2} />
       <Tab.Screen name="Intro3" component={Intro3} />

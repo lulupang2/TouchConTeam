@@ -89,7 +89,10 @@ export default function Pinchg(props) {
           // onKeyPress 비밀번호 확인 작업
         />
       </View>
-      <LongButton text={'확인'} tcStyle={{position: 'absolute', top: 600}} />
+      <LongButton
+        text={'확인'}
+        tcStyle={{position: 'absolute', top: 600, paddingTop: 13}}
+      />
       {/* <TouchableOpacity onPress={confirm_pwd}>
           <Image
             source={require('../../../assets/images/confirm_button.png')}

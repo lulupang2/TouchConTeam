@@ -1,57 +1,34 @@
 import React from 'react';
-import {StyleSheet, Text, View, Dimensions, Image} from 'react-native';
-
-const {height, width} = Dimensions.get('window');
-
-const vh = height / 100;
-const vw = width / 100;
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Image,
+  ImageBackground,
+} from 'react-native';
 
 export default function Intro2() {
   return (
-    <View style={styles.two_conatiner}>
+    <ImageBackground
+      source={require('../../../assets/images/intro2_back.png')}
+      resizeMode="cover"
+      style={{width: '100%', height: '100%'}}>
       <Image
-        source={require('../../../assets/images/dot_next_ani.png')}
-        style={{
-          marginTop: height * 0.1,
-          height: height * 0.03,
-          width: width * 0.24,
-          resizeMode: 'contain',
-        }}
+        source={require('../../../assets/images/intro2_clover.png')}
+        style={{resizeMode: 'contain'}}
       />
-      <Image
-        source={require('../../../assets/images/pic2_3.png')}
+      <Text
         style={{
-          marginTop: height * 0.05,
-          height: height * 0.1,
-          width: width * 0.7,
-          resizeMode: 'contain',
-        }}
-      />
-      <Image
-        source={require('../../../assets/images/intro2_img.png')}
-        style={{
-          height: height * 0.25,
-          width: width * 0.6,
-          resizeMode: 'contain',
-        }}
-      />
-      <Image
-        source={require('../../../assets/images/intro2_bottom_text.png')}
-        style={{
-          height: height * 0.05,
-          width: width * 0.73,
-          resizeMode: 'contain',
-        }}
-      />
-    </View>
+          color: '#FFFFFF',
+          width: '50%',
+          height: '30%',
+          fontSize: 36,
+          fontWeight: 'bold',
+          marginLeft: 47,
+        }}>
+        터치콘에서 세로운 보상의 세계를 만나보세요!
+      </Text>
+    </ImageBackground>
   );
 }
-
-const styles = StyleSheet.create({
-  two_conatiner: {
-    width: width,
-    height: height,
-    alignItems: 'center',
-    backgroundColor: 'white',
-  },
-});

@@ -6,52 +6,70 @@ import {
   Dimensions,
   Image,
   StatusBar,
+  ImageBackground,
 } from 'react-native';
-
-const {height, width} = Dimensions.get('window');
-
-const vh = height / 100;
-const vw = width / 100;
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export default function Intro1() {
   return (
-    <View style={styles.container}>
-      <StatusBar backgroundColor="white" barStyle="dark-content" />
+    <ImageBackground
+      source={require('../../../assets/images/start_back.png')}
+      resizeMode="cover"
+      style={{width: '100%', height: '100%'}}>
+      <Text style={styles.uptext}>글로벌 최초 디지털 자산 랜던 리워드</Text>
+      <TouchableOpacity
+        style={styles.midback}
+        onPress={() => alert('버튼 클릭')}>
+        <Text style={styles.midbtn}>RAMDOM</Text>
+      </TouchableOpacity>
       <Image
-        source={require('../../../assets/images/group28.png')}
+        source={require('../../../assets/images/start_title.png')}
         style={{
-          marginTop: height * 0.1,
-          height: height * 0.03,
-          width: width * 0.24,
+          zIndex: 3,
+          height: '80%',
+          width: '80%',
           resizeMode: 'contain',
+          alignSelf: 'center',
+          position: 'relative',
+          top: -190,
         }}
       />
       <Image
-        source={require('../../../assets/images/intro1_text.png')}
+        source={require('../../../assets/images/start_content.png')}
         style={{
-          marginTop: height * 0.05,
-          height: height * 0.1,
-          width: width * 0.7,
+          zIndex: 4,
+          height: '60%',
+          width: '60%',
           resizeMode: 'contain',
+          alignSelf: 'center',
+          position: 'absolute',
+          top: 180,
         }}
       />
-      <Image
-        source={require('../../../assets/images/logo_o.png')}
-        style={{
-          height: height * 0.25,
-          width: width * 0.25,
-          resizeMode: 'contain',
-        }}
-      />
-    </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: width,
-    height: height,
-    alignItems: 'center',
-    backgroundColor: 'white',
+  uptext: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    marginTop: 125,
+    marginBottom: 22,
+  },
+  midbtn: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    alignSelf: 'center',
+    paddingTop: 5,
+  },
+  midback: {
+    backgroundColor: '#F08F35',
+    width: 79,
+    height: 30,
+    alignSelf: 'center',
+    borderRadius: 20,
   },
 });

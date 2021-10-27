@@ -28,14 +28,12 @@ export default function Intro3({navigation}) {
           fontWeight: 'bold',
           marginLeft: 47,
         }}>
-        터치콘 브랜드 파트너에서 보내는 리워드콘을 획득하세요! 최소 10 코인부터,
-        최대 30만 코인까지, 랜덤 잭팟이 기다립니다. 10 코인이상 당첨 확률 무려
-        100%!!! 리워드콘에 있는 QR코드를 확인하세요. 그리고 터치콘앱으로
-        스캔하세요. 리워드콘은 “꽝”이 없습니다. 꾸준히 적립만 해도 목돈이
-        됩니다!!!
+        터치콘 시스템은 특허등록 인증된 디지털 자산 전용 리워드 게임입니다.
+        글로벌 브랜드 파트너가 드리는 리워드콘을 잊지말고 꼭 획득하세요! 터치콘
+        얼라이언스 RAP 광고주와 함께 잭팟 행운의 주인공이 되세요!
       </Text>
       <Image
-        source={require('../../../assets/images/intro3_bottom.png')}
+        source={require('../../../assets/images/intro4_bottom.png')}
         style={{resizeMode: 'contain', width: '100%', height: '50%'}}
       />
     </ImageBackground>

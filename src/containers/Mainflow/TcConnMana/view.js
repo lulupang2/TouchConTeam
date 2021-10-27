@@ -11,123 +11,70 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-const {height, width} = Dimensions.get('window');
-
-const vh = height / 100;
-const vw = width / 100;
+import {ConnMitem} from '../../../components/ConnMenuItem';
+import HeaderBottomLine from '../../../components/HeaderBottomLine';
 
 const view = ({navigation}) => {
   return (
-    <View>
-      {/* 타이틀 start */}
-      <Image
-        source={require('../../../assets/images/tc_conn_mana_title.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 1,
-          position: 'absolute',
-          top: height * 0.007,
-        }}
-      />
-      {/* 타이틀 end */}
-
-      {/* 터치콘 연결 관리 뒤로가기 버튼 start */}
-      <TouchableNativeFeedback onPress={() => navigation.goBack()}>
-        <Image
-          source={require('../../../assets/images/btn_back.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 0.1,
-            position: 'absolute',
-            right: width * 0.85,
-          }}
-        />
-      </TouchableNativeFeedback>
-
-      {/* 터치콘 연결 관리 뒤로가기 버튼 end */}
-
-      {/*---calion button start---  */}
-      <TouchableNativeFeedback onPress={() => navigation.navigate('Gift')}>
-        <Image
-          source={require('../../../assets/images/tc_mana_caolion_text.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 1,
-            position: 'absolute',
-            top: height * 0.09,
-          }}
-        />
-      </TouchableNativeFeedback>
-
-      <TouchableOpacity>
-        <Image
-          source={require('../../../assets/images/btn_con_mana.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 0.2,
-            position: 'absolute',
-            top: height * 0.075,
-            right: width * 0.05,
-          }}
-        />
-      </TouchableOpacity>
-      {/*---calion button end---  */}
-
-      {/*--- megam button start---  */}
-      <Image
-        source={require('../../../assets/images/tc_mana_megam_text.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 1,
-          position: 'absolute',
-          top: height * 0.17,
-        }}
-      />
-
-      <TouchableOpacity>
-        <Image
-          source={require('../../../assets/images/btn_con_mana.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 0.2,
-            position: 'absolute',
-            top: height * 0.155,
-            right: width * 0.05,
-          }}
-        />
-      </TouchableOpacity>
-
-      {/*--- megam button end---  */}
-
-      {/*--- 안동국밥 button start---  */}
-      <Image
-        source={require('../../../assets/images/tc_mana_gukbab_text.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 0.17,
-          height: height * 0.17,
-          position: 'absolute',
-          top: height * 0.2,
-          right: width * 0.77,
-        }}
-      />
-
-      <TouchableOpacity onPress={() => navigation.navigate('Gift')}>
-        <Image
-          source={require('../../../assets/images/btn_con_mana.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 0.2,
-            position: 'absolute',
-            top: height * 0.24,
-            right: width * 0.05,
-          }}
-        />
-      </TouchableOpacity>
-
-      {/*--- 안동국밥 button end---  */}
-    </View>
+    <SafeAreaView>
+      <HeaderBottomLine />
+      <View style={styles.view}>
+        <ConnMitem text={'CAOLION'} />
+        <ConnMitem text={'MEGAM'} />
+        <ConnMitem text={'안동국밥'} />
+      </View>
+    </SafeAreaView>
   );
 };
 
 export default view;
+
+const styles = StyleSheet.create({
+  view: {
+    height: '50%',
+    paddingTop: 22,
+    paddingHorizontal: 24,
+    justifyContent: 'space-between',
+    paddingBottom: 18,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+});
+
+// const MENU = [
+//   {id: 1, title: '터치토큰 연결 관리', path: 'TcConnMana'},
+//   {id: 2, title: 'PIN번호 변경', path: 'Pinchg'},
+//   {id: 3, title: '마케팅정보 알림', path: 'MarketingInfo'},
+//   {id: 4, title: '탈퇴하기', path: 'SignOut'},
+// ];
+
+// const view = ({navigation}) => {
+//   return (
+//     <WhiteSafeAreaView>
+//       <HeaderBottomLine />
+//       <RowView
+//         style={{
+//           paddingTop: 22,
+//           paddingHorizontal: 24,
+//           justifyContent: 'space-between',
+//           borderBottomWidth: 1,
+//           borderBottomColor: '#c4c4c4',
+//           paddingBottom: 18,
+//         }}>
+//         <NormalBoldLabel text={'이메일'} />
+//         <NormalBoldLabel
+//           text={'ngm1224@gmail.com'}
+//           style={{fontSize: 20, lineHeight: 24}}
+//         />
+//       </RowView>
+
+//       {MENU.map(menu => (
+//         <MenuItem
+//           key={menu.id}
+//           title={menu.title}
+//           onPress={() => navigation.navigate(menu.path)}
+//         />
+//       ))}
+//     </WhiteSafeAreaView>
+//   );
+// };

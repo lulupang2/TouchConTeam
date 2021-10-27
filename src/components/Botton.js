@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 
-export const LongButton = ({text, tcStyle}) => {
+export const LongButton = ({text, tcStyle, txStyle}) => {
   return (
     <TouchableOpacity
       style={{
@@ -13,17 +13,15 @@ export const LongButton = ({text, tcStyle}) => {
       }}
       onPress={() => {
         alert('버튼작동');
-      }}
-    >
+      }}>
       <Text
         style={{
           textAlign: 'center',
-          paddingTop: 13,
           fontSize: 20,
           fontWeight: 'bold',
           color: 'white',
-        }}
-      >
+          ...txStyle,
+        }}>
         {text}
       </Text>
     </TouchableOpacity>
