@@ -17,6 +17,10 @@ const TitleInput = () => {
 
 export default TitleInput;
 
+export const ContentInput = () => {
+  return <TextInput style={styles.content} />;
+};
+
 const styles = StyleSheet.create({
   input: {
     height: 50,
@@ -26,13 +30,17 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   content: {
-    height: 399,
-    width: 330,
-    marginLeft: 24,
-    borderWidth: 1,
+    textAlignVertical: 'top',
+    minHeight: 399,
+    // height: 399,
+    // width: 330,
+    // marginLeft: 24,
+    marginHorizontal: 24,
+    borderWidth: 0.8,
+    borderColor: '#c4c4c4',
+    borderRadius: 5,
+    padding: 8
   },
 });
 
-export const ContentInput = () => {
-  return <TextInput style={styles.content} />;
-};
+

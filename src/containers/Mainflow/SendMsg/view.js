@@ -28,9 +28,9 @@ const view = ({navigation}) => {
 
       <RowView
         style={{
-          paddingTop: 22,
+          paddingTop: 18,
           paddingHorizontal: 24,
-          paddingBottom: 18,
+          paddingBottom: 15,
         }}
       >
         <View
@@ -38,10 +38,12 @@ const view = ({navigation}) => {
             backgroundColor: '#fd7f36',
             height: 45,
             width: 7,
-            borderRadius: 6,
-            marginLeft: -5,
+            borderTopLeftRadius: 6,
+            borderBottomLeftRadius: 6,
+            // borderRadius: 6,
+            // marginLeft: -5,
           }}
-        ></View>
+        />
         <Text style={styles.text}>제목</Text>
         <TitleInput />
       </RowView>
