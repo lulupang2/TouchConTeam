@@ -6,3 +6,7 @@ const HeaderBottomLine = ({style}) => (
 );
 
 export default HeaderBottomLine;
+
+export const HeaderThickBottomLine = ({style}) => {
+  return <View style={{height: 19, backgroundColor: '#FD7F36', ...style}} />;
+};

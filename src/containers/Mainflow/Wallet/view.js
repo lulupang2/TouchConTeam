@@ -9,113 +9,72 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import HeaderBottomLine from '../../../components/HeaderBottomLine';
-
-const {height, width} = Dimensions.get('window');
-
-const vh = height / 100;
-const vw = width / 100;
+import {LongButton} from '../../../components/Botton';
+import {HeaderThickBottomLine} from '../../../components/HeaderBottomLine';
 
 const view = () => {
   return (
     <View>
-      <HeaderBottomLine />
-      <View
-        style={{
-          position: 'absolute',
-          top: height * 0.07,
-          resizeMode: 'contain',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          alignSelf: 'center',
-        }}>
-        {/* 최상 color bar start */}
-        <Image
-          source={require('../../../assets/images/wallet_bar.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 1,
-          }}
-        />
-        {/* 최상반 color bar end */}
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            position: 'relative',
-            top: height * -0.07,
-          }}>
-          <View style={{width: width * 0.06}}></View>
-          <Image
-            source={require('../../../assets/images/qr_addr.png')}
-            style={{
-              resizeMode: 'contain',
-              width: width * 0.9,
-            }}
-          />
-        </View>
-        {/* 지갑 주소 복사하기 버튼 start */}
-        <TouchableOpacity>
-          <Image
-            source={require('../../../assets/images/btn_wallet_addr_cp.png')}
-            style={{
-              resizeMode: 'contain',
-              width: width * 0.9,
-              position: 'relative',
-              right: width * -0.05,
-              top: height * -0.16,
-            }}
-          />
-        </TouchableOpacity>
-        {/* 지갑 주소 복사하기 버튼 end */}
-        <Image
-          source={require('../../../assets/images/wallet_bar.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 1,
-            position: 'relative',
-            top: height * -0.18,
-          }}
-        />
+      <HeaderThickBottomLine />
+
+      <LongButton
+        text={'지갑 주소 복사하기'}
+        tcStyle={styles.btn1}
+        txStyle={{paddingTop: 10}}
+      />
+      <View style={styles.under}>
+        <HeaderThickBottomLine />
+
         <Image
           source={require('../../../assets/images/tc_current.png')}
           style={{
             resizeMode: 'contain',
-            width: width * 0.9,
-            position: 'relative',
-            top: height * -0.24,
-            right: width * -0.05,
+            width: 325,
+            height: 124,
+            alignSelf: 'center',
           }}
         />
-        {/* 거래소 가기 버튼 start */}
-        <TouchableOpacity>
-          <Image
-            source={require('../../../assets/images/btn_mv_exch.png')}
-            style={{
-              resizeMode: 'contain',
-              width: width * 0.9,
-              position: 'relative',
-              right: width * -0.05,
-              top: height * -0.33,
-            }}
-          />
-        </TouchableOpacity>
-        {/* 거래소 가기 버튼 end */}
+
+        <LongButton
+          text={'거래소 가기'}
+          tcStyle={styles.btn2}
+          txStyle={{paddingTop: 10}}
+        />
 
         <Image
-          source={require('../../../assets/images/ethereum_current.png')}
+          source={require('../../../assets/images/tc_current.png')}
           style={{
             resizeMode: 'contain',
-            width: width * 0.9,
-            position: 'relative',
-            top: height * -0.42,
-            right: width * -0.05,
+            width: 325,
+            height: 124,
+            alignSelf: 'center',
           }}
         />
       </View>
+      {/* <HeaderThickBottomLine /> */}
     </View>
   );
 };
 
 export default view;
+
+const styles = StyleSheet.create({
+  btn1: {
+    position: 'absolute',
+    top: 230,
+    alignSelf: 'center',
+  },
+  btn2: {
+    position: 'relative',
+    left: 30,
+  },
+  under: {
+    position: 'absolute',
+    top: 290,
+    width: '100%',
+    height: 350,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+});
