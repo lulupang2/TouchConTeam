@@ -121,7 +121,7 @@ const RootStack = () => (
     <Stack.Screen
       name="Wallet"
       component={Wallet}
-      options={{headerShown: false}}
+      options={{title: '터치콘 지갑'}}
     />
     {/* ------ 지갑생성 (터치콘 지갑) end */}
     {/* Sign Out start(회원탈퇴) */}
@@ -269,7 +269,11 @@ const RootStack = () => (
     <Stack.Screen
       name="ScanResult"
       component={ScanResult}
-      options={{headerShown: false}}
+      options={{
+        title: '',
+        headerStyle: {backgroundColor: '#FD7F36'},
+        headerTintColor: '#fff',
+      }}
     />
     {/*------스캔 결과 end---------  */}
 
@@ -277,7 +281,11 @@ const RootStack = () => (
     <Stack.Screen
       name="RandomSc"
       component={RandomSc}
-      options={{headerShown: false}}
+      options={{
+        title: '스캔으로 랜덤 잭팟을!',
+        headerStyle: {backgroundColor: '#FD7F36'},
+        headerTintColor: '#fff',
+      }}
     />
     {/* ------- 스캔하기 end --------- */}
 
@@ -285,7 +293,11 @@ const RootStack = () => (
     <Stack.Screen
       name="MyCoupon"
       component={MyCoupon}
-      options={{headerShown: false}}
+      options={{
+        title: '내쿠폰',
+        headerStyle: {backgroundColor: '#FD7F36'},
+        headerTintColor: '#fff',
+      }}
     />
     {/* ------ 내 쿠폰 end */}
 
@@ -293,7 +305,7 @@ const RootStack = () => (
     <Stack.Screen
       name="ScanHistory"
       component={ScanHistory}
-      options={{headerShown: false}}
+      options={{title: '스캔 히스토리'}}
     />
 
     {/*---------스캔보기 end ----------  */}
@@ -302,14 +314,14 @@ const RootStack = () => (
     <Stack.Screen
       name="TouchCon"
       component={TouchCon}
-      options={{headerShown: false}}
+      options={{title: '터치콘 지갑'}}
     />
     {/*---- 터치콘  end---- */}
     {/* ----- 터치콘전환  start-------- */}
     <Stack.Screen
       name="TouchConCh"
       component={TouchConCh}
-      options={{headerShown: false}}
+      options={{title: '터치콘 전환'}}
     />
     {/*---- 터치콘전환  end---- */}
     <Stack.Screen

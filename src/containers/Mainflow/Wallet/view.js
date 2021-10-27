@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
+import HeaderBottomLine from '../../../components/HeaderBottomLine';
 
 const {height, width} = Dimensions.get('window');
 
@@ -18,44 +19,7 @@ const vw = width / 100;
 const view = () => {
   return (
     <View>
-      <View
-        style={{
-          resizeMode: 'contain',
-          position: 'absolute',
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignSelf: 'center',
-        }}>
-        <TouchableOpacity>
-          <Image
-            source={require('../../../assets/images/btn_back.png')}
-            style={{
-              resizeMode: 'contain',
-              width: width * 0.1,
-            }}
-          />
-        </TouchableOpacity>
-        <View style={{width: width * 0.24}}></View>
-        <Image
-          source={require('../../../assets/images/tc_wallet_title.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 0.3,
-            padding: height * 0.045,
-          }}
-        />
-        <View style={{width: width * 0.2}}></View>
-        <TouchableOpacity>
-          <Image
-            source={require('../../../assets/images/btn_close_thum.png')}
-            style={{
-              resizeMode: 'contain',
-              width: width * 0.1,
-            }}
-          />
-        </TouchableOpacity>
-      </View>
+      <HeaderBottomLine />
       <View
         style={{
           position: 'absolute',

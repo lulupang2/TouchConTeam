@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import WhiteSafeAreaView from "../../../components/WhiteSafeAreaView";
+import HeaderBottomLine from '../../../components/HeaderBottomLine';
+import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 
 const {height, width} = Dimensions.get('window');
 
@@ -19,6 +20,7 @@ const vw = width / 100;
 const view = () => {
   return (
     <WhiteSafeAreaView>
+      <HeaderBottomLine />
       {/* 상단 배경 start  */}
       <Image
         source={require('../../../assets/images/tc_btn_back.png')}
@@ -28,16 +30,7 @@ const view = () => {
         }}
       />
       {/* 상단 배경 end */}
-      <Image
-        source={require('../../../assets/images/tc_wallet_title.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 0.2,
-          position: 'absolute',
-          top: height * 0.45,
-          right: width * 0.7,
-        }}
-      />
+
       <View
         style={{
           display: 'flex',
