@@ -23,11 +23,15 @@ export const ContentInput = () => {
 
 const styles = StyleSheet.create({
   input: {
-    height: 50,
-    width: 260,
+    // height: 50,
+    // width: 260,
+    // marginLeft: 15,
+    // minHeight: 50,
+    minWidth: 270,
     marginLeft: 15,
-    borderWidth: 1,
-    padding: 10,
+    borderWidth: 0.8,
+    borderColor: '#c4c4c4',
+    fontSize: 20,
   },
   content: {
     textAlignVertical: 'top',
@@ -39,8 +43,6 @@ const styles = StyleSheet.create({
     borderWidth: 0.8,
     borderColor: '#c4c4c4',
     borderRadius: 5,
-    padding: 8
+    padding: 8,
   },
 });
-
-

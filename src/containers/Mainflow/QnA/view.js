@@ -80,8 +80,7 @@ const view = ({navigation}) => {
                   backgroundColor:
                     selectedButton === item ? '#fd7f36' : '#f7f7f7',
                   borderColor: selectedButton === item ? '#fd7f36' : '#c4c4c4',
-                }}
-              >
+                }}>
                 <NormalBoldLabel
                   text={item}
                   style={{
@@ -97,6 +96,7 @@ const view = ({navigation}) => {
 
         {QUESTION_LIST.map((question, index) => (
           <QnaMenu
+            // index는 어떤 값을 반환하는 지모르 겠다.
             key={index}
             onPress={() => {
               if (selectedQuestion === question.id) {
@@ -134,6 +134,7 @@ const QnaMenu = ({onPress, isOpen, title, content}) => {
         </RowView>
         <AntDesign name={isOpen ? 'up' : 'down'} size={24} color={'#000'} />
       </Touchable>
+      {/* isOpend 이 false , true인지에 따라서 <View>가 변환됨*/}
       {isOpen && (
         <View style={styles.qnaContent}>
           <NormalLabel text={content} />
@@ -169,6 +170,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 24,
     paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#c4c4c4',
   },
   qnaContent: {
     paddingHorizontal: 24,
