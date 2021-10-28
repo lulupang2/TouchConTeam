@@ -13,9 +13,8 @@ import {
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import RowView from '../../../components/RowView';
+import ColumnView from '../../../components/ColumnView';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
-
 const NOTICE_LIST = [
   {
     id: 1,
@@ -62,6 +61,7 @@ const view = () => {
             isOpen={list.id === selectedLsit}
             title={list.title}
             content={list.content}
+            date={list.date}
           />
         ))}
       </ScrollView>
@@ -71,11 +71,14 @@ const view = () => {
 
 export default view;
 
-const NoticeMenu = ({onPress, isOpen, title, content}) => {
+const NoticeMenu = ({onPress, isOpen, title, content, date}) => {
   return (
     <>
       <TouchableOpacity onPress={onPress} style={styles.notibtnWrapper}>
-        <NormalBoldLabel text={title} />
+        <ColumnView>
+          <NormalBoldLabel text={title} />
+          <Text style={styles.date}>{date}</Text>
+        </ColumnView>
         <AntDesign name={isOpen ? 'up' : 'down'} size={24} color={'#000'} />
       </TouchableOpacity>
       {isOpen && (
@@ -99,7 +102,12 @@ const styles = StyleSheet.create({
   },
   qnaContent: {
     paddingHorizontal: 24,
+    paddingVertical: 31,
     backgroundColor: '#f7f7f7',
     fontSize: 17,
+  },
+  date: {
+    color: '#c4c4c4',
+    fontSize: 12,
   },
 });
