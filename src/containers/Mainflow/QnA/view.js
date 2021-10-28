@@ -80,7 +80,8 @@ const view = ({navigation}) => {
                   backgroundColor:
                     selectedButton === item ? '#fd7f36' : '#f7f7f7',
                   borderColor: selectedButton === item ? '#fd7f36' : '#c4c4c4',
-                }}>
+                }}
+              >
                 <NormalBoldLabel
                   text={item}
                   style={{

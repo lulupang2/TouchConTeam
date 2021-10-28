@@ -1,30 +1,22 @@
 import React, {useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  Image,
-  ScrollView,
-  TouchableOpacity,
-  TouchableNativeFeedback,
-  ImageBackground,
-} from 'react-native';
+import {StyleSheet, View, Dimensions, Image, ScrollView} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import Navbar from '../../../components/Navbar/view';
 import Swiper from 'react-native-swiper';
 import RowView from '../../../components/RowView';
 import Touchable from '../../../components/Touchable';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
+import TouchableNoFeedback from '../../../components/TouchableNoFeedback';
 
 const {width, height} = Dimensions.get('window');
 const vw = width / 100;
 const vh = height / 100;
 
 const AD_MENU = [
-  {id: 1, name: 'CAOLION'},
-  {id: 2, name: 'MEGAM'},
-  {id: 3, name: '안동국밥'},
+  {id: 1, name: 'CAOLION', path: 'GfCaolion'},
+  {id: 2, name: 'MEGAM', path: 'GfMegaMall'},
+  {id: 3, name: '안동국밥', path: 'GfGukBab'},
 ];
 
 export default function Main({navigation}) {
@@ -33,20 +25,17 @@ export default function Main({navigation}) {
       <Navbar />
       <ScrollView
         style={styles.contentContainer}
-        contentContainerStyle={{paddingBottom: 50}}
-      >
+        contentContainerStyle={{paddingBottom: 50}}>
         <RowView
           style={{
             paddingHorizontal: 24,
             marginTop: 17,
             flex: 1,
-          }}
-        >
+          }}>
           {/* 최상단 터치콘 박스 로고와 함께 있음 start */}
-          <Touchable
+          <TouchableNoFeedback
             style={styles.coinBtn}
-            onPress={() => navigation.navigate('TouchCon')}
-          >
+            onPress={() => navigation.navigate('TouchCon')}>
             <Image
               source={require('../../../assets/icons/coin_icon.png')}
               style={{
@@ -61,7 +50,7 @@ export default function Main({navigation}) {
               />
               <NormalBoldLabel text={'Touch'} style={{marginTop: 13}} />
             </View>
-          </Touchable>
+          </TouchableNoFeedback>
           {/* 최상단 터치콘 박스 로고와 함께 있음 end */}
 
           {/* 우측 스켄 이미지 start */}
@@ -109,8 +98,7 @@ export default function Main({navigation}) {
             height: 10,
             borderRadius: 5,
             marginHorizontal: 10,
-          }}
-        >
+          }}>
           <RowView style={styles.swiperContentWrapper}>
             <NormalBoldLabel
               text={'유럽 미인들의 필수품'}
@@ -157,8 +145,7 @@ export default function Main({navigation}) {
         {/* 터치 쇼핑몰 쇼핑하기 start */}
         <Touchable
           onPress={() => navigation.navigate('Shopping')}
-          style={styles.shoppingBtn}
-        >
+          style={styles.shoppingBtn}>
           <NormalBoldLabel
             text={'터치 쇼핑몰 쇼핑하기'}
             style={{color: '#fff'}}
@@ -178,17 +165,20 @@ export default function Main({navigation}) {
 }
 
 const AdMenu = ({menu, index}) => {
+  const navigation = useNavigation();
+
   return (
     <RowView
       style={{
         ...styles.adContent,
         borderBottomWidth: index !== AD_MENU.length - 1 ? 1 : 0,
-      }}
-    >
+      }}>
       <NormalBoldLabel text={menu.name} style={{color: '#555'}} />
       <RowView>
         <NormalBoldLabel text={menu.name} style={{color: '#555'}} />
-        <Touchable style={styles.adBtn}>
+        <Touchable
+          onPress={() => navigation.navigate(menu.path)}
+          style={styles.adBtn}>
           <NormalBoldLabel
             text={'GO'}
             style={{color: '#fff', fontSize: 18, lineHeight: 22}}
