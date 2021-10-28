@@ -9,55 +9,43 @@ import {
   TouchableOpacity,
   SafeAreaView,
   TouchableNativeFeedback,
+  ScrollView,
 } from 'react-native';
 import {LongButton} from '../../../components/Botton';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import RowView from '../../../components/RowView';
-import TitleInput, {ContentInput} from '../../../components/TextInput';
+import TitleInput, {ContentInput} from '../../../components/TxInput';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
-
-const {height, width} = Dimensions.get('window');
-
-const vh = height / 100;
-const vw = width / 100;
 
 const view = ({navigation}) => {
   return (
     <WhiteSafeAreaView>
       <HeaderBottomLine />
-
-      <RowView
-        style={{
-          paddingTop: 18,
-          paddingHorizontal: 24,
-          paddingBottom: 15,
-        }}
-      >
-        <View
+      <ScrollView>
+        <RowView
           style={{
-            backgroundColor: '#fd7f36',
-            height: 45,
-            width: 7,
-            borderTopLeftRadius: 6,
-            borderBottomLeftRadius: 6,
-            // borderRadius: 6,
-            // marginLeft: -5,
-          }}
-        />
-        <Text style={styles.text}>제목</Text>
-        <TitleInput />
-      </RowView>
-      <ContentInput />
+            paddingTop: 18,
+            paddingHorizontal: 24,
+            paddingBottom: 15,
+          }}>
+          <View
+            style={{
+              backgroundColor: '#fd7f36',
+              height: 45,
+              width: 7,
+              borderTopLeftRadius: 6,
+              borderBottomLeftRadius: 6,
+              // borderRadius: 6,
+              // marginLeft: -5,
+            }}
+          />
+          <Text style={styles.text}>제목</Text>
+          <TitleInput />
+        </RowView>
+        <ContentInput />
 
-      <LongButton
-        text={'등록'}
-        tcStyle={{
-          position: 'relative',
-          top: 70,
-          left: 50,
-          paddingTop: 10,
-        }}
-      />
+        <LongButton text={'등록'} tcStyle={styles.btn} />
+      </ScrollView>
     </WhiteSafeAreaView>
   );
 };
@@ -71,4 +59,5 @@ const styles = StyleSheet.create({
     color: '#000000',
     marginLeft: 16,
   },
+  btn: {marginTop: 100},
 });

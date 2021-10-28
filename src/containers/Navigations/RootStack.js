@@ -68,8 +68,7 @@ const RootStack = () => (
         />
       ),
       headerBackTitleVisible: false,
-    }}
-  >
+    }}>
     {/* 버튼 모음  start */}
     <Stack.Screen
       name="TestButton"
@@ -340,8 +339,7 @@ function MyTabs() {
       tabBar={() => null}
       screenOptions={{
         tabBarShowLabel: false,
-      }}
-    >
+      }}>
       <Tab.Screen name="Intro1" component={Intro1} />
       <Tab.Screen name="Intro2" component={Intro2} />
       <Tab.Screen name="Intro3" component={Intro3} />

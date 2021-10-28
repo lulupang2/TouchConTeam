@@ -17,8 +17,7 @@ export const LongButton = ({text, tcStyle, txStyle}) => {
       }}
       onPress={() => {
         alert('버튼작동');
-      }}
-    >
+      }}>
       <Text
         style={{
           textAlign: 'center',
@@ -26,8 +25,7 @@ export const LongButton = ({text, tcStyle, txStyle}) => {
           fontWeight: 'bold',
           color: 'white',
           ...txStyle,
-        }}
-      >
+        }}>
         {text}
       </Text>
     </TouchableOpacity>
@@ -52,8 +50,7 @@ export const CircleButton = ({text, tcStyle, txStyle}) => {
       }}
       onPress={() => {
         alert('버튼작동');
-      }}
-    >
+      }}>
       <Text
         style={{
           textAlign: 'center',
@@ -62,8 +59,7 @@ export const CircleButton = ({text, tcStyle, txStyle}) => {
           color: 'white',
           paddingTop: 10,
           ...txStyle,
-        }}
-      >
+        }}>
         {text}
       </Text>
     </TouchableOpacity>
