@@ -1,11 +1,11 @@
 import React from 'react';
-import {TouchableWithoutFeedback, View} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 
 const Touchable = ({children, onPress, style}) => {
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
+    <TouchableOpacity onPress={onPress}>
       <View style={style}>{children}</View>
-    </TouchableWithoutFeedback>
+    </TouchableOpacity>
   );
 };
 

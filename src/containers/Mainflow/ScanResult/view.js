@@ -37,7 +37,8 @@ const view = ({navigation}) => {
             style={styles.tach}
             onPress={() => {
               alert('버튼작동');
-            }}>
+            }}
+          >
             <Text style={styles.btn_text}>적립하기</Text>
           </TouchableOpacity>
         </View>

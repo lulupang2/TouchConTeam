@@ -13,8 +13,6 @@ import Pinlogin from '../Mainflow/Pinlogin/view';
 import Pinsign from '../Mainflow/Pinsign/view';
 import Splash from '../Application/Splash';
 import Pinchg from '../Mainflow/Pinchg/view';
-import GfGukBab from '../Mainflow/GfGukBab/GukBab';
-import GfMegaMall from '../Mainflow/GfMegaMall/MegaMall';
 import Thumbnail2 from '../Mainflow/Thumbnail2/view';
 import Thumbnail3 from '../Mainflow/Thumbnail3/view';
 import TcConnMana from '../Mainflow/TcConnMana/view';
@@ -29,7 +27,6 @@ import Shopping from '../Mainflow/Shopping/view';
 import Thumbnail1 from '../Mainflow/Thumbnail1/view';
 import Thumbnail4 from '../Mainflow/Thumbnail4/view';
 import Prepare from '../Mainflow/Prep/view';
-import GfCaolion from '../Mainflow/GfCaolion/Caolion';
 import Signup from '../Mainflow/Signup/view';
 import ScanResult from '../Mainflow/ScanResult/view';
 import RandomSc from '../Mainflow/RandomSc/view';
@@ -68,7 +65,8 @@ const RootStack = () => (
         />
       ),
       headerBackTitleVisible: false,
-    }}>
+    }}
+  >
     {/* 버튼 모음  start */}
     <Stack.Screen
       name="TestButton"
@@ -153,16 +151,6 @@ const RootStack = () => (
       component={Pinchg}
       options={{headerShown: false}}
     />
-    <Stack.Screen
-      name="GfGukBab"
-      component={GfGukBab}
-      options={{headerShown: false}}
-    />
-    <Stack.Screen
-      name="GfMegaMall"
-      component={GfMegaMall}
-      options={{headerShown: false}}
-    />
 
     <Stack.Screen
       name="Thumbnail2"
@@ -229,7 +217,7 @@ const RootStack = () => (
     <Stack.Screen
       name="Shopping"
       component={Shopping}
-      options={{headerShown: false}}
+      options={{title: '터치 쇼핑몰 쇼핑하기'}}
     />
     <Stack.Screen
       name="Thumbnail1"
@@ -246,12 +234,6 @@ const RootStack = () => (
     <Stack.Screen
       name="Prep"
       component={Prepare}
-      options={{headerShown: false}}
-    />
-
-    <Stack.Screen
-      name="GfCaolion"
-      component={GfCaolion}
       options={{headerShown: false}}
     />
     <Stack.Screen
@@ -339,7 +321,8 @@ function MyTabs() {
       tabBar={() => null}
       screenOptions={{
         tabBarShowLabel: false,
-      }}>
+      }}
+    >
       <Tab.Screen name="Intro1" component={Intro1} />
       <Tab.Screen name="Intro2" component={Intro2} />
       <Tab.Screen name="Intro3" component={Intro3} />
