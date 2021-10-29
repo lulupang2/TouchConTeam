@@ -19,8 +19,7 @@ const BottomButton = ({onPress, text}) => {
         width: width - 48,
         marginBottom: 32,
         // position: 'absolute', width: width-48, bottom: 32,
-      }}
-    >
+      }}>
       <NormalBoldLabel
         text={text}
         style={{fontSize: 20, lineHeight: 24, color: '#fff'}}

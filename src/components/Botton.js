@@ -65,3 +65,34 @@ export const CircleButton = ({text, tcStyle, txStyle}) => {
     </TouchableOpacity>
   );
 };
+
+// ==========================
+
+export const GoButton = ({onPress, tcStyle, txStyle}) => {
+  return (
+    <TouchableOpacity
+      style={{
+        backgroundColor: '#FD7F36',
+        width: 79,
+        height: 35,
+        borderRadius: 53,
+        ...tcStyle,
+      }}
+      onPress={() => {
+        alert('연결됨');
+      }}>
+      <Text
+        style={{
+          fontSize: 20,
+          fontWeight: 'blod',
+          color: '#FFFFFF',
+          justifyContent: 'center',
+          alignSelf: 'center',
+          paddingTop: 3,
+          ...txStyle,
+        }}>
+        GO
+      </Text>
+    </TouchableOpacity>
+  );
+};

@@ -44,7 +44,7 @@ const view = ({navigation}) => {
         </RowView>
         <ContentInput />
 
-        <LongButton text={'등록'} tcStyle={styles.btn} />
+        <LongButgiton text={'등록'} tcStyle={styles.btn} />
       </ScrollView>
     </WhiteSafeAreaView>
   );

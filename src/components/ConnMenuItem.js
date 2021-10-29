@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {NormalBoldLabelBl} from './Label';
 
-export const ConnMitem = ({onPress, text, viStyle, tcStyle}) => {
+export const ConnMitem = ({onPress, text, viStyle, tcStyle, txStyle}) => {
   return (
     <View
       style={{
@@ -14,8 +14,7 @@ export const ConnMitem = ({onPress, text, viStyle, tcStyle}) => {
         borderBottomColor: '#c4c4c4',
         borderBottomWidth: 1,
         ...viStyle,
-      }}
-    >
+      }}>
       <NormalBoldLabelBl text={text} />
 
       <TouchableOpacity
@@ -28,8 +27,7 @@ export const ConnMitem = ({onPress, text, viStyle, tcStyle}) => {
         }}
         onPress={() => {
           alert('연결됨');
-        }}
-      >
+        }}>
         <Text
           style={{
             fontSize: 20,
@@ -37,9 +35,8 @@ export const ConnMitem = ({onPress, text, viStyle, tcStyle}) => {
             color: '#FFFFFF',
             marginLeft: 20,
             marginTop: 3,
-            ...tcStyle,
-          }}
-        >
+            ...txStyle,
+          }}>
           연결
         </Text>
       </TouchableOpacity>

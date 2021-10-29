@@ -11,61 +11,50 @@ import {
 } from 'react-native';
 import Navbar from '../../../components/Navbar/view';
 import Swiper from 'react-native-swiper';
-
-const {width, height} = Dimensions.get('window');
-
-const vw = width / 100;
-const vh = height / 100;
+import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
+import RowView from '../../../components/RowView';
+import {GoButton} from '../../../components/Botton';
 
 const GukBab = () => {
   return (
-    <View>
+    <WhiteSafeAreaView>
       <Navbar />
 
-      <View style={{height: height * 0.2}}></View>
-      <View
-        style={{
-          alignItems: 'center',
-          alignContent: 'center',
-        }}
-      >
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-evenly',
-            width: width * 1,
-          }}
-        >
-          <Image
-            source={require('../../../assets/images/gukbab_title.png')}
-            style={{
-              width: width * 0.5,
-              resizeMode: 'contain',
-            }}
-          />
-          <TouchableOpacity>
-            <View>
-              <Image
-                source={require('../../../assets/images/btn_go.png')}
-                style={{
-                  width: width * 0.25,
-                  resizeMode: 'contain',
-                }}
-              />
-            </View>
-          </TouchableOpacity>
-        </View>
-        <Image
-          source={require('../../../assets/images/gukbab_explain.png')}
-          style={{
-            width: width * 0.7,
-            resizeMode: 'contain',
-          }}
-        />
-      </View>
-    </View>
+      <View style={styles.back}></View>
+
+      <RowView style={styles.dis}>
+        <Text style={styles.cao}>ANDONG GUKBAB</Text>
+        <GoButton />
+      </RowView>
+
+      <Text style={styles.h4}>가장 한국적인 맛과 멋을 내는 안동 국밥!</Text>
+    </WhiteSafeAreaView>
   );
 };
 
 export default GukBab;
+
+const styles = StyleSheet.create({
+  back: {
+    marginHorizontal: 25,
+    minHeight: 141,
+    backgroundColor: '#f6f6f6',
+    marginTop: 18,
+    borderRadius: 10,
+  },
+  dis: {
+    justifyContent: 'space-between',
+    marginHorizontal: 34,
+    marginVertical: 18,
+    alignContent: 'center',
+  },
+  cao: {
+    color: '#FD7F36',
+    fontSize: 20,
+  },
+  h4: {
+    fontSize: 15,
+    color: '#000000',
+    marginLeft: 34,
+  },
+});
