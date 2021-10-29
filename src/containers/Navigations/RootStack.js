@@ -227,7 +227,7 @@ const RootStack = () => (
     <Stack.Screen
       name="Thumbnail4"
       component={Thumbnail4}
-      options={{headerShown: false}}
+      options={{title: 'x 버튼 필요'}}
     />
 
     <Stack.Screen

@@ -35,8 +35,7 @@ const view = ({navigation}) => {
         <View style={styles.topContainer}>
           <WhiteLine />
           <RowView
-            style={{paddingVertical: 8, justifyContent: 'space-between'}}
-          >
+            style={{paddingVertical: 8, justifyContent: 'space-between'}}>
             <Image
               source={require('../../../assets/icons/coin_icon.png')}
               style={{width: 80, height: 79}}
@@ -75,8 +74,7 @@ const view = ({navigation}) => {
                 borderColor: '#fd7f36',
                 alignSelf: 'center',
                 marginTop: 30,
-              }}
-            >
+              }}>
               <Image
                 source={require('../../../assets/images/qr_code.png')}
                 style={{width: 153, height: 150}}
@@ -97,17 +95,28 @@ const view = ({navigation}) => {
 
             <RowView style={{justifyContent: 'center', marginTop: 36}}>
               <Touchable style={{marginRight: 20}}>
-                <NormalBoldLabel text={'복사'} />
+                <RowView style={styles.blueborder}>
+                  <NormalBoldLabel text={'복사'} style={{marginLeft: 16}} />
+                  <Image
+                    source={require('../../../assets/icons/copy.png')}
+                    style={{width: 32, height: 32, marginRight: 9}}
+                  />
+                </RowView>
               </Touchable>
-              <Touchable>
-                <NormalBoldLabel text={'전달'} />
+              <Touchable style={{marginRight: 20}}>
+                <RowView style={styles.blueborder}>
+                  <NormalBoldLabel text={'전달'} style={{marginLeft: 16}} />
+                  <Image
+                    source={require('../../../assets/icons/pass.png')}
+                    style={{width: 26, height: 23, marginRight: 9}}
+                  />
+                </RowView>
               </Touchable>
             </RowView>
           </View>
         ) : (
           <View
-            style={{justifyContent: 'center', alignItems: 'center', flex: 1}}
-          >
+            style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
             <NormalBoldLabel
               text={'*지갑 생성을 누르면 자동으로\n지갑이 생성됩니다.'}
               style={{color: '#c4c4c4', textAlign: 'center'}}
@@ -132,8 +141,7 @@ const MenuBtn = ({menu, index}) => {
         if (menu.path) {
           navigation.navigate(menu.path);
         }
-      }}
-    >
+      }}>
       <NormalBoldLabel text={menu.name} style={styles.menuText} />
     </Touchable>
   );
@@ -166,5 +174,12 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     color: '#fff',
     textAlign: 'center',
+  },
+  blueborder: {
+    borderWidth: 3,
+    borderColor: '#0068D9',
+    width: 100,
+    height: 50,
+    justifyContent: 'space-between',
   },
 });

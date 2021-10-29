@@ -21,8 +21,7 @@ export const HeaderWalletBottomLine = ({style, props}) => {
         borderBottomLeftRadius: 35,
         borderBottomRightRadius: 35,
         ...style,
-      }}
-    >
+      }}>
       {props}
     </View>
   );
