@@ -8,94 +8,106 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
+  Touchable,
 } from 'react-native';
-
-const {height, width} = Dimensions.get('window');
-
-const vh = height / 100;
-const vw = width / 100;
+import Swiper from 'react-native-swiper';
+import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
+import RowView from '../../../components/RowView';
+import TitleInput from '../../../components/TxInput';
+import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 
 const view = () => {
   return (
-    <View>
-      <View style={{flexDirection: 'row'}}>
-        <View style={{width: width * 0.88}}></View>
-        <TouchableOpacity>
-          <Image
-            source={require('../../../assets/images/btn_close_thum.png')}
-            style={{
-              resizeMode: 'contain',
-              width: width * 0.1,
-            }}
-          />
-        </TouchableOpacity>
+    <WhiteSafeAreaView>
+      {/* 스와이프 들어갈 곳 start*/}
+      <View style={styles.back}>
+        <RowView style={styles.arr}>
+          <Text style={styles.tx1}>
+            터치토큰,{'\n'}적립해서 이자 받으셔야죠!
+          </Text>
+        </RowView>
       </View>
-      <Image
-        source={require('../../../assets/images/thumbnail3.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 1,
-          position: 'absolute',
-          top: height * 0.01,
-        }}
-      />
+      {/* 스와이프 들어갈 곳 end */}
 
-      {/* TOC 스테킹하기 배경 start */}
-      <Image
-        source={require('../../../assets/images/stacking_back.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 0.9,
-          position: 'absolute',
-          top: height * 0.23,
-          right: width * 0.05,
-        }}
-      />
-      {/* TOC 스테킹하기 배경 end */}
+      <View style={styles.stackingWrapper}>
+        <NormalBoldLabel text={'TOC 스테이킹 하기'} style={{color: '#fff'}} />
 
-      {/* TOC 스테킹하기 신청 버튼 start */}
-      <TouchableOpacity>
         <Image
-          source={require('../../../assets/images/btn_stacking.png')}
+          style={{width: 25, height: 16}}
+          source={require('../../../assets/icons/stacking_arrow.png')}
+        />
+      </View>
+
+      <RowView
+        style={{
+          paddingTop: 18,
+          paddingHorizontal: 24,
+          paddingBottom: 15,
+        }}>
+        <View
           style={{
-            resizeMode: 'contain',
-            width: width * 0.2,
-            height: height * 0.04,
-            position: 'absolute',
-            top: height * 0.19,
-            right: width * 0.05,
+            backgroundColor: '#fd7f36',
+            height: 45,
+            width: 7,
+            borderTopRightRadius: 6,
+            borderBottomRightRadius: 6,
           }}
         />
-      </TouchableOpacity>
-      {/* TOC 스테킹하기 신청 버튼 end */}
+        <Text style={styles.text}>스테킹 계산하기</Text>
+      </RowView>
 
-      {/* 본문 위 스테킹 계산하기 star */}
-      <Image
-        source={require('../../../assets/images/stacking_title.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 1,
-          height: height * 0.05,
-          position: 'absolute',
-          top: height * 0.35,
-          right: width * 0.25,
-        }}
+      <NormalLabel
+        style={{paddingVertical: 30, paddingHorizontal: 23}}
+        text={
+          '언제 어디서나 스캔하자 터치콘 팀입니다.\n\n' +
+          '카오리온이 터치콘이 실시하는 광고스캔 랜덤 보상\n' +
+          '의 첫 광고주로 선정되었습니다. 카오리온은 1990\n' +
+          '년 설립된 천연화장품의 원조 업체로서 유럽을 비롯\n' +
+          '한 동구권에서 높은 품질을 인정 받고 있습니다.\n\n' +
+          '터치콘은 카오리온의 핵심 상품에 스마트 큐알을 동\n' +
+          '봉하여 랜덤보상을 실시하게 됩니다.\n' +
+          '감사합니다.\n\n' +
+          '터치콘 드림'
+        }
       />
-      {/* 본문위 스테킹 계산하기 end */}
-      <TouchableOpacity>
-        <Image
-          source={require('../../../assets/images/stacking_text.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 0.9,
-            position: 'absolute',
-            top: height * 0.2,
-            right: width * 0.05,
-          }}
-        />
-      </TouchableOpacity>
-    </View>
+    </WhiteSafeAreaView>
   );
 };
 
 export default view;
+
+const styles = StyleSheet.create({
+  back: {
+    backgroundColor: '#FFB82E',
+    minHeight: 100,
+  },
+  arr: {
+    marginHorizontal: 33,
+    marginVertical: 40,
+    justifyContent: 'space-between',
+  },
+  tx1: {fontSize: 20, color: '#ffffff', fontWeight: 'bold'},
+  stackingWrapper: {
+    marginTop: 25,
+    marginHorizontal: 17.5,
+    paddingVertical: 17,
+    paddingHorizontal: 21,
+    backgroundColor: '#0E0F0FCC',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  stackingBtn: {
+    paddingVertical: 7,
+    paddingHorizontal: 10.5,
+    borderWidth: 2,
+    borderColor: '#fff',
+    borderRadius: 10,
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#000000',
+    marginLeft: 16,
+  },
+});

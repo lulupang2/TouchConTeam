@@ -65,8 +65,7 @@ const RootStack = () => (
         />
       ),
       headerBackTitleVisible: false,
-    }}
-  >
+    }}>
     {/* 버튼 모음  start */}
     <Stack.Screen
       name="TestButton"
@@ -79,7 +78,7 @@ const RootStack = () => (
     <Stack.Screen
       name="TestThumbnail"
       component={TestThumbnail}
-      options={{headerShown: false}}
+      options={{title: 'x 버튼 필요'}}
     />
     {/* 버튼 모음2 end */}
 
@@ -155,13 +154,13 @@ const RootStack = () => (
     <Stack.Screen
       name="Thumbnail2"
       component={Thumbnail2}
-      options={{headerShown: false}}
+      options={{title: 'x 버튼 필요'}}
     />
 
     <Stack.Screen
       name="Thumbnail3"
       component={Thumbnail3}
-      options={{headerShown: false}}
+      options={{title: 'x 버튼 필요'}}
     />
     {/* 터치콘 연결관리 */}
     <Stack.Screen
@@ -321,8 +320,7 @@ function MyTabs() {
       tabBar={() => null}
       screenOptions={{
         tabBarShowLabel: false,
-      }}
-    >
+      }}>
       <Tab.Screen name="Intro1" component={Intro1} />
       <Tab.Screen name="Intro2" component={Intro2} />
       <Tab.Screen name="Intro3" component={Intro3} />

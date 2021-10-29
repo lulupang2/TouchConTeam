@@ -27,8 +27,7 @@ const view = ({navigation}) => {
             paddingTop: 18,
             paddingHorizontal: 24,
             paddingBottom: 15,
-          }}
-        >
+          }}>
           <View
             style={{
               backgroundColor: '#fd7f36',
@@ -45,7 +44,7 @@ const view = ({navigation}) => {
         </RowView>
         <ContentInput />
 
-        <LongButgiton text={'등록'} tcStyle={styles.btn} />
+        <LongButton text={'등록'} tcStyle={styles.btn} />
       </ScrollView>
     </WhiteSafeAreaView>
   );

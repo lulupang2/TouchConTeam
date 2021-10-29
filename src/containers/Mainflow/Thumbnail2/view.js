@@ -7,78 +7,65 @@ import {
   ImageBackground,
   Image,
   TouchableOpacity,
-  TouchableNativeFeedback,
   SafeAreaView,
 } from 'react-native';
+import Swiper from 'react-native-swiper';
+import BottomButton from '../../../components/BottomButton';
+import {NormalBoldLabel} from '../../../components/Label';
+import RowView from '../../../components/RowView';
+import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 
-const {height, width} = Dimensions.get('window');
-
-const vh = height / 100;
-const vw = width / 100;
-
-const view = ({navigation}) => {
+const view = () => {
   return (
-    <View>
-      <View style={{flexDirection: 'row'}}>
-        <View style={{width: width * 0.88}}></View>
-        {/*  플렉스 or 상위 view에 의해서 버튼 적용이 되지 않는다. 확인 필요 start*/}
-        <TouchableNativeFeedback onPress={() => navigation.goBack()}>
-          <Image
-            source={require('../../../assets/images/btn_close_thum.png')}
-            style={{
-              resizeMode: 'contain',
-              width: width * 0.1,
-            }}
-          />
-        </TouchableNativeFeedback>
-        {/*  플렉스 or 상위 view에 의해서 버튼 적용이 되지 않는다. 확인 필요 end*/}
+    <WhiteSafeAreaView>
+      {/* 스와이프 들어갈 곳 start*/}
+      <View style={styles.back}>
+        <RowView style={styles.arr}>
+          <Text style={styles.tx1}>매일 매일 출석만 해도!</Text>
+          <Text style={styles.tx2}>터치토큰</Text>
+          <Text style={styles.tx1}>증정</Text>
+        </RowView>
       </View>
-      <Image
-        source={require('../../../assets/images/thumbnail2.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 1,
-          position: 'absolute',
-          top: height * 0.01,
-        }}
-      />
+      {/* 스와이프 들어갈 곳 end */}
+      <BottomButton text={'오늘 출석하기'} />
 
-      <TouchableOpacity>
-        <Image
-          source={require('../../../assets/images/btn_attend.png')}
-          style={{
-            resizeMode: 'contain',
-            width: width * 0.8,
-            position: 'absolute',
-            top: height * 0.16,
-            right: width * 0.1,
-          }}
-        />
-      </TouchableOpacity>
-
-      <Image
-        source={require('../../../assets/images/count_attend_text.png')}
+      <Text
         style={{
-          resizeMode: 'contain',
-          width: width * 0.3,
-          position: 'absolute',
-          top: height * 0.4,
-          right: width * 0.35,
-        }}
-      />
+          fontSize: 20,
+          fontWeight: 'bold',
+          color: '#0068D9',
+          alignSelf: 'center',
+        }}>
+        출석일수 2일
+      </Text>
 
-      <Image
-        source={require('../../../assets/images/thumnail_calendar.png')}
+      <View
         style={{
-          resizeMode: 'contain',
-          width: width * 0.9,
-          position: 'absolute',
-          top: height * 0.3,
-          right: width * 0.05,
-        }}
-      />
-    </View>
+          borderWidth: 1,
+          borderColor: '#AAAAAAA',
+          marginHorizontal: 24,
+          marginTop: 35,
+          minHeight: 291,
+        }}>
+        <Text>달력 들어올 곳</Text>
+      </View>
+    </WhiteSafeAreaView>
   );
 };
 
 export default view;
+
+const styles = StyleSheet.create({
+  back: {
+    backgroundColor: '#82A9CD',
+    minHeight: 100,
+    marginBottom: 35,
+  },
+  arr: {
+    marginHorizontal: 33,
+    marginVertical: 40,
+    justifyContent: 'space-between',
+  },
+  tx1: {fontSize: 15, color: '#ffffff'},
+  tx2: {fontSize: 20, color: '#ffffff'},
+});
