@@ -35,7 +35,8 @@ const view = () => {
           fontWeight: 'bold',
           color: '#0068D9',
           alignSelf: 'center',
-        }}>
+        }}
+      >
         출석일수 2일
       </Text>
 
@@ -46,7 +47,8 @@ const view = () => {
           marginHorizontal: 24,
           marginTop: 35,
           minHeight: 291,
-        }}>
+        }}
+      >
         <Text>달력 들어올 곳</Text>
       </View>
     </WhiteSafeAreaView>

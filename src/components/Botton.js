@@ -84,7 +84,8 @@ export const GoButton = ({onPress, tcStyle, txStyle}) => {
       }}
       onPress={() => {
         alert('연결됨');
-      }}>
+      }}
+    >
       <Text
         style={{
           fontSize: 20,
@@ -94,7 +95,8 @@ export const GoButton = ({onPress, tcStyle, txStyle}) => {
           alignSelf: 'center',
           paddingTop: 3,
           ...txStyle,
-        }}>
+        }}
+      >
         GO
       </Text>
     </TouchableOpacity>
