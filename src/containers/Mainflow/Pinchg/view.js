@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import BottomButton from '../../../components/BottomButton';
 import {LongButton} from '../../../components/Botton';
 
 const {height, width} = Dimensions.get('window');
@@ -89,10 +90,11 @@ export default function Pinchg(props) {
           // onKeyPress 비밀번호 확인 작업
         />
       </View>
-      <LongButton
+      <BottomButton text={'확인'} style={{marginTop: 400}} />
+      {/* <LongButton
         text={'확인'}
         tcStyle={{position: 'absolute', top: 600, paddingTop: 13}}
-      />
+      /> */}
       {/* <TouchableOpacity onPress={confirm_pwd}>
           <Image
             source={require('../../../assets/images/confirm_button.png')}

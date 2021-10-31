@@ -5,7 +5,7 @@ import {NormalBoldLabel} from './Label';
 
 const {height, width} = Dimensions.get('window');
 
-const BottomButton = ({onPress, text}) => {
+const BottomButton = ({onPress, text, style}) => {
   return (
     <Touchable
       onPress={onPress}
@@ -18,6 +18,7 @@ const BottomButton = ({onPress, text}) => {
         alignSelf: 'center',
         width: width - 48,
         marginBottom: 32,
+        ...style,
         // position: 'absolute', width: width-48, bottom: 32,
       }}>
       <NormalBoldLabel

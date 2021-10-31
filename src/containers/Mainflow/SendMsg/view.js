@@ -11,6 +11,7 @@ import {
   TouchableNativeFeedback,
   ScrollView,
 } from 'react-native';
+import BottomButton from '../../../components/BottomButton';
 import {LongButton} from '../../../components/Botton';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import RowView from '../../../components/RowView';
@@ -44,7 +45,8 @@ const view = ({navigation}) => {
         </RowView>
         <ContentInput />
 
-        <LongButton text={'등록'} tcStyle={styles.btn} />
+        <BottomButton text={'등록'} style={{marginTop: 80}} />
+        {/* <LongButton text={'등록'} tcStyle={styles.btn} /> */}
       </ScrollView>
     </WhiteSafeAreaView>
   );

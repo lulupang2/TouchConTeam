@@ -10,33 +10,36 @@ import {
   SafeAreaView,
   ScrollView,
 } from 'react-native';
-import {LongButton} from '../../../components/Botton';
+
 import {HeaderThickBottomLine} from '../../../components/HeaderBottomLine';
 import RowView from '../../../components/RowView';
 import ColumnView from '../../../components/ColumnView';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
+import BottomButton from '../../../components/BottomButton';
 
 const view = () => {
   return (
     <WhiteSafeAreaView>
-      <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
+      <HeaderThickBottomLine />
+
+      <Image
+        source={require('../../../assets/images/wallet_tx_qr.png')}
+        style={{
+          marginHorizontal: 26,
+          marginVertical: 15,
+          width: 325,
+          height: 116,
+          resizeMode: 'contain',
+        }}
+      />
+
+      <BottomButton text={'지갑 주소 복사하기'} />
+
+      <View style={styles.under}>
         <HeaderThickBottomLine />
-        <Image
-          source={require('../../../assets/images/wallet_tx_qr.png')}
-          style={{
-            marginHorizontal: 26,
-            marginVertical: 15,
-            width: 325,
-            height: 116,
-            resizeMode: 'contain',
-          }}
-        />
-        <LongButton text={'지갑 주소 복사하기'} />
-        <View style={styles.under}>
-          <HeaderThickBottomLine />
-          {/* 터치콘 */}
-
-          <View style={styles.back}>
+        {/* 터치콘 */}
+        <ScrollView>
+          <View style={styles.back1}>
             <RowView style={{justifyContent: 'space-between'}}>
               <Text style={styles.tx1}>터치콘</Text>
               <BtnPass />
@@ -54,9 +57,9 @@ const view = () => {
           </View>
 
           {/* 터치콘 */}
-          <LongButton text={'거래소 가기'} />
+          <BottomButton text={'거래소 가기'} />
           {/* 이더리움 */}
-          <View style={styles.back}>
+          <View style={styles.back2}>
             <RowView style={{justifyContent: 'space-between'}}>
               <Text style={styles.tx1}>터치콘</Text>
               <BtnPass />
@@ -72,12 +75,11 @@ const view = () => {
               </ColumnView>
             </RowView>
           </View>
+        </ScrollView>
+        {/* 이더리움 */}
+      </View>
 
-          {/* 이더리움 */}
-        </View>
-
-        {/* <HeaderThickBottomLine /> */}
-      </ScrollView>
+      {/* <HeaderThickBottomLine /> */}
     </WhiteSafeAreaView>
   );
 };
@@ -93,13 +95,21 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
   },
-  back: {
+  back1: {
     marginHorizontal: 15,
     marginVertical: 26,
     borderRadius: 15,
     borderWidth: 2,
     borderColor: '#c4c4c4c',
   },
+  back2: {
+    marginHorizontal: 15,
+    marginBottom: 26,
+    borderRadius: 15,
+    borderWidth: 2,
+    borderColor: '#c4c4c4c',
+  },
+
   tx1: {
     fontSize: 15,
     fontWeight: 'bold',
