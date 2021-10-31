@@ -10,7 +10,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import BottomButton from '../../../components/BottomButton';
-import {LongButton} from '../../../components/Botton';
+// import {LongButton} from '../../../components/Botton';
 
 const view = ({navigation}) => {
   return (
