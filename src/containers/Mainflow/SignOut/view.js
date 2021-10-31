@@ -16,15 +16,6 @@ import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import {NormalLabel} from '../../../components/Label';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 
-const {height, width} = Dimensions.get('window');
-
-const vh = height / 100;
-const vw = width / 100;
-
-function Check() {
-  const [mark, setmark] = useState(false);
-}
-
 const view = ({navigation}) => {
   return (
     <WhiteSafeAreaView>

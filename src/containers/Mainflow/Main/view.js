@@ -9,10 +9,6 @@ import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import TouchableNoFeedback from '../../../components/TouchableNoFeedback';
 
-const {width, height} = Dimensions.get('window');
-const vw = width / 100;
-const vh = height / 100;
-
 const AD_MENU = [
   {id: 1, name: 'CAOLION', path: 'GfCaolion'},
   {id: 2, name: 'MEGAM', path: 'GfMegaMall'},

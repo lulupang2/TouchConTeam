@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
+import BottomButton from '../../../components/BottomButton';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 
 const {height, width} = Dimensions.get('window');
@@ -86,8 +87,7 @@ function Signup(props) {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-evenly',
-          }}
-        >
+          }}>
           {allagree ? (
             <TouchableOpacity onPress={chg_all}>
               <Image
@@ -113,8 +113,7 @@ function Signup(props) {
           )}
           <TouchableOpacity
             onPress={chg_all}
-            style={{width: width * 0.75, height: height * 0.03}}
-          >
+            style={{width: width * 0.75, height: height * 0.03}}>
             <Image
               source={require('../../../assets/images/nobutton.png')}
               style={{
@@ -134,15 +133,13 @@ function Signup(props) {
             resizeMode: 'contain',
             height: height * 0.2087,
             justifyContent: 'space-evenly',
-          }}
-        >
+          }}>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-evenly',
-            }}
-          >
+            }}>
             {ser_agree ? (
               <TouchableOpacity onPress={chg_ser}>
                 <Image
@@ -173,8 +170,7 @@ function Signup(props) {
                 height: height * 0.03,
                 resizeMode: 'contain',
                 justifyContent: 'center',
-              }}
-            >
+              }}>
               <View style={{flexDirection: 'column'}}>
                 <Image
                   source={require('../../../assets/images/service_agree.png')}
@@ -214,8 +210,7 @@ function Signup(props) {
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-evenly',
-            }}
-          >
+            }}>
             {per_agree ? (
               <TouchableOpacity onPress={chg_per}>
                 <Image
@@ -246,8 +241,7 @@ function Signup(props) {
                 height: height * 0.03,
                 resizeMode: 'contain',
                 justifyContent: 'center',
-              }}
-            >
+              }}>
               <View style={{flexDirection: 'column'}}>
                 <Image
                   source={require('../../../assets/images/personal_agree.png')}
@@ -287,8 +281,7 @@ function Signup(props) {
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-evenly',
-            }}
-          >
+            }}>
             {mark_agree ? (
               <TouchableOpacity onPress={chg_mark}>
                 <Image
@@ -319,8 +312,7 @@ function Signup(props) {
                 height: height * 0.03,
                 resizeMode: 'contain',
                 justifyContent: 'center',
-              }}
-            >
+              }}>
               <Image
                 source={require('../../../assets/images/marketing_agree.png')}
                 style={{
@@ -352,8 +344,7 @@ function Signup(props) {
             width: width * 0.86,
             resizeMode: 'contain',
             height: height * 0.055,
-          }}
-        >
+          }}>
           <TextInput
             onChangeText={onChangeEmail}
             value={email}
@@ -370,8 +361,7 @@ function Signup(props) {
             width: width * 0.5,
             resizeMode: 'contain',
             height: height * 0.055,
-          }}
-        >
+          }}>
           <TextInput
             onChangeText={onChangeCode}
             value={code}
@@ -403,7 +393,9 @@ function Signup(props) {
         />
       </View>
       {/* 다음 버튼 */}
-      <View style={{marginLeft: width * 0.05}}>
+
+      <BottomButton />
+      {/* <View style={{marginLeft: width * 0.05}}>
         <TouchableOpacity onPress={gobtn}>
           <Image
             source={require('../../../assets/images/btn_next.png')}
@@ -415,7 +407,7 @@ function Signup(props) {
             }}
           />
         </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 }
