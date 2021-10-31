@@ -11,8 +11,8 @@ import {
   TextInput,
 } from 'react-native';
 import {HeaderWalletBottomLine} from '../../../components/HeaderBottomLine';
-import {LongButton} from '../../../components/Botton';
 import {NormalLabel} from '../../../components/Label';
+import BottomButton from '../../../components/BottomButton';
 
 const view = () => {
   const [ponit, setPonit] = useState('10000.11');
@@ -47,7 +47,9 @@ const view = () => {
           marginHorizontal: 23,
         }}
       />
-      <LongButton
+
+      <BottomButton text={'터치콘 전환'} style={{marginVertical: 32}} />
+      {/* <LongButton
         text={'전환하기'}
         tcStyle={{
           marginTop: 35,
@@ -55,7 +57,7 @@ const view = () => {
           justifyContent: 'center',
           alignItems: 'center',
         }}
-      />
+      /> */}
       <NormalLabel
         text={
           '[유의사항]\n' +

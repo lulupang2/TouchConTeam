@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import {LongButton} from '../../../components/Botton';
+import BottomButton from '../../../components/BottomButton';
+// import {LongButton} from '../../../components/Botton';
 
 const view = ({navigation}) => {
   return (
@@ -27,7 +28,8 @@ const view = ({navigation}) => {
         />
       </View>
 
-      <LongButton text={'지금 스캔하기'} tcStyle={{marginTop: 93}} />
+      <BottomButton text={'지금 스캔하기'} style={{marginTop: 93}} />
+      {/* <LongButton text={'지금 스캔하기'} tcStyle={{marginTop: 93}} /> */}
     </View>
   );
 };

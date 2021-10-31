@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
+import BottomButton from '../../../components/BottomButton';
 import {LongButton} from '../../../components/Botton';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import {NormalLabel} from '../../../components/Label';
@@ -51,11 +52,13 @@ const view = ({navigation}) => {
       />
       <Text>마크기능 필요</Text>
 
-      <LongButton
+      <BottomButton text={'탈퇴하기'} style={{marginTop: 150}} />
+
+      {/* <LongButton
         text={'탈퇴하기'}
         tcStyle={{marginLeft: 60, position: 'absolute', top: 550}}
         txStyle={{paddingTop: 10}}
-      />
+      /> */}
     </WhiteSafeAreaView>
   );
 };
