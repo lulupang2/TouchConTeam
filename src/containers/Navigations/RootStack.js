@@ -10,7 +10,6 @@ import {DrawerStack} from './DrawerStack';
 import Wallet from '../Mainflow/Wallet/view';
 import SignOut from '../Mainflow/SignOut/view';
 import Pinlogin from '../Mainflow/Pinlogin/view';
-import Pinsign from '../Mainflow/Pinsign/view';
 import Splash from '../Application/Splash';
 import Pinchg from '../Mainflow/Pinchg/view';
 import Thumbnail2 from '../Mainflow/Thumbnail2/view';
@@ -134,11 +133,6 @@ const RootStack = () => (
     <Stack.Screen
       name="Pinlogin"
       component={Pinlogin}
-      options={{headerShown: false}}
-    />
-    <Stack.Screen
-      name="Pinsign"
-      component={Pinsign}
       options={{headerShown: false}}
     />
     <Stack.Screen

@@ -54,7 +54,7 @@ function Signup(props) {
   const gobtn = () => {
     if (per_agree === true && ser_agree === true) {
       setWarnnig(false);
-      props.navigation.navigate('Intro1');
+      props.navigation.navigate('Pinlogin');
     } else {
       setWarnnig(true);
     }

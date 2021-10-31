@@ -8,7 +8,7 @@ import {useNavigation} from '@react-navigation/native';
 
 const MENU = [
   {id: 1, title: '내정보', path: 'MyInfo'},
-  {id: 2, title: '공지사항', path: 'Pinchg'},
+  {id: 2, title: '공지사항', path: 'Notice'},
   {id: 3, title: '자주 묻는 질문', path: 'QnA'},
   {id: 4, title: '터치콘 이야기', path: 'TcStory'},
   {id: 5, title: '약관 및  개인정보 처리방침', path: 'Policy'},
