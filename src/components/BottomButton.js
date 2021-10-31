@@ -3,7 +3,7 @@ import {Dimensions} from 'react-native';
 import Touchable from './Touchable';
 import {NormalBoldLabel} from './Label';
 
-const {height, width} = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
 const BottomButton = ({onPress, text, style}) => {
   return (
@@ -20,7 +20,8 @@ const BottomButton = ({onPress, text, style}) => {
         marginBottom: 32,
         ...style,
         // position: 'absolute', width: width-48, bottom: 32,
-      }}>
+      }}
+    >
       <NormalBoldLabel
         text={text}
         style={{fontSize: 20, lineHeight: 24, color: '#fff'}}

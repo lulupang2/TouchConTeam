@@ -27,15 +27,12 @@ const view = ({navigation}) => {
 
   return (
     <WhiteSafeAreaView>
-      {/*<HeaderWalletBottomLine>*/}
-      {/*  <CircleButton />*/}
-      {/*</HeaderWalletBottomLine>*/}
-      {/*<CircleButton />*/}
       <ScrollView contentContainerStyle={{paddingBottom: 50}}>
         <View style={styles.topContainer}>
           <WhiteLine />
           <RowView
-            style={{paddingVertical: 8, justifyContent: 'space-between'}}>
+            style={{paddingVertical: 8, justifyContent: 'space-between'}}
+          >
             <Image
               source={require('../../../assets/icons/coin_icon.png')}
               style={{width: 80, height: 79}}
@@ -57,7 +54,7 @@ const view = ({navigation}) => {
 
           <RowView style={{marginTop: 15, justifyContent: 'space-between'}}>
             {MENU.map((menu, i) => (
-              <MenuBtn menu={menu} index={i} />
+              <MenuBtn key={i} menu={menu} />
             ))}
           </RowView>
         </View>
@@ -74,7 +71,8 @@ const view = ({navigation}) => {
                 borderColor: '#fd7f36',
                 alignSelf: 'center',
                 marginTop: 30,
-              }}>
+              }}
+            >
               <Image
                 source={require('../../../assets/images/qr_code.png')}
                 style={{width: 153, height: 150}}
@@ -82,41 +80,25 @@ const view = ({navigation}) => {
             </View>
             <NormalBoldLabel
               text={'0x3215463e2184685415216ee4e4e56545656421ds121'}
-              style={{
-                fontSize: 12,
-                lineHeight: 16,
-                paddingVertical: 18.5,
-                backgroundColor: 'rgba(14,15,15,0.8)',
-                color: '#fff',
-                textAlign: 'center',
-                marginTop: 42,
-              }}
+              style={styles.walletAddress}
             />
 
             <RowView style={{justifyContent: 'center', marginTop: 36}}>
-              <Touchable style={{marginRight: 20}}>
-                <RowView style={styles.blueborder}>
-                  <NormalBoldLabel text={'복사'} style={{marginLeft: 16}} />
-                  <Image
-                    source={require('../../../assets/icons/copy.png')}
-                    style={{width: 32, height: 32, marginRight: 9}}
-                  />
-                </RowView>
-              </Touchable>
-              <Touchable style={{marginRight: 20}}>
-                <RowView style={styles.blueborder}>
-                  <NormalBoldLabel text={'전달'} style={{marginLeft: 16}} />
-                  <Image
-                    source={require('../../../assets/icons/pass.png')}
-                    style={{width: 26, height: 23, marginRight: 9}}
-                  />
-                </RowView>
-              </Touchable>
+              <BottomBtn
+                text={'복사'}
+                uri={require('../../../assets/icons/copy.png')}
+                style={{marginRight: 20}}
+              />
+              <BottomBtn
+                text={'전달'}
+                uri={require('../../../assets/icons/pass.png')}
+              />
             </RowView>
           </View>
         ) : (
           <View
-            style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
+            style={{justifyContent: 'center', alignItems: 'center', flex: 1}}
+          >
             <NormalBoldLabel
               text={'*지갑 생성을 누르면 자동으로\n지갑이 생성됩니다.'}
               style={{color: '#c4c4c4', textAlign: 'center'}}
@@ -130,19 +112,28 @@ const view = ({navigation}) => {
 
 export default view;
 
-const MenuBtn = ({menu, index}) => {
+const MenuBtn = ({menu}) => {
   const navigation = useNavigation();
 
   return (
     <Touchable
-      key={index}
       style={styles.menuBtn}
       onPress={() => {
         if (menu.path) {
           navigation.navigate(menu.path);
         }
-      }}>
+      }}
+    >
       <NormalBoldLabel text={menu.name} style={styles.menuText} />
+    </Touchable>
+  );
+};
+
+const BottomBtn = ({text, uri, style}) => {
+  return (
+    <Touchable style={{...styles.blueBorder, ...style}}>
+      <NormalBoldLabel text={text} style={styles.bottomBtnText} />
+      <Image source={uri} style={{width: 32, height: 32}} />
     </Touchable>
   );
 };
@@ -175,11 +166,28 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
   },
-  blueborder: {
+  walletAddress: {
+    fontSize: 12,
+    lineHeight: 16,
+    paddingVertical: 18.5,
+    backgroundColor: 'rgba(14,15,15,0.8)',
+    color: '#fff',
+    textAlign: 'center',
+    marginTop: 42,
+  },
+  blueBorder: {
     borderWidth: 3,
     borderColor: '#0068D9',
-    width: 100,
-    height: 50,
-    justifyContent: 'space-between',
+    borderRadius: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 9,
+  },
+  bottomBtnText: {
+    fontSize: 16,
+    lineHeight: 20,
+    marginRight: 5,
   },
 });

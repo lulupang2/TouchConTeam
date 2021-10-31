@@ -1,10 +1,15 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, View, Dimensions, Image, StatusBar} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  Image,
+  StatusBar,
+  ImageBackground,
+  Text,
+} from 'react-native';
 
 const {height, width} = Dimensions.get('window');
-
-const vh = height / 100;
-const vw = width / 100;
 
 export default function Splash(props) {
   useEffect(() => {
@@ -14,27 +19,75 @@ export default function Splash(props) {
   });
 
   return (
-    <View style={styles.splash_container}>
-      <StatusBar backgroundColor="#FD7F36" barStyle="dark-content" />
+    <ImageBackground
+      source={require('../../assets/images/start_back.png')}
+      resizeMode="cover"
+      style={{width: '100%', height: '100%'}}
+    >
+      <Text style={styles.uptext}>글로벌 최초 디지털 자산 랜던 리워드</Text>
+      <View style={styles.midback}>
+        <Text style={styles.midbtn}>RAMDOM</Text>
+      </View>
       <Image
-        source={require('../../assets/images/group79.png')}
+        source={require('../../assets/images/start_title.png')}
         style={{
-          zIndex: 1,
-          marginTop: height * 0.25,
-          height: height * 0.3,
-          width: width * 0.5,
+          zIndex: 3,
+          height: '80%',
+          width: '80%',
           resizeMode: 'contain',
+          alignSelf: 'center',
+          position: 'relative',
+          top: -210,
         }}
       />
-    </View>
+      <Image
+        source={require('../../assets/images/start_content.png')}
+        style={{
+          zIndex: 4,
+          height: '60%',
+          width: '60%',
+          resizeMode: 'contain',
+          alignSelf: 'center',
+          position: 'absolute',
+          top: 190,
+        }}
+      />
+      <Text style={styles.samllText}>
+        DIGITAL ASSET REWORD SYSTEM @ TOUCHCON
+      </Text>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  splash_container: {
-    width: width,
-    height: height * 1.2,
-    alignItems: 'center',
-    backgroundColor: '#FD7F36',
+  uptext: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    marginTop: 125,
+    marginBottom: 22,
+  },
+  midbtn: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    alignSelf: 'center',
+    paddingTop: 5,
+  },
+  midback: {
+    backgroundColor: '#F08F35',
+    width: 79,
+    height: 30,
+    alignSelf: 'center',
+    borderRadius: 20,
+  },
+  samllText: {
+    height: '100%',
+    width: '100%',
+    fontSize: 7,
+    fontWeight: 'bold',
+    position: 'absolute',
+    top: 630,
+    left: 120,
   },
 });

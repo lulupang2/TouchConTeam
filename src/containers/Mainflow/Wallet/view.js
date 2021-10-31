@@ -142,7 +142,8 @@ const BtnPass = ({onPress}) => {
           borderRadius: 5,
           marginRight: 20,
           marginTop: 20,
-        }}>
+        }}
+      >
         <Text style={{fontSize: 15, marginLeft: 13, color: '#ffffff'}}>
           보내기
         </Text>

@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
+import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 
 const {height, width} = Dimensions.get('window');
 
@@ -58,28 +59,19 @@ function Signup(props) {
       setWarnnig(true);
     }
   };
+
   return (
     <View style={styles.signup_container}>
-      <View style={{marginLeft: width * 0.05}}>
-        <Image
-          source={require('../../../assets/images/signup_title2.png')}
-          style={{
-            marginTop: height * 0.08,
-            height: height * 0.08,
-            width: width * 0.7,
-            resizeMode: 'contain',
-            marginLeft: width * 0.02,
-          }}
+      <View style={{paddingLeft: 24}}>
+        <NormalBoldLabel
+          style={{marginTop: 51, fontSize: 20, lineHeight: 24}}
+          text={'약관에 동의하고\n' + '이메일 주소를 입력해 주세요.'}
         />
-        <Image
-          source={require('../../../assets/images/signup_title.png')}
-          style={{
-            height: height * 0.05,
-            width: width * 0.7,
-            resizeMode: 'contain',
-            marginBottom: height * 0.02,
-            marginLeft: width * 0.02,
-          }}
+        <NormalLabel
+          style={{marginTop: 9}}
+          text={
+            '기존 계정으로  사용을 원하시면\n기존 가입 이메일 주소를  입력해 주세요'
+          }
         />
       </View>
       {/* <Button onPress={chg_all} title="test button" /> */}
