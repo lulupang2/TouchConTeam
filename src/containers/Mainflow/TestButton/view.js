@@ -100,7 +100,6 @@ const view = ({navigation}) => {
         title="Go 1:1문의"
         onPress={() => navigation.navigate('SendMsg')}
       />
-      <Button title="Go Intro4" onPress={() => navigation.navigate('Intro4')} />
 
       <Button
         title="Go 스캔하기"

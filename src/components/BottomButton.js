@@ -3,7 +3,7 @@ import {Dimensions} from 'react-native';
 import Touchable from './Touchable';
 import {NormalBoldLabel} from './Label';
 
-const {height, width} = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
 const BottomButton = ({onPress, text}) => {
   return (

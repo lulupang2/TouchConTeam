@@ -34,7 +34,6 @@ import MyCoupon from '../Mainflow/MyCoupon/view';
 import ScanHistory from '../Mainflow/ScanHistory/view';
 import TouchCon from '../Mainflow/TouchCon/view';
 import TouchConCh from '../Mainflow/TouchconCh/view';
-import Intro4 from '../Mainflow/Intro4/view';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 const Stack = createStackNavigator();
@@ -42,7 +41,8 @@ const Tab = createMaterialTopTabNavigator();
 
 const RootStack = () => (
   <Stack.Navigator
-    initialRouteName="TestButton"
+    // initialRouteName="TestButton"
+    initialRouteName="Splash"
     screenOptions={{
       headerTitleAlign: 'center',
       headerTitleStyle: {
@@ -306,11 +306,6 @@ const RootStack = () => (
       options={{title: '터치콘 전환'}}
     />
     {/*---- 터치콘전환  end---- */}
-    <Stack.Screen
-      name="Intro4"
-      component={Intro4}
-      options={{headerShown: false}}
-    />
   </Stack.Navigator>
 );
 

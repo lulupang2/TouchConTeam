@@ -1,6 +1,4 @@
 # TouchConTeam
-HighDevTeam
-
 한진 : 퍼블리싱 작업(이한진 김동균 부장님 코드 숙지 필요)
 
 The process Worker
@@ -9,15 +7,22 @@ Publishing: hanjin
 Frontend: hanjin, Jaehun
 Backend: haehun
 
-Stack explain
-React Native
+### Stack explain React Native
+react native
+
+---
 
 yarn install && npx pod-install
 
-ToDo
-TocuchCon 디자인 변경, 스캔부분 <ImageBackGorund> 적용필요, 일부 버튼 다시 적용중 ,screen stack 변경중 
-TouchCon Design modify, Scan Part <ImageBackGorund> Need Apply, Some part of the button Apply,Modify again
-  
+store 상태확인은 React Native Debugger로 확인
+
+---
+
+### ToDo
+디자인 변경, 스캔부분 적용필요
+Design modify, Scan Part Need Apply
+
+---
 Thanks to all the Team 
   
  
