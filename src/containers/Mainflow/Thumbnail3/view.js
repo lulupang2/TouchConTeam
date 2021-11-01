@@ -10,10 +10,8 @@ import {
   SafeAreaView,
   Touchable,
 } from 'react-native';
-import Swiper from 'react-native-swiper';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';
-import TitleInput from '../../../components/TxInput';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 
 const view = () => {
@@ -36,6 +34,11 @@ const view = () => {
           style={{width: 25, height: 16}}
           source={require('../../../assets/icons/stacking_arrow.png')}
         />
+        <TouchableOpacity
+          onPress={() => alert('ok')}
+          style={styles.stackingBtn}>
+          <NormalBoldLabel text={'신청'} style={{color: '#fff'}} />
+        </TouchableOpacity>
       </View>
 
       <RowView
@@ -43,8 +46,7 @@ const view = () => {
           paddingTop: 18,
           paddingHorizontal: 24,
           paddingBottom: 15,
-        }}
-      >
+        }}>
         <View
           style={{
             backgroundColor: '#fd7f36',
@@ -78,6 +80,13 @@ const view = () => {
 export default view;
 
 const styles = StyleSheet.create({
+  stackingBtn: {
+    paddingVertical: 7,
+    paddingHorizontal: 10.5,
+    borderWidth: 2,
+    borderColor: '#fff',
+    borderRadius: 10,
+  },
   back: {
     backgroundColor: '#FFB82E',
     minHeight: 100,

@@ -8,50 +8,32 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
+  ScrollView,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
+import ColumnView from '../../../components/ColumnView';
 import {NormalBoldLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 
-const {height, width} = Dimensions.get('window');
-
-const vh = height / 100;
-const vw = width / 100;
-
 const view = () => {
   return (
     <WhiteSafeAreaView>
-      {/* 스와이프 들어갈 곳 start*/}
-      <View style={styles.back}>
-        <RowView style={styles.arr}>
-          <Text style={styles.tx1}>
-            광고스캔 랜덤보상{'\n'}매월 매년 참여 업체가 늘어납니다!
-          </Text>
-        </RowView>
-      </View>
-      {/* 스와이프 들어갈 곳 end */}
+      <ScrollView style={{flex: 1}}>
+        {/* 스와이프 들어갈 곳 start*/}
+        <View style={styles.back}>
+          <RowView style={styles.arr}>
+            <Text style={styles.tx1}>
+              광고스캔 랜덤보상{'\n'}매월 매년 참여 업체가 늘어납니다!
+            </Text>
+          </RowView>
+        </View>
+        {/* 스와이프 들어갈 곳 end */}
 
-      <Image
-        source={require('../../../assets/images/thumb4_line1.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 0.9,
-          position: 'absolute',
-          top: height * 0.2,
-          right: width * 0.05,
-        }}
-      />
-      <Image
-        source={require('../../../assets/images/thumb4_line2.png')}
-        style={{
-          resizeMode: 'contain',
-          width: width * 0.9,
-          position: 'absolute',
-          top: height * 0.4,
-          right: width * 0.05,
-        }}
-      />
+        {/* 광고 리스트들 */}
+
+        {/* 광고 리스트들  */}
+      </ScrollView>
     </WhiteSafeAreaView>
   );
 };
@@ -69,4 +51,22 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   tx1: {fontSize: 20, color: '#ffffff'},
+  under_view1: {
+    marginHorizontal: 22,
+    minHeight: 126,
+    marginTop: 26,
+    backgroundColor: 'red',
+  },
+  ad_box: {width: 100, height: 100, borderColor: 'black'},
 });
+
+const adRow = () => {
+  return (
+    <RowView>
+      <ColumnView>
+        <View style={styles.ad_box}></View>
+        <Text>메가몵</Text>
+      </ColumnView>
+    </RowView>
+  );
+};
