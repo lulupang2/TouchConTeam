@@ -7,8 +7,11 @@ import {
   Image,
   Text,
   TouchableOpacity,
+  Touchable,
   TextInput,
+  ScrollView,
 } from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import BottomButton from '../../../components/BottomButton';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 
@@ -62,14 +65,14 @@ function Signup(props) {
   };
 
   return (
-    <View style={styles.signup_container}>
+    <ScrollView style={{flex: 1}}>
       <View style={{paddingLeft: 24}}>
         <NormalBoldLabel
-          style={{marginTop: 51, fontSize: 20, lineHeight: 24}}
+          style={{marginTop: 51, fontSize: 20, lineHeight: 24, marginBottom: 9}}
           text={'약관에 동의하고\n' + '이메일 주소를 입력해 주세요.'}
         />
         <NormalLabel
-          style={{marginTop: 9}}
+          style={{marginTop: 9, marginBottom: 19}}
           text={
             '기존 계정으로  사용을 원하시면\n기존 가입 이메일 주소를  입력해 주세요'
           }
@@ -77,12 +80,15 @@ function Signup(props) {
       </View>
       {/* <Button onPress={chg_all} title="test button" /> */}
       {/* 약관 동의 */}
-      <View style={{marginLeft: width * 0.05}}>
-        <ImageBackground
-          source={require('../../../assets/images/rectangle12.png')}
+      <View
+        style={{
+          marginLeft: width * 0.05,
+        }}>
+        <View
           style={{
             width: width * 0.9,
-            height: height * 0.035,
+            height: 40,
+            backgroundColor: '#c4c4c4c4',
             resizeMode: 'cover',
             flexDirection: 'row',
             alignItems: 'center',
@@ -123,7 +129,7 @@ function Signup(props) {
               }}
             />
           </TouchableOpacity>
-        </ImageBackground>
+        </View>
       </View>
       <View style={{marginLeft: width * 0.05}}>
         <ImageBackground
@@ -281,6 +287,9 @@ function Signup(props) {
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-evenly',
+              paddingBottom: 20,
+              borderBottomWidth: 1,
+              borderColor: '#c4c4c4',
             }}>
             {mark_agree ? (
               <TouchableOpacity onPress={chg_mark}>
@@ -336,49 +345,97 @@ function Signup(props) {
         </ImageBackground>
       </View>
       {/* 이메일 입력창 */}
-      <View style={{marginLeft: width * 0.05}}>
-        <ImageBackground
-          source={require('../../../assets/images/email_inputn.png')}
+      <View style={{marginHorizontal: 20, marginVertical: 24}}>
+        <TextInput
+          onChangeText={onChangeEmail}
+          value={email}
+          placeholder="이메일 주소"
+          keyboardType="email-address"
           style={{
-            marginTop: height * 0.035,
-            width: width * 0.86,
-            resizeMode: 'contain',
-            height: height * 0.055,
-          }}>
-          <TextInput
-            onChangeText={onChangeEmail}
-            value={email}
-            placeholder="이메일 주소"
-            keyboardType="email-address"
-          />
-        </ImageBackground>
+            fontSize: 15,
+            height: 40,
+            borderWidth: 1,
+            borderColor: '#c4c4c4',
+            borderRadius: 5,
+          }}
+        />
       </View>
       {/* 인증번호 입력창 */}
       <View style={styles.signup_code}>
-        <ImageBackground
-          source={require('../../../assets/images/input_coden.png')}
+        <TextInput
+          onChangeText={onChangeCode}
+          value={code}
+          placeholder="인증코드 입력"
+          keyboardType="numeric"
           style={{
-            width: width * 0.5,
-            resizeMode: 'contain',
-            height: height * 0.055,
-          }}>
-          <TextInput
-            onChangeText={onChangeCode}
-            value={code}
-            placeholder="인증코드 입력"
-            keyboardType="numeric"
-          />
-        </ImageBackground>
-
-        <Image
-          source={require('../../../assets/images/code_button.png')}
-          style={{
-            marginRight: width * 0.13,
-            width: width * 0.3,
-            resizeMode: 'contain',
-            height: height * 0.055,
+            fontSize: 15,
+            width: 172,
+            height: 40,
+            borderWidth: 1,
+            borderColor: '#c4c4c4',
+            borderRadius: 5,
           }}
         />
+
+        {/* 인증코드 발송 버튼 */}
+        <TouchableOpacity
+          onPress={() => alert('ok')}
+          style={{
+            borderRadius: 53,
+            backgroundColor: '#fd7f36',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: 139,
+            height: 40,
+            marginRight: 25,
+          }}>
+          <NormalBoldLabel
+            text={'인증코드 발송'}
+            style={{fontSize: 18, color: '#fff'}}
+          />
+        </TouchableOpacity>
+      </View>
+      {/* 전화번호 입력란 */}
+      <Text
+        style={{
+          color: '#000000',
+          fontSize: 15,
+          marginLeft: 26,
+          marginTop: 28,
+          fontWeight: 'bold',
+        }}>
+        전화번호
+      </Text>
+      <View
+        style={{
+          marginTop: 8,
+          marginHorizontal: 23,
+          minHeight: 40,
+          display: 'flex',
+          justifyContent: 'space-between',
+          flexDirection: 'row',
+        }}>
+        <Text
+          style={{
+            borderWidth: 1,
+            borderColor: '#E3E5E5',
+            borderRadius: 10,
+            minWidth: 79,
+            fontSize: 15,
+            textAlign: 'center',
+            paddingTop: 11,
+          }}>
+          010
+        </Text>
+        <TextInput
+          keyboardType="phone-pad"
+          style={{
+            marginLeft: 7,
+            borderWidth: 1,
+            borderColor: '#E3E5E5',
+            width: 260,
+            borderRadius: 10,
+          }}></TextInput>
       </View>
       {/* 주의사항 */}
       <View style={{marginLeft: width * 0.05}}>
@@ -389,12 +446,14 @@ function Signup(props) {
             resizeMode: 'contain',
             height: height * 0.14,
             marginTop: height * 0.03,
+            marginBottom: 25,
           }}
         />
       </View>
-      {/* 다음 버튼 */}
 
-      <BottomButton />
+      {/* 다음 버튼 */}
+      <BottomButton text={'다음'} />
+
       {/* <View style={{marginLeft: width * 0.05}}>
         <TouchableOpacity onPress={gobtn}>
           <Image
@@ -408,23 +467,14 @@ function Signup(props) {
           />
         </TouchableOpacity>
       </View> */}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  signup_container: {
-    // width: width,
-    width,
-    height: height,
-
-    backgroundColor: 'white',
-  },
   signup_code: {
-    marginTop: height * 0.035,
     display: 'flex',
     flexDirection: 'row',
-    width,
     alignItems: 'center',
     justifyContent: 'space-between',
     marginLeft: width * 0.05,

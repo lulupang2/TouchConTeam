@@ -21,12 +21,13 @@ const view = ({navigation}) => {
   return (
     <WhiteSafeAreaView>
       <Navbar />
+      {/* 별,축하합니다. 이미지  */}
       <Image
         source={require('../../../assets/images/star_congra.png')}
         resizeMode="contain"
         style={{width: '100%', position: 'relative', top: -161}}
       />
-
+      {/* 별,축하합니다 아래 View로 배경 작업 */}
       <View style={styles.upper_back}>
         <View style={styles.upper_point}>
           <View style={styles.wh_line}>
@@ -49,6 +50,7 @@ const view = ({navigation}) => {
         <Btnwhite text={'적립하기'} />
       </View>
 
+      {/* 하단 부분 스크롤 */}
       <ScrollView>
         <View
           style={{
