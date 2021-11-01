@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#000000',
     marginLeft: 16,
+    borderRadius: 5,
   },
   btn: {marginTop: 100},
 });

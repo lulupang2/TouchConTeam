@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.8,
     borderColor: '#c4c4c4',
     fontSize: 20,
+    borderRadius: 5,
   },
   content: {
     textAlignVertical: 'top',

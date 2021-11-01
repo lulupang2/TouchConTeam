@@ -11,70 +11,71 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-import {ConnMitem} from '../../../components/ConnMenuItem';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
+import RowView from '../../../components/RowView';
+
+const Title = [
+  {id: 1, title: 'CAOLION'},
+  {id: 2, title: 'MEGAM'},
+  {id: 3, title: '안동국밥'},
+];
 
 const view = ({navigation}) => {
   return (
     <SafeAreaView>
       <HeaderBottomLine />
-      <View style={styles.view}>
-        <ConnMitem text={'CAOLION'} />
-        <ConnMitem text={'MEGAM'} />
-        <ConnMitem text={'안동국밥'} />
-      </View>
+
+      {Title.map((text, i) => (
+        <BtnConn text={text} key={i} />
+      ))}
     </SafeAreaView>
   );
 };
 
 export default view;
 
+const BtnConn = ({text}) => {
+  return (
+    <RowView style={styles.rv}>
+      <Text
+        style={{
+          color: '#000000',
+          fontWeight: 'bold',
+          fontSize: 15,
+          marginVertical: 18,
+        }}>
+        {text.title}
+      </Text>
+      <TouchableOpacity
+        style={{
+          backgroundColor: '#FD7F36',
+          width: 79,
+          height: 35,
+          borderRadius: 53,
+        }}
+        onPress={() => {
+          alert('연결됨');
+        }}>
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: 'blod',
+            color: '#FFFFFF',
+            marginLeft: 20,
+            marginTop: 3,
+          }}>
+          연결
+        </Text>
+      </TouchableOpacity>
+    </RowView>
+  );
+};
+
 const styles = StyleSheet.create({
-  view: {
-    height: '50%',
-    paddingTop: 22,
-    paddingHorizontal: 24,
+  rv: {
     justifyContent: 'space-between',
-    paddingBottom: 18,
-    display: 'flex',
-    flexDirection: 'column',
+    paddingHorizontal: 24,
+    borderBottomWidth: 1,
+    borderColor: '#c4c4c4',
   },
 });
-
-// const MENU = [
-//   {id: 1, title: '터치토큰 연결 관리', path: 'TcConnMana'},
-//   {id: 2, title: 'PIN번호 변경', path: 'Pinchg'},
-//   {id: 3, title: '마케팅정보 알림', path: 'MarketingInfo'},
-//   {id: 4, title: '탈퇴하기', path: 'SignOut'},
-// ];
-
-// const view = ({navigation}) => {
-//   return (
-//     <WhiteSafeAreaView>
-//       <HeaderBottomLine />
-//       <RowView
-//         style={{
-//           paddingTop: 22,
-//           paddingHorizontal: 24,
-//           justifyContent: 'space-between',
-//           borderBottomWidth: 1,
-//           borderBottomColor: '#c4c4c4',
-//           paddingBottom: 18,
-//         }}>
-//         <NormalBoldLabel text={'이메일'} />
-//         <NormalBoldLabel
-//           text={'ngm1224@gmail.com'}
-//           style={{fontSize: 20, lineHeight: 24}}
-//         />
-//       </RowView>
-
-//       {MENU.map(menu => (
-//         <MenuItem
-//           key={menu.id}
-//           title={menu.title}
-//           onPress={() => navigation.navigate(menu.path)}
-//         />
-//       ))}
-//     </WhiteSafeAreaView>
-//   );
-// };
