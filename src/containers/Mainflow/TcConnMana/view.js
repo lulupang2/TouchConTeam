@@ -15,7 +15,7 @@ import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import RowView from '../../../components/RowView';
 
 const Title = [
-  {id: 1, title: 'CAOLION'},
+  {id: 1, title: 'CAOLION', path: ''},
   {id: 2, title: 'MEGAM'},
   {id: 3, title: '안동국밥'},
 ];

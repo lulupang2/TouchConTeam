@@ -244,11 +244,7 @@ const RootStack = () => (
     <Stack.Screen
       name="ScanResult"
       component={ScanResult}
-      options={{
-        title: '',
-        headerStyle: {backgroundColor: '#FD7F36'},
-        headerTintColor: '#fff',
-      }}
+      options={{headerShown: false}}
     />
     {/*------스캔 결과 end---------  */}
 
