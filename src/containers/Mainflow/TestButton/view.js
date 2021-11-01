@@ -78,10 +78,6 @@ const view = ({navigation}) => {
         title="Go Pinlogin"
         onPress={() => navigation.navigate('Pinlogin')}
       />
-      <Button
-        title="Go Pinsign"
-        onPress={() => navigation.navigate('Pinsign')}
-      />
 
       <Button
         title="Go MarketingInfo"

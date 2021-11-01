@@ -8,13 +8,21 @@ import {
   ImageBackground,
   Text,
 } from 'react-native';
+import {useSelector} from 'react-redux';
 
 const {height, width} = Dimensions.get('window');
 
-export default function Splash(props) {
+export default function Splash({navigation}) {
+  const auth = useSelector(state => state.auth);
+  const {user} = auth;
+
   useEffect(() => {
     setTimeout(() => {
-      props.navigation.navigate('Intro');
+      if (user) {
+        navigation.navigate('Main');
+      } else {
+        navigation.navigate('Intro');
+      }
     }, 1500);
   });
 

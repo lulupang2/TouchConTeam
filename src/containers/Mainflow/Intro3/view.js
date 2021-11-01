@@ -23,7 +23,7 @@ export default function Intro3({navigation}) {
     >
       <Image
         source={require('../../../assets/images/intro4_h2.png')}
-        style={styles.h2}
+        style={styles.topImage}
       />
       <View style={{marginLeft: 43, marginTop: 31}}>
         <Text style={styles.content}>
@@ -77,7 +77,7 @@ export default function Intro3({navigation}) {
 }
 
 const styles = StyleSheet.create({
-  h2: {
+  topImage: {
     resizeMode: 'contain',
     height: 85.93,
     width: '100%',
