@@ -10,28 +10,86 @@ import {
   SafeAreaView,
   ScrollView,
 } from 'react-native';
+import {FlatList} from 'react-native-gesture-handler';
 import Swiper from 'react-native-swiper';
 import ColumnView from '../../../components/ColumnView';
 import {NormalBoldLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 
+const dataList = [
+  {id: 1, title: '메가몰'},
+  {id: 2, title: '카오리온'},
+  {id: 3, title: '안동쇠고기'},
+  {id: 4, title: '재팬드럭'},
+  {id: 5, title: '마마무'},
+  {id: 6, title: '마마무'},
+  {id: 7, title: '마마무'},
+  {id: 8, title: '마마무'},
+  {id: 9, title: '마마무'},
+  {id: 10, title: '마마무'},
+];
+
+const numColumns = 3;
+
+const formatData = (dataList, numColumns) => {
+  const totalRows = Math.floor(dataList.length / numColumns);
+  let totalLastRow = dataList.length - totalRows * numColumns;
+
+  while (totalLastRow !== 0 && totalLastRow !== numColumns) {
+    dataList.push({key: 'blank', empty: true});
+    totalLastRow++;
+  }
+  return dataList;
+};
+
+const adView = ({item, index}) => {
+  if (item.empty) {
+    return (
+      <ColumnView style={{justifyContent: 'center', alignItems: 'center'}}>
+        <View style={styles.empty1}></View>
+        <Text>{item.title}</Text>
+      </ColumnView>
+    );
+  } else {
+    return (
+      <ColumnView style={{justifyContent: 'center', alignItems: 'center'}}>
+        <View style={styles.adScreen}></View>
+        <Text
+          style={{
+            fontSize: 15,
+            color: '#000',
+          }}>
+          {item.title}
+        </Text>
+      </ColumnView>
+    );
+  }
+};
+
 const view = () => {
   return (
     <WhiteSafeAreaView>
-      <ScrollView style={{flex: 1}}>
-        {/* 스와이프 들어갈 곳 start*/}
-        <View style={styles.back}>
-          <RowView style={styles.arr}>
-            <Text style={styles.tx1}>
-              광고스캔 랜덤보상{'\n'}매월 매년 참여 업체가 늘어납니다!
-            </Text>
-          </RowView>
+      {/* 스와이프 들어갈 곳 start*/}
+      <View style={styles.back}>
+        <RowView style={styles.arr}>
+          <Text style={styles.tx1}>
+            광고스캔 랜덤보상{'\n'}매월 매년 참여 업체가 늘어납니다!
+          </Text>
+        </RowView>
+      </View>
+      {/* 스와이프 들어갈 곳 end */}
+
+      {/* 광고 리스트들 */}
+      <ScrollView>
+        <View style={styles.container}>
+          <FlatList
+            data={formatData(dataList, numColumns)}
+            renderItem={adView}
+            keyExtractor={(item, index) => index.toString()}
+            numColumns={numColumns}
+          />
         </View>
-        {/* 스와이프 들어갈 곳 end */}
-
-        {/* 광고 리스트들 */}
-
         {/* 광고 리스트들  */}
       </ScrollView>
     </WhiteSafeAreaView>
@@ -51,22 +109,27 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   tx1: {fontSize: 20, color: '#ffffff'},
-  under_view1: {
-    marginHorizontal: 22,
-    minHeight: 126,
-    marginTop: 26,
-    backgroundColor: 'red',
-  },
-  ad_box: {width: 100, height: 100, borderColor: 'black'},
-});
 
-const adRow = () => {
-  return (
-    <RowView>
-      <ColumnView>
-        <View style={styles.ad_box}></View>
-        <Text>메가몵</Text>
-      </ColumnView>
-    </RowView>
-  );
-};
+  container: {
+    flex: 1,
+    marginTop: 26,
+  },
+  adScreen: {
+    margin: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 100,
+    width: 100,
+    borderRadius: 8,
+    borderWidth: 1,
+  },
+  empty1: {
+    margin: 15,
+    borderRadius: 8,
+    backgroundColor: '#f7f7f7',
+    width: 100,
+    height: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
