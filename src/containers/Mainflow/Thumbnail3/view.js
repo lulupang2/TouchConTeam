@@ -107,13 +107,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  stackingBtn: {
-    paddingVertical: 7,
-    paddingHorizontal: 10.5,
-    borderWidth: 2,
-    borderColor: '#fff',
-    borderRadius: 10,
-  },
+  // stackingBtn: {
+  //   paddingVertical: 7,
+  //   paddingHorizontal: 10.5,
+  //   borderWidth: 2,
+  //   borderColor: '#fff',
+  //   borderRadius: 10,
+  // },
   text: {
     fontSize: 20,
     fontWeight: 'bold',
