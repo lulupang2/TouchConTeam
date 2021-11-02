@@ -21,8 +21,7 @@ const view = ({navigation}) => {
   return (
     <ScrollView
       contentContainerStyle={{alignItems: 'center'}}
-      style={{flex: 1}}
-    >
+      style={{flex: 1}}>
       <Button title="Go Main" onPress={() => navigation.navigate('Main')} />
       <Button
         title="Go TouchCon"
@@ -101,6 +100,11 @@ const view = ({navigation}) => {
         title="Go 스캔하기"
         onPress={() => navigation.navigate('RandomSc')}
       />
+      <Button
+        title="Go PinLogin"
+        onPress={() => navigation.navigate('PinLogin')}
+      />
+      <Button title="Go Pinchg" onPress={() => navigation.navigate('Pinchg')} />
     </ScrollView>
   );
 };

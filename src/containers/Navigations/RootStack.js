@@ -41,7 +41,7 @@ const Tab = createMaterialTopTabNavigator();
 const RootStack = () => (
   <Stack.Navigator
     // initialRouteName="TestButton"
-    initialRouteName="Splash"
+    initialRouteName="TestButton"
     screenOptions={{
       headerTitleAlign: 'center',
       headerTitleStyle: {

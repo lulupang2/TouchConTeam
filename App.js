@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import RootStack from './src/containers/Navigations/RootStack';
 import store, {persistor} from './src/redux/store';
+// import {withAuthenticator} from 'aws-amplify-react-native';
 
 function App() {
   return (
@@ -21,3 +22,4 @@ function App() {
 }
 
 export default App;
+// export default withAuthenticator(App);
