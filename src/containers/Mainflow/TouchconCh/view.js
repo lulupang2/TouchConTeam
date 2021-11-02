@@ -17,7 +17,6 @@ import BottomButton from '../../../components/BottomButton';
 const view = () => {
   const [ponit, setPonit] = useState('10000.11');
   return (
-    // test
     <View>
       <View style={styles.back}>
         <Text style={styles.tx1}>나의 현재 터치콘</Text>
