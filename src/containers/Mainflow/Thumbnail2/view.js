@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   ScrollView,
+  Modal,
 } from 'react-native';
 import BottomButton from '../../../components/BottomButton';
 import {NormalBoldLabel} from '../../../components/Label';

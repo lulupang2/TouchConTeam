@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -11,14 +11,25 @@ import {
   Touchable,
   ScrollView,
 } from 'react-native';
+import BottomButton from '../../../components/BottomButton';
+import ColumnView from '../../../components/ColumnView';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
+import {ModalPoup} from '../../../components/Modals';
 import RowView from '../../../components/RowView';
 import SwiperAd from '../../../components/SwiperAd';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 
 const view = () => {
+  const [visible, setVisible] = useState(false);
+
   return (
     <WhiteSafeAreaView>
+      <ModalPoup visible={visible}>
+        <ColumnView style={styles.modal_flex}>
+          <Text style={styles.modal_text}>준비중 입니다.</Text>
+          <BottomButton text={'확인'} onPress={() => setVisible(false)} />
+        </ColumnView>
+      </ModalPoup>
       {/* 스와이프 들어갈 곳 start*/}
       <SwiperAd />
       {/* 스와이프 들어갈 곳 end */}
@@ -36,7 +47,7 @@ const view = () => {
             source={require('../../../assets/icons/stacking_arrow.png')}
           />
           <TouchableOpacity
-            onPress={() => alert('준비중입니다.')}
+            onPress={() => setVisible(true)}
             style={styles.stackingBtn}>
             <NormalBoldLabel text={'신청'} style={{color: '#fff'}} />
           </TouchableOpacity>
@@ -108,13 +119,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  // stackingBtn: {
-  //   paddingVertical: 7,
-  //   paddingHorizontal: 10.5,
-  //   borderWidth: 2,
-  //   borderColor: '#fff',
-  //   borderRadius: 10,
-  // },
+  modal_text: {
+    color: '#000',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginVertical: 47,
+  },
+  modal_flex: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   text: {
     fontSize: 20,
     fontWeight: 'bold',

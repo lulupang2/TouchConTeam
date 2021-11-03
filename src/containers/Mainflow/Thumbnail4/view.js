@@ -29,6 +29,12 @@ const dataList = [
   {id: 8, title: '마마무'},
   {id: 9, title: '마마무'},
   {id: 10, title: '마마무'},
+  {id: 11, title: '마마무'},
+  {id: 12, title: '마마무'},
+  {id: 13, title: '마마무'},
+  {id: 14, title: '마마무'},
+  {id: 15, title: '마마무'},
+  {id: 16, title: '마마무'},
 ];
 
 const numColumns = 3;
