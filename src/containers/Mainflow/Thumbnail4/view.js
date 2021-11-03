@@ -15,6 +15,7 @@ import Swiper from 'react-native-swiper';
 import ColumnView from '../../../components/ColumnView';
 import {NormalBoldLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';
+import SwiperAd from '../../../components/SwiperAd';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 
 const dataList = [
@@ -71,17 +72,15 @@ const view = () => {
   return (
     <WhiteSafeAreaView>
       {/* 스와이프 들어갈 곳 start*/}
-      <View style={styles.back}>
-        <RowView style={styles.arr}>
-          <Text style={styles.tx1}>
-            광고스캔 랜덤보상{'\n'}매월 매년 참여 업체가 늘어납니다!
-          </Text>
-        </RowView>
-      </View>
+      <SwiperAd />
       {/* 스와이프 들어갈 곳 end */}
 
       {/* 광고 리스트들 */}
-      <ScrollView>
+      <ScrollView
+        style={{
+          backgroundColor: '#fff',
+          height: 400,
+        }}>
         <View style={styles.container}>
           <FlatList
             data={formatData(dataList, numColumns)}
@@ -109,11 +108,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   tx1: {fontSize: 20, color: '#ffffff'},
-
-  container: {
-    flex: 1,
-    marginTop: 26,
-  },
   adScreen: {
     margin: 15,
     alignItems: 'center',
