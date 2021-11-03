@@ -25,7 +25,6 @@ function Signup(props) {
   const [ser_agree, setSer_agree] = useState(false);
   const [per_agree, setPer_agree] = useState(false);
   const [mark_agree, setMark_agree] = useState(false);
-  const [warnning, setWarnnig] = useState(false);
   const [email, onChangeEmail] = React.useState('');
   const [code, onChangeCode] = React.useState('');
 
@@ -53,14 +52,11 @@ function Signup(props) {
       setPer_agree(true);
       setSer_agree(true);
       setAllagree(true);
-    }
-  };
-  const gobtn = () => {
-    if (per_agree === true && ser_agree === true) {
-      setWarnnig(false);
-      props.navigation.navigate('Pinlogin');
     } else {
-      setWarnnig(true);
+      setMark_agree(false);
+      setPer_agree(false);
+      setSer_agree(false);
+      setAllagree(false);
     }
   };
 
@@ -135,9 +131,9 @@ function Signup(props) {
         <ImageBackground
           source={require('../../../assets/images/rectangle13.png')}
           style={{
-            width: width * 0.9,
+            width: 353,
             resizeMode: 'contain',
-            height: height * 0.2087,
+            height: 152,
             justifyContent: 'space-evenly',
           }}>
           <View
@@ -169,6 +165,7 @@ function Signup(props) {
                 />
               </TouchableOpacity>
             )}
+            {/*   서비스 이용 약관 동의 Text */}
             <TouchableOpacity
               onPress={chg_ser}
               style={{
@@ -176,6 +173,8 @@ function Signup(props) {
                 height: height * 0.03,
                 resizeMode: 'contain',
                 justifyContent: 'center',
+                // 글간 간격
+                marginTop: 24,
               }}>
               <View style={{flexDirection: 'column'}}>
                 <Image
@@ -186,18 +185,14 @@ function Signup(props) {
                     resizeMode: 'contain',
                   }}
                 />
-                {warnning ? (
-                  <Image
-                    source={require('../../../assets/images/warn_ser.png')}
-                    style={{
-                      width: width * 0.44,
-                      height: height * 0.03,
-                      resizeMode: 'contain',
-                      position: 'absolute',
-                      marginTop: height * 0.03,
-                    }}
-                  />
-                ) : null}
+
+                {/* 중간 확인 */}
+
+                <Text style={styles.warn_text}>
+                  {ser_agree ? null : '서비스 이용 약관 동의해 주세요'}
+                </Text>
+
+                {/* 중간 확인 */}
               </View>
             </TouchableOpacity>
             <TouchableOpacity>
@@ -248,27 +243,25 @@ function Signup(props) {
                 resizeMode: 'contain',
                 justifyContent: 'center',
               }}>
+              {/* 개인 정보 수집 및 이용 동의 Text */}
               <View style={{flexDirection: 'column'}}>
                 <Image
                   source={require('../../../assets/images/personal_agree.png')}
                   style={{
                     width: width * 0.6,
                     height: height * 0.03,
+                    marginTop: 24,
                     resizeMode: 'contain',
                   }}
                 />
-                {warnning ? (
-                  <Image
-                    source={require('../../../assets/images/warn_per.png')}
-                    style={{
-                      width: width * 0.56,
-                      height: height * 0.03,
-                      resizeMode: 'contain',
-                      position: 'absolute',
-                      marginTop: height * 0.03,
-                    }}
-                  />
-                ) : null}
+
+                {/* 중간 확인 */}
+
+                <Text style={styles.warn_text}>
+                  {per_agree ? null : '개인 정보 수집 및 이용 동의해 주세요'}
+                </Text>
+
+                {/* 중간 확인 */}
               </View>
             </TouchableOpacity>
             <TouchableOpacity>
@@ -314,23 +307,33 @@ function Signup(props) {
                 />
               </TouchableOpacity>
             )}
-            <TouchableOpacity
-              onPress={chg_mark}
-              style={{
-                width: width * 0.6,
-                height: height * 0.03,
-                resizeMode: 'contain',
-                justifyContent: 'center',
-              }}>
-              <Image
-                source={require('../../../assets/images/marketing_agree.png')}
+
+            <View style={{flexDirection: 'column'}}>
+              <TouchableOpacity
+                onPress={chg_mark}
                 style={{
-                  width: width * 0.45,
+                  width: width * 0.6,
                   height: height * 0.03,
                   resizeMode: 'contain',
-                }}
-              />
-            </TouchableOpacity>
+                  justifyContent: 'center',
+                  marginTop: 14,
+                }}>
+                {/* 마케팅 정보 알람 동의 Text  */}
+                <Image
+                  source={require('../../../assets/images/marketing_agree.png')}
+                  style={{
+                    width: width * 0.45,
+                    height: height * 0.03,
+                    resizeMode: 'contain',
+                    marginTop: 5,
+                  }}
+                />
+                <Text style={styles.warn_text}>
+                  {mark_agree ? null : '마케팅 정보 알람 동의해 주세요'}
+                </Text>
+              </TouchableOpacity>
+            </View>
+
             <TouchableOpacity>
               <Image
                 source={require('../../../assets/images/detailview.png')}
@@ -479,6 +482,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginLeft: width * 0.05,
   },
+  warn_text: {fontSize: 12, color: '#ff0000'},
 });
 
 export default Signup;
