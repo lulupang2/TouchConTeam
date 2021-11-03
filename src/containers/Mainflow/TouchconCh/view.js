@@ -13,7 +13,7 @@ import {
 import {HeaderWalletBottomLine} from '../../../components/HeaderBottomLine';
 import {NormalLabel} from '../../../components/Label';
 import BottomButton from '../../../components/BottomButton';
-import ColumnView from '../../../components/ColumnView';
+import RowView from '../../../components/RowView';
 const view = () => {
   const [ponit, setPonit] = useState('10000.11');
   return (
@@ -39,15 +39,25 @@ const view = () => {
         </View>
       </View>
 
-      <ColumnView
+      <RowView
         style={{
           borderWidth: 0.8,
           marginTop: 35,
           borderColor: '#c4c4c4',
           marginHorizontal: 24,
         }}>
-        <TextInput placeholder="    수량" style={{}} />
-      </ColumnView>
+        <TextInput
+          placeholder="    수량"
+          style={{width: 205}}
+          keyboardType="number-pad"
+        />
+        {/* Inputext 내의 Touch 글자 */}
+        <Image
+          source={require('../../../assets/images/signup_touch_text.png')}
+          resizeMode="contain"
+          style={{width: 89, height: 19, marginHorizontal: 19}}
+        />
+      </RowView>
 
       <BottomButton text={'터치콘 전환'} style={{marginVertical: 32}} />
       {/* <LongButton

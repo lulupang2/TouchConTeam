@@ -64,9 +64,11 @@ function Signup(props) {
     <ScrollView style={{flex: 1}}>
       <View style={{paddingLeft: 24}}>
         <NormalBoldLabel
+          keyboardType="email-address"
           style={{marginTop: 51, fontSize: 20, lineHeight: 24, marginBottom: 9}}
           text={'약관에 동의하고\n' + '이메일 주소를 입력해 주세요.'}
         />
+
         <NormalLabel
           style={{marginTop: 9, marginBottom: 19}}
           text={
