@@ -82,21 +82,16 @@ const view = () => {
       {/* 스와이프 들어갈 곳 end */}
 
       {/* 광고 리스트들 */}
-      <ScrollView
-        style={{
-          backgroundColor: '#fff',
-          height: 400,
-        }}>
-        <View style={styles.container}>
-          <FlatList
-            data={formatData(dataList, numColumns)}
-            renderItem={adView}
-            keyExtractor={(item, index) => index.toString()}
-            numColumns={numColumns}
-          />
-        </View>
-        {/* 광고 리스트들  */}
-      </ScrollView>
+
+      <View style={styles.container}>
+        <FlatList
+          data={formatData(dataList, numColumns)}
+          renderItem={adView}
+          keyExtractor={(item, index) => index.toString()}
+          numColumns={numColumns}
+        />
+      </View>
+      {/* 광고 리스트들  */}
     </WhiteSafeAreaView>
   );
 };
@@ -132,4 +127,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  container: {height: 550},
 });

@@ -7,13 +7,13 @@ import {
   Image,
   Text,
   TouchableOpacity,
-  Touchable,
   TextInput,
   ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import BottomButton from '../../../components/BottomButton';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
+import {Picker} from '@react-native-picker/picker';
 
 const {height, width} = Dimensions.get('window');
 
@@ -418,6 +418,8 @@ function Signup(props) {
           justifyContent: 'space-between',
           flexDirection: 'row',
         }}>
+        {/* 전화번호 picker : 010,011,017 */}
+
         <Text
           style={{
             borderWidth: 1,
@@ -430,6 +432,8 @@ function Signup(props) {
           }}>
           010
         </Text>
+        {/* 전화번호 picker : 010,011,017 */}
+
         <TextInput
           keyboardType="phone-pad"
           style={{
