@@ -187,7 +187,11 @@ export default function Main({navigation}) {
             style={{width: 25, height: 16}}
             source={require('../../../assets/icons/stacking_arrow.png')}
           />
-          <Touchable style={styles.stackingBtn}>
+          <Touchable
+            style={styles.stackingBtn}
+            onPress={() => {
+              navigation.navigate('Thumbnail3');
+            }}>
             <NormalBoldLabel text={'신청'} style={{color: '#fff'}} />
           </Touchable>
         </View>

@@ -52,7 +52,7 @@ export default function Intro3({navigation}) {
 
       <Touchable
         // onPress={() => navigation.navigate('Signup')}
-        onPress={() => navigation.navigate('MainPage')}
+        onPress={() => navigation.navigate('Pinlogin')}
         style={styles.bottomBtnWrapper}>
         <RowView style={styles.bottomBtnInner}>
           <Image

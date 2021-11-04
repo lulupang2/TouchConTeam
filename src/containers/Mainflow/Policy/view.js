@@ -9,8 +9,8 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
   SafeAreaView,
+  ScrollView,
 } from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import {NormalLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';

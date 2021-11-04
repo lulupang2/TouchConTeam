@@ -26,15 +26,6 @@ const dataList = [
   {id: 5, title: '마마무'},
   {id: 6, title: '마마무'},
   {id: 7, title: '마마무'},
-  {id: 8, title: '마마무'},
-  {id: 9, title: '마마무'},
-  {id: 10, title: '마마무'},
-  {id: 11, title: '마마무'},
-  {id: 12, title: '마마무'},
-  {id: 13, title: '마마무'},
-  {id: 14, title: '마마무'},
-  {id: 15, title: '마마무'},
-  {id: 16, title: '마마무'},
 ];
 
 const numColumns = 3;
@@ -78,8 +69,9 @@ const view = () => {
   return (
     <WhiteSafeAreaView>
       {/* 스와이프 들어갈 곳 start*/}
-      <SwiperAd />
+
       {/* 스와이프 들어갈 곳 end */}
+      <SwiperAd />
 
       {/* 광고 리스트들 */}
 
@@ -91,7 +83,6 @@ const view = () => {
           numColumns={numColumns}
         />
       </View>
-      {/* 광고 리스트들  */}
     </WhiteSafeAreaView>
   );
 };
@@ -99,10 +90,10 @@ const view = () => {
 export default view;
 
 const styles = StyleSheet.create({
-  back: {
-    backgroundColor: '#80D5AC',
-    minHeight: 100,
-  },
+  // back: {
+  //   backgroundColor: '#80D5AC',
+  //   minHeight: 100,
+  // },
   arr: {
     marginHorizontal: 33,
     marginVertical: 40,

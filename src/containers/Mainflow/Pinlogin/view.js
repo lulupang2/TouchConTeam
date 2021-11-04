@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   Image,
@@ -45,6 +45,12 @@ export default function Pinlogin({navigation}) {
   const [pwd, onChangePwd] = React.useState('');
   const [test, setTest] = useState('0000000');
   const [pwdbool, setPwdbool] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.navigate('Main');
+    }, 1000);
+  });
 
   const handleKeyPress = e => {
     console.log('rrr', pwdbool);
