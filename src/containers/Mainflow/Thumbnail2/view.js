@@ -12,6 +12,7 @@ import {
   Modal,
 } from 'react-native';
 import BottomButton from '../../../components/BottomButton';
+import CalendarTc from '../../../components/CalendarTc';
 import {NormalBoldLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';
 import SwiperAd from '../../../components/SwiperAd';
@@ -49,13 +50,13 @@ const view = () => {
 
         <View
           style={{
-            borderWidth: 1,
             borderColor: '#AAAAAAA',
             marginHorizontal: 24,
-            marginTop: 35,
             minHeight: 291,
+            position: 'relative',
+            top: 35,
           }}>
-          <Text>달력 들어올 곳</Text>
+          <CalendarTc />
         </View>
       </ScrollView>
     </WhiteSafeAreaView>
