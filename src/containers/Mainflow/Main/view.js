@@ -22,6 +22,20 @@ const AD_MENU = [
   {id: 3, name: '안동국밥', path: 'GfGukBab'},
 ];
 
+function leftPad(value) {
+  if (value >= 10) {
+    return value;
+  }
+  return `0${value}`;
+}
+
+function toStringByFormatting(source, delimiter = '-') {
+  const year = source.getFullYear();
+  const month = leftPad(source.getMonth() + 1);
+  const day = leftPad(source.getDate());
+  return [year, month, day].join(delimiter);
+}
+
 export default function Main({navigation}) {
   return (
     <WhiteSafeAreaView>
@@ -81,7 +95,10 @@ export default function Main({navigation}) {
             marginTop: 17,
             backgroundColor: 'rgba(14, 15, 15, 0.15)',
           }}
-          text={'[공지] 신규 광고주 제휴안내 2021.04.20'}
+          text={
+            '[공지] 신규 광고주 제휴안내' +
+            toStringByFormatting(new Date(), '.')
+          }
         />
 
         {/* 이벤트 스와이프 */}
