@@ -9,8 +9,9 @@ import {
   TouchableOpacity,
   SafeAreaView,
   ScrollView,
+  FlatList,
 } from 'react-native';
-import {FlatList} from 'react-native-gesture-handler';
+
 import Swiper from 'react-native-swiper';
 import ColumnView from '../../../components/ColumnView';
 import {NormalBoldLabel} from '../../../components/Label';
@@ -26,6 +27,9 @@ const dataList = [
   {id: 5, title: '마마무'},
   {id: 6, title: '마마무'},
   {id: 7, title: '마마무'},
+  {id: 8, title: '마마무'},
+  {id: 9, title: '마마무'},
+  {id: 10, title: '마마무'},
 ];
 
 const numColumns = 3;
