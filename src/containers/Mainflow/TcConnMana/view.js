@@ -15,9 +15,9 @@ import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import RowView from '../../../components/RowView';
 
 const Title = [
-  {id: 1, title: 'CAOLION', path: ''},
-  {id: 2, title: 'MEGAM'},
-  {id: 3, title: '안동국밥'},
+  {id: 1, title: 'CAOLION', path: 'GfCaolion'},
+  {id: 2, title: 'MEGAM', path: 'GfMegaMall'},
+  {id: 3, title: '안동국밥', path: 'GfGukBab'},
 ];
 
 const view = ({navigation}) => {
@@ -26,7 +26,11 @@ const view = ({navigation}) => {
       <HeaderBottomLine />
 
       {Title.map((text, i) => (
-        <BtnConn text={text} key={i} />
+        <BtnConn
+          text={text}
+          key={i}
+          onPress={() => navigation.navigate(text.path)}
+        />
       ))}
     </SafeAreaView>
   );
@@ -34,7 +38,7 @@ const view = ({navigation}) => {
 
 export default view;
 
-const BtnConn = ({text}) => {
+const BtnConn = ({text, onPress}) => {
   return (
     <RowView style={styles.rv}>
       <Text
@@ -53,9 +57,7 @@ const BtnConn = ({text}) => {
           height: 35,
           borderRadius: 53,
         }}
-        onPress={() => {
-          alert('연결됨');
-        }}>
+        onPress={onPress}>
         <Text
           style={{
             fontSize: 20,

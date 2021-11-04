@@ -33,6 +33,9 @@ import MyCoupon from '../Mainflow/MyCoupon/view';
 import ScanHistory from '../Mainflow/ScanHistory/view';
 import TouchCon from '../Mainflow/TouchCon/view';
 import TouchConCh from '../Mainflow/TouchconCh/view';
+import GfCaolion from '../Mainflow/GfCaolion/Caolion';
+import GfMegaMall from '../Mainflow/GfMegaMall/MegaMall';
+import GfGukBab from '../Mainflow/GfGukBab/GukBab';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 const Stack = createStackNavigator();
@@ -295,6 +298,22 @@ const RootStack = () => (
       options={{title: '터치콘 전환'}}
     />
     {/*---- 터치콘전환  end---- */}
+
+    <Stack.Screen
+      name="GfCaolion"
+      component={GfCaolion}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen
+      name="GfMegaMall"
+      component={GfMegaMall}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen
+      name="GfGukBab"
+      component={GfGukBab}
+      options={{headerShown: false}}
+    />
   </Stack.Navigator>
 );
 

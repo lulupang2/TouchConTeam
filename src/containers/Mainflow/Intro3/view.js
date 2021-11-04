@@ -19,8 +19,7 @@ export default function Intro3({navigation}) {
   return (
     <ScrollView
       contentContainerStyle={{paddingBottom: 50}}
-      style={{flex: 1, backgroundColor: '#123169'}}
-    >
+      style={{flex: 1, backgroundColor: '#123169'}}>
       <Image
         source={require('../../../assets/images/intro4_h2.png')}
         style={styles.topImage}
@@ -52,9 +51,9 @@ export default function Intro3({navigation}) {
       />
 
       <Touchable
-        onPress={() => navigation.navigate('Signup')}
-        style={styles.bottomBtnWrapper}
-      >
+        // onPress={() => navigation.navigate('Signup')}
+        onPress={() => navigation.navigate('MainPage')}
+        style={styles.bottomBtnWrapper}>
         <RowView style={styles.bottomBtnInner}>
           <Image
             style={{width: 32, height: 32, marginRight: 56}}

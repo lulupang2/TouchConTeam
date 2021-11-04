@@ -22,12 +22,6 @@ const view = () => {
       {/* 스와이프 들어갈 곳 start*/}
       <SwiperAd />
 
-      <ScrollView
-        style={{
-          backgroundColor: '#fff',
-          height: 470,
-        }}></ScrollView>
-
       {/* 스와이프 들어갈 곳 end */}
 
       {/* <View style={styles.back}>

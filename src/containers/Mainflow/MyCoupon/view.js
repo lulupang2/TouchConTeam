@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {
   StyleSheet,
@@ -28,7 +29,11 @@ const view = ({navigation}) => {
         />
       </View>
 
-      <BottomButton text={'지금 스캔하기'} style={{marginTop: 93}} />
+      <BottomButton
+        text={'지금 스캔하기'}
+        style={{marginTop: 93}}
+        onPress={() => navigation.navigate('RandomSc')}
+      />
       {/* <LongButton text={'지금 스캔하기'} tcStyle={{marginTop: 93}} /> */}
     </View>
   );

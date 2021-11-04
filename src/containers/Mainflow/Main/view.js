@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Dimensions, Image, ScrollView} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Navbar from '../../../components/Navbar/view';
 import Swiper from 'react-native-swiper';
@@ -87,6 +94,7 @@ export default function Main({navigation}) {
             height: 7,
             borderRadius: 3.5,
             marginHorizontal: 10,
+            marginLeft: 20,
           }}
           activeDotStyle={{
             backgroundColor: '#FD7F36',
@@ -94,27 +102,66 @@ export default function Main({navigation}) {
             height: 10,
             borderRadius: 5,
             marginHorizontal: 10,
+            marginLeft: 20,
+          }}
+          paginationStyle={{
+            position: 'relative',
+            top: -15,
           }}>
-          <RowView style={styles.swiperContentWrapper}>
-            <NormalBoldLabel
-              text={'유럽 미인들의 필수품'}
-              style={{color: '#fff'}}
-            />
-            <NormalBoldLabel
-              text={'카오리온 화장품'}
-              style={{color: '#fff', fontSize: 20, lineHeight: 24}}
-            />
-          </RowView>
-          <RowView style={styles.swiperContentWrapper}>
-            <NormalBoldLabel
-              text={'매일 매일 출석만 해도!'}
-              style={{color: '#fff'}}
-            />
-            <NormalBoldLabel
-              text={'터치토큰 증정'}
-              style={{color: '#fff', fontSize: 20, lineHeight: 24}}
-            />
-          </RowView>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Thumbnail1')}
+            style={{flex: 1, justifyContent: 'center'}}>
+            <RowView style={styles.swiperContentWrapper}>
+              <NormalBoldLabel
+                text={'유럽 미인들의 필수품'}
+                style={{color: '#fff'}}
+              />
+              <NormalBoldLabel
+                text={'카오리온 화장품'}
+                style={{color: '#fff', fontSize: 20, lineHeight: 24}}
+              />
+            </RowView>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Thumbnail2')}
+            style={{flex: 1, justifyContent: 'center'}}>
+            <RowView style={styles.swiperContentWrapper}>
+              <NormalBoldLabel
+                text={'매일 매일 출석만 해도!'}
+                style={{color: '#fff'}}
+              />
+              <NormalBoldLabel
+                text={'터치토큰 증정'}
+                style={{color: '#fff', fontSize: 20, lineHeight: 24}}
+              />
+            </RowView>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Thumbnail3')}
+            style={{flex: 1, justifyContent: 'center'}}>
+            <RowView style={styles.swiperContentWrapper2}>
+              <NormalBoldLabel
+                text={'터치토큰,' + '\n' + '적립해서 이자 받으셔야죠!'}
+                style={{color: '#fff', fontSize: 20, lineHeight: 24}}
+              />
+            </RowView>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Thumbnail4')}
+            style={{flex: 1, justifyContent: 'center'}}>
+            <RowView style={styles.swiperContentWrapper3}>
+              <NormalBoldLabel
+                text={
+                  '광고스캔 랜덤보상' +
+                  '\n' +
+                  '매월 매년 참여 업체가 늘어납니다!'
+                }
+                style={{color: '#fff', fontSize: 20, lineHeight: 24}}
+              />
+            </RowView>
+          </TouchableOpacity>
         </Swiper>
 
         <View style={styles.stackingWrapper}>
@@ -202,7 +249,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   swiperContainer: {
-    backgroundColor: '#82A9CD',
     height: 100,
   },
   swiperContentWrapper: {
@@ -210,6 +256,22 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     paddingHorizontal: 33,
     alignItems: 'center',
+    backgroundColor: '#82A9CD',
+    // paddingBottom: 24
+  },
+  swiperContentWrapper2: {
+    flex: 1,
+    paddingHorizontal: 33,
+    alignItems: 'center',
+    backgroundColor: '#FFB82E',
+    // paddingBottom: 24
+  },
+  swiperContentWrapper3: {
+    flex: 1,
+    justifyContent: 'space-evenly',
+    paddingHorizontal: 33,
+    alignItems: 'center',
+    backgroundColor: '#80D5AC',
     // paddingBottom: 24
   },
   stackingWrapper: {

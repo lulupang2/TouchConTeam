@@ -1,9 +1,12 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import Swiper from 'react-native-swiper';
 import RowView from './RowView';
+import {useNavigation} from '@react-navigation/native';
 
 const SwiperAd = () => {
+  const navigation = useNavigation();
   return (
     <Swiper
       autoplay
@@ -23,33 +26,50 @@ const SwiperAd = () => {
         marginLeft: 20,
       }}
       paginationStyle={{position: 'absolute', top: 85, bottom: undefined}}>
-      <View style={styles.back}>
-        <RowView style={styles.arr}>
-          <Text style={styles.tx1}>유럽 미인들의 필수품</Text>
-          <Text style={styles.tx2}>카오리온 화장품</Text>
-        </RowView>
-      </View>
-      <View style={styles.back}>
-        <RowView style={styles.arr}>
-          <Text style={styles.tx1}>매일 매일 출석만 해도!</Text>
-          <Text style={styles.tx2}>터치토큰</Text>
-          <Text style={styles.tx1}>증정</Text>
-        </RowView>
-      </View>
-      <View style={styles.back_y}>
-        <RowView style={styles.arr_y}>
-          <Text style={styles.tx2}>
-            터치토큰,{'\n'}적립해서 이자 받으셔야죠!
-          </Text>
-        </RowView>
-      </View>
-      <View style={styles.back_g}>
-        <RowView style={styles.arr_y}>
-          <Text style={styles.tx2}>
-            광고스캔 랜덤보상{'\n'}매월 매년 참여 업체가 늘어납니다!
-          </Text>
-        </RowView>
-      </View>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Thumbnail1')}
+        style={{justifyContent: 'center'}}>
+        <View style={styles.back}>
+          <RowView style={styles.arr}>
+            <Text style={styles.tx1}>유럽 미인들의 필수품</Text>
+            <Text style={styles.tx2}>카오리온 화장품</Text>
+          </RowView>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Thumbnail2')}
+        style={{justifyContent: 'center'}}>
+        <View style={styles.back}>
+          <RowView style={styles.arr}>
+            <Text style={styles.tx1}>매일 매일 출석만 해도!</Text>
+            <Text style={styles.tx2}>터치토큰</Text>
+            <Text style={styles.tx1}>증정</Text>
+          </RowView>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Thumbnail3')}
+        style={{justifyContent: 'center'}}>
+        <View style={styles.back_y}>
+          <RowView style={styles.arr_y}>
+            <Text style={styles.tx2}>
+              터치토큰,{'\n'}적립해서 이자 받으셔야죠!
+            </Text>
+          </RowView>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Thumbnail4')}
+        style={{justifyContent: 'center'}}>
+        <View style={styles.back_g}>
+          <RowView style={styles.arr_y}>
+            <Text style={styles.tx2}>
+              광고스캔 랜덤보상{'\n'}매월 매년 참여 업체가 늘어납니다!
+            </Text>
+          </RowView>
+        </View>
+      </TouchableOpacity>
     </Swiper>
   );
 };

@@ -1,12 +1,5 @@
 import React, {useState} from 'react';
-import {
-  StyleSheet,
-  View,
-  Dimensions,
-  Image,
-  ScrollView,
-  Clipboard,
-} from 'react-native';
+import {StyleSheet, View, Dimensions, Image, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {CircleButton} from '../../../components/Botton';
 import {HeaderWalletBottomLine} from '../../../components/HeaderBottomLine';
@@ -18,7 +11,7 @@ import Touchable from '../../../components/Touchable';
 const MENU = [
   {name: 'Touch\n결제', path: ''},
   {name: '지갑\n생성', path: 'Wallet'},
-  {name: '터치콘\n전환', path: ''},
+  {name: '터치콘\n전환', path: 'TouchConCh'},
   {name: '스캔\n보기', path: 'ScanHistory'},
 ];
 
@@ -31,8 +24,7 @@ const view = ({navigation}) => {
         <View style={styles.topContainer}>
           <WhiteLine />
           <RowView
-            style={{paddingVertical: 8, justifyContent: 'space-between'}}
-          >
+            style={{paddingVertical: 8, justifyContent: 'space-between'}}>
             <Image
               source={require('../../../assets/icons/coin_icon.png')}
               style={{width: 80, height: 79}}
@@ -71,8 +63,7 @@ const view = ({navigation}) => {
                 borderColor: '#fd7f36',
                 alignSelf: 'center',
                 marginTop: 30,
-              }}
-            >
+              }}>
               <Image
                 source={require('../../../assets/images/qr_code.png')}
                 style={{width: 153, height: 150}}
@@ -97,8 +88,7 @@ const view = ({navigation}) => {
           </View>
         ) : (
           <View
-            style={{justifyContent: 'center', alignItems: 'center', flex: 1}}
-          >
+            style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
             <NormalBoldLabel
               text={'*지갑 생성을 누르면 자동으로\n지갑이 생성됩니다.'}
               style={{color: '#c4c4c4', textAlign: 'center'}}
@@ -122,8 +112,7 @@ const MenuBtn = ({menu}) => {
         if (menu.path) {
           navigation.navigate(menu.path);
         }
-      }}
-    >
+      }}>
       <NormalBoldLabel text={menu.name} style={styles.menuText} />
     </Touchable>
   );

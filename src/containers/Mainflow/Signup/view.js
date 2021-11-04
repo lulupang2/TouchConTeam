@@ -20,7 +20,7 @@ const {height, width} = Dimensions.get('window');
 const vh = height / 100;
 const vw = width / 100;
 
-function Signup(props) {
+function Signup({props, navigation}) {
   const [allagree, setAllagree] = useState(false);
   const [ser_agree, setSer_agree] = useState(false);
   const [per_agree, setPer_agree] = useState(false);
@@ -461,7 +461,11 @@ function Signup(props) {
       </View>
 
       {/* 다음 버튼 */}
-      <BottomButton text={'다음'} />
+      {/* PinLogin으로 가야하나 지금은 바로 Main으로 가게  */}
+      <BottomButton
+        text={'다음'}
+        onPress={() => navigation.navigate('Pinlogin')}
+      />
 
       {/* <View style={{marginLeft: width * 0.05}}>
         <TouchableOpacity onPress={gobtn}>
