@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   ScrollView,
+  TextInput,
 } from 'react-native';
 
 import {HeaderThickBottomLine} from '../../../components/HeaderBottomLine';
@@ -16,12 +17,101 @@ import RowView from '../../../components/RowView';
 import ColumnView from '../../../components/ColumnView';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import BottomButton from '../../../components/BottomButton';
+import {ModalPoup2} from '../../../components/Modals';
 
-const view = ({navigation}) => {
+const view = ({navigation, sendmodal}) => {
+  const [visible, setVisible] = useState(false);
+  const [coin, setCoin] = useState('TouchCon');
+  const [eth, setEth] = useState('ETH');
+  const [add, setAdd] = useState('보내기에서 주소 전달');
+
+  const clickedTouchCon = () => {
+    setVisible(true);
+    setCoin('TouchCon');
+    console.log(' 터치콘 클릭함');
+  };
+
+  const clickedEthereum = () => {
+    setVisible(true);
+    setCoin('Ethereum');
+    console.log(' 이더리움 클릭함');
+  };
+
+  const sendCoin = text => {
+    var sessionToken = 'efwfwefwefwewefw';
+    var curr_coin = coin;
+    var curr_add = add;
+    console.log(curr_coin);
+    console.log(curr_add);
+    setVisible(false);
+
+    fetch('http://wefljewflfewwf', {
+      method: 'POST',
+    });
+  };
+
+  const clickSend = text => {
+    var curr_coin = coin;
+    var curr_add = add;
+    console.log(curr_coin);
+    console.log(curr_add);
+  };
+
   return (
     <WhiteSafeAreaView>
       <HeaderThickBottomLine />
 
+      <ModalPoup2 visible={visible}>
+        <ColumnView style={styles.modal_flex}>
+          <TouchableOpacity onPress={() => setVisible(false)}>
+            <Image
+              source={require('../../../assets/images/x.png')}
+              resizeMode="contain"
+              style={{
+                width: 20,
+                height: 20,
+                marginTop: 20,
+                marginLeft: 320,
+              }}
+            />
+          </TouchableOpacity>
+          <Text style={styles.modal_text1}>출금을 위한 주소를 입력하세요</Text>
+          <TextInput
+            placeholder="주소"
+            style={{
+              minHeight: 50,
+              minWidth: 285,
+              marginHorizontal: 28,
+              borderRadius: 5,
+              borderWidth: 0.5,
+              borderColor: 'gray',
+              marginBottom: 14,
+            }}
+            onChangeText={text => setAdd(text)}
+          />
+          <TextInput
+            placeholder="출금수량"
+            style={{
+              minHeight: 50,
+              minWidth: 285,
+              marginHorizontal: 28,
+              borderRadius: 5,
+              borderWidth: 0.5,
+              borderColor: 'gray',
+              marginBottom: 45,
+            }}
+            onChangeText={text => {
+              if (setCoin) {
+                setCoin(text);
+              } else {
+                setEth(text);
+              }
+            }}
+            keyboardType="number-pad"
+          />
+          <BottomButton text={'확인'} onPress={() => clickSend()} />
+        </ColumnView>
+      </ModalPoup2>
       <Image
         source={require('../../../assets/images/wallet_tx_qr.png')}
         style={{
@@ -38,11 +128,34 @@ const view = ({navigation}) => {
       <View style={styles.under}>
         <HeaderThickBottomLine />
         {/* 터치콘 */}
+
         <ScrollView>
           <View style={styles.back1}>
             <RowView style={{justifyContent: 'space-between'}}>
               <Text style={styles.tx1}>터치콘</Text>
-              <BtnPass />
+
+              {/* 터치콘 보내기 모달 적용 보내기  */}
+              <TouchableOpacity onPress={() => clickedTouchCon()}>
+                <RowView
+                  style={{
+                    backgroundColor: '#FD7F36',
+                    width: 104,
+                    height: 40,
+                    justifyContent: 'space-between',
+                    borderRadius: 5,
+                    marginRight: 20,
+                    marginTop: 20,
+                  }}>
+                  <Text
+                    style={{fontSize: 15, marginLeft: 13, color: '#ffffff'}}>
+                    보내기
+                  </Text>
+                  <Image
+                    source={require('../../../assets/icons/pass_wh.png')}
+                    style={{width: 26, height: 23, marginRight: 9}}
+                  />
+                </RowView>
+              </TouchableOpacity>
             </RowView>
             <RowView>
               <Image
@@ -58,11 +171,33 @@ const view = ({navigation}) => {
 
           {/* 터치콘 */}
           <BottomButton text={'거래소 가기'} />
-          {/* 이더리움 */}
+
           <View style={styles.back2}>
             <RowView style={{justifyContent: 'space-between'}}>
-              <Text style={styles.tx1}>터치콘</Text>
-              <BtnPass />
+              <Text style={styles.tx1}>이더리움</Text>
+
+              {/* 모달 적용 이더리움 보내기  */}
+              <TouchableOpacity onPress={() => clickedEthereum()}>
+                <RowView
+                  style={{
+                    backgroundColor: '#FD7F36',
+                    width: 104,
+                    height: 40,
+                    justifyContent: 'space-between',
+                    borderRadius: 5,
+                    marginRight: 20,
+                    marginTop: 20,
+                  }}>
+                  <Text
+                    style={{fontSize: 15, marginLeft: 13, color: '#ffffff'}}>
+                    보내기
+                  </Text>
+                  <Image
+                    source={require('../../../assets/icons/pass_wh.png')}
+                    style={{width: 26, height: 23, marginRight: 9}}
+                  />
+                </RowView>
+              </TouchableOpacity>
             </RowView>
             <RowView>
               <Image
@@ -128,11 +263,18 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginBottom: 22,
   },
+  modal_text1: {
+    fontSize: 20,
+    textAlign: 'center',
+    color: '#000',
+    marginTop: 37,
+    marginBottom: 45,
+  },
 });
 
 const BtnPass = ({onPress}) => {
   return (
-    <TouchableOpacity onPress={() => alert('보내기')}>
+    <TouchableOpacity onPress={onPress}>
       <RowView
         style={{
           backgroundColor: '#FD7F36',
