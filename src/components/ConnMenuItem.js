@@ -14,7 +14,8 @@ export const ConnMitem = ({onPress, text, viStyle, tcStyle, txStyle}) => {
         borderBottomColor: '#c4c4c4',
         borderBottomWidth: 1,
         ...viStyle,
-      }}>
+      }}
+    >
       <NormalBoldLabelBl text={text} />
 
       <TouchableOpacity
@@ -27,7 +28,8 @@ export const ConnMitem = ({onPress, text, viStyle, tcStyle, txStyle}) => {
         }}
         onPress={() => {
           alert('연결됨');
-        }}>
+        }}
+      >
         <Text
           style={{
             fontSize: 20,
@@ -36,7 +38,8 @@ export const ConnMitem = ({onPress, text, viStyle, tcStyle, txStyle}) => {
             marginLeft: 20,
             marginTop: 3,
             ...txStyle,
-          }}>
+          }}
+        >
           연결
         </Text>
       </TouchableOpacity>

@@ -63,7 +63,8 @@ const view = ({navigation}) => {
           marginRight: 51,
           borderColor: '#c4c4c4',
           padding: 11,
-        }}>
+        }}
+      >
         <Text
           style={{
             fontSize: 18,
@@ -71,13 +72,15 @@ const view = ({navigation}) => {
             color: '#000',
             marginLeft: 16,
             fontWeight: 'blod',
-          }}>
+          }}
+        >
           위 사항에 모두 동의 합니다.
         </Text>
         <TouchableOpacity
           onPress={() => {
             chMark();
-          }}>
+          }}
+        >
           {mark ? (
             <Image
               source={require('../../../assets/images/square.png')}

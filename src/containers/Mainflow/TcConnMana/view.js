@@ -47,7 +47,8 @@ const BtnConn = ({text, onPress}) => {
           fontWeight: 'bold',
           fontSize: 15,
           marginVertical: 18,
-        }}>
+        }}
+      >
         {text.title}
       </Text>
       <TouchableOpacity
@@ -57,7 +58,8 @@ const BtnConn = ({text, onPress}) => {
           height: 35,
           borderRadius: 53,
         }}
-        onPress={onPress}>
+        onPress={onPress}
+      >
         <Text
           style={{
             fontSize: 20,
@@ -65,7 +67,8 @@ const BtnConn = ({text, onPress}) => {
             color: '#FFFFFF',
             marginLeft: 20,
             marginTop: 3,
-          }}>
+          }}
+        >
           연결
         </Text>
       </TouchableOpacity>

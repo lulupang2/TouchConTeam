@@ -38,7 +38,8 @@ const view = () => {
         style={{
           backgroundColor: '#fff',
           position: 'relative',
-        }}>
+        }}
+      >
         <View style={styles.stackingWrapper}>
           <NormalBoldLabel text={'TOC 스테이킹 하기'} style={{color: '#fff'}} />
 
@@ -48,7 +49,8 @@ const view = () => {
           />
           <TouchableOpacity
             onPress={() => setVisible(true)}
-            style={styles.stackingBtn}>
+            style={styles.stackingBtn}
+          >
             <NormalBoldLabel text={'신청'} style={{color: '#fff'}} />
           </TouchableOpacity>
         </View>
@@ -57,7 +59,8 @@ const view = () => {
           style={{
             paddingTop: 18,
             paddingHorizontal: 24,
-          }}>
+          }}
+        >
           <View
             style={{
               backgroundColor: '#fd7f36',

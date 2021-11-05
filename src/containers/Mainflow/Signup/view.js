@@ -81,7 +81,8 @@ function Signup({props, navigation}) {
       <View
         style={{
           marginLeft: width * 0.05,
-        }}>
+        }}
+      >
         <View
           style={{
             width: width * 0.9,
@@ -91,7 +92,8 @@ function Signup({props, navigation}) {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-evenly',
-          }}>
+          }}
+        >
           {allagree ? (
             <TouchableOpacity onPress={chg_all}>
               <Image
@@ -117,7 +119,8 @@ function Signup({props, navigation}) {
           )}
           <TouchableOpacity
             onPress={chg_all}
-            style={{width: width * 0.75, height: height * 0.03}}>
+            style={{width: width * 0.75, height: height * 0.03}}
+          >
             <Image
               source={require('../../../assets/images/nobutton.png')}
               style={{
@@ -137,13 +140,15 @@ function Signup({props, navigation}) {
             resizeMode: 'contain',
             height: 152,
             justifyContent: 'space-evenly',
-          }}>
+          }}
+        >
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-evenly',
-            }}>
+            }}
+          >
             {ser_agree ? (
               <TouchableOpacity onPress={chg_ser}>
                 <Image
@@ -177,7 +182,8 @@ function Signup({props, navigation}) {
                 justifyContent: 'center',
                 // 글간 간격
                 marginTop: 24,
-              }}>
+              }}
+            >
               <View style={{flexDirection: 'column'}}>
                 <Image
                   source={require('../../../assets/images/service_agree.png')}
@@ -213,7 +219,8 @@ function Signup({props, navigation}) {
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-evenly',
-            }}>
+            }}
+          >
             {per_agree ? (
               <TouchableOpacity onPress={chg_per}>
                 <Image
@@ -244,7 +251,8 @@ function Signup({props, navigation}) {
                 height: height * 0.03,
                 resizeMode: 'contain',
                 justifyContent: 'center',
-              }}>
+              }}
+            >
               {/* 개인 정보 수집 및 이용 동의 Text */}
               <View style={{flexDirection: 'column'}}>
                 <Image
@@ -285,7 +293,8 @@ function Signup({props, navigation}) {
               paddingBottom: 20,
               borderBottomWidth: 1,
               borderColor: '#c4c4c4',
-            }}>
+            }}
+          >
             {mark_agree ? (
               <TouchableOpacity onPress={chg_mark}>
                 <Image
@@ -319,7 +328,8 @@ function Signup({props, navigation}) {
                   resizeMode: 'contain',
                   justifyContent: 'center',
                   marginTop: 14,
-                }}>
+                }}
+              >
                 {/* 마케팅 정보 알람 동의 Text  */}
                 <Image
                   source={require('../../../assets/images/marketing_agree.png')}
@@ -393,7 +403,8 @@ function Signup({props, navigation}) {
             width: 139,
             height: 40,
             marginRight: 25,
-          }}>
+          }}
+        >
           <NormalBoldLabel
             text={'인증코드 발송'}
             style={{fontSize: 18, color: '#fff'}}
@@ -408,7 +419,8 @@ function Signup({props, navigation}) {
           marginLeft: 26,
           marginTop: 28,
           fontWeight: 'bold',
-        }}>
+        }}
+      >
         전화번호
       </Text>
       <View
@@ -419,7 +431,8 @@ function Signup({props, navigation}) {
           display: 'flex',
           justifyContent: 'space-between',
           flexDirection: 'row',
-        }}>
+        }}
+      >
         {/* 전화번호 picker : 010,011,017 */}
 
         <Text
@@ -431,7 +444,8 @@ function Signup({props, navigation}) {
             fontSize: 15,
             textAlign: 'center',
             paddingTop: 11,
-          }}>
+          }}
+        >
           010
         </Text>
         {/* 전화번호 picker : 010,011,017 */}
@@ -444,7 +458,8 @@ function Signup({props, navigation}) {
             borderColor: '#E3E5E5',
             width: 260,
             borderRadius: 10,
-          }}></TextInput>
+          }}
+        ></TextInput>
       </View>
       {/* 주의사항 */}
       <View style={{marginLeft: width * 0.05}}>

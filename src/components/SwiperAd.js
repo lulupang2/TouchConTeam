@@ -25,10 +25,12 @@ const SwiperAd = () => {
         borderRadius: 5,
         marginLeft: 20,
       }}
-      paginationStyle={{position: 'absolute', top: 85, bottom: undefined}}>
+      paginationStyle={{position: 'absolute', top: 85, bottom: undefined}}
+    >
       <TouchableOpacity
         onPress={() => navigation.navigate('Thumbnail1')}
-        style={{justifyContent: 'center'}}>
+        style={{justifyContent: 'center'}}
+      >
         <View style={styles.back}>
           <RowView style={styles.arr}>
             <Text style={styles.tx1}>유럽 미인들의 필수품</Text>
@@ -39,7 +41,8 @@ const SwiperAd = () => {
 
       <TouchableOpacity
         onPress={() => navigation.navigate('Thumbnail2')}
-        style={{justifyContent: 'center'}}>
+        style={{justifyContent: 'center'}}
+      >
         <View style={styles.back}>
           <RowView style={styles.arr}>
             <Text style={styles.tx1}>매일 매일 출석만 해도!</Text>
@@ -50,7 +53,8 @@ const SwiperAd = () => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate('Thumbnail3')}
-        style={{justifyContent: 'center'}}>
+        style={{justifyContent: 'center'}}
+      >
         <View style={styles.back_y}>
           <RowView style={styles.arr_y}>
             <Text style={styles.tx2}>
@@ -61,7 +65,8 @@ const SwiperAd = () => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate('Thumbnail4')}
-        style={{justifyContent: 'center'}}>
+        style={{justifyContent: 'center'}}
+      >
         <View style={styles.back_g}>
           <RowView style={styles.arr_y}>
             <Text style={styles.tx2}>

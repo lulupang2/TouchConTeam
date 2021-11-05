@@ -45,7 +45,8 @@ const view = () => {
           marginTop: 35,
           borderColor: '#c4c4c4',
           marginHorizontal: 24,
-        }}>
+        }}
+      >
         <TextInput
           placeholder="    수량"
           style={{width: 205}}

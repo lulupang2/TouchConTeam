@@ -63,7 +63,8 @@ const view = ({navigation}) => {
             justifyContent: 'space-between',
             alignContent: 'center',
             alignItems: 'center',
-          }}>
+          }}
+        >
           <Text style={{marginLeft: 20, fontSize: 15, color: '#fff'}}>
             현재 적립액
           </Text>
@@ -141,7 +142,8 @@ const Btnwhite = ({onPress, text, style}) => {
         marginHorizontal: 24,
         ...style,
         // position: 'absolute', width: width-48, bottom: 32,
-      }}>
+      }}
+    >
       <NormalBoldLabel
         text={text}
         style={{fontSize: 20, lineHeight: 24, color: '#fd7f36'}}

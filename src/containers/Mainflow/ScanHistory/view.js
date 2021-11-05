@@ -66,9 +66,11 @@ const ScHistory = ({menu, index}) => {
           borderWidth: 1,
           borderColor: '#c4c4c4',
           backgroundColor: index % 2 === 1 ? '#EBEBEB' : '#FFFFFF',
-        }}>
+        }}
+      >
         <RowView
-          style={{justifyContent: 'space-between', width: 166, marginLeft: 22}}>
+          style={{justifyContent: 'space-between', width: 166, marginLeft: 22}}
+        >
           <NormalBoldLabel text={menu.date} style={styles.day} />
 
           <NormalBoldLabel

@@ -35,7 +35,8 @@ const view = () => {
           backgroundColor: '#fff',
           position: 'relative',
           top: 35,
-        }}>
+        }}
+      >
         <BottomButton text={'오늘 출석하기'} onPress={increase} />
 
         <Text
@@ -44,7 +45,8 @@ const view = () => {
             fontWeight: 'bold',
             color: '#0068D9',
             alignSelf: 'center',
-          }}>
+          }}
+        >
           {'출석일수  ' + num + '일'}
         </Text>
 
@@ -55,7 +57,8 @@ const view = () => {
             minHeight: 291,
             position: 'relative',
             top: 35,
-          }}>
+          }}
+        >
           <CalendarTc />
         </View>
       </ScrollView>

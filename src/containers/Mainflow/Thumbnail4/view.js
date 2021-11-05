@@ -61,7 +61,8 @@ const adView = ({item, index}) => {
           style={{
             fontSize: 15,
             color: '#000',
-          }}>
+          }}
+        >
           {item.title}
         </Text>
       </ColumnView>

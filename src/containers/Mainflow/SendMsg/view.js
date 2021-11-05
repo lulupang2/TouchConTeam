@@ -28,7 +28,8 @@ const view = ({navigation}) => {
             paddingTop: 18,
             paddingHorizontal: 24,
             paddingBottom: 15,
-          }}>
+          }}
+        >
           <View
             style={{
               backgroundColor: '#fd7f36',
