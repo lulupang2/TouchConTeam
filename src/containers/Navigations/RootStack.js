@@ -27,7 +27,7 @@ import Thumbnail1 from '../Mainflow/Thumbnail1/view';
 import Thumbnail4 from '../Mainflow/Thumbnail4/view';
 import Prepare from '../Mainflow/Prep/view';
 import Signup from '../Mainflow/Signup/view';
-import ScanResult from '../Mainflow/ScanResult/view';
+// import ScanResult from '../Mainflow/ScanResult/view';
 import RandomSc from '../Mainflow/RandomSc/view';
 import MyCoupon from '../Mainflow/MyCoupon/view';
 import ScanHistory from '../Mainflow/ScanHistory/view';
@@ -244,11 +244,11 @@ const RootStack = () => (
     />
 
     {/*------스캔 결과 start---------  */}
-    <Stack.Screen
+    {/* <Stack.Screen
       name="ScanResult"
       component={ScanResult}
       options={{headerShown: false}}
-    />
+    /> */}
     {/*------스캔 결과 end---------  */}
 
     {/* ------- 스캔하기 start --------- */}
