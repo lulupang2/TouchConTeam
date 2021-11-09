@@ -11,7 +11,7 @@ const Stack = createDrawerNavigator();
 export const DrawerStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Main"
+      initialRouteName="Home"
       drawerPosition="right"
       screenOptions={{
         drawerPosition: 'right',
@@ -30,7 +30,7 @@ export const DrawerStack = () => {
       drawerContent={props => <RightDrawer />}
     >
       <Stack.Screen
-        name="Main"
+        name="Home"
         component={Main}
         options={{headerShown: false}}
       />

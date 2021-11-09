@@ -8,6 +8,10 @@ import RowView from '../../../components/RowView';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 import Touchable from '../../../components/Touchable';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import QRCode from 'react-native-qrcode-svg';
+import axios from 'axios';
+import {useDispatch, useSelector} from 'react-redux';
+import {walletGenerator} from '../../../redux/authSlice';
 
 const MENU = [
   {name: 'Touch\n결제', path: ''},
@@ -16,9 +20,18 @@ const MENU = [
   {name: '스캔\n보기', path: 'ScanHistory'},
 ];
 
-const view = ({navigation}) => {
-  const [hasWallet, setHasWallet] = useState(true);
+const QR_CODE = require('../../../assets/images/qr_code.png');
 
+const view = ({navigation}) => {
+  const dispatch = useDispatch();
+  const auth = useSelector(state => state.auth);
+  const {
+    user,
+    walletAddress = '0x3215463e2184685415216ee4e4e56545656421ds121',
+    walletURL,
+  } = auth;
+
+  console.log('walletInfo', walletURL, walletAddress);
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -30,7 +43,7 @@ const view = ({navigation}) => {
             style={{
               padding: 4,
               alignSelf: 'center',
-              color: '#c4c4c4',
+              color: '#fff',
               paddingRight: 16,
             }}
           />
@@ -38,6 +51,11 @@ const view = ({navigation}) => {
       ),
     });
   }, []);
+
+  const walletCreate = async () => {
+    // dispatch(walletGenerator(user.id));
+    dispatch(walletGenerator());
+  };
 
   return (
     <WhiteSafeAreaView>
@@ -68,7 +86,21 @@ const view = ({navigation}) => {
 
           <RowView style={{marginTop: 15, justifyContent: 'space-between'}}>
             {MENU.map((menu, i) => (
-              <MenuBtn key={i} menu={menu} />
+              <MenuBtn
+                key={i}
+                menu={menu}
+                onPress={() => {
+                  if (menu.path === 'Wallet') {
+                    if (walletURL) {
+                      navigation.navigate(menu.path);
+                    } else {
+                      walletCreate();
+                    }
+                  } else {
+                    navigation.navigate(menu.path);
+                  }
+                }}
+              />
             ))}
           </RowView>
         </View>
@@ -77,7 +109,7 @@ const view = ({navigation}) => {
           text={'터치콘 지갑'}
           style={{fontSize: 16, lineHeight: 20, marginTop: 36, marginLeft: 23}}
         />
-        {hasWallet ? (
+        {walletURL ? (
           <View>
             <View
               style={{
@@ -87,13 +119,16 @@ const view = ({navigation}) => {
                 marginTop: 30,
               }}
             >
-              <Image
-                source={require('../../../assets/images/qr_code.png')}
-                style={{width: 153, height: 150}}
+              {/*<Image source={QR_CODE} style={{width: 153, height: 150}} />*/}
+              <QRCode
+                value={walletURL}
+                logo={QR_CODE}
+                // logoSize={30}
+                // logoBackgroundColor="transparent"
               />
             </View>
             <NormalBoldLabel
-              text={'0x3215463e2184685415216ee4e4e56545656421ds121'}
+              text={walletAddress}
               style={styles.walletAddress}
             />
 
@@ -126,18 +161,9 @@ const view = ({navigation}) => {
 
 export default view;
 
-const MenuBtn = ({menu}) => {
-  const navigation = useNavigation();
-
+const MenuBtn = ({menu, onPress}) => {
   return (
-    <Touchable
-      style={styles.menuBtn}
-      onPress={() => {
-        if (menu.path) {
-          navigation.navigate(menu.path);
-        }
-      }}
-    >
+    <Touchable style={styles.menuBtn} onPress={onPress}>
       <NormalBoldLabel text={menu.name} style={styles.menuText} />
     </Touchable>
   );

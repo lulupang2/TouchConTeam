@@ -259,6 +259,9 @@ const RootStack = () => (
         title: '스캔으로 랜덤 잭팟을!',
         headerStyle: {backgroundColor: '#FD7F36'},
         headerTintColor: '#fff',
+        // headerTitleStyle: {
+        //   color: '#fff',
+        // },
       }}
     />
     {/* ------- 스캔하기 end --------- */}
@@ -271,6 +274,9 @@ const RootStack = () => (
         title: '내쿠폰',
         headerStyle: {backgroundColor: '#FD7F36'},
         headerTintColor: '#fff',
+        headerTitleStyle: {
+          color: '#fff',
+        },
       }}
     />
     {/* ------ 내 쿠폰 end */}

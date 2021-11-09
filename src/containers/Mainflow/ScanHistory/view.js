@@ -9,7 +9,6 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
-  Touchable,
   ScrollViewBase,
   ScrollView,
 } from 'react-native';
@@ -18,6 +17,7 @@ import {NormalBoldLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Touchable from '../../../components/Touchable';
 
 const ScInventory = [
   {id: 1, date: '21.04.05', compensation: '200', ba: '카오리온'},
@@ -47,7 +47,7 @@ const view = ({navigation}) => {
             style={{
               padding: 4,
               alignSelf: 'center',
-              color: '#c4c4c4',
+              color: '#fff',
               paddingRight: 16,
             }}
           />

@@ -6,8 +6,9 @@ import {Alert} from 'react-native';
 const userSlice = createSlice({
   name: 'auth',
   initialState: {
-    // user: {},
     user: null,
+    walletAddress: null,
+    walletURL: null,
     signUpSuccess: false,
     signUpFail: false,
     loginSuccess: false,
@@ -56,6 +57,13 @@ const userSlice = createSlice({
     saveEditProfileReset(state) {
       state.editProfileSuccess = false;
     },
+    saveWallet(state, action) {
+      console.log('action', action.payload);
+      const {url, address} = action.payload;
+      state.walletURL = url;
+      state.walletAddress = address;
+      // state.walletAddress = action.payload;
+    },
   },
 });
 
@@ -71,6 +79,7 @@ export const {
   loginFail,
   saveEditProfileSuccess,
   saveEditProfileReset,
+  saveWallet,
 } = userSlice.actions;
 
 export const signUp = form => async dispatch => {
@@ -138,4 +147,20 @@ export const updateUserInfo = formData => async dispatch => {
   }
 };
 
+export const walletGenerator = userId => async dispatch => {
+  try {
+    // const {data} = await api.post('me/profile/', formData);
+    // dispatch(saveEditProfileSuccess());
+    // dispatch(saveUserInfo(data));
+
+    dispatch(
+      saveWallet(
+        'https://www.naver.com',
+        '0x3215463e2184685415216ee4e4e56545656421ds121',
+      ),
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};
 export default userSlice.reducer;

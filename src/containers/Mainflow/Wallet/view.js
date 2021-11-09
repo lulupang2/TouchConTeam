@@ -20,8 +20,18 @@ import BottomButton from '../../../components/BottomButton';
 import {ModalPoup2} from '../../../components/Modals';
 import Touchable from '../../../components/Touchable';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import axios from 'axios';
+import {useDispatch, useSelector} from 'react-redux';
 
 const view = ({navigation, sendmodal}) => {
+  const dispatch = useDispatch();
+  const auth = useSelector(state => state.auth);
+  const {
+    user,
+    walletAddress = '0x3215463e2184685415216ee4e4e56545656421ds121',
+    walletURL,
+  } = auth;
+
   const [visible, setVisible] = useState(false);
   const [coin, setCoin] = useState('TouchCon');
   const [eth, setEth] = useState('ETH');
@@ -38,7 +48,7 @@ const view = ({navigation, sendmodal}) => {
             style={{
               padding: 4,
               alignSelf: 'center',
-              color: '#c4c4c4',
+              color: '#fff',
               paddingRight: 16,
             }}
           />
@@ -67,9 +77,16 @@ const view = ({navigation, sendmodal}) => {
     console.log(curr_add);
     setVisible(false);
 
-    fetch('http://wefljewflfewwf', {
-      method: 'POST',
-    });
+    // fetch('http://wefljewflfewwf', {
+    //   method: 'POST',
+    // });
+
+    //    위 코드와 동일
+    // const response = axios.post('http://wefljewflfewwf');
+    // console.log(response.data); // {},
+    //
+    // const {data} = axios.post('http://wefljewflfewwf');
+    // console.log(data); // {}
   };
 
   const clickSend = text => {
