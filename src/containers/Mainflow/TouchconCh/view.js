@@ -14,6 +14,7 @@ import {HeaderWalletBottomLine} from '../../../components/HeaderBottomLine';
 import {NormalLabel} from '../../../components/Label';
 import BottomButton from '../../../components/BottomButton';
 import RowView from '../../../components/RowView';
+
 const view = () => {
   const [ponit, setPonit] = useState('10000.11');
   return (

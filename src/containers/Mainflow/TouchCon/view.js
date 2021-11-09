@@ -7,6 +7,7 @@ import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import RowView from '../../../components/RowView';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 import Touchable from '../../../components/Touchable';
+import QrGenerator1 from '../../../components/QrGenerator';
 
 const MENU = [
   {name: 'Touch\n결제', path: ''},
@@ -57,6 +58,7 @@ const view = ({navigation}) => {
         />
         {hasWallet ? (
           <View>
+            {console.log('qrCheck_삼항연산자 시작')}
             <View
               style={{
                 borderWidth: 11,
@@ -64,16 +66,13 @@ const view = ({navigation}) => {
                 alignSelf: 'center',
                 marginTop: 30,
               }}>
-              <Image
-                source={require('../../../assets/images/qr_code.png')}
-                style={{width: 153, height: 150}}
-              />
+              {console.log('qrCheck_0')}
+              <QrGenerator1 />
             </View>
             <NormalBoldLabel
               text={'0x3215463e2184685415216ee4e4e56545656421ds121'}
               style={styles.walletAddress}
             />
-
             <RowView style={{justifyContent: 'center', marginTop: 36}}>
               <BottomBtn
                 text={'복사'}

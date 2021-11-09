@@ -18,6 +18,8 @@ import ColumnView from '../../../components/ColumnView';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import BottomButton from '../../../components/BottomButton';
 import {ModalPoup2} from '../../../components/Modals';
+import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
+import QRCode from 'react-native-qrcode-generator';
 
 const view = ({navigation, sendmodal}) => {
   const [visible, setVisible] = useState(false);
@@ -60,7 +62,6 @@ const view = ({navigation, sendmodal}) => {
   return (
     <WhiteSafeAreaView>
       <HeaderThickBottomLine />
-
       <ModalPoup2 visible={visible}>
         <ColumnView style={styles.modal_flex}>
           <TouchableOpacity onPress={() => setVisible(false)}>
@@ -112,7 +113,22 @@ const view = ({navigation, sendmodal}) => {
           <BottomButton text={'확인'} onPress={() => clickSend()} />
         </ColumnView>
       </ModalPoup2>
-      <Image
+      {/* <ColumnView>
+        <NormalBoldLabel text={'터치콘 지갑 주소'} />
+        <Text>fgjlkssklf</Text>
+      </ColumnView> */}
+      {/* Qr코드 넣기 */}
+      {console.log('qr2 뷰 시작')}
+      <QRCode
+        value={'http://facebook.github.io/react-native/'}
+        size={50}
+        bgColor="black"
+        fgColor="white"
+      />
+
+      {console.log('qr2 뷰 끝')}
+      {/* qr코와  text코드 넣기  */}
+      {/* <Image
         source={require('../../../assets/images/wallet_tx_qr.png')}
         style={{
           marginHorizontal: 26,
@@ -121,10 +137,9 @@ const view = ({navigation, sendmodal}) => {
           height: 116,
           resizeMode: 'contain',
         }}
-      />
-
+      /> */}
+      {console.log('지갑 주소 복사하기')}
       <BottomButton text={'지갑 주소 복사하기'} />
-
       <View style={styles.under}>
         <HeaderThickBottomLine />
         {/* 터치콘 */}
@@ -213,7 +228,6 @@ const view = ({navigation, sendmodal}) => {
         </ScrollView>
         {/* 이더리움 */}
       </View>
-
       {/* <HeaderThickBottomLine /> */}
     </WhiteSafeAreaView>
   );
