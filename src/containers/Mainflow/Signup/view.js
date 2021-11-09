@@ -10,10 +10,8 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import BottomButton from '../../../components/BottomButton';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
-import {Picker} from '@react-native-picker/picker';
 
 const {height, width} = Dimensions.get('window');
 

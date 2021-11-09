@@ -6,6 +6,10 @@ import {PersistGate} from 'redux-persist/integration/react';
 import RootStack from './src/containers/Navigations/RootStack';
 import store, {persistor} from './src/redux/store';
 // import {withAuthenticator} from 'aws-amplify-react-native';
+// import Amplify from 'aws-amplify';
+// import config from './src/aws-exports';
+//
+// Amplify.configure(config);
 
 function App() {
   return (
@@ -22,4 +26,6 @@ function App() {
 }
 
 export default App;
-// export default withAuthenticator(App);
+// export default withAuthenticator(App, {
+//   includeGreetings: true,
+// });

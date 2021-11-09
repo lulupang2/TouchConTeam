@@ -149,17 +149,6 @@ const RootStack = () => (
       options={{headerShown: false}}
     />
 
-    <Stack.Screen
-      name="Thumbnail2"
-      component={Thumbnail2}
-      options={{title: 'x 버튼 필요'}}
-    />
-
-    <Stack.Screen
-      name="Thumbnail3"
-      component={Thumbnail3}
-      options={{title: 'x 버튼 필요'}}
-    />
     {/* 터치콘 연결관리 */}
     <Stack.Screen
       name="TcConnMana"
@@ -219,13 +208,23 @@ const RootStack = () => (
     <Stack.Screen
       name="Thumbnail1"
       component={Thumbnail1}
-      options={{headerShown: false}}
+      options={{title: ''}}
+    />
+    <Stack.Screen
+      name="Thumbnail2"
+      component={Thumbnail2}
+      options={{title: ''}}
     />
 
     <Stack.Screen
+      name="Thumbnail3"
+      component={Thumbnail3}
+      options={{title: ''}}
+    />
+    <Stack.Screen
       name="Thumbnail4"
       component={Thumbnail4}
-      options={{title: 'x 버튼 필요'}}
+      options={{title: ''}}
     />
 
     <Stack.Screen

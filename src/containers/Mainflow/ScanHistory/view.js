@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -17,6 +17,7 @@ import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import {NormalBoldLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const ScInventory = [
   {id: 1, date: '21.04.05', compensation: '200', ba: '카오리온'},
@@ -34,7 +35,27 @@ const ScInventory = [
   {id: 13, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
 ];
 
-const view = () => {
+const view = ({navigation}) => {
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Touchable onPress={() => navigation.navigate('Main')} style={{}}>
+          <AntDesign
+            name="close"
+            size={26}
+            color={'#000'}
+            style={{
+              padding: 4,
+              alignSelf: 'center',
+              color: '#c4c4c4',
+              paddingRight: 16,
+            }}
+          />
+        </Touchable>
+      ),
+    });
+  }, []);
+
   return (
     <WhiteSafeAreaView>
       <HeaderBottomLine />

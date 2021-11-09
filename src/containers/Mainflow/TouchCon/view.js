@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet, View, Dimensions, Image, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {CircleButton} from '../../../components/Botton';
@@ -7,6 +7,7 @@ import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import RowView from '../../../components/RowView';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 import Touchable from '../../../components/Touchable';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const MENU = [
   {name: 'Touch\n결제', path: ''},
@@ -17,6 +18,26 @@ const MENU = [
 
 const view = ({navigation}) => {
   const [hasWallet, setHasWallet] = useState(true);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Touchable onPress={() => navigation.navigate('Main')} style={{}}>
+          <AntDesign
+            name="close"
+            size={26}
+            color={'#000'}
+            style={{
+              padding: 4,
+              alignSelf: 'center',
+              color: '#c4c4c4',
+              paddingRight: 16,
+            }}
+          />
+        </Touchable>
+      ),
+    });
+  }, []);
 
   return (
     <WhiteSafeAreaView>

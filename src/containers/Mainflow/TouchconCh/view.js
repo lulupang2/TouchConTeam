@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -14,8 +14,32 @@ import {HeaderWalletBottomLine} from '../../../components/HeaderBottomLine';
 import {NormalLabel} from '../../../components/Label';
 import BottomButton from '../../../components/BottomButton';
 import RowView from '../../../components/RowView';
-const view = () => {
+import Touchable from '../../../components/Touchable';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
+const view = ({navigation}) => {
   const [ponit, setPonit] = useState('10000.11');
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Touchable onPress={() => navigation.navigate('Main')} style={{}}>
+          <AntDesign
+            name="close"
+            size={26}
+            color={'#000'}
+            style={{
+              padding: 4,
+              alignSelf: 'center',
+              color: '#c4c4c4',
+              paddingRight: 16,
+            }}
+          />
+        </Touchable>
+      ),
+    });
+  }, []);
+
   return (
     <View>
       <View style={styles.back}>

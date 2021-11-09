@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -18,12 +18,34 @@ import ColumnView from '../../../components/ColumnView';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import BottomButton from '../../../components/BottomButton';
 import {ModalPoup2} from '../../../components/Modals';
+import Touchable from '../../../components/Touchable';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const view = ({navigation, sendmodal}) => {
   const [visible, setVisible] = useState(false);
   const [coin, setCoin] = useState('TouchCon');
   const [eth, setEth] = useState('ETH');
   const [add, setAdd] = useState('보내기에서 주소 전달');
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Touchable onPress={() => navigation.navigate('Main')} style={{}}>
+          <AntDesign
+            name="close"
+            size={26}
+            color={'#000'}
+            style={{
+              padding: 4,
+              alignSelf: 'center',
+              color: '#c4c4c4',
+              paddingRight: 16,
+            }}
+          />
+        </Touchable>
+      ),
+    });
+  }, []);
 
   const clickedTouchCon = () => {
     setVisible(true);

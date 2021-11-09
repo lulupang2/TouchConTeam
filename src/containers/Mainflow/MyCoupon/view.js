@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -11,9 +11,31 @@ import {
   SafeAreaView,
 } from 'react-native';
 import BottomButton from '../../../components/BottomButton';
+import Touchable from '../../../components/Touchable';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 // import {LongButton} from '../../../components/Botton';
 
 const view = ({navigation}) => {
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Touchable onPress={() => navigation.navigate('Main')} style={{}}>
+          <AntDesign
+            name="close"
+            size={26}
+            color={'#000'}
+            style={{
+              padding: 4,
+              alignSelf: 'center',
+              color: '#c4c4c4',
+              paddingRight: 16,
+            }}
+          />
+        </Touchable>
+      ),
+    });
+  }, []);
+
   return (
     <View>
       {/*------ < 내 쿠폰 X 끝---- */}

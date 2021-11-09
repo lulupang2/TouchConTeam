@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,7 +8,6 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
-  Touchable,
   ScrollView,
 } from 'react-native';
 import BottomButton from '../../../components/BottomButton';
@@ -18,9 +17,31 @@ import {ModalPoup} from '../../../components/Modals';
 import RowView from '../../../components/RowView';
 import SwiperAd from '../../../components/SwiperAd';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Touchable from '../../../components/Touchable';
 
-const view = () => {
+const view = ({navigation}) => {
   const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Touchable onPress={() => navigation.navigate('Main')} style={{}}>
+          <AntDesign
+            name="close"
+            size={26}
+            color={'#000'}
+            style={{
+              padding: 4,
+              alignSelf: 'center',
+              color: '#c4c4c4',
+              paddingRight: 16,
+            }}
+          />
+        </Touchable>
+      ),
+    });
+  }, []);
 
   return (
     <WhiteSafeAreaView>
