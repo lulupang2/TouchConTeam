@@ -12,11 +12,14 @@ import {
 } from 'react-native';
 import BottomButton from '../../../components/BottomButton';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
+import RowView from '../../../components/RowView';
 
 const {height, width} = Dimensions.get('window');
 
 const vh = height / 100;
 const vw = width / 100;
+
+let interval;
 
 function Signup({props, navigation}) {
   const [allagree, setAllagree] = useState(false);
@@ -25,6 +28,8 @@ function Signup({props, navigation}) {
   const [mark_agree, setMark_agree] = useState(false);
   const [email, onChangeEmail] = React.useState('');
   const [code, onChangeCode] = React.useState('');
+  const [remaining, setRemaining] = useState(0);
+  const [hasSent, setHasSent] = useState(false);
 
   const chg_ser = () => {
     setSer_agree(!ser_agree);
@@ -58,12 +63,27 @@ function Signup({props, navigation}) {
     }
   };
 
+  console.log(remaining);
+  const countDown = () => {
+    let time = 300;
+    if (interval) {
+      clearInterval(interval);
+    }
+    interval = setInterval(() => {
+      time = time - 1;
+      setRemaining(time);
+      if (time <= 0) {
+        clearInterval(interval);
+      }
+    }, 1000);
+  };
+
   return (
-    <ScrollView style={{flex: 1}}>
+    <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
       <View style={{paddingLeft: 24}}>
         <NormalBoldLabel
           keyboardType="email-address"
-          style={{marginTop: 51, fontSize: 20, lineHeight: 24, marginBottom: 9}}
+          style={{marginTop: 51, fontSize: 20, lineHeight: 24}}
           text={'약관에 동의하고\n' + '이메일 주소를 입력해 주세요.'}
         />
 
@@ -78,43 +98,38 @@ function Signup({props, navigation}) {
       {/* 약관 동의 */}
       <View
         style={{
-          marginLeft: width * 0.05,
+          // marginLeft: width * 0.05,
+          paddingHorizontal: width * 0.05,
         }}
       >
         <View
           style={{
-            width: width * 0.9,
-            height: 40,
-            backgroundColor: '#c4c4c4c4',
+            // width: width * 0.9,
+            // height: 40,
+            borderWidth: 0.8,
+            borderColor: '#c4c4c4',
+            backgroundColor: '#f7f7f7',
             resizeMode: 'cover',
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-evenly',
           }}
         >
-          {allagree ? (
-            <TouchableOpacity onPress={chg_all}>
-              <Image
-                source={require('../../../assets/images/chk_square.png')}
-                style={{
-                  width: width * 0.06,
-                  height: height * 0.06,
-                  resizeMode: 'contain',
-                }}
-              />
-            </TouchableOpacity>
-          ) : (
-            <TouchableOpacity onPress={chg_all}>
-              <Image
-                source={require('../../../assets/images/square.png')}
-                style={{
-                  width: width * 0.06,
-                  height: height * 0.06,
-                  resizeMode: 'contain',
-                }}
-              />
-            </TouchableOpacity>
-          )}
+          <TouchableOpacity onPress={chg_all}>
+            <Image
+              source={
+                allagree
+                  ? require('../../../assets/images/chk_square.png')
+                  : require('../../../assets/images/square.png')
+              }
+              style={{
+                width: width * 0.06,
+                height: height * 0.06,
+                resizeMode: 'contain',
+              }}
+            />
+          </TouchableOpacity>
+
           <TouchableOpacity
             onPress={chg_all}
             style={{width: width * 0.75, height: height * 0.03}}
@@ -130,7 +145,9 @@ function Signup({props, navigation}) {
           </TouchableOpacity>
         </View>
       </View>
-      <View style={{marginLeft: width * 0.05}}>
+
+      {/*<View style={{marginLeft: width * 0.05}}>*/}
+      <View style={{marginHorizontal: width * 0.05}}>
         <ImageBackground
           source={require('../../../assets/images/rectangle13.png')}
           style={{
@@ -195,7 +212,7 @@ function Signup({props, navigation}) {
                 {/* 중간 확인 */}
 
                 <Text style={styles.warn_text}>
-                  {ser_agree ? null : '서비스 이용 약관 동의해 주세요'}
+                  {ser_agree ? null : '서비스 이용 약관 동의해 주세요.'}
                 </Text>
 
                 {/* 중간 확인 */}
@@ -252,7 +269,8 @@ function Signup({props, navigation}) {
               }}
             >
               {/* 개인 정보 수집 및 이용 동의 Text */}
-              <View style={{flexDirection: 'column'}}>
+              {/*<View style={{flexDirection: 'column'}}>*/}
+              <View style={{}}>
                 <Image
                   source={require('../../../assets/images/personal_agree.png')}
                   style={{
@@ -266,7 +284,7 @@ function Signup({props, navigation}) {
                 {/* 중간 확인 */}
 
                 <Text style={styles.warn_text}>
-                  {per_agree ? null : '개인 정보 수집 및 이용 동의해 주세요'}
+                  {per_agree ? null : '개인 정보 수집 및 이용에 동의해 주세요.'}
                 </Text>
 
                 {/* 중간 확인 */}
@@ -288,8 +306,8 @@ function Signup({props, navigation}) {
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-evenly',
-              paddingBottom: 20,
-              borderBottomWidth: 1,
+              paddingBottom: 23,
+              borderBottomWidth: 0.8,
               borderColor: '#c4c4c4',
             }}
           >
@@ -339,7 +357,7 @@ function Signup({props, navigation}) {
                   }}
                 />
                 <Text style={styles.warn_text}>
-                  {mark_agree ? null : '마케팅 정보 알람 동의해 주세요'}
+                  {mark_agree ? null : '마케팅 정보 알람에 동의해 주세요.'}
                 </Text>
               </TouchableOpacity>
             </View>
@@ -358,16 +376,18 @@ function Signup({props, navigation}) {
         </ImageBackground>
       </View>
       {/* 이메일 입력창 */}
-      <View style={{marginHorizontal: 20, marginVertical: 24}}>
+      <View style={{marginHorizontal: 25, marginVertical: 24}}>
         <TextInput
           onChangeText={onChangeEmail}
           value={email}
           placeholder="이메일 주소"
+          placeholderTextColor={'#c4c4c4'}
           keyboardType="email-address"
           style={{
+            paddingHorizontal: 11,
             fontSize: 15,
-            height: 40,
-            borderWidth: 1,
+            paddingVertical: 11,
+            borderWidth: 0.8,
             borderColor: '#c4c4c4',
             borderRadius: 5,
           }}
@@ -375,37 +395,39 @@ function Signup({props, navigation}) {
       </View>
       {/* 인증번호 입력창 */}
       <View style={styles.signup_code}>
-        <TextInput
-          onChangeText={onChangeCode}
-          value={code}
-          placeholder="인증코드 입력"
-          keyboardType="numeric"
-          style={{
-            fontSize: 15,
-            width: 172,
-            height: 40,
-            borderWidth: 1,
-            borderColor: '#c4c4c4',
-            borderRadius: 5,
-          }}
-        />
+        <RowView style={styles.code_input}>
+          <TextInput
+            onChangeText={onChangeCode}
+            value={code}
+            placeholder="인증코드 입력"
+            placeholderTextColor={'#c4c4c4'}
+            keyboardType="numeric"
+            style={{fontSize: 15}}
+          />
+          {hasSent && (
+            <Text style={styles.remaining}>
+              {parseInt(remaining / 60)
+                .toString()
+                .padStart(1, '0')}
+              :
+              {parseInt(remaining % 60)
+                .toString()
+                .padStart(2, '0')}
+            </Text>
+          )}
+        </RowView>
 
         {/* 인증코드 발송 버튼 */}
         <TouchableOpacity
-          onPress={() => alert('ok')}
-          style={{
-            borderRadius: 53,
-            backgroundColor: '#fd7f36',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: 139,
-            height: 40,
-            marginRight: 25,
+          onPress={() => {
+            setHasSent(true);
+            countDown();
           }}
+          style={styles.verifySendBtn}
         >
           <NormalBoldLabel
             text={'인증코드 발송'}
-            style={{fontSize: 18, color: '#fff'}}
+            style={{fontSize: 18, lineHeight: 22, color: '#fff'}}
           />
         </TouchableOpacity>
       </View>
@@ -424,7 +446,7 @@ function Signup({props, navigation}) {
       <View
         style={{
           marginTop: 8,
-          marginHorizontal: 23,
+          marginHorizontal: 24,
           minHeight: 40,
           display: 'flex',
           justifyContent: 'space-between',
@@ -441,7 +463,8 @@ function Signup({props, navigation}) {
             minWidth: 79,
             fontSize: 15,
             textAlign: 'center',
-            paddingTop: 11,
+            paddingVertical: 11.5,
+            color: '#000',
           }}
         >
           010
@@ -451,13 +474,13 @@ function Signup({props, navigation}) {
         <TextInput
           keyboardType="phone-pad"
           style={{
+            flex: 1,
             marginLeft: 7,
             borderWidth: 1,
             borderColor: '#E3E5E5',
-            width: 260,
             borderRadius: 10,
           }}
-        ></TextInput>
+        />
       </View>
       {/* 주의사항 */}
       <View style={{marginLeft: width * 0.05}}>
@@ -505,7 +528,31 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginLeft: width * 0.05,
   },
-  warn_text: {fontSize: 12, color: '#ff0000'},
+  warn_text: {fontSize: 12, color: '#ff0000', marginTop: 2},
+  code_input: {
+    flex: 1,
+    borderWidth: 0.8,
+    paddingLeft: 11,
+    paddingRight: 15,
+    borderColor: '#c4c4c4',
+    borderRadius: 5,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginRight: 15,
+  },
+  verifySendBtn: {
+    borderRadius: 53,
+    backgroundColor: '#fd7f36',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    marginRight: 25,
+  },
+  remaining: {
+    fontSize: 12,
+    color: '#FD7F36',
+  },
 });
 
 export default Signup;
