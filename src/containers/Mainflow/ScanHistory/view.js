@@ -124,14 +124,14 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 15,
     marginLeft: 38,
-    fontWeight: 'blod',
+    fontWeight: 'bold',
   },
   tx2: {
     color: '#fff',
     fontSize: 15,
-    fontWeight: 'blod',
+    fontWeight: 'bold',
   },
-  tx3: {color: '#fff', fontSize: 15, marginRight: 38, fontWeight: 'blod'},
+  tx3: {color: '#fff', fontSize: 15, marginRight: 38, fontWeight: 'bold'},
 
   adContent: {
     backgroundColor: '#fff',

@@ -9,37 +9,37 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import Touchable from '../../../components/Touchable';
+import {NormalBoldLabel} from '../../../components/Label';
+import RowView from "../../../components/RowView";
 
 const {height, width} = Dimensions.get('window');
 
 const vh = height / 100;
 const vw = width / 100;
 
-function Orange() {
-  return (
-    <Image
-      source={require('../../../assets/images/green_circle.png')}
-      style={{
-        width: width * 0.03,
-        height: height * 0.03,
-        resizeMode: 'contain',
-      }}
-    />
-  );
-}
+// function Gray() {
+//   return (
+//     <Image
+//       source={require('../../../assets/images/graycircle.png')}
+//       style={{
+//         width: width * 0.03,
+//         height: height * 0.03,
+//         resizeMode: 'contain',
+//       }}
+//     />
+//   );
+// }
 
-function Gray() {
-  return (
-    <Image
-      source={require('../../../assets/images/graycircle.png')}
-      style={{
-        width: width * 0.03,
-        height: height * 0.03,
-        resizeMode: 'contain',
-      }}
-    />
-  );
-}
+const Circle = ({isOrange}) => {
+    return <View style={{
+        backgroundColor: isOrange ? '#FD7F36' : '#c4c4c4',
+        width: isOrange ? 10 : 7,
+        height: isOrange ? 10 : 7,
+        borderRadius: isOrange ? 5 : 3.5,
+        marginHorizontal: 10,
+    }}/>
+};
 
 export default function Pinlogin({navigation}) {
   const [pwd, onChangePwd] = React.useState('');
@@ -47,9 +47,9 @@ export default function Pinlogin({navigation}) {
   const [pwdbool, setPwdbool] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => {
-      navigation.navigate('Main');
-    }, 1000);
+    // setTimeout(() => {
+    //   navigation.navigate('Main');
+    // }, 1000);
   });
 
   const handleKeyPress = e => {
@@ -69,52 +69,65 @@ export default function Pinlogin({navigation}) {
     <View style={styles.pinglogin_container}>
       <View style={{marginTop: height * 0.1}}>
         {/* PIN 번호 간편 로그인 */}
-        <Image
-          source={require('../../../assets/images/pintext.png')}
-          style={{
-            width: width * 0.4,
-            height: height * 0.03,
-            resizeMode: 'contain',
-          }}
-        />
+        {/*<Image*/}
+        {/*  source={require('../../../assets/images/pintext.png')}*/}
+        {/*  style={{*/}
+        {/*    width: width * 0.4,*/}
+        {/*    height: height * 0.03,*/}
+        {/*    resizeMode: 'contain',*/}
+        {/*  }}*/}
+        {/*/>*/}
+          <NormalBoldLabel text={pwdbool === 0 ? 'PIN 번호 간편 로그인' : '다시 입력해 주세요'}/>
         {/* PIN 번호 간편 로그인 */}
       </View>
-      <View style={styles.password_con}>
-        {pwd.length >= 1 ? <Orange /> : <Gray />}
-        {pwd.length >= 2 ? <Orange /> : <Gray />}
-        {pwd.length >= 3 ? <Orange /> : <Gray />}
-        {pwd.length >= 4 ? <Orange /> : <Gray />}
-        {pwd.length >= 5 ? <Orange /> : <Gray />}
-        {pwd.length >= 6 ? <Orange /> : <Gray />}
-        {pwd.length >= 7 ? <Orange /> : <Gray />}
+      <RowView style={styles.password_con}>
+          {[1,2,3,4,5,6,7].map((num, i) => (
+              <Circle key={i} isOrange={pwd.length >= num}/>
+          ))}
+        {/*{pwd.length >= 1 ? <Orange /> : <Gray />}*/}
+        {/*{pwd.length >= 2 ? <Orange /> : <Gray />}*/}
+        {/*{pwd.length >= 3 ? <Orange /> : <Gray />}*/}
+        {/*{pwd.length >= 4 ? <Orange /> : <Gray />}*/}
+        {/*{pwd.length >= 5 ? <Orange /> : <Gray />}*/}
+        {/*{pwd.length >= 6 ? <Orange /> : <Gray />}*/}
+        {/*{pwd.length >= 7 ? <Orange /> : <Gray />}*/}
+      </RowView>
         <TextInput
-          style={{position: 'absolute', width: width * 0.6, color: 'white'}}
-          // onKeyPress={handleKeyPress}
-          value={pwd}
-          onSubmitEditing={handleKeyPress}
-          onChangeText={onChangePwd}
-          maxLength={7}
-          secureTextEntry={true}
-          keyboardType={'number-pad'}
-          caretHidden={true}
-          // onKeyPress 비밀번호 확인 작업
+            style={{width: width * 0.6, color: 'white', marginTop: -32,}}
+            // onKeyPress={handleKeyPress}
+            value={pwd}
+            onSubmitEditing={handleKeyPress}
+            onChangeText={onChangePwd}
+            maxLength={7}
+            secureTextEntry={true}
+            keyboardType={'number-pad'}
+            caretHidden={true}
+            // onKeyPress 비밀번호 확인 작업
         />
-      </View>
 
-      <View>
-        <TouchableOpacity>
-          {/* PIN 번호 분실 text start */}
-          <Image
-            source={require('../../../assets/images/pinnumber.png')}
-            style={{
-              width: width * 0.2,
-              height: height * 0.03,
-              resizeMode: 'contain',
-            }}
-          />
-          {/* PIN 번호 분실 text end */}
-        </TouchableOpacity>
-      </View>
+        {pwdbool > 0 &&
+                <Text style={styles.errMsg}>
+            {`5회 오류 시 PIN번호를\n재설정 해야 합니다. `}
+                    <Text style={{color: '#fd7f36'}}>{`(${5-pwdbool}회남음)`}</Text>
+                </Text>
+      }
+      <Touchable onPress={() => null} style={{marginTop: 14}}>
+        <NormalBoldLabel text={'PIN 번호 분실'} style={{color: '#0068D9'}} />
+      </Touchable>
+      {/*<View>*/}
+      {/*  <TouchableOpacity>*/}
+      {/*    /!* PIN 번호 분실 text start *!/*/}
+      {/*    <Image*/}
+      {/*      source={require('../../../assets/images/pinnumber.png')}*/}
+      {/*      style={{*/}
+      {/*        width: width * 0.2,*/}
+      {/*        height: height * 0.03,*/}
+      {/*        resizeMode: 'contain',*/}
+      {/*      }}*/}
+      {/*    />*/}
+      {/*    /!* PIN 번호 분실 text end *!/*/}
+      {/*  </TouchableOpacity>*/}
+      {/*</View>*/}
     </View>
   );
 }
@@ -127,12 +140,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   password_con: {
-    flexDirection: 'row',
-    marginTop: height * 0.04,
-    marginBottom: height * 0.09,
-    width: width * 0.5,
-    height: height * 0.03,
+    marginTop: 32,
+    // marginBottom: 59,
+    // width: width * 0.5,
+    // height: height * 0.03,
     justifyContent: 'space-between',
     color: 'white',
   },
+    errMsg: {
+      fontSize: 12,
+        lineHeight: 16,
+        color: '#000',
+        fontWeight: 'bold',
+        textAlign: 'center'
+    }
 });

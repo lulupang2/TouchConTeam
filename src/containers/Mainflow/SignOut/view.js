@@ -71,7 +71,7 @@ const view = ({navigation}) => {
             lineHeight: 20,
             color: '#000',
             marginLeft: 16,
-            fontWeight: 'blod',
+            fontWeight: 'bold',
           }}
         >
           위 사항에 모두 동의 합니다.

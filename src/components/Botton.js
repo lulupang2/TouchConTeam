@@ -89,7 +89,7 @@ export const GoButton = ({onPress, tcStyle, txStyle}) => {
       <Text
         style={{
           fontSize: 20,
-          fontWeight: 'blod',
+          fontWeight: 'bold',
           color: '#FFFFFF',
           justifyContent: 'center',
           alignSelf: 'center',

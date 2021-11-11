@@ -33,7 +33,7 @@ export const ConnMitem = ({onPress, text, viStyle, tcStyle, txStyle}) => {
         <Text
           style={{
             fontSize: 20,
-            fontWeight: 'blod',
+            fontWeight: 'bold',
             color: '#FFFFFF',
             marginLeft: 20,
             marginTop: 3,

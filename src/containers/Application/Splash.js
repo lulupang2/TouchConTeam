@@ -32,7 +32,7 @@ export default function Splash({navigation}) {
       resizeMode="cover"
       style={{width: '100%', height: '100%'}}
     >
-      <Text style={styles.uptext}>글로벌 최초 디지털 자산 랜던 리워드</Text>
+      <Text style={styles.uptext}>글로벌 최초 디지털 자산 랜덤 리워드</Text>
       <View style={styles.midback}>
         <Text style={styles.midbtn}>RAMDOM</Text>
       </View>

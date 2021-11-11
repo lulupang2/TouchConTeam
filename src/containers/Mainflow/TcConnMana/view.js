@@ -63,7 +63,7 @@ const BtnConn = ({text, onPress}) => {
         <Text
           style={{
             fontSize: 20,
-            fontWeight: 'blod',
+            fontWeight: 'bold',
             color: '#FFFFFF',
             marginLeft: 20,
             marginTop: 3,
