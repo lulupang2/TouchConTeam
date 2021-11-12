@@ -15,6 +15,7 @@ import Touchable from '../../../components/Touchable';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import TouchableNoFeedback from '../../../components/TouchableNoFeedback';
+import Entypo from "react-native-vector-icons/Entypo";
 
 const AD_MENU = [
   {id: 1, name: 'CAOLION', path: 'GfCaolion'},
@@ -113,7 +114,6 @@ export default function Main({navigation}) {
             width: 7,
             height: 7,
             borderRadius: 3.5,
-            marginHorizontal: 10,
             marginLeft: 20,
           }}
           activeDotStyle={{
@@ -121,12 +121,11 @@ export default function Main({navigation}) {
             width: 10,
             height: 10,
             borderRadius: 5,
-            marginHorizontal: 10,
             marginLeft: 20,
           }}
           paginationStyle={{
             position: 'relative',
-            top: -15,
+            top: -24,
           }}
         >
           <TouchableOpacity
@@ -222,9 +221,16 @@ export default function Main({navigation}) {
         >
           <NormalBoldLabel
             text={'터치 쇼핑몰 쇼핑하기'}
-            style={{color: '#fff'}}
+            style={{color: '#fff', fontSize: 20, lineHeight: 24, marginRight: 29}}
           />
-          <NormalBoldLabel text={'+'} style={{marginLeft: 29, color: '#fff'}} />
+          {/*<NormalBoldLabel text={'+'} style={{marginLeft: 29, color: '#fff'}} />*/}
+          <Entypo
+              name="plus"
+              size={32}
+              color={'#fff'}
+              style={{marginRight: 18}}
+
+          />
         </Touchable>
         {/* 터치 쇼핑몰 쇼핑하기 end */}
 
@@ -368,7 +374,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FD7F36',
     borderRadius: 53,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
   },
 });

@@ -68,10 +68,10 @@ const view = ({navigation}) => {
         title="Go GfMegaMall"
         onPress={() => navigation.navigate('GfMegaMall')}
       />
-      <Button
-        title="Go TestThumbnail"
-        onPress={() => navigation.navigate('TestThumbnail')}
-      />
+      {/*<Button*/}
+      {/*  title="Go TestThumbnail"*/}
+      {/*  onPress={() => navigation.navigate('TestThumbnail')}*/}
+      {/*/>*/}
 
       <Button title="Go Pinchg" onPress={() => navigation.navigate('Pinchg')} />
       <Button

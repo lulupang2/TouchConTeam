@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import Touchable from '../../../components/Touchable';
 import {NormalBoldLabel} from '../../../components/Label';
-import RowView from "../../../components/RowView";
+import RowView from '../../../components/RowView';
 
 const {height, width} = Dimensions.get('window');
 
@@ -32,19 +32,23 @@ const vw = width / 100;
 // }
 
 const Circle = ({isOrange}) => {
-    return <View style={{
+  return (
+    <View
+      style={{
         backgroundColor: isOrange ? '#FD7F36' : '#c4c4c4',
         width: isOrange ? 10 : 7,
         height: isOrange ? 10 : 7,
         borderRadius: isOrange ? 5 : 3.5,
         marginHorizontal: 10,
-    }}/>
+      }}
+    />
+  );
 };
 
 export default function Pinlogin({navigation}) {
   const [pwd, onChangePwd] = React.useState('');
   const [test, setTest] = useState('0000000');
-  const [pwdbool, setPwdbool] = useState(0);
+  const [pwdbool, setPwdbool] = useState(0); // pwErrCount
 
   useEffect(() => {
     // setTimeout(() => {
@@ -53,7 +57,7 @@ export default function Pinlogin({navigation}) {
   });
 
   const handleKeyPress = e => {
-    console.log('rrr', pwdbool);
+    console.log('pwdErrorCount', pwdbool);
     if (pwd === test) {
       console.log('login success');
       navigation.navigate('Main');
@@ -77,13 +81,15 @@ export default function Pinlogin({navigation}) {
         {/*    resizeMode: 'contain',*/}
         {/*  }}*/}
         {/*/>*/}
-          <NormalBoldLabel text={pwdbool === 0 ? 'PIN 번호 간편 로그인' : '다시 입력해 주세요'}/>
+        <NormalBoldLabel
+          text={pwdbool === 0 ? 'PIN 번호 간편 로그인' : '다시 입력해 주세요'}
+        />
         {/* PIN 번호 간편 로그인 */}
       </View>
       <RowView style={styles.password_con}>
-          {[1,2,3,4,5,6,7].map((num, i) => (
-              <Circle key={i} isOrange={pwd.length >= num}/>
-          ))}
+        {[1, 2, 3, 4, 5, 6, 7].map((num, i) => (
+          <Circle key={i} isOrange={pwd.length >= num} />
+        ))}
         {/*{pwd.length >= 1 ? <Orange /> : <Gray />}*/}
         {/*{pwd.length >= 2 ? <Orange /> : <Gray />}*/}
         {/*{pwd.length >= 3 ? <Orange /> : <Gray />}*/}
@@ -92,25 +98,25 @@ export default function Pinlogin({navigation}) {
         {/*{pwd.length >= 6 ? <Orange /> : <Gray />}*/}
         {/*{pwd.length >= 7 ? <Orange /> : <Gray />}*/}
       </RowView>
-        <TextInput
-            style={{width: width * 0.6, color: 'white', marginTop: -32,}}
-            // onKeyPress={handleKeyPress}
-            value={pwd}
-            onSubmitEditing={handleKeyPress}
-            onChangeText={onChangePwd}
-            maxLength={7}
-            secureTextEntry={true}
-            keyboardType={'number-pad'}
-            caretHidden={true}
-            // onKeyPress 비밀번호 확인 작업
-        />
+      <TextInput
+        style={{width: width * 0.6, color: 'transparent', marginTop: -32}}
+        // onKeyPress={handleKeyPress}
+        value={pwd}
+        onSubmitEditing={handleKeyPress}
+        onChangeText={onChangePwd}
+        maxLength={7}
+        secureTextEntry={true}
+        keyboardType={'number-pad'}
+        caretHidden={true}
+        // onKeyPress 비밀번호 확인 작업
+      />
 
-        {pwdbool > 0 &&
-                <Text style={styles.errMsg}>
-            {`5회 오류 시 PIN번호를\n재설정 해야 합니다. `}
-                    <Text style={{color: '#fd7f36'}}>{`(${5-pwdbool}회남음)`}</Text>
-                </Text>
-      }
+      {pwdbool > 0 && (
+        <Text style={styles.errMsg}>
+          {`5회 오류 시 PIN번호를\n재설정 해야 합니다. `}
+          <Text style={{color: '#fd7f36'}}>{`(${5 - pwdbool}회남음)`}</Text>
+        </Text>
+      )}
       <Touchable onPress={() => null} style={{marginTop: 14}}>
         <NormalBoldLabel text={'PIN 번호 분실'} style={{color: '#0068D9'}} />
       </Touchable>
@@ -144,14 +150,15 @@ const styles = StyleSheet.create({
     // marginBottom: 59,
     // width: width * 0.5,
     // height: height * 0.03,
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
+    justifyContent: 'center',
     color: 'white',
   },
-    errMsg: {
-      fontSize: 12,
-        lineHeight: 16,
-        color: '#000',
-        fontWeight: 'bold',
-        textAlign: 'center'
-    }
+  errMsg: {
+    fontSize: 12,
+    lineHeight: 16,
+    color: '#000',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
 });

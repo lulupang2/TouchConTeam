@@ -48,7 +48,7 @@ const view = ({navigation, sendmodal}) => {
             style={{
               padding: 4,
               alignSelf: 'center',
-              color: '#fff',
+                color: '#c4c4c4',
               paddingRight: 16,
             }}
           />

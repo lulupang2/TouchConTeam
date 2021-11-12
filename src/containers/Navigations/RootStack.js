@@ -78,11 +78,11 @@ const RootStack = () => (
     {/* 버튼 모음 end */}
 
     {/* 버튼 모음2  start */}
-    <Stack.Screen
-      name="TestThumbnail"
-      component={TestThumbnail}
-      options={{title: 'x 버튼 필요'}}
-    />
+    {/*<Stack.Screen*/}
+    {/*  name="TestThumbnail"*/}
+    {/*  component={TestThumbnail}*/}
+    {/*  options={{title: 'x 버튼 필요'}}*/}
+    {/*/>*/}
     {/* 버튼 모음2 end */}
 
     {/* Intro 3 start*/}

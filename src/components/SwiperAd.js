@@ -5,12 +5,14 @@ import Swiper from 'react-native-swiper';
 import RowView from './RowView';
 import {useNavigation} from '@react-navigation/native';
 
-const SwiperAd = () => {
+const SwiperAd = ({style, paginationStyle}) => {
   const navigation = useNavigation();
+
   return (
     <Swiper
+      style={style}
       autoplay
-      style={styles.swipBack}
+      // style={styles.swipBack}
       dotStyle={{
         backgroundColor: '#c4c4c4',
         width: 7,
@@ -25,7 +27,8 @@ const SwiperAd = () => {
         borderRadius: 5,
         marginLeft: 20,
       }}
-      paginationStyle={{position: 'absolute', top: 85, bottom: undefined}}
+      // paginationStyle={{position: 'absolute', top: 85, bottom: undefined}}
+      paginationStyle={[styles.pagination, paginationStyle]}
     >
       <TouchableOpacity
         onPress={() => navigation.navigate('Thumbnail1')}
@@ -100,4 +103,7 @@ const styles = StyleSheet.create({
   },
   tx1: {fontSize: 15, color: '#ffffff'},
   tx2: {fontSize: 20, color: '#ffffff'},
+  pagination: {
+    position: 'absolute', top: 85, bottom: undefined
+  }
 });

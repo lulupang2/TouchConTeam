@@ -473,12 +473,14 @@ function Signup({props, navigation}) {
 
         <TextInput
           keyboardType="phone-pad"
+          maxLength={8}
           style={{
             flex: 1,
             marginLeft: 7,
             borderWidth: 1,
             borderColor: '#E3E5E5',
             borderRadius: 10,
+              paddingHorizontal: 11,
           }}
         />
       </View>

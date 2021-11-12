@@ -21,8 +21,9 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 const view = ({navigation}) => {
   useEffect(() => {
     navigation.setOptions({
+        headerLeft: () => null,
       headerRight: () => (
-        <Touchable onPress={() => navigation.navigate('Main')} style={{}}>
+        <Touchable onPress={() => navigation.navigate('Main')}>
           <AntDesign
             name="close"
             size={26}
@@ -30,7 +31,7 @@ const view = ({navigation}) => {
             style={{
               padding: 4,
               alignSelf: 'center',
-              color: '#fff',
+                color: '#c4c4c4',
               paddingRight: 16,
             }}
           />

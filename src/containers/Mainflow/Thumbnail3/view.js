@@ -25,6 +25,7 @@ const view = ({navigation}) => {
 
   useEffect(() => {
     navigation.setOptions({
+        headerLeft: () => null,
       headerRight: () => (
         <Touchable onPress={() => navigation.navigate('Main')} style={{}}>
           <AntDesign
@@ -34,7 +35,7 @@ const view = ({navigation}) => {
             style={{
               padding: 4,
               alignSelf: 'center',
-              color: '#fff',
+                color: '#c4c4c4',
               paddingRight: 16,
             }}
           />
@@ -59,9 +60,10 @@ const view = ({navigation}) => {
         style={{
           backgroundColor: '#fff',
           position: 'relative',
+            top: 24
         }}
       >
-        <View style={styles.stackingWrapper}>
+        <RowView style={styles.stackingWrapper}>
           <NormalBoldLabel text={'TOC 스테이킹 하기'} style={{color: '#fff'}} />
 
           <Image
@@ -74,7 +76,7 @@ const view = ({navigation}) => {
           >
             <NormalBoldLabel text={'신청'} style={{color: '#fff'}} />
           </TouchableOpacity>
-        </View>
+        </RowView>
 
         <RowView
           style={{
@@ -139,8 +141,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 21,
     paddingVertical: 10,
     backgroundColor: '#0E0F0FCC',
-    flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
   },
   modal_text: {

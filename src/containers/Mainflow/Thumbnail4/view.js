@@ -75,6 +75,7 @@ const adView = ({item, index}) => {
 const view = ({navigation}) => {
   useEffect(() => {
     navigation.setOptions({
+      headerLeft: () => null,
       headerRight: () => (
         <Touchable onPress={() => navigation.navigate('Main')} style={{}}>
           <AntDesign
@@ -84,7 +85,7 @@ const view = ({navigation}) => {
             style={{
               padding: 4,
               alignSelf: 'center',
-              color: '#fff',
+              color: '#c4c4c4',
               paddingRight: 16,
             }}
           />
@@ -104,6 +105,7 @@ const view = ({navigation}) => {
 
       <View style={styles.container}>
         <FlatList
+            contentContainerStyle={styles.flatListContainer}
           data={formatData(dataList, numColumns)}
           renderItem={adView}
           keyExtractor={(item, index) => index.toString()}
@@ -145,5 +147,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  container: {height: 550},
+  container: {height: 480},
+  flatListContainer: {paddingBottom: 50}
 });

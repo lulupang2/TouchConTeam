@@ -13,6 +13,7 @@ import {
 
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import RowView from '../../../components/RowView';
+import WhiteSafeAreaView from "../../../components/WhiteSafeAreaView";
 
 const Title = [
   {id: 1, title: 'CAOLION', path: 'GfCaolion'},
@@ -22,7 +23,7 @@ const Title = [
 
 const view = ({navigation}) => {
   return (
-    <SafeAreaView>
+    <WhiteSafeAreaView>
       <HeaderBottomLine />
 
       {Title.map((text, i) => (
@@ -32,7 +33,7 @@ const view = ({navigation}) => {
           onPress={() => navigation.navigate(text.path)}
         />
       ))}
-    </SafeAreaView>
+    </WhiteSafeAreaView>
   );
 };
 
