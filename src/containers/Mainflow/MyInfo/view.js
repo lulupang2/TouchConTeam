@@ -7,9 +7,9 @@ import {MenuItem} from '../../../components/MenuItem';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 
 const MENU = [
-  {id: 1, title: '터치토큰 연결 관리', path: 'TcConnMana'},
+  {id: 1, title: '터치코인 연결관리', path: 'TcConnMana'},
   {id: 2, title: 'PIN번호 변경', path: 'Pinchg'},
-  {id: 3, title: '마케팅정보 알림', path: 'MarketingInfo'},
+  {id: 3, title: '마케팅 정보 알림', path: 'MarketingInfo'},
   {id: 4, title: '탈퇴하기', path: 'SignOut'},
 ];
 
@@ -27,7 +27,7 @@ const view = ({navigation}) => {
           paddingBottom: 18,
         }}
       >
-        <NormalBoldLabel text={'이메일'} />
+        <NormalBoldLabel text={'이메일 계정'} />
         <NormalBoldLabel
           text={'ngm1224@gmail.com'}
           style={{fontSize: 20, lineHeight: 24}}

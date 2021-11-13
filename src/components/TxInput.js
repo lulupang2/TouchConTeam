@@ -1,24 +1,26 @@
-import React from 'react';
-import {SafeAreaView, StyleSheet, TextInput} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, TextInput} from 'react-native';
 
-const TitleInput = () => {
-  const [text, onChangeText] = React.useState('');
-
+const TitleInput = ({value, onChangeText, style}) => {
   return (
-    <SafeAreaView>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
-      />
-    </SafeAreaView>
+    <TextInput
+      style={[styles.input, style]}
+      onChangeText={onChangeText}
+      value={value}
+    />
   );
 };
 
 export default TitleInput;
 
-export const ContentInput = () => {
-  return <TextInput style={styles.content} />;
+export const ContentInput = ({value, onChangeText, style}) => {
+  return (
+    <TextInput
+      value={value}
+      onChangeText={onChangeText}
+      style={[styles.content, style]}
+    />
+  );
 };
 
 const styles = StyleSheet.create({
@@ -27,12 +29,14 @@ const styles = StyleSheet.create({
     // width: 260,
     // marginLeft: 15,
     // minHeight: 50,
-    minWidth: 270,
+    // minWidth: 270,
+    flex: 1,
     marginLeft: 15,
     borderWidth: 0.8,
     borderColor: '#c4c4c4',
     fontSize: 20,
     borderRadius: 5,
+    padding: 8,
   },
   content: {
     textAlignVertical: 'top',

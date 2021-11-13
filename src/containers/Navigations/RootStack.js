@@ -153,25 +153,25 @@ const RootStack = () => (
     <Stack.Screen
       name="TcConnMana"
       component={TcConnMana}
-      options={{title: '터치콘 연결 관리'}}
+      options={{title: '터치콘 연결관리'}}
     />
     {/* 마켓팅 정보 알림 */}
     <Stack.Screen
       name="MarketingInfo"
       component={MarketingInfo}
-      options={{title: '마켓팅 정보 알림'}}
+      options={{title: '마케팅 정보 알림'}}
     />
     {/* 약관 및 개인정보처리 방침*/}
     <Stack.Screen
       name="Policy"
       component={Policy}
-      options={{title: '약관 및 개인정보처리 방침'}}
+      options={{title: '약관 및 개인정보처리방침'}}
     />
 
     <Stack.Screen
       name="TcStory"
       component={TcStory}
-      options={{title: '터치콘 이야기'}}
+      options={{title: '터치콘이란'}}
     />
     {/* 1:1 문의하기 */}
     <Stack.Screen
@@ -184,7 +184,7 @@ const RootStack = () => (
     <Stack.Screen
       name="QnA"
       component={QnA}
-      options={{title: '자주 묻는 질문'}}
+      options={{title: 'Q&A 궁금증 해소하세요'}}
     />
 
     {/* 공지사항 */}
@@ -258,10 +258,10 @@ const RootStack = () => (
       options={{
         title: '스캔으로 랜덤 잭팟을!',
         headerStyle: {backgroundColor: '#FD7F36'},
-        headerTintColor: '#fff',
-        // headerTitleStyle: {
-        //   color: '#fff',
-        // },
+        // headerTintColor: '#fff',
+        headerTitleStyle: {
+          color: '#fff',
+        },
       }}
     />
     {/* ------- 스캔하기 end --------- */}

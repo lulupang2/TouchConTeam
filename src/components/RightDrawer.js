@@ -8,10 +8,10 @@ import {useNavigation} from '@react-navigation/native';
 
 const MENU = [
   {id: 1, title: '내정보', path: 'MyInfo'},
-  {id: 2, title: '공지사항', path: 'Notice'},
-  {id: 3, title: '자주 묻는 질문', path: 'QnA'},
-  {id: 4, title: '터치콘 이야기', path: 'TcStory'},
-  {id: 5, title: '약관 및  개인정보 처리방침', path: 'Policy'},
+  {id: 2, title: '실시간 공지', path: 'Notice'},
+  {id: 3, title: 'Q&A', path: 'QnA'},
+  {id: 4, title: '터치콘이란', path: 'TcStory'},
+  {id: 5, title: '약관 및  개인정보처리방침', path: 'Policy'},
 ];
 
 const RightDrawer = () => {
@@ -52,7 +52,7 @@ const RightDrawer = () => {
         }}
       >
         <NormalBoldLabel text={'버전 정보'} />
-        <NormalBoldLabel text={'V 0.1'} style={{color: '#FD7F36'}} />
+        <NormalBoldLabel text={'V1.0'} style={{color: '#FD7F36'}} />
       </RowView>
     </WhiteSafeAreaView>
   );

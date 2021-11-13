@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -19,6 +19,11 @@ import TitleInput, {ContentInput} from '../../../components/TxInput';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 
 const view = ({navigation}) => {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+
+  const onSend = () => {};
+
   return (
     <WhiteSafeAreaView>
       <HeaderBottomLine />
@@ -28,6 +33,7 @@ const view = ({navigation}) => {
             paddingTop: 18,
             paddingHorizontal: 24,
             paddingBottom: 15,
+            // flex: 1,
           }}
         >
           <View
@@ -42,11 +48,11 @@ const view = ({navigation}) => {
             }}
           />
           <Text style={styles.text}>제목</Text>
-          <TitleInput />
+          <TitleInput value={title} onChangeText={setTitle} />
         </RowView>
-        <ContentInput />
+        <ContentInput value={content} onChangeText={setContent} />
 
-        <BottomButton text={'등록'} style={{marginTop: 80}} />
+        <BottomButton onPress={onSend} text={'등록'} style={{marginTop: 80}} />
         {/* <LongButton text={'등록'} tcStyle={styles.btn} /> */}
       </ScrollView>
     </WhiteSafeAreaView>

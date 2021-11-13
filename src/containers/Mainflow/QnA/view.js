@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import {
   StyleSheet,
   View,
@@ -6,6 +6,7 @@ import {
   Image,
   FlatList,
   ScrollView,
+  Linking,
 } from 'react-native';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import RowView from '../../../components/RowView';
@@ -14,6 +15,7 @@ import Touchable from '../../../components/Touchable';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 import BottomButton from '../../../components/BottomButton';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {QUESTION_LIST} from '../../../constants';
 
 const {height, width} = Dimensions.get('window');
 
@@ -22,47 +24,66 @@ const vw = width / 100;
 
 const BUTTON_LIST = [
   '전체',
-  '랜덤보상',
-  '광고스캔',
-  '광고주',
-  '스마트QR',
-  '본인인증',
-  '코인전송',
-  '스테이킹',
-  '코인거래',
-  '이용방법',
-  '보안',
-  '계정관리',
-];
-
-const QUESTION_LIST = [
-  {
-    id: 1,
-    title: '터치토큰으로 무엇을 할 수 있나요?',
-    content:
-      '터치토큰은 다양한 곳에 사용합니다.\n' +
-      '쇼핑몰 결제나 공고업체 재화나 서비스를 이용할 때 사용합니다. 또는 외부 거래소 에 전송',
-  },
-  {id: 2, title: '이더리움 가스비는 무엇인가요?', content: '내용2'},
-  {id: 3, title: '랜덤 보상은 최대 얼마까지 입니까?', content: '내용3'},
-  {
-    id: 4,
-    title: '터치쇼핑몰은 무엇인가요?',
-    content:
-      '터치토큰은 다양한 곳에 사용합니다.\n' +
-      '쇼핑몰 결제나 공고업체 재화나 서비스를 이용할 때 사용합니다. 또는 외부 거래소 에 전송터치토큰은 다양한 곳에 사용합니다.\n' +
-      '쇼핑몰 결제나 공고업체 재화나 서비스를 이용할 때 사용합니다. 또는 외부 거래소 에 전송',
-  },
+  'TOC',
+  'RAP광고주',
+  'TOP 포인트',
+  '토큰전환',
+  '지갑관리',
+  '전송',
+  '리워드콘',
+  'T-MAIL',
+  '터치-스테이킹',
+  '큐알스캔',
+  '기프티콘',
 ];
 
 const view = ({navigation}) => {
-  const [selectedButton, setSelectedButton] = useState('전체');
+  const [menuList, setMenuList] = useState(null);
+  const [selectedMenu, setSelectedMenu] = useState('전체');
   const [selectedQuestion, setSelectedQuestion] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    initMenu();
     // 데이터 불러와서 리스트에 뿌려줄 화면들은 모두 이곳에서 함수호출
     // e.g. 버튼목록, 버튼메뉴 필터로 선택가능한 메뉴목록
   }, []);
+
+  const initMenu = useCallback(() => {
+    let newMenuList = {};
+
+    QUESTION_LIST.forEach(question => {
+      // if (!newMenuList.hasOwnProperty(question.category)) {
+      if (newMenuList[question.category] === undefined) {
+        // = newMenuList['전체'] === undefined, question.category = '전체'
+        newMenuList[question.category] = [];
+      }
+      newMenuList[question.category].push(question);
+    });
+    setMenuList(newMenuList);
+    setIsLoading(false);
+  }, []);
+
+  const renderQuestionView = btnMenu => {
+    let list = btnMenu === '전체' ? QUESTION_LIST : menuList[btnMenu];
+
+    return list.map((question, index) => (
+      <QnaMenu
+        // index는 어떤 값을 반환하는 지모르 겠다.
+        key={index}
+        onPress={() => {
+          if (selectedQuestion === question.id) {
+            setSelectedQuestion(null);
+          } else {
+            setSelectedQuestion(question.id);
+          }
+        }}
+        isOpen={question.id === selectedQuestion}
+        title={question.title}
+        content={question.content}
+      />
+    ));
+  };
 
   return (
     <WhiteSafeAreaView>
@@ -74,19 +95,19 @@ const view = ({navigation}) => {
             data={BUTTON_LIST}
             renderItem={({item, index}) => (
               <Touchable
-                onPress={() => setSelectedButton(item)}
+                onPress={() => setSelectedMenu(item)}
                 style={{
                   ...styles.btnWrapper,
                   backgroundColor:
-                    selectedButton === item ? '#fd7f36' : '#f7f7f7',
-                  borderColor: selectedButton === item ? '#fd7f36' : '#c4c4c4',
+                    selectedMenu === item ? '#fd7f36' : '#f7f7f7',
+                  borderColor: selectedMenu === item ? '#fd7f36' : '#c4c4c4',
                 }}
               >
                 <NormalBoldLabel
                   text={item}
                   style={{
                     ...styles.btnText,
-                    color: selectedButton === item ? '#fff' : '#c4c4c4',
+                    color: selectedMenu === item ? '#fff' : '#c4c4c4',
                   }}
                 />
               </Touchable>
@@ -95,22 +116,7 @@ const view = ({navigation}) => {
           />
         </View>
 
-        {QUESTION_LIST.map((question, index) => (
-          <QnaMenu
-            // index는 어떤 값을 반환하는 지모르 겠다.
-            key={index}
-            onPress={() => {
-              if (selectedQuestion === question.id) {
-                setSelectedQuestion(null);
-              } else {
-                setSelectedQuestion(question.id);
-              }
-            }}
-            isOpen={question.id === selectedQuestion}
-            title={question.title}
-            content={question.content}
-          />
-        ))}
+        {!isLoading && renderQuestionView(selectedMenu)}
       </ScrollView>
       <BottomButton
         onPress={() => navigation.navigate('SendMsg')}
@@ -147,21 +153,25 @@ const QnaMenu = ({onPress, isOpen, title, content}) => {
 
 const styles = StyleSheet.create({
   topContainer: {
-    paddingHorizontal: 10,
+    // paddingHorizontal: 10,
+    paddingHorizontal: 8,
     paddingVertical: 6,
     backgroundColor: '#f7f7f7',
   },
   btnWrapper: {
-    width: (width - 35) / 3 - 24,
+    // width: (width - 35) / 3 - 24,
+    width: (width - 20) / 3 - 10,
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 7,
-    marginHorizontal: 14,
+    // marginHorizontal: 14,
+    marginHorizontal: 6,
     marginVertical: 6,
     borderRadius: 6,
     borderWidth: 2,
   },
   btnText: {
+    paddingHorizontal: 4,
     fontSize: 18,
     lineHeight: 20,
   },
