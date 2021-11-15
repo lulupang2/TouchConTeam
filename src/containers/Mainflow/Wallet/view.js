@@ -113,18 +113,29 @@ const view = ({navigation, sendmodal}) => {
           <BottomButton text={'확인'} onPress={() => clickSend()} />
         </ColumnView>
       </ModalPoup2>
-      {/* <ColumnView>
-        <NormalBoldLabel text={'터치콘 지갑 주소'} />
-        <Text>fgjlkssklf</Text>
-      </ColumnView> */}
+      <ColumnView>
+        <NormalBoldLabel
+          text={'터치콘 지갑 주소'}
+          style={{marginLeft: 26, marginTop: 40}}
+        />
+        <Text
+          style={{
+            fontSize: 16,
+            marginTop: 21,
+            marginLeft: 26,
+            marginBottom: 39,
+          }}>
+          fgjlkssklf
+        </Text>
+      </ColumnView>
       {/* Qr코드 넣기 */}
       {console.log('qr2 뷰 시작')}
-      <QRCode
+      {/* <QRCode
         value={'http://facebook.github.io/react-native/'}
         size={50}
         bgColor="black"
         fgColor="white"
-      />
+      /> */}
 
       {console.log('qr2 뷰 끝')}
       {/* qr코와  text코드 넣기  */}
@@ -139,7 +150,7 @@ const view = ({navigation, sendmodal}) => {
         }}
       /> */}
       {console.log('지갑 주소 복사하기')}
-      <BottomButton text={'지갑 주소 복사하기'} />
+      <BottomButton text={'지갑 주소 복사하기'} style={{marginBottom: 15}} />
       <View style={styles.under}>
         <HeaderThickBottomLine />
         {/* 터치콘 */}
