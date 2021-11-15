@@ -32,7 +32,7 @@ const BUTTON_LIST = [
   '전송',
   '리워드콘',
   'T-MAIL',
-  '터치-스테이킹',
+  '터치스테이킹',
   '큐알스캔',
   '기프티콘',
 ];
@@ -101,8 +101,7 @@ const view = ({navigation}) => {
                   backgroundColor:
                     selectedMenu === item ? '#fd7f36' : '#f7f7f7',
                   borderColor: selectedMenu === item ? '#fd7f36' : '#c4c4c4',
-                }}
-              >
+                }}>
                 <NormalBoldLabel
                   text={item}
                   style={{

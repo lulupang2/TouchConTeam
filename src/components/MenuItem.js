@@ -11,7 +11,7 @@ export const MenuItem = ({onPress, title, style, id}) => {
     setOn(!on);
   };
 
-  const [select, setSelect] = useState(101 || 101);
+  const [select, setSelect] = useState(101);
 
   return (
     <Touchable
@@ -26,8 +26,8 @@ export const MenuItem = ({onPress, title, style, id}) => {
         borderBottomColor: '#c4c4c4',
         ...style,
       }}>
-      {console.log('1', id)}
       <NormalBoldLabel text={title} />
+
       {select === id ? (
         <SwitchToggle
           switchOn={on}

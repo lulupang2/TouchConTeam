@@ -1,17 +1,16 @@
 import React from 'react';
-import {Image, View} from 'react-native';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import RowView from '../../../components/RowView';
 import {NormalBoldLabel} from '../../../components/Label';
 import {MenuItem} from '../../../components/MenuItem';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 
-let MENU = [
+const MENU = [
   {id: 1, title: '터치코인 연결관리', path: 'TcConnMana'},
   {id: 2, title: 'PIN번호 변경', path: 'Pinchg'},
-  {id: 101, title: '마케팅 정보 알림'},
-  {id: 101, title: '지문 & 홍채  인증'},
-  {id: 3, title: '탈퇴하기', path: 'SignOut'},
+  {id: 101, title: '마케팅 정보 알림', path: ''},
+  {id: 101, title: '바이오 인증 사용', path: ''},
+  {id: 5, title: '탈퇴하기', path: 'SignOut'},
 ];
 
 const view = ({navigation}) => {
@@ -34,17 +33,13 @@ const view = ({navigation}) => {
         />
       </RowView>
 
-      {MENU.map((menu, index) => (
+      {MENU.map(menu => (
         <MenuItem
           id={menu.id}
           key={menu.id}
           title={menu.title}
-          onPress={menu => {
-            if (menu.id == 101 || 102) {
-              // 토글 변경 함수
-            } else {
-              navigation.navigate(menu.path);
-            }
+          onPress={() => {
+            navigation.navigate(menu.path);
           }}
         />
       ))}

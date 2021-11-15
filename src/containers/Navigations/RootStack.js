@@ -36,6 +36,8 @@ import TouchConCh from '../Mainflow/TouchconCh/view';
 import GfCaolion from '../Mainflow/GfCaolion/Caolion';
 import GfMegaMall from '../Mainflow/GfMegaMall/MegaMall';
 import GfGukBab from '../Mainflow/GfGukBab/GukBab';
+import Tos from '../Mainflow/Tos/view';
+import Ppp from '../Mainflow/Ppp/view';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 const Stack = createStackNavigator();
@@ -67,8 +69,7 @@ const RootStack = () => (
         />
       ),
       headerBackTitleVisible: false,
-    }}
-  >
+    }}>
     {/* 버튼 모음  start */}
     <Stack.Screen
       name="TestButton"
@@ -76,7 +77,6 @@ const RootStack = () => (
       options={{headerShown: false}}
     />
     {/* 버튼 모음 end */}
-
     {/* 버튼 모음2  start */}
     {/*<Stack.Screen*/}
     {/*  name="TestThumbnail"*/}
@@ -84,7 +84,6 @@ const RootStack = () => (
     {/*  options={{title: 'x 버튼 필요'}}*/}
     {/*/>*/}
     {/* 버튼 모음2 end */}
-
     {/* Intro 3 start*/}
     <Stack.Screen
       name="Intro3"
@@ -92,7 +91,6 @@ const RootStack = () => (
       options={{headerShown: false}}
     />
     {/* Intro 3 end*/}
-
     {/* Intro 2 start*/}
     <Stack.Screen
       name="Intro2"
@@ -100,7 +98,6 @@ const RootStack = () => (
       options={{headerShown: false}}
     />
     {/* Intro 2 end*/}
-
     {/* Intro 1 start*/}
     <Stack.Screen
       name="Intro1"
@@ -108,7 +105,6 @@ const RootStack = () => (
       options={{headerShown: false}}
     />
     {/* Intro 2 end*/}
-
     {/* 메인화면 start */}
     <Stack.Screen
       name="Main"
@@ -116,7 +112,6 @@ const RootStack = () => (
       options={{headerShown: false}}
     />
     {/* 메인화면 end */}
-
     {/* ------ 지갑생성 (터치콘 지갑) start */}
     <Stack.Screen
       name="Wallet"
@@ -130,9 +125,7 @@ const RootStack = () => (
       component={SignOut}
       options={{title: '계정탈퇴'}}
     />
-
     {/* Sign Out start(회워탈퇴) */}
-
     <Stack.Screen
       name="Pinlogin"
       component={Pinlogin}
@@ -148,7 +141,6 @@ const RootStack = () => (
       component={Pinchg}
       options={{headerShown: false}}
     />
-
     {/* 터치콘 연결관리 */}
     <Stack.Screen
       name="TcConnMana"
@@ -167,7 +159,6 @@ const RootStack = () => (
       component={Policy}
       options={{title: '약관 및 개인정보처리방침'}}
     />
-
     <Stack.Screen
       name="TcStory"
       component={TcStory}
@@ -179,27 +170,23 @@ const RootStack = () => (
       component={SendMsg}
       options={{title: '1:1 문의하기'}}
     />
-
     {/* 내 정보 > 자주묻는 질문 페이지  */}
     <Stack.Screen
       name="QnA"
       component={QnA}
       options={{title: 'Q&A 궁금증 해소하세요'}}
     />
-
     {/* 공지사항 */}
     <Stack.Screen
       name="Notice"
       component={Notice}
       options={{title: '공지사항'}}
     />
-
     <Stack.Screen
       name="MyInfo"
       component={MyInfo}
       options={{title: '내 정보'}}
     />
-
     <Stack.Screen
       name="Shopping"
       component={Shopping}
@@ -215,7 +202,6 @@ const RootStack = () => (
       component={Thumbnail2}
       options={{title: ''}}
     />
-
     <Stack.Screen
       name="Thumbnail3"
       component={Thumbnail3}
@@ -226,7 +212,6 @@ const RootStack = () => (
       component={Thumbnail4}
       options={{title: ''}}
     />
-
     <Stack.Screen
       name="Prep"
       component={Prepare}
@@ -242,7 +227,6 @@ const RootStack = () => (
       component={Signup}
       options={{headerShown: false}}
     />
-
     {/*------스캔 결과 start---------  */}
     <Stack.Screen
       name="ScanResult"
@@ -250,7 +234,6 @@ const RootStack = () => (
       options={{headerShown: false}}
     />
     {/*------스캔 결과 end---------  */}
-
     {/* ------- 스캔하기 start --------- */}
     <Stack.Screen
       name="RandomSc"
@@ -265,7 +248,6 @@ const RootStack = () => (
       }}
     />
     {/* ------- 스캔하기 end --------- */}
-
     {/* ------ 내 쿠폰 start */}
     <Stack.Screen
       name="MyCoupon"
@@ -280,16 +262,13 @@ const RootStack = () => (
       }}
     />
     {/* ------ 내 쿠폰 end */}
-
     {/*---------스캔보기 start---------  */}
     <Stack.Screen
       name="ScanHistory"
       component={ScanHistory}
       options={{title: '스캔 히스토리'}}
     />
-
     {/*---------스캔보기 end ----------  */}
-
     {/* ----- 터치콘 start-------- */}
     <Stack.Screen
       name="TouchCon"
@@ -320,6 +299,12 @@ const RootStack = () => (
       component={GfGukBab}
       options={{headerShown: false}}
     />
+    <Stack.Screen name="Tos" component={Tos} options={{title: '이용약관'}} />
+    <Stack.Screen
+      name="Ppp"
+      component={Ppp}
+      options={{title: '개인정보처리방침'}}
+    />
   </Stack.Navigator>
 );
 
@@ -330,8 +315,7 @@ function MyTabs() {
       tabBar={() => null}
       screenOptions={{
         tabBarShowLabel: false,
-      }}
-    >
+      }}>
       <Tab.Screen name="Intro1" component={Intro1} />
       <Tab.Screen name="Intro2" component={Intro2} />
       <Tab.Screen name="Intro3" component={Intro3} />
