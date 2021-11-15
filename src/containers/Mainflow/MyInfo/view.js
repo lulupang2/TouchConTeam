@@ -6,11 +6,12 @@ import {NormalBoldLabel} from '../../../components/Label';
 import {MenuItem} from '../../../components/MenuItem';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 
-const MENU = [
+let MENU = [
   {id: 1, title: '터치코인 연결관리', path: 'TcConnMana'},
   {id: 2, title: 'PIN번호 변경', path: 'Pinchg'},
-  {id: 3, title: '마케팅 정보 알림', path: 'MarketingInfo'},
-  {id: 4, title: '탈퇴하기', path: 'SignOut'},
+  {id: 101, title: '마케팅 정보 알림'},
+  {id: 101, title: '지문 & 홍채  인증'},
+  {id: 3, title: '탈퇴하기', path: 'SignOut'},
 ];
 
 const view = ({navigation}) => {
@@ -25,8 +26,7 @@ const view = ({navigation}) => {
           borderBottomWidth: 1,
           borderBottomColor: '#c4c4c4',
           paddingBottom: 18,
-        }}
-      >
+        }}>
         <NormalBoldLabel text={'이메일 계정'} />
         <NormalBoldLabel
           text={'ngm1224@gmail.com'}
@@ -34,11 +34,18 @@ const view = ({navigation}) => {
         />
       </RowView>
 
-      {MENU.map(menu => (
+      {MENU.map((menu, index) => (
         <MenuItem
+          id={menu.id}
           key={menu.id}
           title={menu.title}
-          onPress={() => navigation.navigate(menu.path)}
+          onPress={menu => {
+            if (menu.id == 101 || 102) {
+              // 토글 변경 함수
+            } else {
+              navigation.navigate(menu.path);
+            }
+          }}
         />
       ))}
 
