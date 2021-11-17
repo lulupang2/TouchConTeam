@@ -20,9 +20,10 @@ import SwiperAd from '../../../components/SwiperAd';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import Touchable from '../../../components/Touchable';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useNavigation} from '@react-navigation/native';
 
 const dataList = [
-  {id: 1, title: '메가몰'},
+  {id: 1, title: '메가몰', path: 'Shopping'},
   {id: 2, title: '카오리온'},
   {id: 3, title: '안동쇠고기'},
   {id: 4, title: '재팬드럭'},
@@ -35,7 +36,6 @@ const dataList = [
 ];
 
 const numColumns = 3;
-
 const formatData = (dataList, numColumns) => {
   const totalRows = Math.floor(dataList.length / numColumns);
   let totalLastRow = dataList.length - totalRows * numColumns;
@@ -45,31 +45,6 @@ const formatData = (dataList, numColumns) => {
     totalLastRow++;
   }
   return dataList;
-};
-
-const adView = ({item, index}) => {
-  if (item.empty) {
-    return (
-      <ColumnView style={{justifyContent: 'center', alignItems: 'center'}}>
-        <View style={styles.empty1}></View>
-        <Text>{item.title}</Text>
-      </ColumnView>
-    );
-  } else {
-    return (
-      <ColumnView style={{justifyContent: 'center', alignItems: 'center'}}>
-        <View style={styles.adScreen}></View>
-        <Text
-          style={{
-            fontSize: 15,
-            color: '#000',
-          }}
-        >
-          {item.title}
-        </Text>
-      </ColumnView>
-    );
-  }
 };
 
 const view = ({navigation}) => {
@@ -94,6 +69,33 @@ const view = ({navigation}) => {
     });
   }, []);
 
+  const adView = ({item, index}) => {
+    if (item.empty) {
+      return (
+        <ColumnView style={{justifyContent: 'center', alignItems: 'center'}}>
+          <View style={styles.empty1}></View>
+          <Text>{item.title}</Text>
+        </ColumnView>
+      );
+    } else {
+      return (
+        <ColumnView style={{justifyContent: 'center', alignItems: 'center'}}>
+          <TouchableOpacity onPress={item.path}>
+            <View style={styles.adScreen}></View>
+          </TouchableOpacity>
+          <Text
+            style={{
+              fontSize: 15,
+              color: '#000',
+            }}>
+            {item.title}
+            {console.log(item)}
+          </Text>
+        </ColumnView>
+      );
+    }
+  };
+
   return (
     <WhiteSafeAreaView>
       {/* 스와이프 들어갈 곳 start*/}
@@ -105,7 +107,7 @@ const view = ({navigation}) => {
 
       <View style={styles.container}>
         <FlatList
-            contentContainerStyle={styles.flatListContainer}
+          contentContainerStyle={styles.flatListContainer}
           data={formatData(dataList, numColumns)}
           renderItem={adView}
           keyExtractor={(item, index) => index.toString()}
@@ -148,5 +150,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   container: {height: 480},
-  flatListContainer: {paddingBottom: 50}
+  flatListContainer: {paddingBottom: 50},
 });

@@ -38,6 +38,10 @@ import GfMegaMall from '../Mainflow/GfMegaMall/MegaMall';
 import GfGukBab from '../Mainflow/GfGukBab/GukBab';
 import Tos from '../Mainflow/Tos/view';
 import Ppp from '../Mainflow/Ppp/view';
+import AdDetatil1 from '../Mainflow/AdDetail/view';
+import AdDetatil2 from '../Mainflow/AdDetail/view2';
+import AdDetatil3 from '../Mainflow/AdDetail/view3';
+import AdDetatil4 from '../Mainflow/AdDetail/view4';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 const Stack = createStackNavigator();
@@ -46,7 +50,7 @@ const Tab = createMaterialTopTabNavigator();
 const RootStack = () => (
   <Stack.Navigator
     // initialRouteName="TestButton"
-    initialRouteName="Splash"
+    initialRouteName="AdDetail4"
     screenOptions={{
       headerTitleAlign: 'center',
       headerTitleStyle: {
@@ -75,6 +79,26 @@ const RootStack = () => (
       name="TestButton"
       component={TestButton}
       options={{headerShown: false}}
+    />
+    <Stack.Screen
+      name="AdDetail1"
+      component={AdDetatil1}
+      options={{title: ' '}}
+    />
+    <Stack.Screen
+      name="AdDetail2"
+      component={AdDetatil2}
+      options={{title: ' '}}
+    />
+    <Stack.Screen
+      name="AdDetail3"
+      component={AdDetatil3}
+      options={{title: ' '}}
+    />
+    <Stack.Screen
+      name="AdDetail4"
+      component={AdDetatil4}
+      options={{title: ' '}}
     />
     {/* 버튼 모음 end */}
     {/* 버튼 모음2  start */}
@@ -283,7 +307,6 @@ const RootStack = () => (
       options={{title: '터치콘 전환'}}
     />
     {/*---- 터치콘전환  end---- */}
-
     <Stack.Screen
       name="GfCaolion"
       component={GfCaolion}
