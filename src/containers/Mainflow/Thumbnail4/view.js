@@ -23,16 +23,16 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 
 const dataList = [
-  {id: 1, title: '메가몰', path: 'Shopping'},
-  {id: 2, title: '카오리온'},
-  {id: 3, title: '안동쇠고기'},
-  {id: 4, title: '재팬드럭'},
-  {id: 5, title: '마마무'},
-  {id: 6, title: '마마무'},
-  {id: 7, title: '마마무'},
-  {id: 8, title: '마마무'},
-  {id: 9, title: '마마무'},
-  {id: 10, title: '마마무'},
+  {id: 1, title: '메가몰', path: ''},
+  {id: 2, title: '카오리온', path: 'Shopping'},
+  {id: 3, title: '안동쇠고기', path: ''},
+  {id: 4, title: '재팬드럭', path: ''},
+  {id: 5, title: '마마무', path: ''},
+  {id: 6, title: '마마무', path: ''},
+  {id: 7, title: '마마무', path: ''},
+  {id: 8, title: '마마무', path: ''},
+  {id: 9, title: '마마무', path: ''},
+  {id: 10, title: '마마무', path: ''},
 ];
 
 const numColumns = 3;
@@ -84,7 +84,7 @@ const view = () => {
         <ColumnView style={{justifyContent: 'center', alignItems: 'center'}}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Shopping');
+              navigation.navigate(item.path);
             }}>
             <View style={styles.adScreen}></View>
           </TouchableOpacity>
