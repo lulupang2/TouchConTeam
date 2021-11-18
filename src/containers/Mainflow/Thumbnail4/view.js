@@ -47,7 +47,9 @@ const formatData = (dataList, numColumns) => {
   return dataList;
 };
 
-const view = ({navigation}) => {
+const view = () => {
+  const navigation = useNavigation();
+
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => null,
@@ -80,7 +82,10 @@ const view = ({navigation}) => {
     } else {
       return (
         <ColumnView style={{justifyContent: 'center', alignItems: 'center'}}>
-          <TouchableOpacity onPress={item.path}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Shopping');
+            }}>
             <View style={styles.adScreen}></View>
           </TouchableOpacity>
           <Text
