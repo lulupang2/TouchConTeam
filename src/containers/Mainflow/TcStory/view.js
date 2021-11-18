@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Dimensions, ScrollView} from 'react-native';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import {NormalLabel} from '../../../components/Label';

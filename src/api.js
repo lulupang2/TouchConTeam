@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://127.0.0.1:8000/';
+axios.defaults.baseURL = 'http://3.35.210.171:5055/';
 if (process.env.NODE_DEV === 'production') {
-  axios.defaults.baseURL = '';
+  axios.defaults.baseURL = 'http://3.35.210.171:5055/';
 }
 
 const api = axios.create({
