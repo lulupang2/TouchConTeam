@@ -101,7 +101,8 @@ const view = ({navigation}) => {
                   backgroundColor:
                     selectedMenu === item ? '#fd7f36' : '#f7f7f7',
                   borderColor: selectedMenu === item ? '#fd7f36' : '#c4c4c4',
-                }}>
+                }}
+              >
                 <NormalBoldLabel
                   text={item}
                   style={{

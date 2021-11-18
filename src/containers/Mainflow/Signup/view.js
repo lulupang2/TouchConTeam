@@ -9,40 +9,28 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
+  Alert,
 } from 'react-native';
 import BottomButton from '../../../components/BottomButton';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';
-import axios from 'axios';
+import {useDispatch, useSelector} from 'react-redux';
+import {checkVerifyCode} from '../../../redux/authSlice';
+import api from '../../../api';
 
 const {height, width} = Dimensions.get('window');
 
 const vh = height / 100;
 const vw = width / 100;
 
+let interval;
+
 function Signup({props, navigation}) {
-  // axios 테스트
-  const testSignUp = () => {
-    fetch('http://3.35.210.171:5055/emailverification', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        Email: email,
-      }),
-    })
-      .then(res => res.json())
-      .then(res => {
-        // console.log(res);
-        setVerti(res.Result);
-        // console.log('코드 verti에 담기', verti);
-      });
-  };
+  const dispatch = useDispatch();
+  const auth = useSelector(state => state.auth);
+  const {isVerified} = auth;
 
-  let interval;
-
-  const [verti, setVerti] = useState();
+  const [verti, setVerti] = useState('');
   const [allagree, setAllagree] = useState(false);
   const [ser_agree, setSer_agree] = useState(false);
   const [per_agree, setPer_agree] = useState(false);
@@ -52,24 +40,99 @@ function Signup({props, navigation}) {
   const [remaining, setRemaining] = useState(0);
   const [hasSent, setHasSent] = useState(false);
 
-  const chg_ser = () => {
-    setSer_agree(!ser_agree);
-    if (ser_agree === true) {
+  {
+    console.log('인증번호: ', verti);
+  }
+  useEffect(() => {
+    if (isVerified) {
+      navigation.navigate('Pinlogin');
+    }
+  }, [dispatch]);
+
+  // axios 테스트
+  const getVerifyCode = async Email => {
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('emailverification', {Email}, config);
+      setVerti(res.Result);
+      setHasSent(true);
+      countDown();
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패하였습니다.');
+      console.log('err', err);
+      console.log('err.res', err.response);
+    }
+    // fetch('http://3.35.210.171:5055/emailverification', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //         Email: email,
+    //     }),
+    // })
+    //     .then(res => res.json())
+    //     .then(res => {
+    //         // console.log('res', res);
+    //         setVerti(res.Result);
+    //         // console.log('코드 verti에 담기', verti);
+    //     });
+  };
+
+  const onCheckVerifyCode = () => {
+    let errMsg = null;
+
+    if (!allagree) {
+      errMsg = '서비스 이용 약관에 동의해 주세요.';
+    } else if (email === '' || code === '') {
+      errMsg = '이메일과 인증번호를 꼭 입력해주세요.';
+    } else if (remaining === 0) {
+      errMsg = '인증시간이 초과되었습니다.';
+    } else if (code !== verti) {
+      errMsg = '인증번호가 틀립니다.';
+    }
+
+    if (errMsg) {
+      Alert.alert('', errMsg);
+      return;
+    }
+    dispatch(checkVerifyCode(email, code));
+  };
+
+  const onCheckAllAgree = (ser_agree, per_agree, mark_agree) => {
+    if (!allagree && ser_agree && per_agree && mark_agree) {
+      setAllagree(true);
+    } else {
       setAllagree(false);
     }
+  };
+
+  const chg_ser = () => {
+    setSer_agree(!ser_agree);
+    onCheckAllAgree(!ser_agree, per_agree, mark_agree);
+    // if (ser_agree === true) {
+    //   setAllagree(false);
+    // }
   };
   const chg_per = () => {
     setPer_agree(!per_agree);
-    if (per_agree === true) {
-      setAllagree(false);
-    }
+    onCheckAllAgree(ser_agree, !per_agree, mark_agree);
+    // if (per_agree === true) {
+    //   setAllagree(false);
+    // }
   };
   const chg_mark = () => {
     setMark_agree(!mark_agree);
-    if (mark_agree === true) {
-      setAllagree(false);
-    }
+    onCheckAllAgree(ser_agree, per_agree, !mark_agree);
+    // if (mark_agree === true) {
+    //   setAllagree(false);
+    // }
   };
+
   const chg_all = () => {
     if (allagree === false) {
       setMark_agree(true);
@@ -84,7 +147,6 @@ function Signup({props, navigation}) {
     }
   };
 
-  console.log(remaining);
   const countDown = () => {
     let time = 300;
     if (interval) {
@@ -115,14 +177,15 @@ function Signup({props, navigation}) {
           }
         />
       </View>
-      {console.log(verti)}
+
       {/* <Button onPress={chg_all} title="test button" /> */}
       {/* 약관 동의 */}
       <View
         style={{
           // marginLeft: width * 0.05,
           paddingHorizontal: width * 0.05,
-        }}>
+        }}
+      >
         <View
           style={{
             // width: width * 0.9,
@@ -134,7 +197,8 @@ function Signup({props, navigation}) {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-evenly',
-          }}>
+          }}
+        >
           <TouchableOpacity onPress={chg_all}>
             <Image
               source={
@@ -152,7 +216,8 @@ function Signup({props, navigation}) {
 
           <TouchableOpacity
             onPress={chg_all}
-            style={{width: width * 0.75, height: height * 0.03}}>
+            style={{width: width * 0.75, height: height * 0.03}}
+          >
             <Image
               source={require('../../../assets/images/nobutton.png')}
               style={{
@@ -174,13 +239,15 @@ function Signup({props, navigation}) {
             resizeMode: 'contain',
             height: 152,
             justifyContent: 'space-evenly',
-          }}>
+          }}
+        >
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-evenly',
-            }}>
+            }}
+          >
             {ser_agree ? (
               <TouchableOpacity onPress={chg_ser}>
                 <Image
@@ -214,7 +281,8 @@ function Signup({props, navigation}) {
                 justifyContent: 'center',
                 // 글간 간격
                 marginTop: 24,
-              }}>
+              }}
+            >
               <View style={{flexDirection: 'column'}}>
                 <Image
                   source={require('../../../assets/images/service_agree.png')}
@@ -250,7 +318,8 @@ function Signup({props, navigation}) {
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-evenly',
-            }}>
+            }}
+          >
             {per_agree ? (
               <TouchableOpacity onPress={chg_per}>
                 <Image
@@ -281,7 +350,8 @@ function Signup({props, navigation}) {
                 height: height * 0.03,
                 resizeMode: 'contain',
                 justifyContent: 'center',
-              }}>
+              }}
+            >
               {/* 개인 정보 수집 및 이용 동의 Text */}
               {/*<View style={{flexDirection: 'column'}}>*/}
               <View style={{}}>
@@ -323,7 +393,8 @@ function Signup({props, navigation}) {
               paddingBottom: 23,
               borderBottomWidth: 0.8,
               borderColor: '#c4c4c4',
-            }}>
+            }}
+          >
             {mark_agree ? (
               <TouchableOpacity onPress={chg_mark}>
                 <Image
@@ -357,7 +428,8 @@ function Signup({props, navigation}) {
                   resizeMode: 'contain',
                   justifyContent: 'center',
                   marginTop: 14,
-                }}>
+                }}
+              >
                 {/* 마케팅 정보 알람 동의 Text  */}
                 <Image
                   source={require('../../../assets/images/marketing_agree.png')}
@@ -432,11 +504,14 @@ function Signup({props, navigation}) {
         {/* 인증코드 발송 버튼 */}
         <TouchableOpacity
           onPress={() => {
-            setHasSent(true);
-            countDown();
-            testSignUp();
+            if (email === '') {
+              Alert.alert('', '이메일을 입력해주세요.');
+              return;
+            }
+            getVerifyCode(email);
           }}
-          style={styles.verifySendBtn}>
+          style={styles.verifySendBtn}
+        >
           <NormalBoldLabel
             text={'인증코드 발송'}
             style={{fontSize: 18, lineHeight: 22, color: '#fff'}}
@@ -451,7 +526,8 @@ function Signup({props, navigation}) {
           marginLeft: 26,
           marginTop: 28,
           fontWeight: 'bold',
-        }}>
+        }}
+      >
         전화번호
       </Text>
       <View
@@ -462,7 +538,8 @@ function Signup({props, navigation}) {
           display: 'flex',
           justifyContent: 'space-between',
           flexDirection: 'row',
-        }}>
+        }}
+      >
         {/* 전화번호 picker : 010,011,017 */}
 
         <Text
@@ -475,7 +552,8 @@ function Signup({props, navigation}) {
             textAlign: 'center',
             paddingVertical: 11.5,
             color: '#000',
-          }}>
+          }}
+        >
           010
         </Text>
         {/* 전화번호 picker : 010,011,017 */}
@@ -509,10 +587,7 @@ function Signup({props, navigation}) {
 
       {/* 다음 버튼 */}
       {/* PinLogin으로 가야하나 지금은 바로 Main으로 가게  */}
-      <BottomButton
-        text={'다음'}
-        onPress={() => navigation.navigate('Pinlogin')}
-      />
+      <BottomButton text={'다음'} onPress={onCheckVerifyCode} />
 
       {/* <View style={{marginLeft: width * 0.05}}>
         <TouchableOpacity onPress={gobtn}>

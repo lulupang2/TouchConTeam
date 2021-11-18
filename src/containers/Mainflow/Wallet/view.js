@@ -27,7 +27,6 @@ const view = ({navigation, sendmodal}) => {
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
   const {
-    user,
     walletAddress = '0x3215463e2184685415216ee4e4e56545656421ds121',
     walletURL,
   } = auth;
@@ -48,7 +47,7 @@ const view = ({navigation, sendmodal}) => {
             style={{
               padding: 4,
               alignSelf: 'center',
-                color: '#c4c4c4',
+              color: '#c4c4c4',
               paddingRight: 16,
             }}
           />

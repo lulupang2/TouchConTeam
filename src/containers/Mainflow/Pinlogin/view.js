@@ -12,6 +12,8 @@ import {
 import Touchable from '../../../components/Touchable';
 import {NormalBoldLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';
+import {useDispatch, useSelector} from 'react-redux';
+import {pinLogin} from '../../../redux/authSlice';
 
 const {height, width} = Dimensions.get('window');
 
@@ -46,21 +48,29 @@ const Circle = ({isOrange}) => {
 };
 
 export default function Pinlogin({navigation}) {
+  const dispatch = useDispatch();
+  const auth = useSelector(state => state.auth);
+  const {pin, sessionToken, loginSuccess} = auth; // pin 현재 기본값 0000000
+
   const [pwd, onChangePwd] = React.useState('');
   const [test, setTest] = useState('0000000');
   const [pwdbool, setPwdbool] = useState(0); // pwErrCount
 
   useEffect(() => {
+    if (loginSuccess) {
+      navigation.navigate('Main');
+    }
     // setTimeout(() => {
     //   navigation.navigate('Main');
     // }, 1000);
-  });
+  }, [dispatch]);
 
   const handleKeyPress = e => {
     console.log('pwdErrorCount', pwdbool);
-    if (pwd === test) {
+    if (pwd === pin) {
+      dispatch(pinLogin(pwd, sessionToken));
       console.log('login success');
-      navigation.navigate('Main');
+      // navigation.navigate('Main');
     } else {
       setPwdbool(pwdbool + 1);
       console.log('login fail');

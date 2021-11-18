@@ -25,7 +25,8 @@ export const MenuItem = ({onPress, title, style, id}) => {
         borderBottomWidth: 1,
         borderBottomColor: '#c4c4c4',
         ...style,
-      }}>
+      }}
+    >
       <NormalBoldLabel text={title} />
 
       {select === id ? (

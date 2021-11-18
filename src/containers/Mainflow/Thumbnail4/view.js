@@ -85,14 +85,16 @@ const view = () => {
           <TouchableOpacity
             onPress={() => {
               navigation.navigate(item.path);
-            }}>
+            }}
+          >
             <View style={styles.adScreen}></View>
           </TouchableOpacity>
           <Text
             style={{
               fontSize: 15,
               color: '#000',
-            }}>
+            }}
+          >
             {item.title}
             {console.log(item)}
           </Text>

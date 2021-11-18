@@ -22,7 +22,8 @@ const AdView = ({item, index}) => {
           style={{
             fontSize: 15,
             color: '#000',
-          }}>
+          }}
+        >
           {item.title}
           {console.log(item)}
         </Text>

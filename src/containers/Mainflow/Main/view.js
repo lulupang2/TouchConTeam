@@ -43,17 +43,20 @@ export default function Main({navigation}) {
       <Navbar />
       <ScrollView
         style={styles.contentContainer}
-        contentContainerStyle={{paddingBottom: 50}}>
+        contentContainerStyle={{paddingBottom: 50}}
+      >
         <RowView
           style={{
             paddingHorizontal: 24,
             marginTop: 17,
             flex: 1,
-          }}>
+          }}
+        >
           {/* 최상단 터치콘 박스 로고와 함께 있음 start */}
           <TouchableNoFeedback
             style={styles.coinBtn}
-            onPress={() => navigation.navigate('TouchCon')}>
+            onPress={() => navigation.navigate('TouchCon')}
+          >
             <Image
               source={require('../../../assets/icons/coin_icon.png')}
               style={{
@@ -123,10 +126,12 @@ export default function Main({navigation}) {
           paginationStyle={{
             position: 'relative',
             top: -24,
-          }}>
+          }}
+        >
           <TouchableOpacity
             onPress={() => navigation.navigate('Thumbnail1')}
-            style={{flex: 1, justifyContent: 'center'}}>
+            style={{flex: 1, justifyContent: 'center'}}
+          >
             <RowView style={styles.swiperContentWrapper}>
               <NormalBoldLabel
                 text={'유럽 미인들의 필수품'}
@@ -141,7 +146,8 @@ export default function Main({navigation}) {
 
           <TouchableOpacity
             onPress={() => navigation.navigate('Thumbnail2')}
-            style={{flex: 1, justifyContent: 'center'}}>
+            style={{flex: 1, justifyContent: 'center'}}
+          >
             <RowView style={styles.swiperContentWrapper}>
               <NormalBoldLabel
                 text={'매일 매일 출석만 해도!'}
@@ -156,7 +162,8 @@ export default function Main({navigation}) {
 
           <TouchableOpacity
             onPress={() => navigation.navigate('Thumbnail3')}
-            style={{flex: 1, justifyContent: 'center'}}>
+            style={{flex: 1, justifyContent: 'center'}}
+          >
             <RowView style={styles.swiperContentWrapper2}>
               <NormalBoldLabel
                 text={'터치토큰,' + '\n' + '적립해서 이자 받으셔야죠!'}
@@ -166,7 +173,8 @@ export default function Main({navigation}) {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigation.navigate('Thumbnail4')}
-            style={{flex: 1, justifyContent: 'center'}}>
+            style={{flex: 1, justifyContent: 'center'}}
+          >
             <RowView style={styles.swiperContentWrapper3}>
               <NormalBoldLabel
                 text={
@@ -190,7 +198,8 @@ export default function Main({navigation}) {
             style={styles.stackingBtn}
             onPress={() => {
               navigation.navigate('Thumbnail3');
-            }}>
+            }}
+          >
             <NormalBoldLabel text={'신청'} style={{color: '#fff'}} />
           </Touchable>
         </View>
@@ -208,7 +217,8 @@ export default function Main({navigation}) {
         {/* 터치 쇼핑몰 쇼핑하기 start */}
         <Touchable
           onPress={() => navigation.navigate('Shopping')}
-          style={styles.shoppingBtn}>
+          style={styles.shoppingBtn}
+        >
           <NormalBoldLabel
             text={'터치 쇼핑몰 쇼핑하기'}
             style={{
@@ -246,13 +256,15 @@ const AdMenu = ({menu, index}) => {
       style={{
         ...styles.adContent,
         borderBottomWidth: index !== AD_MENU.length - 1 ? 1 : 0,
-      }}>
+      }}
+    >
       <NormalBoldLabel text={menu.name} style={{color: '#555'}} />
       <RowView>
         <NormalBoldLabel text={menu.name} style={{color: '#555'}} />
         <Touchable
           onPress={() => navigation.navigate(menu.path)}
-          style={styles.adBtn}>
+          style={styles.adBtn}
+        >
           <NormalBoldLabel
             text={'GO'}
             style={{color: '#fff', fontSize: 18, lineHeight: 22}}

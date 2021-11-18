@@ -25,7 +25,7 @@ const view = ({navigation}) => {
 
   useEffect(() => {
     navigation.setOptions({
-        headerLeft: () => null,
+      headerLeft: () => null,
       headerRight: () => (
         <Touchable onPress={() => navigation.navigate('Main')} style={{}}>
           <AntDesign
@@ -35,7 +35,7 @@ const view = ({navigation}) => {
             style={{
               padding: 4,
               alignSelf: 'center',
-                color: '#c4c4c4',
+              color: '#c4c4c4',
               paddingRight: 16,
             }}
           />
@@ -60,7 +60,7 @@ const view = ({navigation}) => {
         style={{
           backgroundColor: '#fff',
           position: 'relative',
-            top: 24
+          top: 24,
         }}
       >
         <RowView style={styles.stackingWrapper}>

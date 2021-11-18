@@ -88,7 +88,8 @@ const Menu = ({menu}) => {
   return (
     <Touchable
       style={styles.menu}
-      onPress={() => navigation.navigate(menu.path)}>
+      onPress={() => navigation.navigate(menu.path)}
+    >
       <Image
         style={{
           height: width / 4,
@@ -104,7 +105,8 @@ const Menu = ({menu}) => {
           paddingVertical: 4,
           paddingHorizontal: 11,
           backgroundColor: '#f7f7f7',
-        }}>
+        }}
+      >
         <NormalBoldLabel
           text={menu.shop}
           style={{color: '#0068D9', fontSize: 12, lineHeight: 16}}

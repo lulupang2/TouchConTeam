@@ -14,11 +14,11 @@ const {height, width} = Dimensions.get('window');
 
 export default function Splash({navigation}) {
   const auth = useSelector(state => state.auth);
-  const {user} = auth;
+  const {loginSuccess} = auth;
 
   useEffect(() => {
     setTimeout(() => {
-      if (user) {
+      if (loginSuccess) {
         navigation.navigate('Main');
       } else {
         navigation.navigate('Intro');

@@ -47,7 +47,8 @@ const view = ({navigation}) => {
                 marginLeft: 21,
                 fontSize: 15,
                 fontWeight: '700',
-              }}>
+              }}
+            >
               디지털 자산의 수량을 체크해 주세요!
             </Text>
           </View>
@@ -59,7 +60,8 @@ const view = ({navigation}) => {
                 height: 105,
                 borderBottomWidth: 1,
                 borderColor: '#c4c4c4',
-              }}>
+              }}
+            >
               <Text style={styles.TextSize12}>잔량 TOC 수량</Text>
               <RowView>
                 <NormalLabel text={toc} />
@@ -72,7 +74,8 @@ const view = ({navigation}) => {
                     fontSize: 15,
                     fontWeight: '400',
                     color: '#000',
-                  }}>
+                  }}
+                >
                   {krw}
                 </Text>
                 <Text
@@ -81,7 +84,8 @@ const view = ({navigation}) => {
                     marginLeft: 5,
                     fontWeight: '700',
                     fontSize: 15,
-                  }}>
+                  }}
+                >
                   KRW
                 </Text>
                 <Text
@@ -90,7 +94,8 @@ const view = ({navigation}) => {
                     fontSize: 15,
                     fontWeight: '400',
                     color: '#000',
-                  }}>
+                  }}
+                >
                   (STEX 거래서 시세연결)
                 </Text>
               </RowView>
@@ -102,7 +107,8 @@ const view = ({navigation}) => {
                 height: 99,
                 borderBottomWidth: 1,
                 borderColor: '#c4c4c4',
-              }}>
+              }}
+            >
               <Text style={styles.TextSize12}>잔량 TOC 수량</Text>
               <RowView style={{marginTop: 14}}>
                 <Text style={{color: '#000', fontSize: 16}}>{top}</Text>
@@ -115,7 +121,8 @@ const view = ({navigation}) => {
               style={{
                 justifyContent: 'center',
                 marginVertical: 11,
-              }}>
+              }}
+            >
               <Text style={{color: '#FF0000', fontSize: 15, fontWeight: '700'}}>
                 *아래 주의사항 꼭 읽어주세요!'
               </Text>
@@ -130,7 +137,8 @@ const view = ({navigation}) => {
             fontSize: 15,
             fontWeight: '700',
             marginVertical: 22,
-          }}>
+          }}
+        >
           (주의) 터치콘앱에서 탈퇴하시면 모든 디지털 자산이 소명됩니다.
         </Text>
 
@@ -170,7 +178,8 @@ const view = ({navigation}) => {
             marginRight: 51,
             borderColor: '#c4c4c4',
             padding: 11,
-          }}>
+          }}
+        >
           <Text
             style={{
               fontSize: 18,
@@ -178,13 +187,15 @@ const view = ({navigation}) => {
               color: '#000',
               marginLeft: 16,
               fontWeight: 'bold',
-            }}>
+            }}
+          >
             위 사항에 모두 동의 합니다.
           </Text>
           <TouchableOpacity
             onPress={() => {
               chMark();
-            }}>
+            }}
+          >
             {mark ? (
               <Image
                 source={require('../../../assets/images/square.png')}

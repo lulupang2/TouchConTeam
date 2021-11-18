@@ -31,7 +31,7 @@ const view = ({navigation}) => {
             style={{
               padding: 4,
               alignSelf: 'center',
-                color: '#c4c4c4',
+              color: '#c4c4c4',
               paddingRight: 16,
             }}
           />
