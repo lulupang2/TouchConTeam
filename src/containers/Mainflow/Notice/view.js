@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -15,6 +15,7 @@ import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import ColumnView from '../../../components/ColumnView';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
+import api from '../../../api';
 const NOTICE_LIST = [
   {
     id: 1,
@@ -48,6 +49,10 @@ const NOTICE_LIST = [
 const view = () => {
   // useState는 무조건 바디 안에 생성
   const [selectedLsit, setSelectedList] = useState(null);
+
+  
+  };
+
   return (
     <WhiteSafeAreaView>
       <HeaderBottomLine />

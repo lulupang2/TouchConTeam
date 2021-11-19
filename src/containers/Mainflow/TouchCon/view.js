@@ -1,5 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, View, Dimensions, Image, ScrollView} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  Image,
+  ScrollView,
+  Alert,
+} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {CircleButton} from '../../../components/Botton';
 import {HeaderWalletBottomLine} from '../../../components/HeaderBottomLine';
@@ -12,6 +19,7 @@ import QRCode from 'react-native-qrcode-svg';
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import {walletGenerator} from '../../../redux/authSlice';
+import api from '../../../api';
 
 const MENU = [
   {name: 'Touch\n결제', path: ''},
@@ -32,6 +40,7 @@ const view = ({navigation}) => {
   } = auth;
 
   console.log('walletInfo', walletURL, walletAddress);
+
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -52,8 +61,21 @@ const view = ({navigation}) => {
     });
   }, []);
 
-  const walletCreate = async () => {
+  const walletCreate = async SessionToken => {
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('createwallet', {SessionToken}, config);
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
+
     // dispatch(walletGenerator(user.id));
+
     dispatch(walletGenerator());
   };
 

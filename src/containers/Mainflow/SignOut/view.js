@@ -26,6 +26,31 @@ const view = ({navigation}) => {
   const [krw, setKrw] = useState('50,210');
   const [top, setTop] = useState(0);
 
+//수정
+  
+useEffect(() => {
+    signOut();
+  });
+
+  const signOut = async () => {
+    let body = {sesstionToken};
+    api
+      .post('http://3.35.210.171:5055/unregister', JSON.stringify(body), {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(res => {
+        if (res.status !== 200) {
+          return;
+        }
+        console.log(res.data.Result);
+      })
+      .catch(err => {
+        console.log('에러메세지', err);
+      });
+
+
   const chMark = () => {
     if (mark === false) {
       setMark(true);
