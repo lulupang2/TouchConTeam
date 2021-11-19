@@ -65,10 +65,10 @@ const userSlice = createSlice({
     },
     saveWallet(state, action) {
       console.log('action', action.payload);
-      const {url, address} = action.payload;
-      state.walletURL = url;
-      state.walletAddress = address;
-      // state.walletAddress = action.payload;
+      // const {url, address} = action.payload;
+      // state.walletURL = url;
+      // state.walletAddress = address;
+      state.walletAddress = action.payload;
     },
   },
 });

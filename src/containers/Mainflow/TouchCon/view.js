@@ -18,7 +18,11 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import QRCode from 'react-native-qrcode-svg';
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
-import {walletGenerator} from '../../../redux/authSlice';
+import {
+  saveSessionToken,
+  saveWallet,
+  walletGenerator,
+} from '../../../redux/authSlice';
 import api from '../../../api';
 
 const MENU = [
@@ -34,12 +38,9 @@ const view = ({navigation}) => {
   const [touchPonint, setTouchPoint] = useState(10000.11);
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
-  const {
-    walletAddress = '0x3215463e2184685415216ee4e4e56545656421ds121',
-    walletURL,
-  } = auth;
+  const {walletAddress, walletURL} = auth;
 
-  console.log('walletInfo', walletURL, walletAddress);
+  console.log('walletInfo', walletAddress);
 
   useEffect(() => {
     navigation.setOptions({
@@ -61,14 +62,17 @@ const view = ({navigation}) => {
     });
   }, []);
 
-  const walletCreate = async SessionToken => {
+  const walletCreate = async () => {
+    let body = {sessionToken: auth.sessionToken};
     try {
       const config = {
         headers: {
           'Content-Type': 'application/json',
         },
       };
-      const res = await api.post('createwallet', {SessionToken}, config);
+      const res = await api.post('createwallet', JSON.stringify(body), config);
+      dispatch(saveWallet(res.data.Result));
+      Alert.alert('지갑이 생성되었습니다');
     } catch (err) {
       Alert.alert('', '서버와 통신에 실패');
       console.log('err', err);
@@ -76,7 +80,7 @@ const view = ({navigation}) => {
 
     // dispatch(walletGenerator(user.id));
 
-    dispatch(walletGenerator());
+    // dispatch(walletGenerator());
   };
 
   return (
@@ -130,7 +134,7 @@ const view = ({navigation}) => {
           text={'터치콘 지갑'}
           style={{fontSize: 16, lineHeight: 20, marginTop: 36, marginLeft: 23}}
         />
-        {walletURL ? (
+        {walletAddress ? (
           <View>
             <View
               style={{
@@ -141,7 +145,7 @@ const view = ({navigation}) => {
               }}>
               {/*<Image source={QR_CODE} style={{width: 153, height: 150}} />*/}
               <QRCode
-                value={walletURL}
+                value={walletAddress}
                 logo={QR_CODE}
                 // logoSize={30}
                 // logoBackgroundColor="transparent"
