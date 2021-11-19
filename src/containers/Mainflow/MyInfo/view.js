@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import RowView from '../../../components/RowView';
 import {NormalBoldLabel} from '../../../components/Label';
@@ -14,6 +14,8 @@ const MENU = [
 ];
 
 const view = ({navigation}) => {
+  const [email, setEmail] = useState('ngm1224@gmail.com');
+
   return (
     <WhiteSafeAreaView>
       <HeaderBottomLine />
@@ -28,10 +30,7 @@ const view = ({navigation}) => {
         }}
       >
         <NormalBoldLabel text={'이메일 계정'} />
-        <NormalBoldLabel
-          text={'ngm1224@gmail.com'}
-          style={{fontSize: 20, lineHeight: 24}}
-        />
+        <NormalBoldLabel text={email} style={{fontSize: 20, lineHeight: 24}} />
       </RowView>
 
       {MENU.map(menu => (
