@@ -23,6 +23,7 @@ const MENU = [
 const QR_CODE = require('../../../assets/images/qr_code.png');
 
 const view = ({navigation}) => {
+  const [touchPonint, setTouchPoint] = useState(10000.11);
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
   const {
@@ -62,14 +63,13 @@ const view = ({navigation}) => {
         <View style={styles.topContainer}>
           <WhiteLine />
           <RowView
-            style={{paddingVertical: 8, justifyContent: 'space-between'}}
-          >
+            style={{paddingVertical: 8, justifyContent: 'space-between'}}>
             <Image
               source={require('../../../assets/icons/coin_icon.png')}
               style={{width: 80, height: 79}}
             />
             <NormalBoldLabel
-              text={'10000.11'}
+              text={touchPonint}
               style={{fontSize: 30, lineHeight: 34}}
             />
             <Image
@@ -116,8 +116,7 @@ const view = ({navigation}) => {
                 borderColor: '#fd7f36',
                 alignSelf: 'center',
                 marginTop: 30,
-              }}
-            >
+              }}>
               {/*<Image source={QR_CODE} style={{width: 153, height: 150}} />*/}
               <QRCode
                 value={walletURL}
@@ -145,8 +144,7 @@ const view = ({navigation}) => {
           </View>
         ) : (
           <View
-            style={{justifyContent: 'center', alignItems: 'center', flex: 1}}
-          >
+            style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
             <NormalBoldLabel
               text={'*지갑 생성을 누르면 자동으로\n지갑이 생성됩니다.'}
               style={{color: '#c4c4c4', textAlign: 'center'}}
