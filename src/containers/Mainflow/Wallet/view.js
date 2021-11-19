@@ -35,6 +35,8 @@ const view = ({navigation, sendmodal}) => {
   const [coin, setCoin] = useState('TouchCon');
   const [eth, setEth] = useState('ETH');
   const [add, setAdd] = useState('보내기에서 주소 전달');
+  const [touchPoint, setTouchPoint] = useState(0); // 하단 보내기의 TouchCon 포인트
+  const [etherPoint, setEtherPoint] = useState(0); // 하단 보내기의 이더리움 포인트
 
   useEffect(() => {
     navigation.setOptions({
@@ -183,11 +185,9 @@ const view = ({navigation, sendmodal}) => {
                     borderRadius: 5,
                     marginRight: 20,
                     marginTop: 20,
-                  }}
-                >
+                  }}>
                   <Text
-                    style={{fontSize: 15, marginLeft: 13, color: '#ffffff'}}
-                  >
+                    style={{fontSize: 15, marginLeft: 13, color: '#ffffff'}}>
                     보내기
                   </Text>
                   <Image
@@ -203,7 +203,7 @@ const view = ({navigation, sendmodal}) => {
                 style={styles.logo}
               />
               <ColumnView style={{marginBottom: 26}}>
-                <Text style={styles.tx2}>0</Text>
+                <Text style={styles.tx2}>{touchPoint}</Text>
                 <Text style={styles.tx2}>1 TOC = 100원</Text>
               </ColumnView>
             </RowView>
@@ -227,11 +227,9 @@ const view = ({navigation, sendmodal}) => {
                     borderRadius: 5,
                     marginRight: 20,
                     marginTop: 20,
-                  }}
-                >
+                  }}>
                   <Text
-                    style={{fontSize: 15, marginLeft: 13, color: '#ffffff'}}
-                  >
+                    style={{fontSize: 15, marginLeft: 13, color: '#ffffff'}}>
                     보내기
                   </Text>
                   <Image
@@ -247,7 +245,7 @@ const view = ({navigation, sendmodal}) => {
                 style={styles.logo}
               />
               <ColumnView style={{marginBottom: 26}}>
-                <Text style={styles.tx2}>0</Text>
+                <Text style={styles.tx2}>{etherPoint}</Text>
                 <Text style={styles.tx2}>1 TOC = 100원</Text>
               </ColumnView>
             </RowView>
@@ -326,8 +324,7 @@ const BtnPass = ({onPress}) => {
           borderRadius: 5,
           marginRight: 20,
           marginTop: 20,
-        }}
-      >
+        }}>
         <Text style={{fontSize: 15, marginLeft: 13, color: '#ffffff'}}>
           보내기
         </Text>
