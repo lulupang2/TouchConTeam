@@ -14,9 +14,11 @@ import Touchable from '../../../components/Touchable';
 import {NormalBoldLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';
 import {useDispatch, useSelector} from 'react-redux';
-import {pinLogin} from '../../../redux/authSlice';
+import {pinLogin, saveEmail, saveSessionToken} from '../../../redux/authSlice';
 import axios from 'axios';
 import api from '../../../api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/native';
 
 const {height, width} = Dimensions.get('window');
 
@@ -50,49 +52,98 @@ const Circle = ({isOrange}) => {
   );
 };
 
-export default function Pinlogin({navigation}) {
+export default function Pinlogin({route}) {
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
-  const {pin, sessionToken, loginSuccess} = auth; // pin 현재 기본값 0000000
+  const {pin, sessionToken, loginSuccess, email} = auth; // pin 현재 기본값 0000000
   const [pwd, onChangePwd] = React.useState('');
   const [test, setTest] = useState('0000000');
   const [pwdbool, setPwdbool] = useState(0); // pwErrCount
-
+  // const email = route.params.Email ? route.params.Email : auth.email;
+  const navigation = useNavigation();
   useEffect(() => {
-    getPinRegister();
-  });
-
-  const getPinRegister = async Email => {
-    try {
-      const config = {
+    // getPinRegister();
+  }, []);
+  useEffect(() => {}, []);
+  const getPinRegister = () => {
+    //등록시 사용하는 이벤트입니다
+    let Email = route.params.Email;
+    let body = {Email, Pin: pwd};
+    api
+      .post('pinregister', JSON.stringify(body), {
         headers: {
           'Content-Type': 'application/json',
         },
-      };
-      const res = await api.post('pinregister', {Email}, config);
-    } catch (err) {
-      Alert.alert('', '서버와 통신에 실패하였습니다.');
-      console.log('err', err);
-      console.log('err.res', err.response);
-    }
+      })
+      .then(res => {
+        if (res.status !== 200) {
+          return;
+        }
+        dispatch(saveSessionToken(res?.data?.Result));
+        dispatch(saveSessionToken(Email));
+        Alert.alert('PIN번호가 등록되었습니다');
+        navigation.navigate('Main');
+        // console.log( res?.data?.Result);
+      })
+      .catch(err => {
+        console.log('에러메세지', err);
+      });
   };
-
   const handleKeyPress = e => {
     console.log('pwdErrorCount', pwdbool);
-    if (pwd === pin) {
-      dispatch(pinLogin(pwd, sessionToken));
-      console.log('login success');
-      // navigation.navigate('Main');
+    if (auth.sessionToken) {
+      // if (pwd === pin) {
+      //   dispatch(pinLogin(pwd, sessionToken));
+      //   console.log('login success');
+      //   // navigation.navigate('Main');
+      // }
+
+      let body = {Pin: pwd, sessionToken: auth.sessionToken};
+      console.log(body);
+      api
+        .post('pinlogin', JSON.stringify(body), {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+
+        .then(res => {
+          if (res.data.Result !== 'success' || res.status !== 200) {
+            setPwdbool(pwdbool + 1);
+            onChangePwd('');
+            console.log('login fail');
+            console.log('pwd = ', pwd);
+            console.log('pwdbool= ', pwdbool);
+            return;
+          }
+          console.log(res);
+
+          Alert.alert('로그인이 성공하였습니다');
+          navigation.navigate('Main');
+          // console.log( res?.data?.Result);
+        })
+        .catch(err => {
+          console.log(body);
+          console.log('에러메세지', err);
+        });
+
+      // else {
+      //   setPwdbool(pwdbool + 1);
+      //   onChangePwd('');
+      //   console.log('login fail');
+      //   console.log('pwd = ', pwd);
+      //   console.log('pwdbool= ', pwdbool);
+      // }
     } else {
-      setPwdbool(pwdbool + 1);
-      console.log('login fail');
-      console.log('pwd = ', pwd);
-      console.log('pwdbool= ', pwdbool);
-      onChangePwd('');
+      getPinRegister();
     }
   };
+  //
+
+  //
   return (
     <View style={styles.pinglogin_container}>
+      {/*{console.log(auth.sessionToken)}*/}
       <View style={{marginTop: height * 0.1}}>
         {/* PIN 번호 간편 로그인 */}
         {/*<Image*/}
@@ -103,9 +154,12 @@ export default function Pinlogin({navigation}) {
         {/*    resizeMode: 'contain',*/}
         {/*  }}*/}
         {/*/>*/}
-        <NormalBoldLabel
-          text={pwdbool === 0 ? 'PIN 번호 간편 로그인' : '다시 입력해 주세요'}
-        />
+        {auth.sessionToken && (
+          <NormalBoldLabel
+            text={pwdbool === 0 ? 'PIN 번호 간편 로그인' : '다시 입력해 주세요'}
+          />
+        )}
+        {!auth.sessionToken && <NormalBoldLabel text={'PIN 번호등록'} />}
         {/* PIN 번호 간편 로그인 */}
       </View>
       <RowView style={styles.password_con}>

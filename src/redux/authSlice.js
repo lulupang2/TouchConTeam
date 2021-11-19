@@ -14,7 +14,7 @@ const userSlice = createSlice({
   initialState: {
     user: null,
     email: null,
-    pin: '0000000',
+    pin: null,
     sessionToken: null,
     walletAddress: null,
     walletURL: null,

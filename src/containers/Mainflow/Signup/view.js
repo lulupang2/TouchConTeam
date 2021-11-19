@@ -53,16 +53,13 @@ function Signup({props, navigation}) {
   const getVerifyCode = async Email => {
     let body = {Email};
     api
-      .post(
-        'http://3.35.210.171:5055/emailverification',
-        JSON.stringify(body),
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
+      .post('emailverification', JSON.stringify(body), {
+        headers: {
+          'Content-Type': 'application/json',
         },
-      )
+      })
       .then(res => {
+        console.log(res);
         if (res.status !== 200) {
           return;
         }
