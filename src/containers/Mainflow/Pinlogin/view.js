@@ -8,12 +8,15 @@ import {
   Button,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import Touchable from '../../../components/Touchable';
 import {NormalBoldLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';
 import {useDispatch, useSelector} from 'react-redux';
 import {pinLogin} from '../../../redux/authSlice';
+import axios from 'axios';
+import api from '../../../api';
 
 const {height, width} = Dimensions.get('window');
 
@@ -51,19 +54,28 @@ export default function Pinlogin({navigation}) {
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
   const {pin, sessionToken, loginSuccess} = auth; // pin 현재 기본값 0000000
-
   const [pwd, onChangePwd] = React.useState('');
   const [test, setTest] = useState('0000000');
   const [pwdbool, setPwdbool] = useState(0); // pwErrCount
 
   useEffect(() => {
-    if (loginSuccess) {
-      navigation.navigate('Main');
+    getPinRegister();
+  });
+
+  const getPinRegister = async Email => {
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('pinregister', {Email}, config);
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패하였습니다.');
+      console.log('err', err);
+      console.log('err.res', err.response);
     }
-    // setTimeout(() => {
-    //   navigation.navigate('Main');
-    // }, 1000);
-  }, [dispatch]);
+  };
 
   const handleKeyPress = e => {
     console.log('pwdErrorCount', pwdbool);

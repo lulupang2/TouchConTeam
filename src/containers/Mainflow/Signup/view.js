@@ -67,20 +67,23 @@ function Signup({props, navigation}) {
       console.log('err.res', err.response);
     }
     // fetch('http://3.35.210.171:5055/emailverification', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //         Email: email,
-    //     }),
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     Email: email,
+    //   }),
     // })
-    //     .then(res => res.json())
-    //     .then(res => {
-    //         // console.log('res', res);
-    //         setVerti(res.Result);
-    //         // console.log('코드 verti에 담기', verti);
-    //     });
+    //   .then(res => res.json())
+    //   .then(res => {
+    //     // console.log('res', res);
+    //     setVerti(res.Result);
+    //     // console.log('코드 verti에 담기', verti);
+    //   })
+    //   .catch(err => {
+    //     console.log('error');
+    //   });
   };
 
   const onCheckVerifyCode = () => {
@@ -184,8 +187,7 @@ function Signup({props, navigation}) {
         style={{
           // marginLeft: width * 0.05,
           paddingHorizontal: width * 0.05,
-        }}
-      >
+        }}>
         <View
           style={{
             // width: width * 0.9,
@@ -197,8 +199,7 @@ function Signup({props, navigation}) {
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-evenly',
-          }}
-        >
+          }}>
           <TouchableOpacity onPress={chg_all}>
             <Image
               source={
@@ -216,8 +217,7 @@ function Signup({props, navigation}) {
 
           <TouchableOpacity
             onPress={chg_all}
-            style={{width: width * 0.75, height: height * 0.03}}
-          >
+            style={{width: width * 0.75, height: height * 0.03}}>
             <Image
               source={require('../../../assets/images/nobutton.png')}
               style={{
@@ -239,15 +239,13 @@ function Signup({props, navigation}) {
             resizeMode: 'contain',
             height: 152,
             justifyContent: 'space-evenly',
-          }}
-        >
+          }}>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-evenly',
-            }}
-          >
+            }}>
             {ser_agree ? (
               <TouchableOpacity onPress={chg_ser}>
                 <Image
@@ -281,8 +279,7 @@ function Signup({props, navigation}) {
                 justifyContent: 'center',
                 // 글간 간격
                 marginTop: 24,
-              }}
-            >
+              }}>
               <View style={{flexDirection: 'column'}}>
                 <Image
                   source={require('../../../assets/images/service_agree.png')}
@@ -318,8 +315,7 @@ function Signup({props, navigation}) {
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-evenly',
-            }}
-          >
+            }}>
             {per_agree ? (
               <TouchableOpacity onPress={chg_per}>
                 <Image
@@ -350,8 +346,7 @@ function Signup({props, navigation}) {
                 height: height * 0.03,
                 resizeMode: 'contain',
                 justifyContent: 'center',
-              }}
-            >
+              }}>
               {/* 개인 정보 수집 및 이용 동의 Text */}
               {/*<View style={{flexDirection: 'column'}}>*/}
               <View style={{}}>
@@ -393,8 +388,7 @@ function Signup({props, navigation}) {
               paddingBottom: 23,
               borderBottomWidth: 0.8,
               borderColor: '#c4c4c4',
-            }}
-          >
+            }}>
             {mark_agree ? (
               <TouchableOpacity onPress={chg_mark}>
                 <Image
@@ -428,8 +422,7 @@ function Signup({props, navigation}) {
                   resizeMode: 'contain',
                   justifyContent: 'center',
                   marginTop: 14,
-                }}
-              >
+                }}>
                 {/* 마케팅 정보 알람 동의 Text  */}
                 <Image
                   source={require('../../../assets/images/marketing_agree.png')}
@@ -510,8 +503,7 @@ function Signup({props, navigation}) {
             }
             getVerifyCode(email);
           }}
-          style={styles.verifySendBtn}
-        >
+          style={styles.verifySendBtn}>
           <NormalBoldLabel
             text={'인증코드 발송'}
             style={{fontSize: 18, lineHeight: 22, color: '#fff'}}
@@ -526,8 +518,7 @@ function Signup({props, navigation}) {
           marginLeft: 26,
           marginTop: 28,
           fontWeight: 'bold',
-        }}
-      >
+        }}>
         전화번호
       </Text>
       <View
@@ -538,8 +529,7 @@ function Signup({props, navigation}) {
           display: 'flex',
           justifyContent: 'space-between',
           flexDirection: 'row',
-        }}
-      >
+        }}>
         {/* 전화번호 picker : 010,011,017 */}
 
         <Text
@@ -552,8 +542,7 @@ function Signup({props, navigation}) {
             textAlign: 'center',
             paddingVertical: 11.5,
             color: '#000',
-          }}
-        >
+          }}>
           010
         </Text>
         {/* 전화번호 picker : 010,011,017 */}
