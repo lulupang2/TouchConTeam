@@ -39,9 +39,9 @@ function Signup({props, navigation}) {
   const [code, onChangeCode] = React.useState('');
   const [remaining, setRemaining] = useState(0);
   const [hasSent, setHasSent] = useState(false);
-
+  const [phone, setPhone] = useState('');
   {
-    console.log('인증번호: ', verti);
+    // console.log('인증번호: ', verti);
   }
   useEffect(() => {
     if (isVerified) {
@@ -51,39 +51,28 @@ function Signup({props, navigation}) {
 
   // axios 테스트
   const getVerifyCode = async Email => {
-    try {
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
+    let body = {Email};
+    api
+      .post(
+        'http://3.35.210.171:5055/emailverification',
+        JSON.stringify(body),
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
         },
-      };
-      const res = await api.post('emailverification', {Email}, config);
-      setVerti(res.Result);
-      setHasSent(true);
-      countDown();
-    } catch (err) {
-      Alert.alert('', '서버와 통신에 실패하였습니다.');
-      console.log('err', err);
-      console.log('err.res', err.response);
-    }
-    // fetch('http://3.35.210.171:5055/emailverification', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     Email: email,
-    //   }),
-    // })
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     // console.log('res', res);
-    //     setVerti(res.Result);
-    //     // console.log('코드 verti에 담기', verti);
-    //   })
-    //   .catch(err => {
-    //     console.log('error');
-    //   });
+      )
+      .then(res => {
+        if (res.status !== 200) {
+          return;
+        }
+        countDown();
+        console.log(res.data.Result);
+        setVerti(res.data.Result);
+      })
+      .catch(err => {
+        console.log('에러메세지', err);
+      });
   };
 
   const onCheckVerifyCode = () => {
@@ -103,9 +92,35 @@ function Signup({props, navigation}) {
       Alert.alert('', errMsg);
       return;
     }
+    if (phone === '') {
+      Alert.alert('전화번호를 입력해주세요');
+      return;
+    }
+    checkVertyCode();
     dispatch(checkVerifyCode(email, code));
   };
-
+  const checkVertyCode = () => {
+    let body = {Email: email, Verification: verti};
+    api
+      .post(
+        'http://3.35.210.171:5055/emailverification',
+        JSON.stringify(body),
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+      .then(res => {
+        if (res.status !== 200) {
+          return;
+        }
+        navigation.navigate('Pinlogin', {Email: email});
+      })
+      .catch(err => {
+        console.log('에러메세지', err);
+      });
+  };
   const onCheckAllAgree = (ser_agree, per_agree, mark_agree) => {
     if (!allagree && ser_agree && per_agree && mark_agree) {
       setAllagree(true);
@@ -548,6 +563,7 @@ function Signup({props, navigation}) {
         {/* 전화번호 picker : 010,011,017 */}
 
         <TextInput
+          onChangeText={setPhone}
           keyboardType="phone-pad"
           maxLength={8}
           style={{
