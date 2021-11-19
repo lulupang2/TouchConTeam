@@ -1,4 +1,4 @@
-import React, {version} from 'react';
+import React, {useState, version} from 'react';
 import {
   StyleSheet,
   Text,
@@ -18,6 +18,9 @@ import {NormalBoldLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';
 
 const view = ({navigation}) => {
+  const [accumulate, setAccumulate] = useState(500); //충전 할 포인트
+  const [allCharge, setAllCharge] = useState(2500); // 현재 총 보유 중인 포인트
+
   return (
     <WhiteSafeAreaView>
       <Navbar />
@@ -33,7 +36,8 @@ const view = ({navigation}) => {
           <View style={styles.wh_line}>
             <RowView style={styles.ro1}>
               <Text style={{color: '#ffffff', fontSize: 30, marginTop: 25}}>
-                500
+                {/* 충전하기 */}
+                {accumulate}
               </Text>
               <Image
                 source={require('../../../assets/images/touch_blue_text.png')}
@@ -63,12 +67,12 @@ const view = ({navigation}) => {
             justifyContent: 'space-between',
             alignContent: 'center',
             alignItems: 'center',
-          }}
-        >
+          }}>
           <Text style={{marginLeft: 20, fontSize: 15, color: '#fff'}}>
             현재 적립액
           </Text>
-          <Text style={{fontSize: 20, color: '#fff'}}>2500</Text>
+          {/* 현재 보유중인  총 충전 금액 */}
+          <Text style={{fontSize: 20, color: '#fff'}}>{allCharge}</Text>
           <Image
             source={require('../../../assets/images/touch_blue_text.png')}
             resizeMode="contain"
@@ -142,8 +146,7 @@ const Btnwhite = ({onPress, text, style}) => {
         marginHorizontal: 24,
         ...style,
         // position: 'absolute', width: width-48, bottom: 32,
-      }}
-    >
+      }}>
       <NormalBoldLabel
         text={text}
         style={{fontSize: 20, lineHeight: 24, color: '#fd7f36'}}
