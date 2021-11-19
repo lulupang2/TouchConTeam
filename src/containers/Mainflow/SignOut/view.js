@@ -26,31 +26,6 @@ const view = ({navigation}) => {
   const [krw, setKrw] = useState('50,210');
   const [top, setTop] = useState(0);
 
-//수정
-  
-useEffect(() => {
-    signOut();
-  });
-
-  const signOut = async () => {
-    let body = {sesstionToken};
-    api
-      .post('http://3.35.210.171:5055/unregister', JSON.stringify(body), {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      .then(res => {
-        if (res.status !== 200) {
-          return;
-        }
-        console.log(res.data.Result);
-      })
-      .catch(err => {
-        console.log('에러메세지', err);
-      });
-
-
   const chMark = () => {
     if (mark === false) {
       setMark(true);
@@ -72,8 +47,7 @@ useEffect(() => {
                 marginLeft: 21,
                 fontSize: 15,
                 fontWeight: '700',
-              }}
-            >
+              }}>
               디지털 자산의 수량을 체크해 주세요!
             </Text>
           </View>
@@ -85,8 +59,7 @@ useEffect(() => {
                 height: 105,
                 borderBottomWidth: 1,
                 borderColor: '#c4c4c4',
-              }}
-            >
+              }}>
               <Text style={styles.TextSize12}>잔량 TOC 수량</Text>
               <RowView>
                 <NormalLabel text={toc} />
@@ -99,8 +72,7 @@ useEffect(() => {
                     fontSize: 15,
                     fontWeight: '400',
                     color: '#000',
-                  }}
-                >
+                  }}>
                   {krw}
                 </Text>
                 <Text
@@ -109,8 +81,7 @@ useEffect(() => {
                     marginLeft: 5,
                     fontWeight: '700',
                     fontSize: 15,
-                  }}
-                >
+                  }}>
                   KRW
                 </Text>
                 <Text
@@ -119,8 +90,7 @@ useEffect(() => {
                     fontSize: 15,
                     fontWeight: '400',
                     color: '#000',
-                  }}
-                >
+                  }}>
                   (STEX 거래서 시세연결)
                 </Text>
               </RowView>
@@ -132,8 +102,7 @@ useEffect(() => {
                 height: 99,
                 borderBottomWidth: 1,
                 borderColor: '#c4c4c4',
-              }}
-            >
+              }}>
               <Text style={styles.TextSize12}>잔량 TOC 수량</Text>
               <RowView style={{marginTop: 14}}>
                 <Text style={{color: '#000', fontSize: 16}}>{top}</Text>
@@ -146,8 +115,7 @@ useEffect(() => {
               style={{
                 justifyContent: 'center',
                 marginVertical: 11,
-              }}
-            >
+              }}>
               <Text style={{color: '#FF0000', fontSize: 15, fontWeight: '700'}}>
                 *아래 주의사항 꼭 읽어주세요!'
               </Text>
@@ -162,8 +130,7 @@ useEffect(() => {
             fontSize: 15,
             fontWeight: '700',
             marginVertical: 22,
-          }}
-        >
+          }}>
           (주의) 터치콘앱에서 탈퇴하시면 모든 디지털 자산이 소명됩니다.
         </Text>
 
@@ -203,8 +170,7 @@ useEffect(() => {
             marginRight: 51,
             borderColor: '#c4c4c4',
             padding: 11,
-          }}
-        >
+          }}>
           <Text
             style={{
               fontSize: 18,
@@ -212,15 +178,13 @@ useEffect(() => {
               color: '#000',
               marginLeft: 16,
               fontWeight: 'bold',
-            }}
-          >
+            }}>
             위 사항에 모두 동의 합니다.
           </Text>
           <TouchableOpacity
             onPress={() => {
               chMark();
-            }}
-          >
+            }}>
             {mark ? (
               <Image
                 source={require('../../../assets/images/square.png')}

@@ -50,9 +50,6 @@ const view = () => {
   // useState는 무조건 바디 안에 생성
   const [selectedLsit, setSelectedList] = useState(null);
 
-  
-  };
-
   return (
     <WhiteSafeAreaView>
       <HeaderBottomLine />
