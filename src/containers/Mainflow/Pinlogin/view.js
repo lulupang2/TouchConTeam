@@ -80,12 +80,13 @@ export default function Pinlogin({route}) {
           return;
         }
         dispatch(saveSessionToken(res?.data?.Result));
-        dispatch(saveSessionToken(Email));
+        dispatch(saveEmail(Email));
         Alert.alert('PIN번호가 등록되었습니다');
         navigation.navigate('Main');
         // console.log( res?.data?.Result);
       })
       .catch(err => {
+        Alert.alert('서버와의 접속이 실패하였습니다');
         console.log('에러메세지', err);
       });
   };

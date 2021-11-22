@@ -8,14 +8,14 @@ import {
   ImageBackground,
   Text,
 } from 'react-native';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {resetAuth} from '../../redux/authSlice';
 
 const {height, width} = Dimensions.get('window');
 
 export default function Splash({navigation}) {
   const auth = useSelector(state => state.auth);
   const {loginSuccess} = auth;
-
   useEffect(() => {
     setTimeout(() => {
       if (loginSuccess) {

@@ -43,7 +43,9 @@ const view = ({navigation}) => {
 
   console.log('walletInfo', walletAddress);
   useEffect(() => {
-    fetchTotalCoin();
+    if (walletAddress) {
+      fetchTotalCoin();
+    }
   }, []);
 
   useEffect(() => {
@@ -77,7 +79,7 @@ const view = ({navigation}) => {
       const res = await api.post('createwallet', JSON.stringify(body), config);
       dispatch(saveWallet(res?.data?.Result));
       Alert.alert('지갑이 생성되었습니다');
-      navigation.navigate('Wallet');
+      navigation.navigate('Wallet', {coins: coin});
     } catch (err) {
       Alert.alert('', '서버와 통신에 실패');
       console.log('err', err);

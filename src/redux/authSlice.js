@@ -39,9 +39,7 @@ const userSlice = createSlice({
     editProfileSuccess: false,
   },
   reducers: {
-    resetAuth(state) {
-      state = intialState;
-    },
+    resetAuth: state => intialState,
     saveSignUpSuccess(state) {
       state.signUpSuccess = true;
     },

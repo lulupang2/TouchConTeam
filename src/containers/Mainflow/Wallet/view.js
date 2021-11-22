@@ -24,7 +24,7 @@ import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 
 const view = ({navigation, sendmodal, route}) => {
-  let coins = route.params;
+  let coins = route.params.coins;
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
   const {walletAddress, walletURL} = auth;
@@ -99,7 +99,7 @@ const view = ({navigation, sendmodal, route}) => {
   return (
     <WhiteSafeAreaView>
       <HeaderThickBottomLine />
-
+      {/*{console.log(coins)}*/}
       <ModalPoup2 visible={visible}>
         <ColumnView style={styles.modal_flex}>
           <TouchableOpacity onPress={() => setVisible(false)}>
@@ -207,7 +207,7 @@ const view = ({navigation, sendmodal, route}) => {
               </ColumnView>
             </RowView>
           </View>
-
+          {console.log(coins)}
           {/* 터치콘 */}
           <BottomButton text={'거래소 가기'} />
 
