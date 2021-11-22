@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -40,6 +40,7 @@ const ScInventory = [
 
 const view = ({navigation}) => {
   const auth = useSelector(state => state.auth);
+  const [historyPosts, setHistoryPosts] = useState([]);
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -59,7 +60,9 @@ const view = ({navigation}) => {
       ),
     });
   }, []);
-  useEffect(() => {}, []);
+  useEffect(() => {
+    fetchTotalCoin();
+  }, []);
   const fetchTotalCoin = async () => {
     let body = {sessionToken: auth.sessionToken};
     try {
@@ -70,6 +73,7 @@ const view = ({navigation}) => {
       };
       const res = await api.post('scanhistory', JSON.stringify(body), config);
       console.log(res);
+      setHistoryPosts(res?.data.Result);
       // navigation.navigate('Wallet');
       // console.log('test', res.data.Result);
     } catch (err) {
@@ -86,7 +90,7 @@ const view = ({navigation}) => {
         <Text style={styles.tx3}>제휴업체</Text>
       </RowView>
       <ScrollView style={styles.scContainer}>
-        {ScInventory.map((menu, i) => (
+        {historyPosts.map((menu, i) => (
           <ScHistory menu={menu} index={i} key={i} />
         ))}
       </ScrollView>
@@ -111,14 +115,11 @@ const ScHistory = ({menu, index}) => {
         }}>
         <RowView
           style={{justifyContent: 'space-between', width: 166, marginLeft: 22}}>
-          <NormalBoldLabel text={menu.date} style={styles.day} />
+          <NormalBoldLabel text={menu?.Date} style={styles.day} />
 
-          <NormalBoldLabel
-            text={menu.compensation}
-            style={{color: '#FD7F36'}}
-          />
+          <NormalBoldLabel text={menu?.Amount} style={{color: '#FD7F36'}} />
         </RowView>
-        <NormalBoldLabel text={menu.ba} style={styles.company} />
+        <NormalBoldLabel text={menu?.Company} style={styles.company} />
       </RowView>
     </View>
   );
