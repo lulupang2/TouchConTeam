@@ -8,7 +8,20 @@ const config = {
     'Content-Type': 'application/json',
   },
 };
+const intialState = {
+  user: null,
+  email: null,
+  pin: null,
+  sessionToken: null,
+  walletAddress: null,
+  walletURL: null,
+  isVerified: false,
 
+  signUpSuccess: false,
+  loginSuccess: false,
+  logoutSuccess: false,
+  editProfileSuccess: false,
+};
 const userSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -26,6 +39,9 @@ const userSlice = createSlice({
     editProfileSuccess: false,
   },
   reducers: {
+    resetAuth(state) {
+      state = intialState;
+    },
     saveSignUpSuccess(state) {
       state.signUpSuccess = true;
     },
@@ -64,10 +80,6 @@ const userSlice = createSlice({
       state.sessionToken = action.payload;
     },
     saveWallet(state, action) {
-      console.log('action', action.payload);
-      // const {url, address} = action.payload;
-      // state.walletURL = url;
-      // state.walletAddress = address;
       state.walletAddress = action.payload;
     },
   },
@@ -86,47 +98,48 @@ export const {
   saveWallet,
   saveEmail,
   saveSessionToken,
+  resetAuth,
 } = userSlice.actions;
 
-// export const signUp = form => async dispatch => {
-//   try {
-//     const config = {
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     };
-//
-//     const {
-//       data: {user},
-//     } = await api.post(`users/sign-up/`, form, config);
-//
-//     dispatch(saveSignUpSuccess());
-//     dispatch(saveUserInfo(user));
-//   } catch (err) {
-//     console.log(err.response.data.msg);
-//   }
-// };
-//
-// export const logout = () => async dispatch => {
-//   try {
-//     await api.get('users/logout');
-//
-//     dispatch(logoutSuccess());
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-//
-// export const updateUserInfo = formData => async dispatch => {
-//   try {
-//     const {data} = await api.patch('me/profile/', formData, config);
-//
-//     dispatch(saveEditProfileSuccess());
-//     dispatch(saveUserInfo(data));
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+export const signUp = form => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const {
+      data: {user},
+    } = await api.post(`users/sign-up/`, form, config);
+
+    dispatch(saveSignUpSuccess());
+    dispatch(saveUserInfo(user));
+  } catch (err) {
+    console.log(err.response.data.msg);
+  }
+};
+
+export const logout = () => async dispatch => {
+  try {
+    await api.get('users/logout');
+
+    dispatch(logoutSuccess());
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const updateUserInfo = formData => async dispatch => {
+  try {
+    const {data} = await api.patch('me/profile/', formData, config);
+
+    dispatch(saveEditProfileSuccess());
+    dispatch(saveUserInfo(data));
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 export const checkVerifyCode = (Email, Verification) => async dispatch => {
   try {

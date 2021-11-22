@@ -23,14 +23,12 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 
-const view = ({navigation, sendmodal}) => {
+const view = ({navigation, sendmodal, route}) => {
+  let coins = route.params;
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
-  const {
-    walletAddress = '0x3215463e2184685415216ee4e4e56545656421ds121',
-    walletURL,
-  } = auth;
-
+  const {walletAddress, walletURL} = auth;
+  // let coins = route.params.coins;
   const [visible, setVisible] = useState(false);
   const [coin, setCoin] = useState('TouchCon');
   const [eth, setEth] = useState('ETH');
@@ -39,6 +37,7 @@ const view = ({navigation, sendmodal}) => {
   const [etherPoint, setEtherPoint] = useState(0); // 하단 보내기의 이더리움 포인트
 
   useEffect(() => {
+    // console.log(route.params);
     navigation.setOptions({
       headerRight: () => (
         <Touchable onPress={() => navigation.navigate('Main')} style={{}}>
@@ -203,7 +202,7 @@ const view = ({navigation, sendmodal}) => {
                 style={styles.logo}
               />
               <ColumnView style={{marginBottom: 26}}>
-                <Text style={styles.tx2}>{touchPoint}</Text>
+                <Text style={styles.tx2}>{coins?.TouchCon}</Text>
                 <Text style={styles.tx2}>1 TOC = 100원</Text>
               </ColumnView>
             </RowView>
@@ -245,7 +244,7 @@ const view = ({navigation, sendmodal}) => {
                 style={styles.logo}
               />
               <ColumnView style={{marginBottom: 26}}>
-                <Text style={styles.tx2}>{etherPoint}</Text>
+                <Text style={styles.tx2}>{coins?.Ethereum}</Text>
                 <Text style={styles.tx2}>1 TOC = 100원</Text>
               </ColumnView>
             </RowView>

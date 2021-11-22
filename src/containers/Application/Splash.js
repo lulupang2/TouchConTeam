@@ -24,14 +24,13 @@ export default function Splash({navigation}) {
         navigation.navigate('Intro');
       }
     }, 1500);
-  });
+  }, []);
 
   return (
     <ImageBackground
       source={require('../../assets/images/start_back.png')}
       resizeMode="cover"
-      style={{width: '100%', height: '100%'}}
-    >
+      style={{width: '100%', height: '100%'}}>
       <Text style={styles.uptext}>글로벌 최초 디지털 자산 랜덤 리워드</Text>
       <View style={styles.midback}>
         <Text style={styles.midbtn}>RAMDOM</Text>

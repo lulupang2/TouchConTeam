@@ -38,9 +38,13 @@ const view = ({navigation}) => {
   const [touchPonint, setTouchPoint] = useState(10000.11);
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
+  const [coin, setCoin] = useState([]);
   const {walletAddress, walletURL} = auth;
 
   console.log('walletInfo', walletAddress);
+  useEffect(() => {
+    fetchTotalCoin();
+  }, []);
 
   useEffect(() => {
     navigation.setOptions({
@@ -71,8 +75,9 @@ const view = ({navigation}) => {
         },
       };
       const res = await api.post('createwallet', JSON.stringify(body), config);
-      dispatch(saveWallet(res.data.Result));
+      dispatch(saveWallet(res?.data?.Result));
       Alert.alert('지갑이 생성되었습니다');
+      navigation.navigate('Wallet');
     } catch (err) {
       Alert.alert('', '서버와 통신에 실패');
       console.log('err', err);
@@ -81,6 +86,23 @@ const view = ({navigation}) => {
     // dispatch(walletGenerator(user.id));
 
     // dispatch(walletGenerator());
+  };
+  const fetchTotalCoin = async () => {
+    let body = {sessionToken: auth.sessionToken};
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('balance', JSON.stringify(body), config);
+      setCoin(res?.data?.Result);
+      // navigation.navigate('Wallet');
+      // console.log('test', res.data.Result);
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
   };
 
   return (
@@ -95,7 +117,7 @@ const view = ({navigation}) => {
               style={{width: 80, height: 79}}
             />
             <NormalBoldLabel
-              text={touchPonint}
+              text={coin?.TouchPoint}
               style={{fontSize: 30, lineHeight: 34}}
             />
             <Image
@@ -109,7 +131,27 @@ const view = ({navigation}) => {
           </RowView>
           <WhiteLine />
 
+          {/*<RowView style={{marginTop: 15, justifyContent: 'space-between'}}>*/}
+          {/*  {MENU.map((menu, i) => (*/}
+          {/*    <MenuBtn*/}
+          {/*      key={i}*/}
+          {/*      menu={menu}*/}
+          {/*      onPress={() => {*/}
+          {/*        if (menu.path === 'Wallet') {*/}
+          {/*          if (walletURL) {*/}
+          {/*            navigation.navigate(menu.path);*/}
+          {/*          } else {*/}
+          {/*            walletCreate();*/}
+          {/*          }*/}
+          {/*        } else {*/}
+          {/*          navigation.navigate(menu.path);*/}
+          {/*        }*/}
+          {/*      }}*/}
+          {/*    />*/}
+          {/*  ))}*/}
+          {/*</RowView>*/}
           <RowView style={{marginTop: 15, justifyContent: 'space-between'}}>
+            {/*{console.log(coin)}*/}
             {MENU.map((menu, i) => (
               <MenuBtn
                 key={i}
@@ -119,7 +161,9 @@ const view = ({navigation}) => {
                     if (walletURL) {
                       navigation.navigate(menu.path);
                     } else {
-                      walletCreate();
+                      walletAddress
+                        ? navigation.navigate(menu.path, {coins: coin})
+                        : walletCreate();
                     }
                   } else {
                     navigation.navigate(menu.path);

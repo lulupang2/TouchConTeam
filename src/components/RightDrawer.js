@@ -5,6 +5,7 @@ import RowView from './RowView';
 import {NormalBoldLabel} from './Label';
 import {MenuItem} from './MenuItem';
 import {useNavigation} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
 const MENU = [
   {id: 1, title: '내정보', path: 'MyInfo'},
@@ -16,6 +17,8 @@ const MENU = [
 
 const RightDrawer = () => {
   const navigation = useNavigation();
+  const auth = useSelector(state => state.auth);
+  const {email} = auth;
   return (
     <WhiteSafeAreaView>
       <View
@@ -25,12 +28,8 @@ const RightDrawer = () => {
           borderBottomWidth: 1,
           borderBottomColor: '#c4c4c4',
           paddingBottom: 10,
-        }}
-      >
-        <NormalBoldLabel
-          text={'ngm1224@gmail.com'}
-          style={{fontSize: 20, lineHeight: 24}}
-        />
+        }}>
+        <NormalBoldLabel text={email} style={{fontSize: 20, lineHeight: 24}} />
       </View>
 
       {MENU.map(menu => (
@@ -49,8 +48,7 @@ const RightDrawer = () => {
           justifyContent: 'space-between',
           borderBottomWidth: 1,
           borderBottomColor: '#c4c4c4',
-        }}
-      >
+        }}>
         <NormalBoldLabel text={'버전 정보'} />
         <NormalBoldLabel text={'V1.0'} style={{color: '#FD7F36'}} />
       </RowView>
