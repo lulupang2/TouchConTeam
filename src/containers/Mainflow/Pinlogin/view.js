@@ -109,6 +109,8 @@ export default function Pinlogin({route}) {
         })
 
         .then(res => {
+          console.log(body);
+          console.log(res);
           if (res.data.Result !== 'success' || res.status !== 200) {
             setPwdbool(pwdbool + 1);
             onChangePwd('');

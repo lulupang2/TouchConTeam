@@ -168,7 +168,7 @@ const view = ({navigation}) => {
                         : walletCreate();
                     }
                   } else {
-                    navigation.navigate(menu.path);
+                    navigation.navigate(menu.path, {coins: coin});
                   }
                 }}
               />

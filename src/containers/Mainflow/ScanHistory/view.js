@@ -11,6 +11,7 @@ import {
   SafeAreaView,
   ScrollViewBase,
   ScrollView,
+  Alert,
 } from 'react-native';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import {NormalBoldLabel} from '../../../components/Label';
@@ -18,6 +19,8 @@ import RowView from '../../../components/RowView';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Touchable from '../../../components/Touchable';
+import api from '../../../api';
+import {useSelector} from 'react-redux';
 
 const ScInventory = [
   {id: 1, date: '21.04.05', compensation: '200', ba: '카오리온'},
@@ -36,6 +39,7 @@ const ScInventory = [
 ];
 
 const view = ({navigation}) => {
+  const auth = useSelector(state => state.auth);
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -55,7 +59,24 @@ const view = ({navigation}) => {
       ),
     });
   }, []);
-
+  useEffect(() => {}, []);
+  const fetchTotalCoin = async () => {
+    let body = {sessionToken: auth.sessionToken};
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('scanhistory', JSON.stringify(body), config);
+      console.log(res);
+      // navigation.navigate('Wallet');
+      // console.log('test', res.data.Result);
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
+  };
   return (
     <WhiteSafeAreaView>
       <HeaderBottomLine />
@@ -87,11 +108,9 @@ const ScHistory = ({menu, index}) => {
           borderWidth: 1,
           borderColor: '#c4c4c4',
           backgroundColor: index % 2 === 1 ? '#EBEBEB' : '#FFFFFF',
-        }}
-      >
+        }}>
         <RowView
-          style={{justifyContent: 'space-between', width: 166, marginLeft: 22}}
-        >
+          style={{justifyContent: 'space-between', width: 166, marginLeft: 22}}>
           <NormalBoldLabel text={menu.date} style={styles.day} />
 
           <NormalBoldLabel
