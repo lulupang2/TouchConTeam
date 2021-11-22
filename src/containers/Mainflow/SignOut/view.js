@@ -11,6 +11,7 @@ import {
   SafeAreaView,
   ScrollView,
   KeyboardAvoidingViewBase,
+  Alert,
 } from 'react-native';
 import BottomButton from '../../../components/BottomButton';
 import {LongButton} from '../../../components/Botton';
@@ -19,13 +20,19 @@ import {NormalLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';
 import ColumnView from '../../../components/ColumnView';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
+import api from '../../../api';
+import {useDispatch, useSelector} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+import {checkVerifyCode, resetAuth} from '../../../redux/authSlice';
 
-const view = ({navigation}) => {
+const view = () => {
   const [mark, setMark] = useState(true);
   const [toc, setToc] = useState('50.21');
   const [krw, setKrw] = useState('50,210');
   const [top, setTop] = useState(0);
-
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const auth = useSelector(state => state.auth);
   const chMark = () => {
     if (mark === false) {
       setMark(true);
@@ -33,6 +40,29 @@ const view = ({navigation}) => {
       setMark(false);
     }
     return mark;
+  };
+
+  const fetchWithdrawal = async () => {
+    let body = {sessionToken: auth.sessionToken};
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('unregister', JSON.stringify(body), config);
+      if (res?.data?.Result === 'success') {
+        dispatch(resetAuth());
+        Alert.alert('회원탈퇴 성공하였습니다');
+        navigation.navigate('Splash');
+      }
+      // console.log(res);
+      // navigation.navigate('Wallet');
+      // console.log('test', res.data.Result);
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
   };
 
   return (
@@ -209,7 +239,17 @@ const view = ({navigation}) => {
           </TouchableOpacity>
         </RowView>
 
-        <BottomButton text={'탈퇴하기'} style={{marginTop: 35}} />
+        <BottomButton
+          text={'탈퇴하기'}
+          style={{marginTop: 35}}
+          onPress={() => {
+            if (!mark) {
+              fetchWithdrawal();
+            } else {
+              Alert.alert('약관 동의 후 회원탈퇴를 하실 수있습니다');
+            }
+          }}
+        />
 
         {/* <LongButton
         text={'탈퇴하기'}
