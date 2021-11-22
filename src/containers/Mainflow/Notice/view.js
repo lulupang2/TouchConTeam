@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   ScrollView,
+  Alert,
 } from 'react-native';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
@@ -49,25 +50,49 @@ const NOTICE_LIST = [
 const view = () => {
   // useState는 무조건 바디 안에 생성
   const [selectedLsit, setSelectedList] = useState(null);
-
+  const [noticePosts, setNoticePosts] = useState([]);
+  useEffect(() => {
+    fetchTotalCoin();
+  }, []);
+  const fetchTotalCoin = async () => {
+    let body = {Type: 'notice'};
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('notices', JSON.stringify(body), config);
+      // console.log(res);
+      if (res?.data.Result === 'no notices') {
+        return;
+      }
+      setNoticePosts(res?.data?.Result);
+      // navigation.navigate('Wallet');
+      // console.log('test', res.data.Result);
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
+  };
   return (
     <WhiteSafeAreaView>
       <HeaderBottomLine />
       <ScrollView>
-        {NOTICE_LIST.map((list, index) => (
+        {noticePosts?.map((list, index) => (
           <NoticeMenu
             key={index}
             onPress={() => {
-              if (selectedLsit === list.id) {
+              if (selectedLsit === index) {
                 setSelectedList(null);
               } else {
-                setSelectedList(list.id);
+                setSelectedList(index);
               }
             }}
-            isOpen={list.id === selectedLsit}
-            title={list.title}
-            content={list.content}
-            date={list.date}
+            isOpen={index === selectedLsit}
+            title={list.Title}
+            content={list.Subject}
+            date={list.Date}
           />
         ))}
       </ScrollView>
