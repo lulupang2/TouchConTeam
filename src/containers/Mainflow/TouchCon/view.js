@@ -112,6 +112,7 @@ const view = ({navigation}) => {
       <ScrollView contentContainerStyle={{paddingBottom: 50}}>
         <View style={styles.topContainer}>
           <WhiteLine />
+          {console.log(coin)}
           <RowView
             style={{paddingVertical: 8, justifyContent: 'space-between'}}>
             <Image

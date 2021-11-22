@@ -14,6 +14,8 @@ import {LongButton} from '../../../components/Botton';
 import RowView from '../../../components/RowView';
 import {NormalBoldLabel} from '../../../components/Label';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
+import api from '../../../api';
+import {useDispatch, useSelector} from 'react-redux';
 
 const {height, width} = Dimensions.get('window');
 
@@ -36,27 +38,36 @@ const Circle = ({isOrange}) => {
 
 export default function Pinchg({navigation}) {
   const [pwd, onChangePwd] = useState('');
-  const [test, setTest] = useState('0000000');
+  const dispatch = useDispatch();
+  const auth = useSelector(state => state.auth);
   const [firstSuccess, setFirstSuccess] = useState(false);
 
   const onPasswordCheck = e => {
-    if (pwd === test) {
-      if (firstSuccess) {
+    fetchTotalCoin();
+  };
+  const fetchTotalCoin = async () => {
+    let body = {sessionToken: auth.sessionToken, Pin: pwd};
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('pinchange', JSON.stringify(body), config);
+      if (res.data.Result === 'success') {
+        console.log(res);
+        Alert.alert('PIN 번호 변경에 성공하였습니다');
         navigation.goBack();
-        Alert.alert('변경이 완료되었습니다.');
-      } else {
-        setFirstSuccess(true);
-        onChangePwd('');
+        return;
       }
-      // props.navigation.navigate('Pinchg');
-      console.log(test);
-      console.log(pwd);
-    } else {
-      console.log(test);
-      console.log(pwd);
+      Alert.alert('PIN 번호 변경에 실패하였습니다');
+      // navigation.navigate('Wallet');
+      // console.log('test', res.data.Result);
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
     }
   };
-
   const press_enter = e => {
     console.log(e.key);
   };
