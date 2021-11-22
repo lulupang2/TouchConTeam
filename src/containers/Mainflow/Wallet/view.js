@@ -22,12 +22,15 @@ import Touchable from '../../../components/Touchable';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
+import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
+import QRCode from 'react-native-qrcode-svg';
 
 const view = ({navigation, sendmodal, route}) => {
   let coins = route.params.coins;
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
   const {walletAddress, walletURL} = auth;
+
   // let coins = route.params.coins;
   const [visible, setVisible] = useState(false);
   const [coin, setCoin] = useState('TouchCon');
@@ -151,18 +154,36 @@ const view = ({navigation, sendmodal, route}) => {
           <BottomButton text={'확인'} onPress={() => clickSend()} />
         </ColumnView>
       </ModalPoup2>
-      <Image
-        source={require('../../../assets/images/wallet_tx_qr.png')}
+
+      <View
         style={{
           marginHorizontal: 26,
+          maxHeight: 115.69,
           marginVertical: 15,
-          width: 325,
-          height: 116,
-          resizeMode: 'contain',
-        }}
-      />
+        }}>
+        <RowView style={{justifyContent: 'space-between'}}>
+          <ColumnView
+            style={{
+              justifyContent: 'space-between',
+              height: 66,
+            }}>
+            <NormalBoldLabel text={'터치콘 지갑 주소'} />
+            <NormalLabel text={walletAddress} style={{maxWidth: 200}} />
+            {/* <Text style={{maxWidth: 176}}>{walletAddress}</Text> */}
+          </ColumnView>
+          <QRCode
+            value={walletAddress}
+            // logoSize={30}
+            // logoBackgroundColor="transparent"
+          />
+        </RowView>
+      </View>
 
-      <BottomButton text={'지갑 주소 복사하기'} />
+      <BottomButton
+        text={'지갑 주소 복사하기'}
+        style={{marginBottom: 15}}
+        onPress={{}}
+      />
 
       <View style={styles.under}>
         <HeaderThickBottomLine />

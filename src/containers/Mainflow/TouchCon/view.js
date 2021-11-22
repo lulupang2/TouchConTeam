@@ -43,6 +43,7 @@ const view = ({navigation}) => {
 
   console.log('walletInfo', walletAddress);
   useEffect(() => {
+    console.log(walletAddress);
     if (walletAddress) {
       fetchTotalCoin();
     }
