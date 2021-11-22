@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {
   Calendar,
@@ -7,6 +7,8 @@ import {
   Agenda,
 } from 'react-native-calendars';
 import dayjs from 'dayjs';
+import {saveSessionToken} from '../redux/authSlice';
+import api from '../api';
 
 LocaleConfig.locales['ko'] = {
   monthNames: [
@@ -53,11 +55,30 @@ LocaleConfig.locales['ko'] = {
 LocaleConfig.defaultLocale = 'ko';
 
 const CalendarTc = ({onDayPress}) => {
-  const [marked, setMarked] = useState({});
+  const [date, setDate] = useState(['2021-11-23', '2021-11-24']);
+  let markedDay = {};
+  date.map(item => {
+    markedDay[item] = {
+      selected: true,
+      startingDay: true,
+      endingDay: true,
+      textColor: '#fff',
+      selectedColor: 'purple',
+      color: '#FD7F36',
+    };
+  });
+
+  useEffect(() => {}, []);
+
+  const getDate = async sessionToken => {
+    api.post('attendancerecord');
+  };
 
   return (
     <Calendar
       style={styles.calendar}
+      markingType="period"
+      markedDates={markedDay}
       theme={{
         arrowColor: '#6f6f6f',
         'stylesheet.calendar.header': {
@@ -97,55 +118,54 @@ const CalendarTc = ({onDayPress}) => {
         todayTextColor: '#FD7F36',
       }}
       minDate={dayjs(new Date()).format('YYYY-MM-DD')}
-      onDayPress={day => {
-        console.log('onDayPress selectedDay', day, day.dateString);
-        // newSelectedDates[day.dateString] = {
-        //   date: day.dateString,
-        //   startTime: '',
-        //   endTime: '',
-        // };
+      // onDayPress={day => {
+      //   console.log('onDayPress selectedDay', day, day.dateString);
+      //   // newSelectedDates[day.dateString] = {
+      //   //   date: day.dateString,
+      //   //   startTime: '',
+      //   //   endTime: '',
+      //   // };
 
-        let newMarked = Object.assign({}, marked);
-        if (!!newMarked[day.dateString]) {
-          return;
-          // delete newMarked[day.dateString];
-        } else {
-          newMarked[day.dateString] = {
-            selected: true,
-            startingDay: true,
-            endingDay: true,
-            textColor: '#fff',
-            color: '#FD7F36',
-          };
-        }
-        setMarked(newMarked);
-        onDayPress();
-      }}
-      onDayLongPress={day => {
-        console.log('longPress selectedDay', day);
-        let newMarked = Object.assign({}, marked);
-        if (!!newMarked[day.dateString]) {
-          return;
-          // delete newMarked[day.dateString];
-        } else {
-          newMarked[day.dateString] = {
-            selected: true,
-            startingDay: true,
-            endingDay: true,
-            textColor: '#fff',
-            color: '#FD7F36',
-          };
-        }
-        setMarked(newMarked);
-        onDayPress();
-      }}
+      //   let newMarked = Object.assign({}, marked);
+      //   if (!!newMarked[day.dateString]) {
+      //     return;
+      //     // delete newMarked[day.dateString];
+      //   } else {
+      //     newMarked[day.dateString] = {
+      //       selected: true,
+      //       startingDay: true,
+      //       endingDay: true,
+      //       textColor: '#fff',
+      //       color: '#FD7F36',
+      //     };
+      //   }
+      //   setMarked(newMarked);
+      //   onDayPress();
+      // }}
+      // onDayLongPress={day => {
+      //   console.log('longPress selectedDay', day);
+      //   let newMarked = Object.assign({}, marked);
+      //   if (!!newMarked[day.dateString]) {
+      //     return;
+      //     // delete newMarked[day.dateString];
+      //   } else {
+      //     newMarked[day.dateString] = {
+      //       selected: true,
+      //       startingDay: true,
+      //       endingDay: true,
+      //       textColor: '#fff',
+      //       color: '#FD7F36',
+      //     };
+      //   }
+      //   setMarked(newMarked);
+      //   onDayPress();
+      // }}
       // monthFormat={'yyyy년 MM월'}
       monthFormat={'M월'}
       onMonthChange={month => {
         console.log('month changed', month);
       }}
-      markingType="period"
-      markedDates={marked}
+
       // enableSwipeMonths={true}
     />
   );
