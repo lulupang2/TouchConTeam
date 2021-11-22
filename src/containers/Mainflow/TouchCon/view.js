@@ -161,7 +161,7 @@ const view = ({navigation}) => {
                 onPress={() => {
                   if (menu.path === 'Wallet') {
                     if (walletURL) {
-                      navigation.navigate(menu.path);
+                      navigation.navigate(menu.path, {coins: coin});
                     } else {
                       walletAddress
                         ? navigation.navigate(menu.path, {coins: coin})

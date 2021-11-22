@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   TextInput,
+  Alert,
 } from 'react-native';
 import {HeaderWalletBottomLine} from '../../../components/HeaderBottomLine';
 import {NormalLabel} from '../../../components/Label';
@@ -16,10 +17,52 @@ import BottomButton from '../../../components/BottomButton';
 import RowView from '../../../components/RowView';
 import Touchable from '../../../components/Touchable';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {Type} from 'react-native/ReactCommon/hermes/inspector/tools/msggen/src/Type';
+import api from '../../../api';
+import {useDispatch, useSelector} from 'react-redux';
 
-const view = ({navigation}) => {
+const view = ({navigation, route}) => {
   const [ponit, setPonit] = useState('10000.11');
-
+  const [tokens, onChangetokens] = useState('');
+  const dispatch = useDispatch();
+  const auth = useSelector(state => state.auth);
+  let coins = route.params.coins;
+  const ChangeTokenToPoint = () => {
+    if (0 > parseInt(tokens)) {
+      Alert.alert('0보다 큰 숫자를 입력해주세요');
+      return;
+    }
+    if (0 === parseInt(tokens) || 0 > parseInt(tokens)) {
+      Alert.alert('0보다 큰 숫자를 입력해주세요');
+      return;
+    }
+    if (parseInt(coins.TouchCon) < parseInt(tokens)) {
+      Alert.alert('보유하신 터치콘 토큰을 초과 할 수없습니다 ');
+      return;
+    }
+    if (parseInt(coins.TouchCon) > parseInt(tokens)) {
+      fetchChangeToken();
+    }
+  };
+  const fetchChangeToken = async () => {
+    let body = {sessionToken: auth.sessionToken, Coin: tokens};
+    console.log(body);
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('convert', JSON.stringify(body), config);
+      if (res?.data?.Result === 'success') {
+        Alert.alert('변환 성공하였습니다');
+        navigation.goBack();
+      }
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
+  };
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -52,7 +95,7 @@ const view = ({navigation}) => {
               height: 79,
             }}
           />
-          <Text style={styles.tx2}>{ponit}</Text>
+          <Text style={styles.tx2}>{coins?.TouchPoint}</Text>
           <Image
             source={require('../../../assets/images/tx_touch.png')}
             style={{
@@ -69,9 +112,10 @@ const view = ({navigation}) => {
           marginTop: 35,
           borderColor: '#c4c4c4',
           marginHorizontal: 24,
-        }}
-      >
+        }}>
         <TextInput
+          value={tokens}
+          onChangeText={text => onChangetokens(text.replace(/[^0-9]/g, ''))}
           placeholder="    수량"
           style={{width: 205}}
           keyboardType="number-pad"
@@ -84,7 +128,11 @@ const view = ({navigation}) => {
         />
       </RowView>
 
-      <BottomButton text={'터치콘 전환'} style={{marginVertical: 32}} />
+      <BottomButton
+        text={'터치콘 전환'}
+        style={{marginVertical: 32}}
+        onPress={ChangeTokenToPoint}
+      />
       {/* <LongButton
         text={'전환하기'}
         tcStyle={{
