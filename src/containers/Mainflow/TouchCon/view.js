@@ -6,6 +6,7 @@ import {
   Image,
   ScrollView,
   Alert,
+  Share,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {CircleButton} from '../../../components/Botton';
@@ -113,7 +114,24 @@ const view = ({navigation}) => {
       console.log('err', err);
     }
   };
-
+  const onShare = async () => {
+    try {
+      const result = await Share.share({
+        message: walletAddress,
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
   return (
     <WhiteSafeAreaView>
       <ScrollView contentContainerStyle={{paddingBottom: 50}}>
@@ -217,6 +235,7 @@ const view = ({navigation}) => {
                 style={{marginRight: 20}}
               />
               <BottomBtn
+                onPress={onShare}
                 text={'전달'}
                 uri={require('../../../assets/icons/pass.png')}
               />

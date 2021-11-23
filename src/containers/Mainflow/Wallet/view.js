@@ -253,7 +253,7 @@ const view = ({navigation, sendmodal, route}) => {
                 <Text
                   style={
                     styles.tx2
-                  }>{`1 TOC = ${coinPrice?.TouchCon.toString().replace(
+                  }>{`1 TOC = ${coinPrice?.TouchCon?.toString().replace(
                   /\B(?=(\d{3})+(?!\d))/g,
                   ',',
                 )}원`}</Text>
@@ -301,7 +301,7 @@ const view = ({navigation, sendmodal, route}) => {
                 <Text
                   style={
                     styles.tx2
-                  }>{`1 ETH = ${coinPrice?.Ethereum.toString().replace(
+                  }>{`1 ETH = ${coinPrice?.Ethereum?.toString().replace(
                   /\B(?=(\d{3})+(?!\d))/g,
                   ',',
                 )}원`}</Text>
