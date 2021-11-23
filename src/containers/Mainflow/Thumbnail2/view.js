@@ -58,6 +58,7 @@ const view = ({navigation}) => {
   const Attendance = async () => {
     if (dates.filter(date => date[1] === today).length !== 0) {
       Alert.alert('금일은 출석 완료하였습니다');
+      navigation.navigate('Main');
       return;
     }
     let body = {sessionToken: auth.sessionToken, Date: today};
@@ -73,6 +74,8 @@ const view = ({navigation}) => {
           return;
         }
         console.log(res.status);
+        navigation.navigate('Main');
+        Alert.alert('출석 되었습니다.');
       })
       .catch(err => {
         console.log('에러메세지', err);
