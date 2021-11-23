@@ -36,15 +36,18 @@ const view = ({navigation, sendmodal, route}) => {
 
   // let coins = route.params.coins;
   const [visible, setVisible] = useState(false);
-  const [coin, setCoin] = useState('TouchCon');
+  const [coin, setCoin] = useState(0);
   const [coinPrice, setCoinPrice] = useState([]);
-  const [eth, setEth] = useState('ETH');
+  const [eth, setEth] = useState(0);
   const [add, setAdd] = useState('보내기에서 주소 전달');
   const [touchPoint, setTouchPoint] = useState(0); // 하단 보내기의 TouchCon 포인트
   const [etherPoint, setEtherPoint] = useState(0); // 하단 보내기의 이더리움 포인트
+  const [divide, setDivide] = useState(true);
+
   const copyClipboard = () => {
     Clipboard.setString(walletAddress);
   };
+
   useEffect(() => {
     fetchTotalCoin();
   }, []);
@@ -87,34 +90,59 @@ const view = ({navigation, sendmodal, route}) => {
   };
   const clickedTouchCon = () => {
     setVisible(true);
-    setCoin('TouchCon');
+    setDivide(true);
     console.log(' 터치콘 클릭함');
   };
 
   const clickedEthereum = () => {
     setVisible(true);
-    setCoin('Ethereum');
+    setDivide(false);
     console.log(' 이더리움 클릭함');
   };
 
-  const sendCoin = text => {
-    var sessionToken = 'efwfwefwefwewefw';
-    var curr_coin = coin;
-    var curr_add = add;
-    console.log(curr_coin);
-    console.log(curr_add);
-    setVisible(false);
-
-    // fetch('http://wefljewflfewwf', {
-    //   method: 'POST',
-    // });
-
-    //    위 코드와 동일
-    // const response = axios.post('http://wefljewflfewwf');
-    // console.log(response.data); // {},
-    //
-    // const {data} = axios.post('http://wefljewflfewwf');
-    // console.log(data); // {}
+  // sessionToken= 토큰, Coin="TouchCon"||"Ethereum, Amount="수량", Address= "출금주소"
+  // /sendcoin
+  const clickCoinSend = async () => {
+    let body = {
+      sessionToken: auth.sessionToken,
+      Coin: 'TouchCon',
+      Amount: coin,
+      Address: add,
+    };
+    api
+      .post('sendcoin', JSON.stringify(body), {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(res => {
+        if (res.status !== 200) {
+          return;
+        }
+        console.log(res);
+      })
+      .catch(err => console.log('에러메세지', err));
+  };
+  const clickEthereumSend = async () => {
+    let body = {
+      sessionToken: auth.sessionToken,
+      Coin: 'Ethereum',
+      Amount: eth,
+      Address: add,
+    };
+    api
+      .post('sendcoin', JSON.stringify(body), {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(res => {
+        if (res.status !== 200) {
+          return;
+        }
+        console.log(res);
+      })
+      .catch(err => console.log('에러메세지', err));
   };
 
   const clickSend = text => {
@@ -142,7 +170,11 @@ const view = ({navigation, sendmodal, route}) => {
               }}
             />
           </TouchableOpacity>
+          <Text style={styles.modal_text1}>
+            {divide ? 'TouCon' : 'Etherum'}
+          </Text>
           <Text style={styles.modal_text1}>출금을 위한 주소를 입력하세요</Text>
+
           <TextInput
             placeholder="주소"
             style={{
@@ -168,7 +200,7 @@ const view = ({navigation, sendmodal, route}) => {
               marginBottom: 45,
             }}
             onChangeText={text => {
-              if (setCoin) {
+              if (divide) {
                 setCoin(text);
               } else {
                 setEth(text);
@@ -176,7 +208,18 @@ const view = ({navigation, sendmodal, route}) => {
             }}
             keyboardType="number-pad"
           />
-          <BottomButton text={'확인'} onPress={() => clickSend()} />
+          <BottomButton
+            text={'확인'}
+            onPress={() => {
+              if (divide === true) {
+                clickCoinSend();
+                setVisible(false);
+              } else {
+                clickEthereumSend();
+                setVisible(false);
+              }
+            }}
+          />
         </ColumnView>
       </ModalPoup2>
 
