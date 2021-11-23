@@ -18,13 +18,13 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import QRCode from 'react-native-qrcode-svg';
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
+import Clipboard from '@react-native-clipboard/clipboard';
 import {
   saveSessionToken,
   saveWallet,
   walletGenerator,
 } from '../../../redux/authSlice';
 import api from '../../../api';
-
 const MENU = [
   {name: 'Touch\n결제', path: ''},
   {name: '지갑\n생성', path: 'Wallet'},
@@ -40,7 +40,13 @@ const view = ({navigation}) => {
   const auth = useSelector(state => state.auth);
   const [coin, setCoin] = useState([]);
   const {walletAddress, walletURL} = auth;
-
+  const copyClipboard = () => {
+    Clipboard.setString(walletAddress);
+  };
+  // const fetchCopiedText = async () => {
+  //   const text = await Clipboard.getString();
+  //   setCopiedText(text);
+  // };
   console.log('walletInfo', walletAddress);
   useEffect(() => {
     console.log(walletAddress);
@@ -113,7 +119,6 @@ const view = ({navigation}) => {
       <ScrollView contentContainerStyle={{paddingBottom: 50}}>
         <View style={styles.topContainer}>
           <WhiteLine />
-          {console.log(coin)}
           <RowView
             style={{paddingVertical: 8, justifyContent: 'space-between'}}>
             <Image
@@ -206,6 +211,7 @@ const view = ({navigation}) => {
 
             <RowView style={{justifyContent: 'center', marginTop: 36}}>
               <BottomBtn
+                onPress={copyClipboard}
                 text={'복사'}
                 uri={require('../../../assets/icons/copy.png')}
                 style={{marginRight: 20}}
@@ -240,9 +246,9 @@ const MenuBtn = ({menu, onPress}) => {
   );
 };
 
-const BottomBtn = ({text, uri, style}) => {
+const BottomBtn = ({text, uri, style, onPress}) => {
   return (
-    <Touchable style={{...styles.blueBorder, ...style}}>
+    <Touchable style={{...styles.blueBorder, ...style}} onPress={onPress}>
       <NormalBoldLabel text={text} style={styles.bottomBtnText} />
       <Image source={uri} style={{width: 32, height: 32}} />
     </Touchable>

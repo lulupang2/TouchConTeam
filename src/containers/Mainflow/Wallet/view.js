@@ -24,6 +24,7 @@ import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 import QRCode from 'react-native-qrcode-svg';
+import Clipboard from '@react-native-clipboard/clipboard';
 
 const view = ({navigation, sendmodal, route}) => {
   let coins = route.params.coins;
@@ -38,7 +39,9 @@ const view = ({navigation, sendmodal, route}) => {
   const [add, setAdd] = useState('보내기에서 주소 전달');
   const [touchPoint, setTouchPoint] = useState(0); // 하단 보내기의 TouchCon 포인트
   const [etherPoint, setEtherPoint] = useState(0); // 하단 보내기의 이더리움 포인트
-
+  const copyClipboard = () => {
+    Clipboard.setString(walletAddress);
+  };
   useEffect(() => {
     // console.log(route.params);
     navigation.setOptions({
@@ -182,7 +185,7 @@ const view = ({navigation, sendmodal, route}) => {
       <BottomButton
         text={'지갑 주소 복사하기'}
         style={{marginBottom: 15}}
-        onPress={{}}
+        onPress={copyClipboard}
       />
 
       <View style={styles.under}>
