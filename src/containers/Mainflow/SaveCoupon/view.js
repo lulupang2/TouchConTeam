@@ -40,9 +40,9 @@ const ScInventory = [
 
 const view = ({navigation}) => {
   const [visible, setVisible] = useState(false);
-  const [date, setDate] = useState('1일');
-  const [amount, setAmount] = useState('2,000');
-  const [company, setCompany] = useState('메가몰');
+  const [date, setDate] = useState('');
+  const [amount, setAmount] = useState('');
+  const [company, setCompany] = useState('');
   const auth = useSelector(state => state.auth);
   const [historyPosts, setHistoryPosts] = useState([]);
   const [qrNum, setQrNum] = useState('');
@@ -147,6 +147,9 @@ const view = ({navigation}) => {
             onPress={() => {
               setVisible(true);
               setQrNum(menu.Qr);
+              setDate(menu.Date);
+              setAmount(menu.Amount);
+              setCompany(menu.Company);
             }}>
             <ScHistory menu={menu} index={index} />
           </TouchableOpacity>
