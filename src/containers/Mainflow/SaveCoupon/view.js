@@ -45,6 +45,7 @@ const view = ({navigation}) => {
   const [company, setCompany] = useState('메가몰');
   const auth = useSelector(state => state.auth);
   const [historyPosts, setHistoryPosts] = useState([]);
+
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -82,6 +83,7 @@ const view = ({navigation}) => {
           return;
         }
         console.log('ddd:', res);
+        setHistoryPosts(res.data.Result);
       })
       .catch(err => console.log('에러메세지', err));
   };
@@ -130,7 +132,6 @@ const view = ({navigation}) => {
           }}
         />
       </ModalPoup>
-
       {/* 모달 부분 */}
       <HeaderBottomLine />
       <RowView style={styles.listHeaderBack}>
@@ -138,8 +139,9 @@ const view = ({navigation}) => {
         <Text style={styles.tx2}>수량</Text>
         <Text style={styles.tx3}>회사</Text>
       </RowView>
+
       <ScrollView style={styles.scContainer}>
-        {ScInventory.map((menu, i) => (
+        {historyPosts.map((menu, i) => (
           <TouchableOpacity
             onPress={() => {
               setVisible(true);
@@ -157,6 +159,7 @@ export default view;
 const ScHistory = ({menu, index}) => {
   const navigation = useNavigation();
 
+  //Result={Date: 날짜, Amount: 쿠폰금액, Company: 업체명, Qr: 쿠폰id값}x
   return (
     <View>
       <RowView
