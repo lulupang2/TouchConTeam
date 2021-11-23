@@ -23,16 +23,30 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 
 const dataList = [
-  {id: 1, title: '메가몰', path: ''},
-  {id: 2, title: '카오리온', path: 'Shopping'},
-  {id: 3, title: '안동쇠고기', path: ''},
-  {id: 4, title: '재팬드럭', path: ''},
-  {id: 5, title: '마마무', path: ''},
-  {id: 6, title: '마마무', path: ''},
-  {id: 7, title: '마마무', path: ''},
-  {id: 8, title: '마마무', path: ''},
-  {id: 9, title: '마마무', path: ''},
-  {id: 10, title: '마마무', path: ''},
+  {
+    id: 1,
+    title: '카오리온',
+    path: 'Shopping',
+    img: require('../../../assets/images/taa/taa_log3.png'),
+  },
+  {
+    id: 2,
+    title: '메가박스',
+    path: '',
+    img: require('../../../assets/images/taa/taa_log1.png'),
+  },
+  {
+    id: 3,
+    title: '메가몰',
+    path: '',
+    img: require('../../../assets/images/taa/taa_log2.jpg'),
+  },
+  {
+    id: 4,
+    title: '안동국밥',
+    path: '',
+    img: require('../../../assets/images/taa/taa_log4.png'),
+  },
 ];
 
 const numColumns = 3;
@@ -85,16 +99,25 @@ const view = () => {
           <TouchableOpacity
             onPress={() => {
               navigation.navigate(item.path);
-            }}
-          >
-            <View style={styles.adScreen}></View>
+            }}>
+            <View style={styles.adScreen}>
+              <Image
+                style={{
+                  height: 100,
+                  width: 100,
+                  borderTopLeftRadius: 5,
+                  borderTopRightRadius: 5,
+                }}
+                source={item.img}
+                resizeMode={'center'}
+              />
+            </View>
           </TouchableOpacity>
           <Text
             style={{
               fontSize: 15,
               color: '#000',
-            }}
-          >
+            }}>
             {item.title}
             {console.log(item)}
           </Text>
