@@ -106,6 +106,7 @@ const view = ({navigation}) => {
         },
       };
       const res = await api.post('balance', JSON.stringify(body), config);
+      console.log(res?.data?.Result);
       setCoin(res?.data?.Result);
       // navigation.navigate('Wallet');
       // console.log('test', res.data.Result);

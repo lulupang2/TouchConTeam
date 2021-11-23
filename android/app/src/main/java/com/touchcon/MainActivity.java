@@ -2,7 +2,7 @@ package com.touchcon;
 
 import com.facebook.react.ReactActivity;
 import android.os.Bundle;
-
+import com.gevorg.reactlibrary.RNQrGeneratorPackage;
 public class MainActivity extends ReactActivity {
 
   /**

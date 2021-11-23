@@ -1,4 +1,4 @@
-import React, {Component, useEffect} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -10,8 +10,10 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Linking,
+  Alert,
 } from 'react-native';
-
+import RNQRGenerator from 'rn-qr-generator';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import {RNCamera} from 'react-native-camera';
 import RowView from '../../../components/RowView';
@@ -26,6 +28,7 @@ const vw = width / 100;
 
 // class view extends Component {
 const view = ({navigation}) => {
+  const [QRurl, setQRurl] = useState('');
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => null,
@@ -80,7 +83,52 @@ const view = ({navigation}) => {
       console.error('An error occured', err),
     );
   };
+  const internalScan = () => {
+    let URL;
+    let options = {
+      title: 'Select Image',
+      customButtons: [
+        {name: 'customOptionKey', title: 'Choose Photo from Custom Option'},
+      ],
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+    launchImageLibrary(options, res => {
+      console.log(res.assets[0].uri);
+      URL = res.assets[0].uri;
+      ImagePick(res.assets[0].uri);
+    });
+    // ImagePick();
+  };
 
+  const ImagePick = url => {
+    RNQRGenerator.generate({
+      value: 'https://github.com/gevgasparyan/rn-qr-generator',
+      height: 100,
+      width: 100,
+    });
+    // .then(response => {
+    //   const {uri, width, height, base64} = response;
+    //   console.log('위', response);
+    // })
+    // .catch(error => console.log('Cannot create QR code', error));
+
+    // Detect QR code in image
+    RNQRGenerator.detect({
+      uri: url,
+    })
+      .then(response => {
+        const {values} = response; // Array of detected QR code values. Empty if nothing found.
+        console.log(values[0]);
+        setQRurl(values[0]);
+      })
+      .catch(error => {
+        Alert.alert('이미지에서 QR 코드를 감지에 실패하였습니다.');
+        console.log('Cannot detect QR code in image', error);
+      });
+  };
   return (
     <View>
       <View
@@ -135,12 +183,14 @@ const view = ({navigation}) => {
                 <View
                   style={{
                     width: width * 0.05,
-                  }}></View>
-                <TouchableOpacity>
+                  }}
+                />
+                <TouchableOpacity onPress={() => internalScan()}>
                   <View
                     style={{
                       width: width * 0.25,
-                    }}></View>
+                    }}
+                  />
                   <Image
                     source={require('../../../assets/images/btn_random_sc_in.png')}
                     style={{
@@ -160,7 +210,8 @@ const view = ({navigation}) => {
                 <View
                   style={{
                     width: width * 0.05,
-                  }}></View>
+                  }}
+                />
                 {/* <TouchableOpacity
                     onPress={() => navigation.navigate('ScanHistory')}>
                     <Image
