@@ -42,6 +42,7 @@ import AdDetatil1 from '../Mainflow/AdDetail/view';
 import AdDetatil2 from '../Mainflow/AdDetail/view2';
 import AdDetatil3 from '../Mainflow/AdDetail/view3';
 import AdDetatil4 from '../Mainflow/AdDetail/view4';
+import SaveCoupon from '../Mainflow/SaveCoupon/view';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 const Stack = createStackNavigator();
@@ -327,6 +328,12 @@ const RootStack = () => (
       name="Ppp"
       component={Ppp}
       options={{title: '개인정보처리방침'}}
+    />
+
+    <Stack.Screen
+      name="SaveCoupon"
+      component={SaveCoupon}
+      options={{title: '스캔된 쿠폰 저장함'}}
     />
   </Stack.Navigator>
 );

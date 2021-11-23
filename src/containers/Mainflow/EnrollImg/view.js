@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -16,6 +16,7 @@ import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import Touchable from '../../../components/Touchable';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 import {useNavigation} from '@react-navigation/native';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const {height, width} = Dimensions.get('window');
 
@@ -25,35 +26,15 @@ const vw = width / 100;
 const MENU_LIST = [
   {
     id: 1,
-    shop: 'CAORION',
-    name: 'Premium Pore Original Pack',
-    price: '190',
-    img: require('../../../assets/images/original/ca_origin_main.png'),
-    path: 'AdDetail4',
+    img: require('../../../assets/images/enImg1.png'),
   },
   {
     id: 2,
-    shop: 'CAORION',
-    name: 'Relipy Relaxing Cream',
-    price: '390',
-    img: require('../../../assets/images/relaxing/ca_relax_main.png'),
-    path: 'AdDetail3',
+    img: require('../../../assets/images/enImg1.png'),
   },
   {
     id: 3,
-    shop: 'CAORION',
-    name: 'Peace Water Aqua Drop Gel Night Mask',
-    price: '550',
-    img: require('../../../assets/images/dropgel/ca_drop_main.png'),
-    path: 'AdDetail2',
-  },
-  {
-    id: 4,
-    shop: 'CAORION',
-    name: 'Daily Vital Wash Pure Bubble',
-    price: '280',
-    img: require('../../../assets/images/daily/ca_dail_main.png'),
-    path: 'AdDetail1',
+    img: require('../../../assets/images/enImg2.png'),
   },
 ];
 
@@ -85,40 +66,37 @@ export default view;
 
 const Menu = ({menu}) => {
   const navigation = useNavigation();
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Touchable onPress={() => navigation.navigate('Main')} style={{}}>
+          <AntDesign
+            name="close"
+            size={26}
+            color={'#000'}
+            style={{
+              padding: 4,
+              alignSelf: 'center',
+              color: '#c4c4c4',
+              paddingRight: 16,
+            }}
+          />
+        </Touchable>
+      ),
+    });
+  }, []);
   return (
-    <Touchable
-      style={styles.menu}
-      onPress={() => navigation.navigate(menu.path)}>
+    <Touchable style={styles.menu} onPress={() => {}}>
       <Image
         style={{
-          height: width / 4,
+          height: width / 3,
           width: width / 2 - 32,
           borderTopLeftRadius: 5,
           borderTopRightRadius: 5,
         }}
         source={menu.img}
-        resizeMode={'contain'}
+        resizeMode={'center'}
       />
-      <View
-        style={{
-          paddingVertical: 4,
-          paddingHorizontal: 11,
-          backgroundColor: '#f7f7f7',
-        }}>
-        <NormalBoldLabel
-          text={menu.shop}
-          style={{color: '#0068D9', fontSize: 12, lineHeight: 16}}
-        />
-
-        <Text numberOfLines={1} ellipsizeMode="tail" style={styles.content}>
-          {menu.name}
-        </Text>
-        {/* <NormalBoldLabel text={menu.name} style={{marginTop: 4}} /> */}
-        <NormalBoldLabel
-          text={menu.price + ' TOP'}
-          style={{color: '#FD7F36', marginTop: 4}}
-        />
-      </View>
     </Touchable>
   );
 };
@@ -131,7 +109,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     borderWidth: 0.8,
     borderRadius: 5,
-    borderColor: '#c4c4c4',
+    borderColor: 'red',
     backgroundColor: '#fff',
   },
   addBtn: {
@@ -142,12 +120,5 @@ const styles = StyleSheet.create({
     borderRadius: 53,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  content: {
-    fontSize: 15,
-    lineHeight: 19,
-    color: '#000',
-    fontWeight: 'bold',
-    marginTop: 4,
   },
 });
