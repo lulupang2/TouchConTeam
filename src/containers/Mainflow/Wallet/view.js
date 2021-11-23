@@ -163,7 +163,7 @@ const view = ({navigation, sendmodal, route}) => {
               }}
             />
           </TouchableOpacity>
-          <Text style={styles.modal_text1}>
+          <Text style={{color: '#000', fontSize: 30, textAlign: 'center'}}>
             {divide ? 'TouCon' : 'Etherum'}
           </Text>
           <Text style={styles.modal_text1}>출금을 위한 주소를 입력하세요</Text>

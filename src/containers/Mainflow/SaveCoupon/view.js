@@ -113,13 +113,19 @@ const view = ({navigation}) => {
 
         <RowView
           style={{
-            backgroundColor: 'red',
             marginHorizontal: 30,
             justifyContent: 'space-between',
           }}>
-          <ColumnView style={{backgroundColor: 'blue', marginLeft: 70}}>
+          <ColumnView
+            style={{
+              marginLeft: 40,
+              justifyContent: 'space-between',
+            }}>
             <NormalBoldLabel text={date} />
-            <NormalBoldLabel text={amount} />
+            <NormalBoldLabel
+              text={amount}
+              style={{marginVertical: 10, color: '#FD7F36'}}
+            />
             <NormalBoldLabel text={company} />
           </ColumnView>
           <QRCode value={qrNum} />
