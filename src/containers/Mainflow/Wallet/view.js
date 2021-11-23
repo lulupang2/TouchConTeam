@@ -145,13 +145,6 @@ const view = ({navigation, sendmodal, route}) => {
       .catch(err => console.log('에러메세지', err));
   };
 
-  const clickSend = text => {
-    var curr_coin = coin;
-    var curr_add = add;
-    console.log(curr_coin);
-    console.log(curr_add);
-  };
-
   return (
     <WhiteSafeAreaView>
       <HeaderThickBottomLine />

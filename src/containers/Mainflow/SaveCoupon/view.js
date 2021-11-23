@@ -21,24 +21,28 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Touchable from '../../../components/Touchable';
 import api from '../../../api';
 import {useSelector} from 'react-redux';
+import {ModalPoup} from '../../../components/Modals';
+import ColumnView from '../../../components/ColumnView';
+import BottomButton from '../../../components/BottomButton';
+import QRCode from 'react-native-qrcode-svg';
 
 const ScInventory = [
-  {id: 1, date: '21.04.05', compensation: '200', ba: '카오리온'},
-  {id: 2, date: '21.04.05', compensation: '10', ba: '메가'},
-  {id: 3, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 4, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 5, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 6, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 7, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 8, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 9, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 10, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 11, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 12, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 13, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
+  {id: 1, Date: '21.04.05', Amount: '200', Company: '카오리온', Qr: 'klsdjfjd'},
+  {id: 2, Date: '21.04.05', Amount: '10', Company: '메가', Qr: 'klsdjfjd'},
+  {id: 3, Date: '21.04.05', Amount: '3,300', Company: '안동국밥'},
+  {id: 4, Date: '21.04.05', Amount: '3,000', Company: '안동국밥'},
+  {id: 5, Date: '21.04.05', Amount: '3,000', Company: '안동국밥'},
+  {id: 6, Date: '21.04.05', Amount: '2,000', Company: '안동국밥'},
+  {id: 7, Date: '21.04.05', Amount: '3,000', Company: '안동국밥'},
+  {id: 8, Date: '21.04.05', Amount: '3,000', Company: '안동국밥'},
+  {id: 9, Date: '21.04.05', Amount: '3,000', Company: '안동국밥'},
 ];
 
 const view = ({navigation}) => {
+  const [visible, setVisible] = useState(false);
+  const [date, setDate] = useState('1일');
+  const [amount, setAmount] = useState('2,000');
+  const [company, setCompany] = useState('메가몰');
   const auth = useSelector(state => state.auth);
   const [historyPosts, setHistoryPosts] = useState([]);
   useEffect(() => {
@@ -61,37 +65,87 @@ const view = ({navigation}) => {
     });
   }, []);
   useEffect(() => {
-    fetchTotalCoin();
+    getData();
   }, []);
-  const fetchTotalCoin = async () => {
-    let body = {sessionToken: auth.sessionToken};
-    try {
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      };
-      const res = await api.post('scanhistory', JSON.stringify(body), config);
-      console.log(res);
-      setHistoryPosts(res?.data.Result);
-      // navigation.navigate('Wallet');
-      // console.log('test', res.data.Result);
-    } catch (err) {
-      Alert.alert('', '서버와 통신에 실패');
-      console.log('err', err);
-    }
+
+  //Result={Date: 날짜, Amount: 쿠폰금액, Company: 업체명, Qr: 쿠폰id값}
+  const getData = async () => {
+    let body = {
+      sessionToken: auth.sessionToken,
+    };
+    api
+      .post('usercouponlist', JSON.stringify(body), {
+        headers: {'Content-Type': 'application/json'},
+      })
+      .then(res => {
+        if (res.status !== 200) {
+          return;
+        }
+        console.log('ddd:', res);
+      })
+      .catch(err => console.log('에러메세지', err));
   };
   return (
     <WhiteSafeAreaView>
+      {/* 모달 부분 */}
+      <ModalPoup visible={visible}>
+        <RowView
+          style={{
+            justifyContent: 'space-between',
+            marginHorizontal: 10,
+            marginVertical: 10,
+          }}>
+          <View style={{width: 10}}></View>
+          <NormalBoldLabel text={'스캔내역을 확인해 주세요'} />
+          <TouchableOpacity onPress={() => setVisible(false)}>
+            <Image
+              source={require('../../../assets/images/x.png')}
+              resizeMode="contain"
+              style={{
+                width: 20,
+                height: 20,
+              }}
+            />
+          </TouchableOpacity>
+        </RowView>
+
+        <RowView
+          style={{
+            backgroundColor: 'red',
+            marginHorizontal: 30,
+            justifyContent: 'space-between',
+          }}>
+          <ColumnView style={{backgroundColor: 'blue', marginLeft: 70}}>
+            <NormalBoldLabel text={date} />
+            <NormalBoldLabel text={amount} />
+            <NormalBoldLabel text={company} />
+          </ColumnView>
+          <QRCode />
+        </RowView>
+        <BottomButton
+          text={'확인'}
+          style={{marginTop: 20}}
+          onPress={() => {
+            setVisible(false);
+          }}
+        />
+      </ModalPoup>
+
+      {/* 모달 부분 */}
       <HeaderBottomLine />
       <RowView style={styles.listHeaderBack}>
         <Text style={styles.tx1}>날짜</Text>
-        <Text style={styles.tx2}>제휴업체</Text>
-        <Text style={styles.tx3}>내역</Text>
+        <Text style={styles.tx2}>수량</Text>
+        <Text style={styles.tx3}>회사</Text>
       </RowView>
       <ScrollView style={styles.scContainer}>
-        {historyPosts.map((menu, i) => (
-          <ScHistory menu={menu} index={i} key={i} />
+        {ScInventory.map((menu, i) => (
+          <TouchableOpacity
+            onPress={() => {
+              setVisible(true);
+            }}>
+            <ScHistory menu={menu} index={i} key={i} />
+          </TouchableOpacity>
         ))}
       </ScrollView>
     </WhiteSafeAreaView>
