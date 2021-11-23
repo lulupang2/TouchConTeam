@@ -10,6 +10,7 @@ import {
   SafeAreaView,
   ScrollView,
   TextInput,
+  Alert,
 } from 'react-native';
 
 import {HeaderThickBottomLine} from '../../../components/HeaderBottomLine';
@@ -25,6 +26,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 import QRCode from 'react-native-qrcode-svg';
 import Clipboard from '@react-native-clipboard/clipboard';
+import api from '../../../api';
 
 const view = ({navigation, sendmodal, route}) => {
   let coins = route.params.coins;
@@ -35,6 +37,7 @@ const view = ({navigation, sendmodal, route}) => {
   // let coins = route.params.coins;
   const [visible, setVisible] = useState(false);
   const [coin, setCoin] = useState('TouchCon');
+  const [coinPrice, setCoinPrice] = useState([]);
   const [eth, setEth] = useState('ETH');
   const [add, setAdd] = useState('보내기에서 주소 전달');
   const [touchPoint, setTouchPoint] = useState(0); // 하단 보내기의 TouchCon 포인트
@@ -42,6 +45,9 @@ const view = ({navigation, sendmodal, route}) => {
   const copyClipboard = () => {
     Clipboard.setString(walletAddress);
   };
+  useEffect(() => {
+    fetchTotalCoin();
+  }, []);
   useEffect(() => {
     // console.log(route.params);
     navigation.setOptions({
@@ -63,6 +69,22 @@ const view = ({navigation, sendmodal, route}) => {
     });
   }, []);
 
+  const fetchTotalCoin = async () => {
+    let body = {Type: 'exchangerate'};
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('exchangerate', JSON.stringify(body), config);
+      // console.log(res?.data?.Result);
+      setCoinPrice(res?.data?.Result);
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
+  };
   const clickedTouchCon = () => {
     setVisible(true);
     setCoin('TouchCon');
@@ -225,13 +247,20 @@ const view = ({navigation, sendmodal, route}) => {
                 source={require('../../../assets/icons/wallet_logo.png')}
                 style={styles.logo}
               />
+
               <ColumnView style={{marginBottom: 26}}>
                 <Text style={styles.tx2}>{coins?.TouchCon}</Text>
-                <Text style={styles.tx2}>1 TOC = 100원</Text>
+                <Text
+                  style={
+                    styles.tx2
+                  }>{`1 TOC = ${coinPrice?.TouchCon.toString().replace(
+                  /\B(?=(\d{3})+(?!\d))/g,
+                  ',',
+                )}원`}</Text>
               </ColumnView>
             </RowView>
           </View>
-          {console.log(coins)}
+          {/*{console.log(coins)}*/}
           {/* 터치콘 */}
           <BottomButton text={'거래소 가기'} />
 
@@ -269,7 +298,13 @@ const view = ({navigation, sendmodal, route}) => {
               />
               <ColumnView style={{marginBottom: 26}}>
                 <Text style={styles.tx2}>{coins?.Ethereum}</Text>
-                <Text style={styles.tx2}>1 TOC = 100원</Text>
+                <Text
+                  style={
+                    styles.tx2
+                  }>{`1 ETH = ${coinPrice?.Ethereum.toString().replace(
+                  /\B(?=(\d{3})+(?!\d))/g,
+                  ',',
+                )}원`}</Text>
               </ColumnView>
             </RowView>
           </View>
