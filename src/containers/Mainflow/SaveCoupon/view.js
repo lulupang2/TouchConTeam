@@ -45,6 +45,7 @@ const view = ({navigation}) => {
   const [company, setCompany] = useState('메가몰');
   const auth = useSelector(state => state.auth);
   const [historyPosts, setHistoryPosts] = useState([]);
+  const [qrNum, setQrNum] = useState();
 
   useEffect(() => {
     navigation.setOptions({
@@ -122,7 +123,7 @@ const view = ({navigation}) => {
             <NormalBoldLabel text={amount} />
             <NormalBoldLabel text={company} />
           </ColumnView>
-          <QRCode />
+          <QRCode value={qrNum} />
         </RowView>
         <BottomButton
           text={'확인'}
@@ -141,12 +142,14 @@ const view = ({navigation}) => {
       </RowView>
 
       <ScrollView style={styles.scContainer}>
-        {historyPosts.map((menu, i) => (
+        {historyPosts.map((menu, index) => (
           <TouchableOpacity
+            key={index}
             onPress={() => {
               setVisible(true);
+              setQrNum(menu.qr);
             }}>
-            <ScHistory menu={menu} index={i} key={i} />
+            <ScHistory menu={menu} index={index} />
           </TouchableOpacity>
         ))}
       </ScrollView>
