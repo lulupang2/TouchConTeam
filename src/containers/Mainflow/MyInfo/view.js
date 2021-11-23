@@ -4,6 +4,7 @@ import RowView from '../../../components/RowView';
 import {NormalBoldLabel} from '../../../components/Label';
 import {MenuItem} from '../../../components/MenuItem';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
+import {useSelector} from 'react-redux';
 
 const MENU = [
   {id: 1, title: '터치코인 연결관리', path: 'TcConnMana'},
@@ -15,7 +16,7 @@ const MENU = [
 
 const view = ({navigation}) => {
   const [email, setEmail] = useState('ngm1224@gmail.com');
-
+  const auth = useSelector(state => state.auth);
   return (
     <WhiteSafeAreaView>
       <HeaderBottomLine />
@@ -27,10 +28,12 @@ const view = ({navigation}) => {
           borderBottomWidth: 1,
           borderBottomColor: '#c4c4c4',
           paddingBottom: 18,
-        }}
-      >
+        }}>
         <NormalBoldLabel text={'이메일 계정'} />
-        <NormalBoldLabel text={email} style={{fontSize: 20, lineHeight: 24}} />
+        <NormalBoldLabel
+          text={auth.email}
+          style={{fontSize: 20, lineHeight: 24}}
+        />
       </RowView>
 
       {MENU.map(menu => (
