@@ -39,9 +39,7 @@ const view = ({navigation, sendmodal, route}) => {
   const [coin, setCoin] = useState(0);
   const [coinPrice, setCoinPrice] = useState([]);
   const [eth, setEth] = useState(0);
-  const [add, setAdd] = useState('보내기에서 주소 전달');
-  const [touchPoint, setTouchPoint] = useState(0); // 하단 보내기의 TouchCon 포인트
-  const [etherPoint, setEtherPoint] = useState(0); // 하단 보내기의 이더리움 포인트
+  const [add, setAdd] = useState('0x45fe5c2a4b30239b3d5b0a3d4170B0E8e45FF449');
   const [divide, setDivide] = useState(true);
 
   const copyClipboard = () => {
@@ -102,13 +100,17 @@ const view = ({navigation, sendmodal, route}) => {
 
   // sessionToken= 토큰, Coin="TouchCon"||"Ethereum, Amount="수량", Address= "출금주소"
   // /sendcoin
-  const clickCoinSend = async () => {
+  const clickCoinSend = () => {
     let body = {
       sessionToken: auth.sessionToken,
       Coin: 'TouchCon',
       Amount: coin,
       Address: add,
     };
+    if (coin > 5001) {
+      Alert.alert('TouchCon의 출금 수량은 5000 TOP를 넘을 수 없습니다.');
+      return;
+    }
     api
       .post('sendcoin', JSON.stringify(body), {
         headers: {
@@ -116,20 +118,25 @@ const view = ({navigation, sendmodal, route}) => {
         },
       })
       .then(res => {
+        setVisible(false);
         if (res.status !== 200) {
           return;
         }
-        console.log(res);
+        console.log('coin : ', res);
       })
       .catch(err => console.log('에러메세지', err));
   };
-  const clickEthereumSend = async () => {
+  const clickEthereumSend = () => {
     let body = {
       sessionToken: auth.sessionToken,
       Coin: 'Ethereum',
       Amount: eth,
       Address: add,
     };
+    if (eth > 5001) {
+      Alert.alert('Ethereum의 출금 수량은 5000 ETH를 넘을 수 없습니다.');
+      return;
+    }
     api
       .post('sendcoin', JSON.stringify(body), {
         headers: {
@@ -140,7 +147,7 @@ const view = ({navigation, sendmodal, route}) => {
         if (res.status !== 200) {
           return;
         }
-        console.log(res);
+        console.log('eth : ', res);
       })
       .catch(err => console.log('에러메세지', err));
   };
@@ -164,7 +171,7 @@ const view = ({navigation, sendmodal, route}) => {
             />
           </TouchableOpacity>
           <Text style={{color: '#000', fontSize: 30, textAlign: 'center'}}>
-            {divide ? 'TouCon' : 'Etherum'}
+            {divide ? 'TouchCon' : 'Ethereum'}
           </Text>
           <Text style={styles.modal_text1}>출금을 위한 주소를 입력하세요</Text>
 
