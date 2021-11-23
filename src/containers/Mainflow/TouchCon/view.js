@@ -20,6 +20,7 @@ import QRCode from 'react-native-qrcode-svg';
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import Clipboard from '@react-native-clipboard/clipboard';
+import {useIsFocused} from '@react-navigation/native';
 import {
   saveSessionToken,
   saveWallet,
@@ -36,6 +37,7 @@ const MENU = [
 const QR_CODE = require('../../../assets/images/qr_code.png');
 
 const view = ({navigation}) => {
+  const isFocused = useIsFocused();
   const [touchPonint, setTouchPoint] = useState(10000.11);
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
@@ -50,11 +52,11 @@ const view = ({navigation}) => {
   // };
   console.log('walletInfo', walletAddress);
   useEffect(() => {
-    console.log(walletAddress);
+    // console.log(walletAddress);
     if (walletAddress) {
       fetchTotalCoin();
     }
-  }, []);
+  }, [isFocused]);
 
   useEffect(() => {
     navigation.setOptions({
@@ -74,7 +76,7 @@ const view = ({navigation}) => {
         </Touchable>
       ),
     });
-  }, []);
+  }, [navigation]);
 
   const walletCreate = async () => {
     let body = {sessionToken: auth.sessionToken};

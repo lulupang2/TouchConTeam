@@ -20,6 +20,9 @@ import RowView from '../../../components/RowView';
 import {Platform, PermissionsAndroid} from 'react-native';
 import Touchable from '../../../components/Touchable';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import api from '../../../api';
+import {resetAuth} from '../../../redux/authSlice';
+import {useSelector} from 'react-redux';
 
 const {height, width} = Dimensions.get('window');
 
@@ -29,6 +32,7 @@ const vw = width / 100;
 // class view extends Component {
 const view = ({navigation}) => {
   const [QRurl, setQRurl] = useState('');
+  const auth = useSelector(state => state.auth);
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => null,
@@ -123,12 +127,37 @@ const view = ({navigation}) => {
         const {values} = response; // Array of detected QR code values. Empty if nothing found.
         console.log(values[0]);
         setQRurl(values[0]);
+        fetchQRCode(values[0]);
       })
       .catch(error => {
         Alert.alert('이미지에서 QR 코드를 감지에 실패하였습니다.');
         console.log('Cannot detect QR code in image', error);
       });
   };
+  const fetchQRCode = async Qr => {
+    let body = {sessionToken: auth.sessionToken, Qr: Qr};
+    console.log(body);
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('internalscan', JSON.stringify(body), config);
+      if (res.data.Result !== 'success') {
+        Alert.alert('내부스캔 실패했습니다');
+        return;
+      }
+      console.log(res);
+      // console.log(res);
+      // navigation.navigate('Wallet');
+      // console.log('test', res.data.Result);
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
+  };
+
   return (
     <View>
       <View

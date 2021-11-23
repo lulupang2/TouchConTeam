@@ -45,7 +45,7 @@ const view = ({navigation}) => {
   const [company, setCompany] = useState('메가몰');
   const auth = useSelector(state => state.auth);
   const [historyPosts, setHistoryPosts] = useState([]);
-  const [qrNum, setQrNum] = useState();
+  const [qrNum, setQrNum] = useState('');
 
   useEffect(() => {
     navigation.setOptions({
@@ -95,10 +95,9 @@ const view = ({navigation}) => {
         <RowView
           style={{
             justifyContent: 'space-between',
-            marginHorizontal: 10,
-            marginVertical: 10,
+            margin: 10,
           }}>
-          <View style={{width: 10}}></View>
+          <View style={{width: 10}} />
           <NormalBoldLabel text={'스캔내역을 확인해 주세요'} />
           <TouchableOpacity onPress={() => setVisible(false)}>
             <Image
@@ -147,7 +146,7 @@ const view = ({navigation}) => {
             key={index}
             onPress={() => {
               setVisible(true);
-              setQrNum(menu.qr);
+              setQrNum(menu.Qr);
             }}>
             <ScHistory menu={menu} index={index} />
           </TouchableOpacity>
