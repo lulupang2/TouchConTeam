@@ -67,7 +67,7 @@ const view = ({navigation}) => {
   const renderQuestionView = btnMenu => {
     let list = btnMenu === '전체' ? QUESTION_LIST : menuList[btnMenu];
 
-    return list.map((question, index) => (
+    return list?.map((question, index) => (
       <QnaMenu
         // index는 어떤 값을 반환하는 지모르 겠다.
         key={index}
@@ -101,8 +101,7 @@ const view = ({navigation}) => {
                   backgroundColor:
                     selectedMenu === item ? '#fd7f36' : '#f7f7f7',
                   borderColor: selectedMenu === item ? '#fd7f36' : '#c4c4c4',
-                }}
-              >
+                }}>
                 <NormalBoldLabel
                   text={item}
                   style={{
