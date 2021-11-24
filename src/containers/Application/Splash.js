@@ -18,7 +18,7 @@ export default function Splash({navigation}) {
   const {loginSuccess} = auth;
   useEffect(() => {
     setTimeout(() => {
-      if (auth.email !== '') {
+      if (auth.email !== null) {
         navigation.navigate('Pinlogin');
       } else {
         navigation.navigate('Intro');
