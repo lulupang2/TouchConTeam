@@ -113,13 +113,7 @@ const view = ({navigation}) => {
       height: 100,
       width: 100,
     });
-    // .then(response => {
-    //   const {uri, width, height, base64} = response;
-    //   console.log('위', response);
-    // })
-    // .catch(error => console.log('Cannot create QR code', error));
 
-    // Detect QR code in image
     RNQRGenerator.detect({
       uri: url,
     })
@@ -162,115 +156,88 @@ const view = ({navigation}) => {
   };
 
   return (
-    <View>
-      <View
+    <View
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        flex: 1,
+        alignSelf: 'center',
+        justifyContent: 'space-between',
+      }}>
+      {/* -------- 1회 스캔한 큐알코드는~~~ start ------- */}
+      <QRCodeScanner
+        onRead={onSuccess}
+        flashMode={RNCamera.Constants.FlashMode.torch}
+      />
+      <RowView
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignSelf: 'center',
-          justifyContent: 'space-between',
-          position: 'absolute',
-          top: height * 0.1,
+          width: '100%',
+          justifyContent: 'space-around',
         }}>
+        <TouchableOpacity>
+          <Image
+            source={require('../../../assets/images/btn_random_sc_out.png')}
+            style={{
+              resizeMode: 'contain',
+              width: width * 0.2,
+            }}
+          />
+          <View
+            style={{
+              width: width * 0.25,
+            }}></View>
+        </TouchableOpacity>
         <Image
-          source={require('../../../assets/images/random_sc.png')}
+          source={require('../../../assets/images/random_bar.png')}
           style={{
             resizeMode: 'contain',
-            width: 210,
-            height: 196,
-            position: 'absolute',
-            top: 100,
-            left: 80,
-            zIndex: 1,
+            width: width * 0.008,
+            marginTop: height * 0.1,
           }}
         />
-        {/* -------- 1회 스캔한 큐알코드는~~~ start ------- */}
-        <QRCodeScanner
-          onRead={onSuccess}
-          flashMode={RNCamera.Constants.FlashMode.torch}
-          bottomContent={
-            <>
-              <RowView>
-                <TouchableOpacity>
-                  <Image
-                    source={require('../../../assets/images/btn_random_sc_out.png')}
-                    style={{
-                      resizeMode: 'contain',
-                      width: width * 0.2,
-                    }}
-                  />
-                  <View
-                    style={{
-                      width: width * 0.25,
-                    }}></View>
-                </TouchableOpacity>
-                <Image
-                  source={require('../../../assets/images/random_bar.png')}
-                  style={{
-                    resizeMode: 'contain',
-                    width: width * 0.008,
-                    marginTop: height * 0.1,
-                  }}
-                />
-                <View
-                  style={{
-                    width: width * 0.05,
-                  }}
-                />
-                <TouchableOpacity onPress={() => internalScan()}>
-                  <View
-                    style={{
-                      width: width * 0.25,
-                    }}
-                  />
-                  <Image
-                    source={require('../../../assets/images/btn_random_sc_in.png')}
-                    style={{
-                      resizeMode: 'contain',
-                      width: width * 0.2,
-                    }}
-                  />
-                </TouchableOpacity>
-                <Image
-                  source={require('../../../assets/images/random_bar.png')}
-                  style={{
-                    resizeMode: 'contain',
-                    width: width * 0.008,
-                    marginTop: height * 0.1,
-                  }}
-                />
-                <View
-                  style={{
-                    width: width * 0.05,
-                  }}
-                />
-                {/* <TouchableOpacity
-                    onPress={() => navigation.navigate('ScanHistory')}>
-                    <Image
-                      source={require('../../../assets/images/btn_random_sc_hi.png')}
-                      style={{
-                        resizeMode: 'contain',
-                        width: width * 0.2,
-                      }}
-                    />
-                  </TouchableOpacity> */}
-                <TouchableOpacity>
-                  <Image
-                    source={require('../../../assets/images/btn_random_sc_hi.png')}
-                    style={{
-                      resizeMode: 'contain',
-                      width: width * 0.2,
-                    }}
-                  />
-                </TouchableOpacity>
-              </RowView>
-            </>
-          }
+        <View
+          style={{
+            width: width * 0.05,
+          }}
         />
-      </View>
-      {/* -------- 1회 스캔한 큐알코드는~~~ end ------- */}
+        <TouchableOpacity onPress={() => internalScan()}>
+          <View
+            style={{
+              width: width * 0.25,
+            }}
+          />
+          <Image
+            source={require('../../../assets/images/btn_random_sc_in.png')}
+            style={{
+              resizeMode: 'contain',
+              width: width * 0.2,
+            }}
+          />
+        </TouchableOpacity>
+        <Image
+          source={require('../../../assets/images/random_bar.png')}
+          style={{
+            resizeMode: 'contain',
+            width: width * 0.008,
+            marginTop: height * 0.1,
+          }}
+        />
+        <View
+          style={{
+            width: width * 0.05,
+          }}
+        />
 
-      {/* ------------- 외부, 내부, History 버튼 시작--------- */}
+        <TouchableOpacity>
+          <Image
+            source={require('../../../assets/images/btn_random_sc_hi.png')}
+            style={{
+              resizeMode: 'contain',
+              width: width * 0.2,
+            }}
+          />
+        </TouchableOpacity>
+      </RowView>
     </View>
   );
 };
