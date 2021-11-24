@@ -64,6 +64,7 @@ function Signup({props, navigation}) {
           return;
         }
         countDown();
+        Alert.alert('전송이 완료됐습니다');
         console.log(res.data.Result);
         setVerti(res.data.Result);
       })

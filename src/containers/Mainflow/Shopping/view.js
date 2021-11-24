@@ -101,9 +101,11 @@ const Menu = ({menu}) => {
       />
       <View
         style={{
-          paddingVertical: 4,
+          paddingVertical: 2,
           paddingHorizontal: 11,
           backgroundColor: '#f7f7f7',
+          borderBottomRightRadius: 5,
+          borderBottomLeftRadius: 5,
         }}>
         <NormalBoldLabel
           text={menu.shop}

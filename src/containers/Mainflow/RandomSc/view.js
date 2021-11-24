@@ -149,8 +149,9 @@ const view = ({navigation}) => {
         return;
       }
       Alert.alert('내부스캔 성공하였습니다');
-      navigation.goBack();
       console.log(res);
+      navigation.goBack();
+
       // console.log(res);
       // navigation.navigate('Wallet');
       // console.log('test', res.data.Result);
