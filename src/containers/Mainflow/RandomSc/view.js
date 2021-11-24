@@ -148,6 +148,8 @@ const view = ({navigation}) => {
         Alert.alert('내부스캔 실패했습니다');
         return;
       }
+      Alert.alert('내부스캔 성공하였습니다');
+      navigation.goBack();
       console.log(res);
       // console.log(res);
       // navigation.navigate('Wallet');
