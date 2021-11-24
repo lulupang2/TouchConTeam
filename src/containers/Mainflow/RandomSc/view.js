@@ -32,6 +32,7 @@ const vw = width / 100;
 // class view extends Component {
 const view = ({navigation}) => {
   const [QRurl, setQRurl] = useState('');
+  const [isReactivate, setReactivate] = useState(false);
   const auth = useSelector(state => state.auth);
   useEffect(() => {
     navigation.setOptions({
@@ -83,9 +84,11 @@ const view = ({navigation}) => {
   //     );
   //   };
   const onSuccess = e => {
-    Linking.openURL(e.data).catch(err =>
-      console.error('An error occured', err),
-    );
+    try {
+      fetchQRCode(e.data, '외부');
+    } catch (e) {
+      console.log(e);
+    }
   };
   const internalScan = () => {
     let URL;
@@ -112,23 +115,46 @@ const view = ({navigation}) => {
       value: 'https://github.com/gevgasparyan/rn-qr-generator',
       height: 100,
       width: 100,
-    });
+    })
+      .then(response => {
+        const {uri, width, height, base64} = response;
+        console.log(response);
+      })
+      .catch(error => console.log('Cannot create QR code', error));
 
+    // Detect QR code in image
     RNQRGenerator.detect({
-      uri: url,
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png',
     })
       .then(response => {
         const {values} = response; // Array of detected QR code values. Empty if nothing found.
-        console.log(values[0]);
-        setQRurl(values[0]);
-        fetchQRCode(values[0]);
+        console.log('ttt', response);
       })
-      .catch(error => {
-        Alert.alert('이미지에서 QR 코드를 감지에 실패하였습니다.');
-        console.log('Cannot detect QR code in image', error);
-      });
+      .catch(error => console.log('Cannot detect QR code in image', error));
+    // RNQRGenerator.generate({
+    //   value: 'https://github.com/gevgasparyan/rn-qr-generator',
+    //   height: 100,
+    //   width: 100,
+    // });
+    // RNQRGenerator.detect({
+    //   uri: url,
+    // })
+    //   .then(response => {
+    //     const {values} = response; // Array of detected QR code values. Empty if nothing found.
+    //     // console.log(values[0]);
+    //     setQRurl(values[0]);
+    //     if ((response.type = '')) {
+    //       Alert.alert('이미지에서 QR 코드를 감지에 실패하였습니다.');
+    //       return;
+    //     }
+    //     console.log('.......', values); // fetchQRCode(values[0], '내부');
+    //   })
+    //   .catch(error => {
+    //     Alert.alert('이미지에서 QR 코드를 감지에 실패하였습니다.');
+    //     console.log('Cannot detect QR code in image', error);
+    //   });
   };
-  const fetchQRCode = async Qr => {
+  const fetchQRCode = async (Qr, name) => {
     let body = {sessionToken: auth.sessionToken, Qr: Qr};
     console.log(body);
     try {
@@ -138,11 +164,17 @@ const view = ({navigation}) => {
         },
       };
       const res = await api.post('internalscan', JSON.stringify(body), config);
-      if (res.data.Result !== 'success') {
-        Alert.alert('내부스캔 실패했습니다');
+      if (res.data.Result === '터치콘 포인트가 부족합니다.') {
+        Alert.alert(res?.data?.Result);
+        // navigation.goBack();
         return;
       }
-      Alert.alert('내부스캔 성공하였습니다');
+      if (res.data.Result !== 'success') {
+        Alert.alert(`${name}스캔 실패했습니다`);
+        // navigation.goBack();
+        return;
+      }
+      Alert.alert(`${name}스캔 성공하였습니다`);
       console.log(res);
       navigation.goBack();
 
@@ -158,10 +190,13 @@ const view = ({navigation}) => {
   return (
     <View>
       {/* -------- 1회 스캔한 큐알코드는~~~ start ------- */}
+
       <QRCodeScanner
+        reactivate={true}
+        showMarker={true}
         onRead={onSuccess}
-        flashMode={RNCamera.Constants.FlashMode.torch}
-        cameraStyle={{height: height * 1}}
+        reactivateTimeout={1500}
+        cameraStyle={{height: height - 50}}
       />
       <RowView
         style={{
