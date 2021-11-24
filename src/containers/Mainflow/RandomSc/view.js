@@ -156,23 +156,21 @@ const view = ({navigation}) => {
   };
 
   return (
-    <View
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        flex: 1,
-        alignSelf: 'center',
-        justifyContent: 'space-between',
-      }}>
+    <View>
       {/* -------- 1회 스캔한 큐알코드는~~~ start ------- */}
       <QRCodeScanner
         onRead={onSuccess}
         flashMode={RNCamera.Constants.FlashMode.torch}
+        cameraStyle={{height: height * 1}}
       />
       <RowView
         style={{
           width: '100%',
           justifyContent: 'space-around',
+          zIndex: 1,
+          position: 'absolute',
+          top: height * 0.7,
+          backgroundColor: '#c4c4c4',
         }}>
         <TouchableOpacity>
           <Image
@@ -180,6 +178,7 @@ const view = ({navigation}) => {
             style={{
               resizeMode: 'contain',
               width: width * 0.2,
+              height: height * 0.1,
             }}
           />
           <View
@@ -187,14 +186,13 @@ const view = ({navigation}) => {
               width: width * 0.25,
             }}></View>
         </TouchableOpacity>
-        <Image
+        {/* <Image
           source={require('../../../assets/images/random_bar.png')}
           style={{
             resizeMode: 'contain',
             width: width * 0.008,
-            marginTop: height * 0.1,
           }}
-        />
+        /> */}
         <View
           style={{
             width: width * 0.05,
@@ -211,29 +209,33 @@ const view = ({navigation}) => {
             style={{
               resizeMode: 'contain',
               width: width * 0.2,
+              height: height * 0.1,
             }}
           />
         </TouchableOpacity>
-        <Image
+        {/* <Image
           source={require('../../../assets/images/random_bar.png')}
           style={{
             resizeMode: 'contain',
             width: width * 0.008,
-            marginTop: height * 0.1,
           }}
-        />
+        /> */}
         <View
           style={{
             width: width * 0.05,
           }}
         />
 
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('ScannHistory ');
+          }}>
           <Image
             source={require('../../../assets/images/btn_random_sc_hi.png')}
             style={{
               resizeMode: 'contain',
               width: width * 0.2,
+              height: height * 0.1,
             }}
           />
         </TouchableOpacity>
