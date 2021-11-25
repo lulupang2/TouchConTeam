@@ -35,6 +35,7 @@ const view = ({navigation}) => {
   const [QRurl, setQRurl] = useState('');
   const [isReactivate, setReactivate] = useState(false);
   const auth = useSelector(state => state.auth);
+  const [iscameraTypeback, setIsCameraTypeback] = useState(true);
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => null,
@@ -164,12 +165,27 @@ const view = ({navigation}) => {
       {/* -------- 1회 스캔한 큐알코드는~~~ start ------- */}
 
       <QRCodeScanner
+        cameraType={iscameraTypeback ? 'back' : 'front'}
         reactivate={true}
         showMarker={true}
         onRead={onSuccess}
         reactivateTimeout={3500}
         cameraStyle={{height: height - 50}}
       />
+      <TouchableOpacity
+        style={{position: 'absolute', top: 20, left: 10}}
+        onPress={() => {
+          setIsCameraTypeback(!iscameraTypeback);
+        }}>
+        <Image
+          source={require('../../../assets/images/Turn.png')}
+          resizeMode="contain"
+          style={{
+            width: 40,
+            height: 30,
+          }}
+        />
+      </TouchableOpacity>
       <RowView
         style={{
           width: '100%',
