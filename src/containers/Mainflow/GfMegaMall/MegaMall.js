@@ -8,6 +8,7 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
+  Alert,
 } from 'react-native';
 import {GoButton} from '../../../components/Botton';
 import Navbar from '../../../components/Navbar/view';
@@ -24,11 +25,25 @@ const MegaMall = () => {
     <WhiteSafeAreaView>
       <Navbar />
 
-      <View style={styles.back}></View>
+      <View style={styles.back}>
+        <Image
+          source={require('../../../assets/images/taa/taa_log2.jpg')}
+          resizeMode="contain"
+          style={{
+            width: 257,
+            height: 111,
+            alignSelf: 'center',
+          }}
+        />
+      </View>
 
       <RowView style={styles.dis}>
         <Text style={styles.cao}>MEGA MALL</Text>
-        <GoButton />
+        <GoButton
+          onPress={() => {
+            Alert.alert('준비중 입니다.');
+          }}
+        />
       </RowView>
 
       <Text style={styles.h4}>온라인 스포트쇼핑의 대명사 메가몰!</Text>
@@ -46,8 +61,7 @@ export default MegaMall;
 const styles = StyleSheet.create({
   back: {
     marginHorizontal: 25,
-    minHeight: 141,
-    backgroundColor: '#f6f6f6',
+    maxHeight: 141,
     marginTop: 18,
     borderRadius: 10,
   },

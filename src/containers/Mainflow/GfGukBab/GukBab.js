@@ -8,6 +8,7 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
+  Alert,
 } from 'react-native';
 import Navbar from '../../../components/Navbar/view';
 import Swiper from 'react-native-swiper';
@@ -20,11 +21,20 @@ const GukBab = () => {
     <WhiteSafeAreaView>
       <Navbar />
 
-      <View style={styles.back}></View>
+      <View style={styles.back}>
+        <Image
+          source={require('../../../assets/images/taa/taa_log4.png')}
+          resizeMode="contain"
+        />
+      </View>
 
       <RowView style={styles.dis}>
         <Text style={styles.cao}>ANDONG GUKBAB</Text>
-        <GoButton />
+        <GoButton
+          onPress={() => {
+            Alert.alert('준비중 입니다.');
+          }}
+        />
       </RowView>
 
       <Text style={styles.h4}>가장 한국적인 맛과 멋을 내는 안동 국밥!</Text>
@@ -37,10 +47,13 @@ export default GukBab;
 const styles = StyleSheet.create({
   back: {
     marginHorizontal: 25,
-    minHeight: 141,
-    backgroundColor: '#f6f6f6',
+    maxHeight: 141,
+    backgroundColor: '#0000',
     marginTop: 18,
     borderRadius: 10,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   dis: {
     justifyContent: 'space-between',

@@ -78,9 +78,7 @@ export const GoButton = ({onPress, tcStyle, txStyle}) => {
         borderRadius: 53,
         ...tcStyle,
       }}
-      onPress={() => {
-        alert('연결됨');
-      }}>
+      onPress={onPress}>
       <Text
         style={{
           fontSize: 20,

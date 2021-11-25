@@ -196,7 +196,7 @@ const ScHistory = ({menu, index}) => {
 const styles = StyleSheet.create({
   company: {width: 60, position: 'relative', left: -30},
   scContainer: {
-    marginHorizontal: 17,
+    marginHorizontal: 16,
   },
   listHeaderBack: {
     backgroundColor: 'rgba(14, 15, 15, 0.8)',
