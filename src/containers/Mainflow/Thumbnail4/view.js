@@ -178,7 +178,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  flatListContainer: {
-    height: '70%',
-  },
+  flatListContainer: {},
 });
