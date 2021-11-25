@@ -40,6 +40,7 @@ function Signup({props, navigation}) {
   const [remaining, setRemaining] = useState(0);
   const [hasSent, setHasSent] = useState(false);
   const [phone, setPhone] = useState('');
+  // const [phoneNum, setPhoneNum] = useState('010');
   {
     // console.log('인증번호: ', verti);
   }
@@ -480,6 +481,7 @@ function Signup({props, navigation}) {
             borderWidth: 0.8,
             borderColor: '#c4c4c4',
             borderRadius: 5,
+            color: '#000000',
           }}
         />
       </View>
@@ -492,7 +494,7 @@ function Signup({props, navigation}) {
             placeholder="인증코드 입력"
             placeholderTextColor={'#c4c4c4'}
             keyboardType="numeric"
-            style={{fontSize: 15}}
+            style={{fontSize: 15, color: '#000000'}}
           />
           {hasSent && (
             <Text style={styles.remaining}>
@@ -571,6 +573,7 @@ function Signup({props, navigation}) {
             borderColor: '#E3E5E5',
             borderRadius: 10,
             paddingHorizontal: 11,
+            color: '#000000',
           }}
         />
       </View>

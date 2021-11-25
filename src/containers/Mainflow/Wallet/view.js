@@ -198,6 +198,7 @@ const view = ({navigation, sendmodal, route}) => {
                 borderWidth: 0.5,
                 borderColor: 'gray',
                 marginBottom: 14,
+                color: '#000000',
               }}
               onChangeText={text => setAdd(text)}
             />
@@ -211,6 +212,7 @@ const view = ({navigation, sendmodal, route}) => {
                 borderWidth: 0.5,
                 borderColor: 'gray',
                 marginBottom: 45,
+                color: '#000000',
               }}
               onChangeText={text => {
                 if (divide) {

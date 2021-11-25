@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     borderRadius: 5,
     padding: 8,
+    color: '#000000',
   },
   content: {
     textAlignVertical: 'top',
@@ -49,5 +50,6 @@ const styles = StyleSheet.create({
     borderColor: '#c4c4c4',
     borderRadius: 5,
     padding: 8,
+    color: '#000000',
   },
 });

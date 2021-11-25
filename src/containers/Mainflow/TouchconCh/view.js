@@ -117,7 +117,7 @@ const view = ({navigation, route}) => {
           value={tokens}
           onChangeText={text => onChangetokens(text.replace(/[^0-9]/g, ''))}
           placeholder="    수량"
-          style={{width: 205}}
+          style={{width: 205, color: '#000000'}}
           keyboardType="number-pad"
         />
         {/* Inputext 내의 Touch 글자 */}
