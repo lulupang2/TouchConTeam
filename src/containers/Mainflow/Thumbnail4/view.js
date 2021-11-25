@@ -178,5 +178,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  flatListContainer: {},
+  flatListContainer: {maxWidth: '100%'},
 });
