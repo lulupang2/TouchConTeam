@@ -188,6 +188,10 @@ const view = ({navigation}) => {
                 key={i}
                 menu={menu}
                 onPress={() => {
+                  if (menu.path === '') {
+                    Alert.alert('준비중입니다.');
+                    return;
+                  }
                   if (menu.path === 'Wallet') {
                     if (walletURL) {
                       navigation.navigate(menu.path, {coins: coin});
