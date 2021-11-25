@@ -135,15 +135,12 @@ const view = () => {
 
       {/* 광고 리스트들 */}
 
-      <View style={styles.container}>
-        <FlatList
-          contentContainerStyle={styles.flatListContainer}
-          data={formatData(dataList, numColumns)}
-          renderItem={adView}
-          keyExtractor={(item, index) => index.toString()}
-          numColumns={numColumns}
-        />
-      </View>
+      <FlatList
+        data={formatData(dataList, numColumns)}
+        renderItem={adView}
+        keyExtractor={(item, index) => index.toString()}
+        numColumns={numColumns}
+      />
     </WhiteSafeAreaView>
   );
 };
@@ -179,6 +176,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  container: {height: 480},
-  flatListContainer: {paddingBottom: 50},
 });
