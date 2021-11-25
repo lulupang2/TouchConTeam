@@ -23,8 +23,6 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import api from '../../../api';
 import {resetAuth} from '../../../redux/authSlice';
 import {useSelector} from 'react-redux';
-import promise from 'promise';
-
 const {height, width} = Dimensions.get('window');
 
 const vh = height / 100;
@@ -94,40 +92,45 @@ const view = ({navigation}) => {
   };
   const internalScan = async () => {
     const options = {
-      mediaType: 'photo',
       includeBase64: true,
+      mediaType: 'photo',
     };
-    await launchImageLibrary({options})
+    await launchImageLibrary(options)
       .then(res => {
-        console.log(res.assets[0]);
-        ImagePick(res.assets[0].uri);
+        console.log(res);
+        // console.log(res.assets[0].base64.slice(4, res.assets[0].base64.length));
+        // // ImagePick(res.assets[0].base64.slice(4, res.assets[0].base64.length));
+        // ImagePick(res.assets[0].base64);
+        fetchQRCode(res?.assets[0]?.base64, '내부');
       })
       .catch(err => {
         console.log(err);
       });
   };
 
-  const ImagePick = url => {
-    console.log('이미지 url', url);
-    RNQRGenerator.detect({
-      uri: url,
-    })
-      .then(response => {
-        if (response.type !== 'QRCode') {
-          Alert.alert('QR코드가 아닙니다');
-          return;
-        }
-        console.log('return 값', response);
-        console.log(response.values[0]);
-        fetchQRCode(response.values[0], '내부');
-      })
-      .catch(error => {
-        Alert.alert('이미지에서 QR 코드를 감지에 실패하였습니다.');
-        console.log('Cannot detect QR code in image', error);
-      });
-  };
+  // const ImagePick = async url => {
+  //   // console.log('이미지 url', url);
+  //   await RNQRGenerator.detect({
+  //     base64: url,
+  //   })
+  //     .then(response => {
+  //       console.log(response);
+  //       if (response.type !== 'QRCode') {
+  //         Alert.alert('QR코드가 아닙니다');
+  //         return;
+  //       }
+  //       console.log('return 값', response);
+  //       console.log(response.values[0]);
+  //       fetchQRCode(response.values[0], '내부');
+  //     })
+  //     .catch(error => {
+  //       Alert.alert('이미지에서 QR 코드를 감지에 실패하였습니다.');
+  //       console.log('Cannot detect QR code in image', error);
+  //     });
+  // };
 
   const fetchQRCode = async (Qr, name) => {
+    let endPoint = name === '내부' ? 'internalscan' : 'scan';
     let body = {sessionToken: auth.sessionToken, Qr: Qr};
     console.log(body);
     try {
@@ -136,10 +139,14 @@ const view = ({navigation}) => {
           'Content-Type': 'application/json',
         },
       };
-      const res = await api.post('internalscan', JSON.stringify(body), config);
+      const res = await api.post(endPoint, JSON.stringify(body), config);
       if (res.data.Result === '터치콘 포인트가 부족합니다.') {
         Alert.alert(res?.data?.Result);
         // navigation.goBack();
+        return;
+      }
+      if (res.data.Result === '이미 스캔된 쿠폰입니다.') {
+        Alert.alert(res?.data?.Result);
         return;
       }
       if (res.data.Result !== 'success') {

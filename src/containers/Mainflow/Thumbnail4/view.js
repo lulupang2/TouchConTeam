@@ -88,14 +88,18 @@ const view = () => {
   const adView = ({item, index}) => {
     if (item.empty) {
       return (
-        <ColumnView style={{justifyContent: 'center', alignItems: 'center'}}>
+        <ColumnView>
           <View style={styles.empty1}></View>
           <Text>{item.title}</Text>
         </ColumnView>
       );
     } else {
       return (
-        <ColumnView style={{justifyContent: 'center', alignItems: 'center'}}>
+        <ColumnView
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
           <TouchableOpacity
             onPress={() => {
               navigation.navigate(item.path);
@@ -109,7 +113,7 @@ const view = () => {
                   borderTopRightRadius: 5,
                 }}
                 source={item.img}
-                resizeMode={'center'}
+                resizeMode={'contain'}
               />
             </View>
           </TouchableOpacity>
@@ -119,7 +123,7 @@ const view = () => {
               color: '#000',
             }}>
             {item.title}
-            {console.log(item)}
+            {/*{console.log(item)}*/}
           </Text>
         </ColumnView>
       );
@@ -136,11 +140,12 @@ const view = () => {
       {/* 광고 리스트들 */}
 
       <FlatList
+        columnWrapperStyle={{justifyContent: 'space-between'}}
         contentContainerStyle={styles.flatListContainer}
         data={formatData(dataList, numColumns)}
         renderItem={adView}
         keyExtractor={(item, index) => index.toString()}
-        numColumns={numColumns}
+        numColumns={3}
       />
     </WhiteSafeAreaView>
   );
@@ -154,13 +159,10 @@ const styles = StyleSheet.create({
   //   minHeight: 100,
   // },
   arr: {
-    marginHorizontal: 33,
-    marginVertical: 40,
     justifyContent: 'space-between',
   },
   tx1: {fontSize: 20, color: '#ffffff'},
   adScreen: {
-    margin: 15,
     alignItems: 'center',
     justifyContent: 'center',
     height: 100,
@@ -178,5 +180,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  flatListContainer: {maxWidth: '100%'},
+  flatListContainer: {
+    padding: 10,
+  },
 });
