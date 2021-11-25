@@ -117,8 +117,8 @@ const view = ({navigation}) => {
           return;
         }
         console.log('return 값', response);
-        // console.log(response.values[0]);
-        // fetchQRCode(response.values[0], '내부');
+        console.log(response.values[0]);
+        fetchQRCode(response.values[0], '내부');
       })
       .catch(error => {
         Alert.alert('이미지에서 QR 코드를 감지에 실패하였습니다.');
