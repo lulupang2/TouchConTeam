@@ -90,7 +90,6 @@ const view = ({navigation}) => {
       dispatch(saveWallet(res?.data?.Result));
       Alert.alert('지갑이 생성되었습니다');
       await fetchTotalCoin();
-      navigation.navigate('Wallet', {coins: coin});
     } catch (err) {
       Alert.alert('', '서버와 통신에 실패');
       console.log('err', err);
