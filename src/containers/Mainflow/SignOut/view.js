@@ -43,6 +43,7 @@ const view = () => {
   };
   useEffect(() => {
     getbalance();
+    fetchTotalCoin();
   }, []);
   const getbalance = async () => {
     let body = {sessionToken: auth.sessionToken};
@@ -64,6 +65,23 @@ const view = () => {
       // console.log(res);
       // navigation.navigate('Wallet');
       // console.log('test', res.data.Result);
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
+  };
+
+  const fetchTotalCoin = async () => {
+    let body = {Type: 'exchangerate'};
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('exchangerate', JSON.stringify(body), config);
+      console.log('stx', res.data.Result.TouchCon);
+      setKrw(res.data.Result.TouchCon);
     } catch (err) {
       Alert.alert('', '서버와 통신에 실패');
       console.log('err', err);
