@@ -467,7 +467,7 @@ function Signup({props, navigation}) {
         </ImageBackground>
       </View>
       {/* 이메일 입력창 */}
-      <View style={{marginHorizontal: 25, marginVertical: 24}}>
+      <View style={{marginHorizontal: 19, marginVertical: 24}}>
         <TextInput
           onChangeText={onChangeEmail}
           value={email}
@@ -539,7 +539,7 @@ function Signup({props, navigation}) {
       <View
         style={{
           marginTop: 8,
-          marginHorizontal: 24,
+          marginHorizontal: 19,
           minHeight: 40,
           display: 'flex',
           justifyContent: 'space-between',
@@ -556,7 +556,7 @@ function Signup({props, navigation}) {
             fontSize: 15,
             textAlign: 'center',
             paddingVertical: 11.5,
-            color: '#000',
+            color: '#000000',
           }}>
           010
         </Text>
@@ -618,7 +618,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginLeft: width * 0.05,
+    marginHorizontal: 19,
   },
   warn_text: {fontSize: 12, color: '#ff0000', marginTop: 2},
   code_input: {
@@ -639,7 +639,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 10,
     paddingHorizontal: 16,
-    marginRight: 25,
   },
   remaining: {
     fontSize: 12,
