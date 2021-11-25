@@ -103,8 +103,8 @@ const view = () => {
             <View style={styles.adScreen}>
               <Image
                 style={{
-                  height: 100,
-                  width: 100,
+                  maxHeight: 100,
+                  maxWidth: 100,
                   borderTopLeftRadius: 5,
                   borderTopRightRadius: 5,
                 }}
@@ -136,6 +136,7 @@ const view = () => {
       {/* 광고 리스트들 */}
 
       <FlatList
+        contentContainerStyle={styles.flatListContainer}
         data={formatData(dataList, numColumns)}
         renderItem={adView}
         keyExtractor={(item, index) => index.toString()}
@@ -163,7 +164,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: 100,
-    width: 100,
+    maxWidth: 100,
     borderRadius: 8,
     borderWidth: 1,
   },
@@ -175,5 +176,9 @@ const styles = StyleSheet.create({
     height: 100,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  flatListContainer: {
+    height: '70%',
   },
 });
