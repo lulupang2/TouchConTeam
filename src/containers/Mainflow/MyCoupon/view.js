@@ -13,6 +13,7 @@ import {
 import BottomButton from '../../../components/BottomButton';
 import Touchable from '../../../components/Touchable';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {NormalLabel} from '../../../components/Label';
 // import {LongButton} from '../../../components/Botton';
 
 const view = ({navigation}) => {
@@ -56,22 +57,23 @@ const view = ({navigation}) => {
       {/*------ < 내 쿠폰 X 끝---- */}
       <View style={{display: 'flex', alignSelf: 'center'}}>
         <Image
-          source={require('../../../assets/images/my_cp_scan.png')}
+          source={require('../../../assets/images/myCouponContent.png')}
           style={{
             resizeMode: 'contain',
             width: 300,
             height: 300,
-            marginTop: 88,
           }}
         />
       </View>
 
       <BottomButton
         text={'지금 스캔하기'}
-        style={{marginTop: 93}}
         onPress={() => navigation.navigate('RandomSc')}
       />
-      {/* <LongButton text={'지금 스캔하기'} tcStyle={{marginTop: 93}} /> */}
+      <NormalLabel
+        text={'발행된 쿠폰은 스캔하여 사용 하실 수 있습니다.'}
+        style={{alignSelf: 'center'}}
+      />
     </View>
   );
 };
