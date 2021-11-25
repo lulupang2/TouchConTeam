@@ -139,7 +139,7 @@ const view = () => {
               <Text style={styles.TextSize12}>잔량 TOP 수량</Text>
               <RowView>
                 <NormalLabel
-                  text={toc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                  text={toc?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                 />
                 <NormalLabel text={'TOC'} style={{marginLeft: 19}} />
               </RowView>
@@ -184,7 +184,7 @@ const view = () => {
               <Text style={styles.TextSize12}>잔량 TOC 수량</Text>
               <RowView style={{marginTop: 14}}>
                 <Text style={{color: '#000', fontSize: 16}}>
-                  {top.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                  {top?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                 </Text>
                 <Text style={{marginLeft: 19, color: '#000', fontSize: 16}}>
                   TOP
