@@ -23,6 +23,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import api from '../../../api';
 import {resetAuth} from '../../../redux/authSlice';
 import {useSelector} from 'react-redux';
+import promise from 'promise';
 
 const {height, width} = Dimensions.get('window');
 
@@ -55,13 +56,13 @@ const view = ({navigation}) => {
     });
 
     if (Platform.OS === 'android') {
-      console.log(' 111 ');
+      // console.log(' 111 ');
       PermissionsAndroid.requestMultiple([
         PermissionsAndroid.PERMISSIONS.CAMERA,
         PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
         PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
       ]).then(result => {
-        console.log(result);
+        // console.log(result);
         /*
               if (
                 result['android.permission.CAMERA'] === 'granted' &&
@@ -90,70 +91,35 @@ const view = ({navigation}) => {
       console.log(e);
     }
   };
-  const internalScan = () => {
-    let URL;
-    let options = {
-      title: 'Select Image',
-      customButtons: [
-        {name: 'customOptionKey', title: 'Choose Photo from Custom Option'},
-      ],
-      storageOptions: {
-        skipBackup: true,
-        path: 'images',
-      },
+  const internalScan = async () => {
+    const options = {
+      mediaType: 'photo',
+      includeBase64: true,
     };
-    launchImageLibrary(options, res => {
-      console.log(res.assets[0].uri);
-      URL = res.assets[0].uri;
-      ImagePick(res.assets[0].uri);
-    });
-    // ImagePick();
+    await launchImageLibrary({options})
+      .then(res => {
+        console.log(res.assets[0]);
+        ImagePick(res.assets[0].uri);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   const ImagePick = url => {
-    RNQRGenerator.generate({
-      value: 'https://github.com/gevgasparyan/rn-qr-generator',
-      height: 100,
-      width: 100,
-    })
-      .then(response => {
-        const {uri, width, height, base64} = response;
-        console.log(response);
-      })
-      .catch(error => console.log('Cannot create QR code', error));
-
-    // Detect QR code in image
+    console.log('이미지 url', url);
     RNQRGenerator.detect({
-      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png',
+      uri: url,
     })
       .then(response => {
-        const {values} = response; // Array of detected QR code values. Empty if nothing found.
-        console.log('ttt', response);
+        console.log('return 값', response);
       })
-      .catch(error => console.log('Cannot detect QR code in image', error));
-    // RNQRGenerator.generate({
-    //   value: 'https://github.com/gevgasparyan/rn-qr-generator',
-    //   height: 100,
-    //   width: 100,
-    // });
-    // RNQRGenerator.detect({
-    //   uri: url,
-    // })
-    //   .then(response => {
-    //     const {values} = response; // Array of detected QR code values. Empty if nothing found.
-    //     // console.log(values[0]);
-    //     setQRurl(values[0]);
-    //     if ((response.type = '')) {
-    //       Alert.alert('이미지에서 QR 코드를 감지에 실패하였습니다.');
-    //       return;
-    //     }
-    //     console.log('.......', values); // fetchQRCode(values[0], '내부');
-    //   })
-    //   .catch(error => {
-    //     Alert.alert('이미지에서 QR 코드를 감지에 실패하였습니다.');
-    //     console.log('Cannot detect QR code in image', error);
-    //   });
+      .catch(error => {
+        Alert.alert('이미지에서 QR 코드를 감지에 실패하였습니다.');
+        console.log('Cannot detect QR code in image', error);
+      });
   };
+
   const fetchQRCode = async (Qr, name) => {
     let body = {sessionToken: auth.sessionToken, Qr: Qr};
     console.log(body);
@@ -195,7 +161,7 @@ const view = ({navigation}) => {
         reactivate={true}
         showMarker={true}
         onRead={onSuccess}
-        reactivateTimeout={1500}
+        reactivateTimeout={3500}
         cameraStyle={{height: height - 50}}
       />
       <RowView
@@ -205,6 +171,7 @@ const view = ({navigation}) => {
           zIndex: 1,
           position: 'absolute',
           top: height * 0.7,
+          backgroundColor: 'transparent',
         }}>
         <TouchableOpacity>
           <Image
@@ -218,7 +185,8 @@ const view = ({navigation}) => {
           <View
             style={{
               width: width * 0.25,
-            }}></View>
+            }}
+          />
         </TouchableOpacity>
         {/* <Image
           source={require('../../../assets/images/random_bar.png')}
@@ -262,7 +230,7 @@ const view = ({navigation}) => {
 
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('ScannHistory ');
+            navigation.navigate('ScanHistory');
           }}>
           <Image
             source={require('../../../assets/images/btn_random_sc_hi.png')}
