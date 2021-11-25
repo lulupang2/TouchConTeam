@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -27,9 +27,9 @@ import {checkVerifyCode, resetAuth} from '../../../redux/authSlice';
 
 const view = () => {
   const [mark, setMark] = useState(true);
-  const [toc, setToc] = useState('50.21');
+  const [toc, setToc] = useState();
   const [krw, setKrw] = useState('50,210');
-  const [top, setTop] = useState(0);
+  const [top, setTop] = useState();
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
@@ -40,6 +40,34 @@ const view = () => {
       setMark(false);
     }
     return mark;
+  };
+  useEffect(() => {
+    getbalance();
+  }, []);
+  const getbalance = async () => {
+    let body = {sessionToken: auth.sessionToken};
+    let touchcon;
+    let touchPoint;
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('balance', JSON.stringify(body), config);
+      console.log('잔고', res.data.Result.TouchCon);
+      console.log('잔고2', res.data.Result.TouchPoint);
+      touchcon = res.data.Result.TouchCon;
+      touchPoint = res.data.Result.TouchPoint;
+      setToc(touchcon);
+      setTop(touchPoint);
+      // console.log(res);
+      // navigation.navigate('Wallet');
+      // console.log('test', res.data.Result);
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
   };
 
   const fetchWithdrawal = async () => {
@@ -90,7 +118,7 @@ const view = () => {
                 borderBottomWidth: 1,
                 borderColor: '#c4c4c4',
               }}>
-              <Text style={styles.TextSize12}>잔량 TOC 수량</Text>
+              <Text style={styles.TextSize12}>잔량 TOP 수량</Text>
               <RowView>
                 <NormalLabel text={toc} />
                 <NormalLabel text={'TOC'} style={{marginLeft: 19}} />

@@ -128,10 +128,10 @@ const Menu = ({menu}) => {
 const styles = StyleSheet.create({
   menu: {
     width: width / 2 - 32,
-    height: width / 2 - 23,
+    height: width / 2 - 19,
     marginHorizontal: 8,
     marginVertical: 5,
-    borderWidth: 3,
+    borderWidth: 4,
     borderRadius: 5,
     borderColor: '#c4c4c4',
     backgroundColor: '#fff',

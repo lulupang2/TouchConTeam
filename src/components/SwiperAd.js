@@ -28,12 +28,10 @@ const SwiperAd = ({style, paginationStyle}) => {
         marginLeft: 20,
       }}
       // paginationStyle={{position: 'absolute', top: 85, bottom: undefined}}
-      paginationStyle={[styles.pagination, paginationStyle]}
-    >
+      paginationStyle={[styles.pagination, paginationStyle]}>
       <TouchableOpacity
         onPress={() => navigation.navigate('Thumbnail1')}
-        style={{justifyContent: 'center'}}
-      >
+        style={{justifyContent: 'center'}}>
         <View style={styles.back}>
           <RowView style={styles.arr}>
             <Text style={styles.tx1}>유럽 미인들의 필수품</Text>
@@ -44,8 +42,7 @@ const SwiperAd = ({style, paginationStyle}) => {
 
       <TouchableOpacity
         onPress={() => navigation.navigate('Thumbnail2')}
-        style={{justifyContent: 'center'}}
-      >
+        style={{justifyContent: 'center'}}>
         <View style={styles.back}>
           <RowView style={styles.arr}>
             <Text style={styles.tx1}>매일 매일 출석만 해도!</Text>
@@ -56,8 +53,7 @@ const SwiperAd = ({style, paginationStyle}) => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate('Thumbnail3')}
-        style={{justifyContent: 'center'}}
-      >
+        style={{justifyContent: 'center'}}>
         <View style={styles.back_y}>
           <RowView style={styles.arr_y}>
             <Text style={styles.tx2}>
@@ -68,8 +64,7 @@ const SwiperAd = ({style, paginationStyle}) => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate('Thumbnail4')}
-        style={{justifyContent: 'center'}}
-      >
+        style={{justifyContent: 'center'}}>
         <View style={styles.back_g}>
           <RowView style={styles.arr_y}>
             <Text style={styles.tx2}>
@@ -104,6 +99,8 @@ const styles = StyleSheet.create({
   tx1: {fontSize: 15, color: '#ffffff'},
   tx2: {fontSize: 20, color: '#ffffff'},
   pagination: {
-    position: 'absolute', top: 85, bottom: undefined
-  }
+    height: '3%',
+    bottom: undefined,
+    marginTop: '23%',
+  },
 });
