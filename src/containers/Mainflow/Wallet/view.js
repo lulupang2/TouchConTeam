@@ -121,6 +121,11 @@ const view = ({navigation, sendmodal, route}) => {
         setVisible(false);
         if (res.status !== 200) {
           return;
+        } else if (res.data.Result === '유효하지 않은 출금주소입니다.') {
+          Alert.alert('유효하지 않는 출금 주소입니다.');
+          return;
+        } else {
+          Alert.alert('출금이 완료 되었습니다.');
         }
         console.log('coin : ', res);
       })
@@ -146,6 +151,11 @@ const view = ({navigation, sendmodal, route}) => {
       .then(res => {
         if (res.status !== 200) {
           return;
+        } else if (res.data.Result === '유효하지 않은 출금주소입니다.') {
+          Alert.alert('유효하지 않는 출금 주소입니다.');
+          return;
+        } else {
+          Alert.alert('출금이 완료 되었습니다.');
         }
         console.log('eth : ', res);
       })

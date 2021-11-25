@@ -205,7 +205,6 @@ const view = ({navigation}) => {
           zIndex: 1,
           position: 'absolute',
           top: height * 0.7,
-          backgroundColor: '#c4c4c4',
         }}>
         <TouchableOpacity>
           <Image
