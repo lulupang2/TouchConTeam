@@ -21,7 +21,6 @@ import BottomButton from '../../../components/BottomButton';
 import {ModalPoup2} from '../../../components/Modals';
 import Touchable from '../../../components/Touchable';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 import QRCode from 'react-native-qrcode-svg';
@@ -164,110 +163,108 @@ const view = ({navigation, sendmodal, route}) => {
 
   return (
     <WhiteSafeAreaView>
-      <HeaderThickBottomLine />
-      {/*{console.log(coins)}*/}
-      <ModalPoup2 visible={visible}>
-        <ColumnView style={styles.modal_flex}>
-          <TouchableOpacity onPress={() => setVisible(false)}>
-            <Image
-              source={require('../../../assets/images/x.png')}
-              resizeMode="contain"
+      <ScrollView>
+        <HeaderThickBottomLine />
+
+        {/*{console.log(coins)}*/}
+        <ModalPoup2 visible={visible}>
+          <ColumnView style={styles.modal_flex}>
+            <TouchableOpacity onPress={() => setVisible(false)}>
+              <Image
+                source={require('../../../assets/images/x.png')}
+                resizeMode="contain"
+                style={{
+                  width: 20,
+                  height: 20,
+                  marginTop: 20,
+                  marginLeft: 320,
+                }}
+              />
+            </TouchableOpacity>
+            <Text style={{color: '#000', fontSize: 30, textAlign: 'center'}}>
+              {divide ? 'TouchCon' : 'Ethereum'}
+            </Text>
+            <Text style={styles.modal_text1}>
+              출금을 위한 주소를 입력하세요
+            </Text>
+
+            <TextInput
+              placeholder="주소"
               style={{
-                width: 20,
-                height: 20,
-                marginTop: 20,
-                marginLeft: 320,
+                minHeight: 50,
+                minWidth: 285,
+                marginHorizontal: 28,
+                borderRadius: 5,
+                borderWidth: 0.5,
+                borderColor: 'gray',
+                marginBottom: 14,
+              }}
+              onChangeText={text => setAdd(text)}
+            />
+            <TextInput
+              placeholder="출금수량"
+              style={{
+                minHeight: 50,
+                minWidth: 285,
+                marginHorizontal: 28,
+                borderRadius: 5,
+                borderWidth: 0.5,
+                borderColor: 'gray',
+                marginBottom: 45,
+              }}
+              onChangeText={text => {
+                if (divide) {
+                  setCoin(text);
+                } else {
+                  setEth(text);
+                }
+              }}
+              keyboardType="number-pad"
+            />
+            <BottomButton
+              text={'확인'}
+              onPress={() => {
+                if (divide === true) {
+                  clickCoinSend();
+                  setVisible(false);
+                } else {
+                  clickEthereumSend();
+                  setVisible(false);
+                }
               }}
             />
-          </TouchableOpacity>
-          <Text style={{color: '#000', fontSize: 30, textAlign: 'center'}}>
-            {divide ? 'TouchCon' : 'Ethereum'}
-          </Text>
-          <Text style={styles.modal_text1}>출금을 위한 주소를 입력하세요</Text>
-
-          <TextInput
-            placeholder="주소"
-            style={{
-              minHeight: 50,
-              minWidth: 285,
-              marginHorizontal: 28,
-              borderRadius: 5,
-              borderWidth: 0.5,
-              borderColor: 'gray',
-              marginBottom: 14,
-            }}
-            onChangeText={text => setAdd(text)}
-          />
-          <TextInput
-            placeholder="출금수량"
-            style={{
-              minHeight: 50,
-              minWidth: 285,
-              marginHorizontal: 28,
-              borderRadius: 5,
-              borderWidth: 0.5,
-              borderColor: 'gray',
-              marginBottom: 45,
-            }}
-            onChangeText={text => {
-              if (divide) {
-                setCoin(text);
-              } else {
-                setEth(text);
-              }
-            }}
-            keyboardType="number-pad"
-          />
-          <BottomButton
-            text={'확인'}
-            onPress={() => {
-              if (divide === true) {
-                clickCoinSend();
-                setVisible(false);
-              } else {
-                clickEthereumSend();
-                setVisible(false);
-              }
-            }}
-          />
-        </ColumnView>
-      </ModalPoup2>
-
-      <View
-        style={{
-          marginHorizontal: 26,
-          maxHeight: 115.69,
-          marginVertical: 15,
-        }}>
-        <RowView style={{justifyContent: 'space-between'}}>
-          <ColumnView
-            style={{
-              justifyContent: 'space-between',
-              height: 66,
-            }}>
-            <NormalBoldLabel text={'터치콘 지갑 주소'} />
-            <NormalLabel text={walletAddress} style={{maxWidth: 200}} />
-            {/* <Text style={{maxWidth: 176}}>{walletAddress}</Text> */}
           </ColumnView>
-          <QRCode
-            value={walletAddress}
-            // logoSize={30}
-            // logoBackgroundColor="transparent"
-          />
-        </RowView>
-      </View>
+        </ModalPoup2>
 
-      <BottomButton
-        text={'지갑 주소 복사하기'}
-        style={{marginBottom: 15}}
-        onPress={copyClipboard}
-      />
+        <View
+          style={{
+            marginHorizontal: 26,
+            maxHeight: 115.69,
+            marginVertical: 15,
+          }}>
+          <RowView style={{justifyContent: 'space-between'}}>
+            <ColumnView
+              style={{
+                justifyContent: 'space-between',
+                height: 66,
+              }}>
+              <NormalBoldLabel text={'터치콘 지갑 주소'} />
+              <NormalLabel text={walletAddress} style={{maxWidth: 200}} />
+            </ColumnView>
+            <QRCode value={walletAddress} />
+          </RowView>
+        </View>
 
-      <View style={styles.under}>
-        <HeaderThickBottomLine />
-        {/* 터치콘 */}
+        <BottomButton
+          text={'지갑 주소 복사하기'}
+          style={{marginBottom: 15}}
+          onPress={copyClipboard}
+        />
 
-        <ScrollView>
+        <View style={styles.under}>
+          <HeaderThickBottomLine />
+          {/* 터치콘 */}
+
           <View style={styles.back1}>
             <RowView style={{justifyContent: 'space-between'}}>
               <Text style={styles.tx1}>터치콘</Text>
@@ -315,7 +312,12 @@ const view = ({navigation, sendmodal, route}) => {
           </View>
           {/*{console.log(coins)}*/}
           {/* 터치콘 */}
-          <BottomButton text={'거래소 가기'} />
+          <BottomButton
+            text={'거래소 가기'}
+            onPress={() => {
+              Alert.alert('준비중입니다.');
+            }}
+          />
 
           <View style={styles.back2}>
             <RowView style={{justifyContent: 'space-between'}}>
@@ -361,10 +363,10 @@ const view = ({navigation, sendmodal, route}) => {
               </ColumnView>
             </RowView>
           </View>
-        </ScrollView>
-        {/* 이더리움 */}
-      </View>
 
+          {/* 이더리움 */}
+        </View>
+      </ScrollView>
       {/* <HeaderThickBottomLine /> */}
     </WhiteSafeAreaView>
   );
@@ -376,7 +378,6 @@ const styles = StyleSheet.create({
   under: {
     marginTop: 15,
     width: '100%',
-    height: 350,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
