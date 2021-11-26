@@ -22,7 +22,7 @@ import {
 } from './styles';
 import Touchable from '../../../components/Touchable';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {useNavigation} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 const DATA = [
@@ -50,6 +50,7 @@ const DATA = [
 ];
 
 const Staking = () => {
+  const isFocused = useIsFocused();
   const [interest, setInterest] = useState('1000000000');
   const [sumInput, onChangeSumInput] = useState('');
   let interestInforFirst = parseInt(parseInt(interest) * 0.07);
@@ -129,10 +130,19 @@ const Staking = () => {
       ),
     });
   }, []);
+  useEffect(() => {
+    setInterest('1000000000');
+    onChangeSumInput('');
+  }, [isFocused]);
   const onClickSum = () => {
     setInterest(sumInput);
+    if (sumInput.length === 0) {
+      Alert.alert('수량을 입력해주세요');
+      return;
+    }
     if (parseInt(sumInput) < 1000) {
       Alert.alert('1000 이상만 가능합니다');
+      return;
     }
     try {
       Alert.alert('계산완료');
@@ -190,6 +200,7 @@ const Staking = () => {
         <TopContainer>
           <TextInputContainer>
             <Input
+              value={sumInput}
               keyboardType="numeric"
               placeholder="수량"
               onChangeText={onChangeSumInput}
