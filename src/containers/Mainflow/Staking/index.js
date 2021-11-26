@@ -25,6 +25,8 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
+import api from '../../../api';
+import {useSelector} from 'react-redux';
 
 const DATA = [
   '기준 : 매 분기 1회 진행',
@@ -37,9 +39,11 @@ const DATA = [
 ];
 
 const Staking = () => {
+  const auth = useSelector(state => state.auth);
   const isFocused = useIsFocused();
   const [interest, setInterest] = useState('1000000000');
   const [sumInput, onChangeSumInput] = useState('');
+  const [touchPoint, setTouchPoint] = useState('');
   let interestInforFirst = parseInt(parseInt(interest) * 0.07);
   let interestInforTwo = parseInt(
     (interestInforFirst + parseInt(interest)) * 0.07,
@@ -118,12 +122,54 @@ const Staking = () => {
     });
   }, []);
   useEffect(() => {
+    getbalance();
     setInterest('1000000000');
     onChangeSumInput('');
   }, [isFocused]);
+  const getbalance = async () => {
+    let body = {sessionToken: auth.sessionToken};
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('balance', JSON.stringify(body), config);
+      console.log(res.data?.Result?.TouchPoint);
+      setTouchPoint(res?.data?.Result?.TouchPoint);
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
+  };
+  const getStacking = async () => {
+    let body = {sessionToken: auth.sessionToken, Amount: interest};
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
 
+      const res = await api.post('staking', JSON.stringify(body), config);
+      console.log(res);
+      if (res.data.Result === 'too much') {
+        Alert.alert('보유하신 포인트보다 큰 포인트는 사용하지 못합니다');
+        return;
+      }
+      if (res.data.Result === 'incorrect time') {
+        Alert.alert('현재 모집기간이 아닙니다');
+        return;
+      }
+      Alert.alert('Staking success');
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
+  };
   const onClickSum = () => {
     setInterest(sumInput);
+
     if (sumInput.length === 0) {
       Alert.alert('수량을 입력해주세요');
       return;
@@ -138,6 +184,7 @@ const Staking = () => {
       Alert.alert('계산실패');
     }
   };
+
   const renderItem = ({item, index}) => {
     return (
       <View
@@ -151,6 +198,22 @@ const Staking = () => {
         <Subtitle style={{flexShrink: 1}}>{item}</Subtitle>
       </View>
     );
+  };
+
+  const fetchStaking = () => {
+    if (sumInput.length === 0) {
+      Alert.alert('수량을 입력해주세요');
+      return;
+    }
+    if (parseInt(sumInput) < 1000) {
+      Alert.alert('1000 이상만 가능합니다');
+      return;
+    }
+    if (parseInt(sumInput) > touchPoint) {
+      Alert.alert('보유하신 터치콘포인트를 초과하셨습니다');
+      return;
+    }
+    getStacking();
   };
   const calendarRender = ({item, index}) => {
     return (
@@ -229,7 +292,10 @@ const Staking = () => {
           />
         </BottomContainer>
         <Warning>*신청은 선착순 마감입니다.</Warning>
-        <JoinBtn>
+        <JoinBtn
+          onPress={() => {
+            fetchStaking();
+          }}>
           <Join>신청하기</Join>
         </JoinBtn>
       </Container>
