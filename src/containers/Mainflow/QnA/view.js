@@ -131,12 +131,16 @@ const QnaMenu = ({onPress, isOpen, title, content}) => {
   return (
     <>
       <Touchable onPress={onPress} style={styles.qnaBtnWrapper}>
-        <RowView>
+        <RowView style={{flex: 1}}>
           <Image
             source={require('../../../assets/icons/question.png')}
             style={{width: 32, height: 32, marginRight: 5}}
           />
-          <NormalBoldLabel text={title} />
+          <NormalBoldLabel
+            text={title}
+            style={{flexShrink: 1}}
+            multiline={true}
+          />
         </RowView>
         <AntDesign name={isOpen ? 'up' : 'down'} size={24} color={'#000'} />
       </Touchable>
@@ -182,6 +186,8 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     borderBottomWidth: 1,
     borderBottomColor: '#c4c4c4',
+    width: '100%',
+    flex: 1,
   },
   qnaContent: {
     paddingHorizontal: 24,
