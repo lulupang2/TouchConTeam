@@ -162,6 +162,7 @@ const Staking = () => {
         return;
       }
       Alert.alert('Staking success');
+      navigation.goBack();
     } catch (err) {
       Alert.alert('', '서버와 통신에 실패');
       console.log('err', err);
