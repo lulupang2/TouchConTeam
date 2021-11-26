@@ -180,7 +180,11 @@ const view = ({navigation}) => {
           {/*    />*/}
           {/*  ))}*/}
           {/*</RowView>*/}
-          <RowView style={{marginTop: 15, justifyContent: 'space-between'}}>
+          <RowView
+            style={{
+              marginTop: 15,
+              justifyContent: 'space-between',
+            }}>
             {/*{console.log(coin)}*/}
             {MENU.map((menu, i) => (
               <MenuBtn
@@ -299,7 +303,6 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 35,
-    marginHorizontal: 8,
     justifyContent: 'center',
     alignItems: 'center',
   },
