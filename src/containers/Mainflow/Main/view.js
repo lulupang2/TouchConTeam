@@ -189,7 +189,7 @@ export default function Main({navigation}) {
           <Touchable
             style={styles.stackingBtn}
             onPress={() => {
-              navigation.navigate('Thumbnail3');
+              navigation.navigate('Staking');
             }}>
             <NormalBoldLabel text={'신청'} style={{color: '#fff'}} />
           </Touchable>

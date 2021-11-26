@@ -43,6 +43,7 @@ import AdDetatil2 from '../Mainflow/AdDetail/view2';
 import AdDetatil3 from '../Mainflow/AdDetail/view3';
 import AdDetatil4 from '../Mainflow/AdDetail/view4';
 import SaveCoupon from '../Mainflow/SaveCoupon/view';
+import Staking from '../Mainflow/Staking/view';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 const Stack = createStackNavigator();
@@ -334,6 +335,12 @@ const RootStack = () => (
       name="SaveCoupon"
       component={SaveCoupon}
       options={{title: '스캔된 쿠폰 저장함'}}
+    />
+
+    <Stack.Screen
+      name="Staking"
+      component={Staking}
+      options={{title: '터치 - 스테이킹 신청'}}
     />
   </Stack.Navigator>
 );
