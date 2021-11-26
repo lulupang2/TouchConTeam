@@ -40,16 +40,16 @@ const PointCh = ({navigation, route}) => {
       Alert.alert('0보다 큰 숫자를 입력해주세요');
       return;
     }
-    if (parseInt(coins.TouchCon) < parseInt(tokens)) {
+    if (parseInt(coins.TouchPoint) < parseInt(tokens)) {
       Alert.alert('보유하신 터치콘 토큰을 초과 할 수없습니다 ');
       return;
     }
-    if (parseInt(coins.TouchCon) > parseInt(tokens)) {
+    if (parseInt(coins.TouchPoint) > parseInt(tokens)) {
       fetchChangeToken();
     }
   };
   const fetchChangeToken = async () => {
-    let body = {sessionToken: auth.sessionToken, Coin: tokens};
+    let body = {sessionToken: auth.sessionToken, Point: tokens};
     console.log(body);
     try {
       const config = {
@@ -57,7 +57,8 @@ const PointCh = ({navigation, route}) => {
           'Content-Type': 'application/json',
         },
       };
-      const res = await api.post('convert', JSON.stringify(body), config);
+      const res = await api.post('convertcoin', JSON.stringify(body), config);
+
       if (res?.data?.Result === 'success') {
         Alert.alert('변환 성공하였습니다');
         navigation.goBack();
@@ -125,11 +126,19 @@ const PointCh = ({navigation, route}) => {
           keyboardType="number-pad"
         />
         {/* Inputext 내의 Touch 글자 */}
-        <Image
+        {/* <Image
           source={require('../../../assets/images/signup_touch_text.png')}
           resizeMode="contain"
           style={{width: 89, height: 19, marginHorizontal: 19}}
-        />
+        /> */}
+        <Text
+          style={{
+            fontSize: 18,
+            color: '#555',
+            fontWeight: 'bold',
+          }}>
+          TouchConPoint
+        </Text>
       </RowView>
 
       <BottomButton
