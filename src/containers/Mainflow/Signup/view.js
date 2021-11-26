@@ -40,6 +40,7 @@ function Signup({props, navigation}) {
   const [remaining, setRemaining] = useState(0);
   const [hasSent, setHasSent] = useState(false);
   const [phone, setPhone] = useState('');
+  const [isDisabled, setIsDisabled] = useState(false);
   // const [phoneNum, setPhoneNum] = useState('010');
   {
     // console.log('인증번호: ', verti);
@@ -53,6 +54,8 @@ function Signup({props, navigation}) {
   // axios 테스트
   const getVerifyCode = async Email => {
     let body = {Email};
+    Alert.alert('이메일을 전송하는 중입니다');
+    setIsDisabled(true);
     api
       .post('emailverification', JSON.stringify(body), {
         headers: {
@@ -68,8 +71,10 @@ function Signup({props, navigation}) {
         Alert.alert('전송이 완료됐습니다');
         console.log(res.data.Result);
         setVerti(res.data.Result);
+        setIsDisabled(false);
       })
       .catch(err => {
+        Alert.alert('전송오류 발생하였습니다');
         console.log('에러메세지', err);
       });
   };

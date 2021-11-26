@@ -10,7 +10,7 @@ const MENU = [
   {id: 1, title: '터치코인 연결관리', path: 'TcConnMana'},
   {id: 2, title: 'PIN번호 변경', path: 'Pinchg'},
   {id: 101, title: '마케팅 정보 알림', path: ''},
-  {id: 101, title: '바이오 인증 사용', path: ''},
+  // {id: 101, title: '바이오 인증 사용', path: ''},
   {id: 5, title: '탈퇴하기', path: 'SignOut'},
 ];
 
