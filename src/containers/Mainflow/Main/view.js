@@ -215,7 +215,8 @@ export default function Main({navigation}) {
               color: '#fff',
               fontSize: 20,
               lineHeight: 24,
-              marginRight: 29,
+              flex: 1,
+              textAlign: 'center',
             }}
           />
           {/*<NormalBoldLabel text={'+'} style={{marginLeft: 29, color: '#fff'}} />*/}
@@ -223,7 +224,7 @@ export default function Main({navigation}) {
             name="plus"
             size={32}
             color={'#fff'}
-            style={{marginRight: 18}}
+            style={{position: 'absolute', right: 10}}
           />
         </Touchable>
         {/* 터치 쇼핑몰 쇼핑하기 end */}
