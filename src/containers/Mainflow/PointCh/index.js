@@ -27,9 +27,6 @@ const PointCh = ({navigation, route}) => {
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
   let coins = route.params.coins;
-  {
-    console.log('lfkasjfk', route);
-  }
 
   const ChangeTokenToPoint = () => {
     if (0 > parseInt(tokens)) {
@@ -133,8 +130,8 @@ const PointCh = ({navigation, route}) => {
         /> */}
         <Text
           style={{
-            fontSize: 18,
-            color: '#555',
+            fontSize: 19,
+            color: '#000000',
             fontWeight: 'bold',
           }}>
           TouchConPoint
