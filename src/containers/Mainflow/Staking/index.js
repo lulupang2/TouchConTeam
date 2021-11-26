@@ -292,13 +292,15 @@ const Staking = () => {
             keyExtractor={(item, index) => index.toString()}
           />
         </BottomContainer>
-        <Warning>*신청은 선착순 마감입니다.</Warning>
-        <JoinBtn
-          onPress={() => {
-            fetchStaking();
-          }}>
-          <Join>신청하기</Join>
-        </JoinBtn>
+        <View style={{paddingHorizontal: 25}}>
+          <Warning>*신청은 선착순 마감입니다.</Warning>
+          <JoinBtn
+            onPress={() => {
+              fetchStaking();
+            }}>
+            <Join>신청하기</Join>
+          </JoinBtn>
+        </View>
       </Container>
     </WhiteSafeAreaView>
   );
