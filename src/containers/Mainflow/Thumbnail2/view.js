@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   ScrollView,
   Dimensions,
   TouchableOpacity,
@@ -129,13 +130,14 @@ const view = ({navigation}) => {
             marginLeft: 20,
           }}
           paginationStyle={{
-            // position: 'relative',
-            bottom: 9,
+            zIndex: 1,
+            position: 'absolute',
+            bottom: 0,
           }}>
           <TouchableOpacity
             onPress={() => navigation.navigate('Thumbnail1')}
             style={{flex: 1, justifyContent: 'center'}}>
-            <RowView style={styles.swiperContentWrapper}>
+            {/* <RowView style={styles.swiperContentWrapper}>
               <NormalBoldLabel
                 text={'유럽 미인들의 필수품'}
                 style={{color: '#fff'}}
@@ -144,13 +146,17 @@ const view = ({navigation}) => {
                 text={'카오리온 화장품'}
                 style={{color: '#fff', fontSize: 20, lineHeight: 24}}
               />
-            </RowView>
+            </RowView> */}
+            <Image
+              source={require('../../../assets/images/caorion_swiper.png')}
+              style={{width: '100%', height: '100%'}}
+            />
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => navigation.navigate('Thumbnail2')}
             style={{flex: 1, justifyContent: 'center'}}>
-            <RowView style={styles.swiperContentWrapper}>
+            {/* <RowView style={styles.swiperContentWrapper}>
               <NormalBoldLabel
                 text={'매일 매일 출석만 해도!'}
                 style={{color: '#fff'}}
@@ -159,32 +165,28 @@ const view = ({navigation}) => {
                 text={'터치토큰 증정'}
                 style={{color: '#fff', fontSize: 20, lineHeight: 24}}
               />
-            </RowView>
+            </RowView> */}
+            <Image
+              source={require('../../../assets/images/thumnail_swiper2.png')}
+              style={{width: '100%', height: '100%'}}
+            />
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => navigation.navigate('Thumbnail3')}
             style={{flex: 1, justifyContent: 'center'}}>
-            <RowView style={styles.swiperContentWrapper2}>
-              <NormalBoldLabel
-                text={'터치토큰,' + '\n' + '적립해서 이자 받으셔야죠!'}
-                style={{color: '#fff', fontSize: 20, lineHeight: 24}}
-              />
-            </RowView>
+            <Image
+              source={require('../../../assets/images/thumnail_swiper3.png')}
+              style={{width: '100%', height: '100%'}}
+            />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigation.navigate('Thumbnail4')}
             style={{flex: 1, justifyContent: 'center'}}>
-            <RowView style={styles.swiperContentWrapper3}>
-              <NormalBoldLabel
-                text={
-                  '광고스캔 랜덤보상' +
-                  '\n' +
-                  '매월 매년 참여 업체가 늘어납니다!'
-                }
-                style={{color: '#fff', fontSize: 20, lineHeight: 24}}
-              />
-            </RowView>
+            <Image
+              source={require('../../../assets/images/thumnail_swiper4.png')}
+              style={{width: '100%', height: '100%'}}
+            />
           </TouchableOpacity>
         </Swiper>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Swiper from 'react-native-swiper';
 import RowView from './RowView';
@@ -10,7 +10,7 @@ const SwiperAd = ({style, paginationStyle}) => {
 
   return (
     <Swiper
-      style={style}
+      style={{height: 200}}
       autoplay
       // style={styles.swipBack}
       dotStyle={{
@@ -32,46 +32,67 @@ const SwiperAd = ({style, paginationStyle}) => {
       <TouchableOpacity
         onPress={() => navigation.navigate('Thumbnail1')}
         style={{justifyContent: 'center'}}>
-        <View style={styles.back}>
+        {/* <View style={styles.back}>
           <RowView style={styles.arr}>
             <Text style={styles.tx1}>유럽 미인들의 필수품</Text>
             <Text style={styles.tx2}>카오리온 화장품</Text>
           </RowView>
-        </View>
+        </View> */}
+        <Image
+          source={require('../assets/images/caorion_swiper.png')}
+          resizeMode="contain"
+          style={{width: '100%', height: 110}}
+        />
       </TouchableOpacity>
 
       <TouchableOpacity
         onPress={() => navigation.navigate('Thumbnail2')}
         style={{justifyContent: 'center'}}>
-        <View style={styles.back}>
+        {/* <View style={styles.back}>
           <RowView style={styles.arr}>
             <Text style={styles.tx1}>매일 매일 출석만 해도!</Text>
             <Text style={styles.tx2}>터치토큰</Text>
             <Text style={styles.tx1}>증정</Text>
           </RowView>
-        </View>
+        </View> */}
+        <Image
+          source={require('../assets/images/thumnail_swiper2.png')}
+          resizeMode="contain"
+          style={{width: '100%', height: 110}}
+        />
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate('Thumbnail3')}
         style={{justifyContent: 'center'}}>
-        <View style={styles.back_y}>
+        {/* <View style={styles.back_y}>
           <RowView style={styles.arr_y}>
             <Text style={styles.tx2}>
               터치토큰,{'\n'}적립해서 이자 받으셔야죠!
             </Text>
           </RowView>
-        </View>
+        </View> */}
+        <Image
+          source={require('../assets/images/thumnail_swiper3.png')}
+          resizeMode="contain"
+          style={{width: '100%', height: 110}}
+        />
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate('Thumbnail4')}
         style={{justifyContent: 'center'}}>
-        <View style={styles.back_g}>
+        {/* <View style={styles.back_g}>
           <RowView style={styles.arr_y}>
             <Text style={styles.tx2}>
               광고스캔 랜덤보상{'\n'}매월 매년 참여 업체가 늘어납니다!
             </Text>
           </RowView>
-        </View>
+          
+        </View> */}
+        <Image
+          source={require('../assets/images/thumnail_swiper4.png')}
+          resizeMode="contain"
+          style={{width: '100%', height: 110}}
+        />
       </TouchableOpacity>
     </Swiper>
   );
@@ -80,12 +101,6 @@ const SwiperAd = ({style, paginationStyle}) => {
 export default SwiperAd;
 
 const styles = StyleSheet.create({
-  back: {
-    backgroundColor: '#82A9CD',
-    minHeight: 100,
-  },
-  back_y: {backgroundColor: '#FFB82E', minHeight: 100},
-  back_g: {backgroundColor: '#80D5AC', minHeight: 100},
   arr: {
     marginHorizontal: 33,
     marginVertical: 40,
@@ -98,9 +113,4 @@ const styles = StyleSheet.create({
   },
   tx1: {fontSize: 15, color: '#ffffff'},
   tx2: {fontSize: 20, color: '#ffffff'},
-  pagination: {
-    height: '3%',
-    bottom: undefined,
-    marginTop: '23%',
-  },
 });

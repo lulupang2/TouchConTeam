@@ -41,7 +41,7 @@ const view = ({navigation}) => {
     Clipboard.setString(walletAddress);
   };
   const MENU = [
-    {name: 'Touch\n결제', path: ''},
+    {name: '포인트\n전환', path: 'PointCh'},
     {name: auth.walletAddress ? '지갑\n보기' : '지갑\n생성', path: 'Wallet'},
     {name: '터치콘\n전환', path: 'TouchConCh'},
     {name: '스캔\n보기', path: 'ScanHistory'},
@@ -191,9 +191,8 @@ const view = ({navigation}) => {
                 key={i}
                 menu={menu}
                 onPress={() => {
-                  if (menu.path === '') {
-                    Alert.alert('준비중입니다.');
-                    return;
+                  if (menu.path === 'PointCh') {
+                    navigation.navigate(menu.path, {coins: coin});
                   }
                   if (menu.path === 'Wallet') {
                     if (walletURL) {

@@ -202,274 +202,261 @@ function Signup({props, navigation}) {
 
       {/* <Button onPress={chg_all} title="test button" /> */}
       {/* 약관 동의 */}
+
       <View
         style={{
-          // marginLeft: width * 0.05,
-          paddingHorizontal: width * 0.05,
+          // width: width * 0.9,
+          // height: 40,
+          borderWidth: 0.8,
+          borderColor: '#c4c4c4',
+          resizeMode: 'cover',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-evenly',
+          marginHorizontal: width * 0.05,
+        }}>
+        <TouchableOpacity onPress={chg_all}>
+          <Image
+            source={
+              allagree
+                ? require('../../../assets/images/chk_square.png')
+                : require('../../../assets/images/square.png')
+            }
+            style={{
+              width: width * 0.06,
+              height: height * 0.06,
+              resizeMode: 'contain',
+            }}
+          />
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={chg_all}
+          style={{width: width * 0.75, height: height * 0.03}}>
+          <Image
+            source={require('../../../assets/images/nobutton.png')}
+            style={{
+              width: width * 0.28,
+              height: height * 0.03,
+              resizeMode: 'contain',
+            }}
+          />
+        </TouchableOpacity>
+      </View>
+
+      {/*<View style={{marginLeft: width * 0.05}}>*/}
+      <View
+        style={{
+          marginHorizontal: width * 0.05,
+          borderWidth: 0.8,
+          borderColor: '#c4c4c4',
+          height: 170,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-around',
         }}>
         <View
           style={{
-            // width: width * 0.9,
-            // height: 40,
-            borderWidth: 0.8,
-            borderColor: '#c4c4c4',
-            backgroundColor: '#f7f7f7',
-            resizeMode: 'cover',
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-evenly',
           }}>
-          <TouchableOpacity onPress={chg_all}>
-            <Image
-              source={
-                allagree
-                  ? require('../../../assets/images/chk_square.png')
-                  : require('../../../assets/images/square.png')
-              }
-              style={{
-                width: width * 0.06,
-                height: height * 0.06,
-                resizeMode: 'contain',
-              }}
-            />
-          </TouchableOpacity>
-
+          {ser_agree ? (
+            <TouchableOpacity onPress={chg_ser}>
+              <Image
+                source={require('../../../assets/images/chk_square.png')}
+                style={{
+                  width: width * 0.06,
+                  height: height * 0.06,
+                  resizeMode: 'contain',
+                }}
+              />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity onPress={chg_ser}>
+              <Image
+                source={require('../../../assets/images/square.png')}
+                style={{
+                  width: width * 0.06,
+                  height: height * 0.06,
+                  resizeMode: 'contain',
+                }}
+              />
+            </TouchableOpacity>
+          )}
+          {/*   서비스 이용 약관 동의 Text */}
           <TouchableOpacity
-            onPress={chg_all}
-            style={{width: width * 0.75, height: height * 0.03}}>
+            onPress={chg_ser}
+            style={{
+              width: width * 0.6,
+              height: height * 0.03,
+              resizeMode: 'contain',
+              justifyContent: 'center',
+              // 글간 간격
+              marginTop: 24,
+            }}>
+            <View style={{flexDirection: 'column'}}>
+              <Image
+                source={require('../../../assets/images/service_agree.png')}
+                style={{
+                  width: width * 0.48,
+                  height: height * 0.03,
+                  resizeMode: 'contain',
+                }}
+              />
+
+              {/* 중간 확인 */}
+
+              <Text style={styles.warn_text}>
+                {ser_agree ? null : '서비스 이용 약관 동의해 주세요.'}
+              </Text>
+
+              {/* 중간 확인 */}
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity>
             <Image
-              source={require('../../../assets/images/nobutton.png')}
+              source={require('../../../assets/images/detailview.png')}
               style={{
-                width: width * 0.28,
+                width: width * 0.13,
                 height: height * 0.03,
                 resizeMode: 'contain',
               }}
             />
           </TouchableOpacity>
         </View>
-      </View>
-
-      {/*<View style={{marginLeft: width * 0.05}}>*/}
-      <View style={{marginHorizontal: width * 0.05}}>
-        <ImageBackground
-          source={require('../../../assets/images/rectangle13.png')}
+        <View
           style={{
-            width: 353,
-            resizeMode: 'contain',
-            height: 152,
+            flexDirection: 'row',
+            alignItems: 'center',
             justifyContent: 'space-evenly',
           }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-evenly',
-            }}>
-            {ser_agree ? (
-              <TouchableOpacity onPress={chg_ser}>
-                <Image
-                  source={require('../../../assets/images/chk_square.png')}
-                  style={{
-                    width: width * 0.06,
-                    height: height * 0.06,
-                    resizeMode: 'contain',
-                  }}
-                />
-              </TouchableOpacity>
-            ) : (
-              <TouchableOpacity onPress={chg_ser}>
-                <Image
-                  source={require('../../../assets/images/square.png')}
-                  style={{
-                    width: width * 0.06,
-                    height: height * 0.06,
-                    resizeMode: 'contain',
-                  }}
-                />
-              </TouchableOpacity>
-            )}
-            {/*   서비스 이용 약관 동의 Text */}
-            <TouchableOpacity
-              onPress={chg_ser}
-              style={{
-                width: width * 0.6,
-                height: height * 0.03,
-                resizeMode: 'contain',
-                justifyContent: 'center',
-                // 글간 간격
-                marginTop: 24,
-              }}>
-              <View style={{flexDirection: 'column'}}>
-                <Image
-                  source={require('../../../assets/images/service_agree.png')}
-                  style={{
-                    width: width * 0.48,
-                    height: height * 0.03,
-                    resizeMode: 'contain',
-                  }}
-                />
-
-                {/* 중간 확인 */}
-
-                <Text style={styles.warn_text}>
-                  {ser_agree ? null : '서비스 이용 약관 동의해 주세요.'}
-                </Text>
-
-                {/* 중간 확인 */}
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
+          {per_agree ? (
+            <TouchableOpacity onPress={chg_per}>
               <Image
-                source={require('../../../assets/images/detailview.png')}
+                source={require('../../../assets/images/chk_square.png')}
                 style={{
-                  width: width * 0.13,
-                  height: height * 0.03,
+                  width: width * 0.06,
+                  height: height * 0.06,
                   resizeMode: 'contain',
                 }}
               />
             </TouchableOpacity>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-evenly',
-            }}>
-            {per_agree ? (
-              <TouchableOpacity onPress={chg_per}>
-                <Image
-                  source={require('../../../assets/images/chk_square.png')}
-                  style={{
-                    width: width * 0.06,
-                    height: height * 0.06,
-                    resizeMode: 'contain',
-                  }}
-                />
-              </TouchableOpacity>
-            ) : (
-              <TouchableOpacity onPress={chg_per}>
-                <Image
-                  source={require('../../../assets/images/square.png')}
-                  style={{
-                    width: width * 0.06,
-                    height: height * 0.06,
-                    resizeMode: 'contain',
-                  }}
-                />
-              </TouchableOpacity>
-            )}
-            <TouchableOpacity
-              onPress={chg_per}
-              style={{
-                width: width * 0.6,
-                height: height * 0.03,
-                resizeMode: 'contain',
-                justifyContent: 'center',
-              }}>
-              {/* 개인 정보 수집 및 이용 동의 Text */}
-              {/*<View style={{flexDirection: 'column'}}>*/}
-              <View style={{}}>
-                <Image
-                  source={require('../../../assets/images/personal_agree.png')}
-                  style={{
-                    width: width * 0.6,
-                    height: height * 0.03,
-                    marginTop: 24,
-                    resizeMode: 'contain',
-                  }}
-                />
-
-                {/* 중간 확인 */}
-
-                <Text style={styles.warn_text}>
-                  {per_agree ? null : '개인 정보 수집 및 이용에 동의해 주세요.'}
-                </Text>
-
-                {/* 중간 확인 */}
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
+          ) : (
+            <TouchableOpacity onPress={chg_per}>
               <Image
-                source={require('../../../assets/images/detailview.png')}
+                source={require('../../../assets/images/square.png')}
                 style={{
-                  width: width * 0.13,
-                  height: height * 0.03,
+                  width: width * 0.06,
+                  height: height * 0.06,
                   resizeMode: 'contain',
                 }}
               />
             </TouchableOpacity>
-          </View>
-          <View
+          )}
+          <TouchableOpacity
+            onPress={chg_per}
             style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-evenly',
-              paddingBottom: 23,
-              borderBottomWidth: 0.8,
-              borderColor: '#c4c4c4',
+              width: width * 0.6,
+              height: height * 0.03,
             }}>
-            {mark_agree ? (
-              <TouchableOpacity onPress={chg_mark}>
-                <Image
-                  source={require('../../../assets/images/chk_square.png')}
-                  style={{
-                    width: width * 0.06,
-                    height: height * 0.06,
-                    resizeMode: 'contain',
-                  }}
-                />
-              </TouchableOpacity>
-            ) : (
-              <TouchableOpacity onPress={chg_mark}>
-                <Image
-                  source={require('../../../assets/images/square.png')}
-                  style={{
-                    width: width * 0.06,
-                    height: height * 0.06,
-                    resizeMode: 'contain',
-                  }}
-                />
-              </TouchableOpacity>
-            )}
-
-            <View style={{flexDirection: 'column'}}>
-              <TouchableOpacity
-                onPress={chg_mark}
+            {/* 개인 정보 수집 및 이용 동의 Text */}
+            {/*<View style={{flexDirection: 'column'}}>*/}
+            <View style={{}}>
+              <Image
+                source={require('../../../assets/images/personal_agree.png')}
                 style={{
                   width: width * 0.6,
                   height: height * 0.03,
                   resizeMode: 'contain',
-                  justifyContent: 'center',
-                  marginTop: 14,
-                }}>
-                {/* 마케팅 정보 알람 동의 Text  */}
-                <Image
-                  source={require('../../../assets/images/marketing_agree.png')}
-                  style={{
-                    width: width * 0.45,
-                    height: height * 0.03,
-                    resizeMode: 'contain',
-                    marginTop: 5,
-                  }}
-                />
-                <Text style={styles.warn_text}>
-                  {mark_agree ? null : '마케팅 정보 알람에 동의해 주세요.'}
-                </Text>
-              </TouchableOpacity>
-            </View>
+                }}
+              />
 
-            <TouchableOpacity>
+              {/* 중간 확인 */}
+
+              <Text style={styles.warn_text}>
+                {per_agree ? null : '개인 정보 수집 및 이용에 동의해 주세요.'}
+              </Text>
+
+              {/* 중간 확인 */}
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image
+              source={require('../../../assets/images/detailview.png')}
+              style={{
+                width: width * 0.13,
+                height: height * 0.03,
+                resizeMode: 'contain',
+              }}
+            />
+          </TouchableOpacity>
+        </View>
+        {/* ------마케팅정보 알람 동의 */}
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-evenly',
+            borderColor: '#c4c4c4',
+          }}>
+          {mark_agree ? (
+            <TouchableOpacity onPress={chg_mark}>
               <Image
-                source={require('../../../assets/images/detailview.png')}
+                source={require('../../../assets/images/chk_square.png')}
                 style={{
-                  width: width * 0.13,
-                  height: height * 0.03,
+                  width: width * 0.06,
+                  height: height * 0.06,
                   resizeMode: 'contain',
                 }}
               />
             </TouchableOpacity>
+          ) : (
+            <TouchableOpacity onPress={chg_mark}>
+              <Image
+                source={require('../../../assets/images/square.png')}
+                style={{
+                  width: width * 0.06,
+                  height: height * 0.06,
+                  resizeMode: 'contain',
+                }}
+              />
+            </TouchableOpacity>
+          )}
+
+          <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity
+              onPress={chg_mark}
+              style={{
+                width: width * 0.6,
+                height: height * 0.03,
+              }}>
+              {/* 마케팅 정보 알람 동의 Text  */}
+              <Image
+                source={require('../../../assets/images/marketing_agree.png')}
+                style={{
+                  width: width * 0.45,
+                  height: height * 0.03,
+                  resizeMode: 'contain',
+                }}
+              />
+              <Text style={styles.warn_text}>
+                {mark_agree ? null : '마케팅 정보 알람에 동의해 주세요.'}
+              </Text>
+            </TouchableOpacity>
           </View>
-        </ImageBackground>
+
+          <TouchableOpacity>
+            <Image
+              source={require('../../../assets/images/detailview.png')}
+              style={{
+                width: width * 0.13,
+                height: height * 0.03,
+                resizeMode: 'contain',
+              }}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
       {/* 이메일 입력창 */}
       <View style={{marginHorizontal: 19, marginVertical: 24}}>
@@ -559,9 +546,9 @@ function Signup({props, navigation}) {
             borderRadius: 10,
             minWidth: 79,
             fontSize: 15,
-            textAlign: 'center',
-            paddingVertical: 11.5,
             color: '#000000',
+            textAlign: 'center',
+            textAlignVertical: 'center',
           }}>
           010
         </Text>

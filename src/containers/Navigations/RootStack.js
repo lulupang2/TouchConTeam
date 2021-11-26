@@ -44,6 +44,7 @@ import AdDetatil3 from '../Mainflow/AdDetail/view3';
 import AdDetatil4 from '../Mainflow/AdDetail/view4';
 import SaveCoupon from '../Mainflow/SaveCoupon/view';
 import Staking from '../Mainflow/Staking/view';
+import PointCh from '../Mainflow/PointCh';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 const Stack = createStackNavigator();
@@ -341,6 +342,11 @@ const RootStack = () => (
       name="Staking"
       component={Staking}
       options={{title: '터치 - 스테이킹 신청'}}
+    />
+    <Stack.Screen
+      name="PointCh"
+      component={PointCh}
+      options={{title: '포인트 전환'}}
     />
   </Stack.Navigator>
 );

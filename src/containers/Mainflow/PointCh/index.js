@@ -21,15 +21,16 @@ import {Type} from 'react-native/ReactCommon/hermes/inspector/tools/msggen/src/T
 import api from '../../../api';
 import {useDispatch, useSelector} from 'react-redux';
 
-const view = ({navigation, route}) => {
+const PointCh = ({navigation, route}) => {
   const [ponit, setPonit] = useState('10000.11');
   const [tokens, onChangetokens] = useState('');
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
   let coins = route.params.coins;
   {
-    console.log('route', route);
+    console.log('lfkasjfk', route);
   }
+
   const ChangeTokenToPoint = () => {
     if (0 > parseInt(tokens)) {
       Alert.alert('0보다 큰 숫자를 입력해주세요');
@@ -89,7 +90,7 @@ const view = ({navigation, route}) => {
   return (
     <View>
       <View style={styles.back}>
-        <Text style={styles.tx1}>나의 현재 터치콘</Text>
+        <Text style={styles.tx1}>전환액 만큼 터치콘이 차감 됩니다.</Text>
         <View style={styles.point}>
           <Image
             source={require('../../../assets/icons/coin_icon.png')}
@@ -132,7 +133,7 @@ const view = ({navigation, route}) => {
       </RowView>
 
       <BottomButton
-        text={'터치콘 전환'}
+        text={'포인트 전환'}
         style={{marginVertical: 32}}
         onPress={ChangeTokenToPoint}
       />
@@ -160,7 +161,7 @@ const view = ({navigation, route}) => {
   );
 };
 
-export default view;
+export default PointCh;
 
 const styles = StyleSheet.create({
   back: {

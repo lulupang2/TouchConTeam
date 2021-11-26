@@ -135,7 +135,7 @@ const view = () => {
       {/* 스와이프 들어갈 곳 start*/}
 
       {/* 스와이프 들어갈 곳 end */}
-      <SwiperAd />
+      <SwiperAd paginationStyle={{marginBottom: 55}} />
 
       {/* 광고 리스트들 */}
 

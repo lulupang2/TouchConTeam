@@ -43,7 +43,7 @@ const view = ({navigation}) => {
   return (
     <WhiteSafeAreaView>
       {/* 스와이프 들어갈 곳 start*/}
-      <SwiperAd />
+      <SwiperAd paginationStyle={{marginBottom: 535}} />
 
       {/* 스와이프 들어갈 곳 end */}
 

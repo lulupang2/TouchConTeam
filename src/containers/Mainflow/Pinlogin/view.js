@@ -93,7 +93,7 @@ export default function Pinlogin({route}) {
   const handleKeyPress = e => {
     console.log('pwdErrorCount', pwdbool);
     if (pwd.length !== 7) {
-      Alert.alert('핀번호는 7자리 입니다.');
+      Alert.alert('PIN 번호는 7자리 입니다.');
       return;
     }
     if (auth.sessionToken) {
