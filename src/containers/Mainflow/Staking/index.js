@@ -25,28 +25,15 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
+
 const DATA = [
-  {
-    title: '기준 : 매 분기 1회 진행',
-  },
-  {
-    title: '년간 총 4회 (리워드 풀 매년 수량의 5% 책정)',
-  },
-  {
-    title: '2022년 1분기 터치-스테이킹이 아래와 같이 시작됩니다.',
-  },
-  {
-    title: '신청기간 : 2022년 01월 01일 ~ 01월 10일',
-  },
-  {
-    title: '최소 신청수량 : 1,000 Touch',
-  },
-  {
-    title: '지급(예상)이자 : 7%',
-  },
-  {
-    title: '이자 지급 계산은 위의 표를 참고해주시길 바랍니다.',
-  },
+  '기준 : 매 분기 1회 진행',
+  '년간 총 4회 (리워드 풀 매년 수량의 5% 책정)',
+  '2022년 1분기 터치-스테이킹이 아래와 같이 시작됩니다.',
+  '신청기간 : 2022년 01월 01일 ~ 01월 10일',
+  '최소 신청수량 : 1,000 Touch',
+  '지급(예상)이자 : 7%',
+  '이자 지급 계산은 위의 표를 참고해주시길 바랍니다.',
 ];
 
 const Staking = () => {
@@ -76,28 +63,28 @@ const Staking = () => {
     ['분기', '모집기간', '지급이자(7%)', '모집수량', '지급일자'],
     [
       '1',
-      '01.01-01.15',
+      '01.01-01.10',
       interestInforFirst?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
       '8,000,000',
       '04.10',
     ],
     [
       '2',
-      '04.01-04.15',
+      '04.01-04.10',
       interestInforTwo?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
       '8,000,000',
       '07.10',
     ],
     [
       '3',
-      '07.01-07.15',
+      '07.01-07.10',
       interestInforThree?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
       '8,000,000',
       '10.10',
     ],
     [
       '4',
-      '10.01-10.15',
+      '10.01-10.10',
       interestInforFour?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
       '11,375,000',
       '01.10',
@@ -134,6 +121,7 @@ const Staking = () => {
     setInterest('1000000000');
     onChangeSumInput('');
   }, [isFocused]);
+
   const onClickSum = () => {
     setInterest(sumInput);
     if (sumInput.length === 0) {
@@ -152,11 +140,15 @@ const Staking = () => {
   };
   const renderItem = ({item, index}) => {
     return (
-      <View key={index} style={{flexDirection: 'row', flex: 1}}>
+      <View
+        key={index}
+        style={{
+          flexDirection: 'row',
+          flex: 1,
+          marginBottom: index === 1 ? 15 : 2,
+        }}>
         <Text>{'\u2022'}</Text>
-        <Subtitle style={{flexShrink: 1, marginBottom: index === 1 ? 15 : 0}}>
-          {item.title}
-        </Subtitle>
+        <Subtitle style={{flexShrink: 1}}>{item}</Subtitle>
       </View>
     );
   };
