@@ -5,7 +5,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import SwitchToggle from 'react-native-switch-toggle';
 
 export const MenuItem = ({onPress, title, style, id}) => {
-  const [on, setOn] = useState(true);
+  const [on, setOn] = useState(false);
 
   const off = () => {
     setOn(!on);
@@ -25,8 +25,7 @@ export const MenuItem = ({onPress, title, style, id}) => {
         borderBottomWidth: 1,
         borderBottomColor: '#c4c4c4',
         ...style,
-      }}
-    >
+      }}>
       <NormalBoldLabel text={title} />
 
       {select === id ? (

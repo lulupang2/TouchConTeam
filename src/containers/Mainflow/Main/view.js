@@ -63,10 +63,9 @@ export default function Main({navigation}) {
             />
             <View style={{alignItems: 'flex-end'}}>
               <NormalBoldLabel
-                text={'터치콘'}
-                style={{fontSize: 20, lineHeight: 24, color: '#FD7F36'}}
+                text={'내 터치콘 지갑'}
+                style={{fontSize: 20, lineHeight: 24, color: '#000000'}}
               />
-              <NormalBoldLabel text={'Touch'} style={{marginTop: 13}} />
             </View>
           </TouchableNoFeedback>
           {/* 최상단 터치콘 박스 로고와 함께 있음 end */}
@@ -281,9 +280,10 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingLeft: 12,
     paddingRight: 20,
-    borderWidth: 1.5,
     borderColor: '#FD7F36',
     borderRadius: 5,
+    borderTopWidth: 1.5,
+    borderBottomWidth: 1.5,
   },
   swiperContainer: {
     height: 100,
