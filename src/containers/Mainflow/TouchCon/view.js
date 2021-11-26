@@ -27,12 +27,6 @@ import {
   walletGenerator,
 } from '../../../redux/authSlice';
 import api from '../../../api';
-const MENU = [
-  {name: 'Touch\n결제', path: ''},
-  {name: '지갑\n생성', path: 'Wallet'},
-  {name: '터치콘\n전환', path: 'TouchConCh'},
-  {name: '스캔\n보기', path: 'ScanHistory'},
-];
 
 const QR_CODE = require('../../../assets/images/qr_code.png');
 
@@ -46,6 +40,12 @@ const view = ({navigation}) => {
   const copyClipboard = () => {
     Clipboard.setString(walletAddress);
   };
+  const MENU = [
+    {name: 'Touch\n결제', path: ''},
+    {name: auth.walletAddress ? '지갑\n보기' : '지갑\n생성', path: 'Wallet'},
+    {name: '터치콘\n전환', path: 'TouchConCh'},
+    {name: '스캔\n보기', path: 'ScanHistory'},
+  ];
   // const fetchCopiedText = async () => {
   //   const text = await Clipboard.getString();
   //   setCopiedText(text);
