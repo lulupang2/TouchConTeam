@@ -43,8 +43,11 @@ import AdDetatil2 from '../Mainflow/AdDetail/view2';
 import AdDetatil3 from '../Mainflow/AdDetail/view3';
 import AdDetatil4 from '../Mainflow/AdDetail/view4';
 import SaveCoupon from '../Mainflow/SaveCoupon/view';
-import Staking from '../Mainflow/Staking/view';
+
 import PointCh from '../Mainflow/PointCh';
+
+import Staking from '../Mainflow/Staking';
+
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 const Stack = createStackNavigator();
