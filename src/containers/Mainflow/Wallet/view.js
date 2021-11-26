@@ -120,13 +120,16 @@ const view = ({navigation, sendmodal, route}) => {
         setVisible(false);
         if (res.status !== 200) {
           return;
+        }
+        if (res.data.Result === 'success') {
+          Alert.alert('출금이 완료 되었습니다.');
         } else if (res.data.Result === '유효하지 않은 출금주소입니다.') {
           Alert.alert('유효하지 않는 출금 주소입니다.');
           return;
         } else {
-          Alert.alert('출금이 완료 되었습니다.');
+          Alert.alert('출금 주소 혹은 잔액을 확인해 주세요');
+          return;
         }
-        console.log('coin : ', res);
       })
       .catch(err => console.log('에러메세지', err));
   };
@@ -150,11 +153,14 @@ const view = ({navigation, sendmodal, route}) => {
       .then(res => {
         if (res.status !== 200) {
           return;
+        }
+        if (res.data.Result === 'success') {
+          Alert.alert('출금이 완료 되었습니다.');
+        } else if (res.data.Result === '이더리움이 부족합니다') {
+          Alert.alert('이더리움이 부족합니다');
+          return;
         } else if (res.data.Result === '유효하지 않은 출금주소입니다.') {
           Alert.alert('유효하지 않는 출금 주소입니다.');
-          return;
-        } else {
-          Alert.alert('출금이 완료 되었습니다.');
         }
         console.log('eth : ', res);
       })
@@ -190,6 +196,7 @@ const view = ({navigation, sendmodal, route}) => {
 
             <TextInput
               placeholder="주소"
+              placeholderTextColor="#c4c4c4"
               style={{
                 minHeight: 50,
                 minWidth: 285,
@@ -204,6 +211,7 @@ const view = ({navigation, sendmodal, route}) => {
             />
             <TextInput
               placeholder="출금수량"
+              placeholderTextColor="#c4c4c4"
               style={{
                 minHeight: 50,
                 minWidth: 285,
