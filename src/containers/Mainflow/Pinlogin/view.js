@@ -82,7 +82,14 @@ export default function Pinlogin({route}) {
         dispatch(saveSessionToken(res?.data?.Result));
         dispatch(saveEmail(Email));
         Alert.alert('PIN번호가 등록되었습니다');
-        navigation.navigate('Main');
+        // navigation.navigate('Main');
+        navigation.reset({
+          routes: [
+            {
+              name: 'Main',
+            },
+          ],
+        });
         // console.log( res?.data?.Result);
       })
       .catch(err => {
