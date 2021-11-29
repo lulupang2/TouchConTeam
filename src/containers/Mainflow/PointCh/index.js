@@ -167,7 +167,12 @@ const PointCh = ({navigation, route}) => {
           '    필요합니다.\n' +
           '    미리 이더리움을 충전해 놓으시길 바랍니다.'
         }
-        style={{marginTop: 35, alignSelf: 'center', color: '#FD7F36'}}
+        style={{
+          marginTop: 35,
+          marginBottom: 30,
+          alignSelf: 'center',
+          color: '#FD7F36',
+        }}
       />
     </ScrollView>
   );
