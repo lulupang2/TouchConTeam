@@ -12,6 +12,7 @@ export const Input = styled.TextInput`
   flex: 1;
   //padding-left: 22px;
   padding: 0 0 0 12px;
+  color: #000000;
 `;
 export const Button = styled.TouchableOpacity`
   height: 35px;
