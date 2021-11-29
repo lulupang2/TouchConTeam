@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -29,7 +30,7 @@ const PointCh = ({navigation, route}) => {
   let coins = route.params.coins;
 
   const ChangeTokenToPoint = () => {
-    if (0 > parseInt(tokens)) {
+    if (0 >= parseInt(tokens)) {
       Alert.alert('0보다 큰 숫자를 입력해주세요');
       return;
     }
@@ -43,11 +44,13 @@ const PointCh = ({navigation, route}) => {
     }
     if (parseInt(coins.TouchPoint) >= parseInt(tokens)) {
       fetchChangeToken();
+    } else {
+      Alert.alert('변환에 실패하였습니다.');
     }
   };
   const fetchChangeToken = async () => {
     let body = {sessionToken: auth.sessionToken, Point: tokens};
-    console.log(body);
+    // console.log(body);
     try {
       const config = {
         headers: {
@@ -86,7 +89,7 @@ const PointCh = ({navigation, route}) => {
   }, []);
 
   return (
-    <View>
+    <ScrollView>
       <View style={styles.back}>
         <Text style={styles.tx1}>전환액 만큼 터치콘이 차감 됩니다.</Text>
         <View style={styles.point}>
@@ -114,12 +117,15 @@ const PointCh = ({navigation, route}) => {
           marginTop: 35,
           borderColor: '#c4c4c4',
           marginHorizontal: 24,
+          display: 'flex',
+          flexDirection: 'row',
+          paddingHorizontal: 13,
         }}>
         <TextInput
           value={tokens}
           onChangeText={text => onChangetokens(text.replace(/[^0-9]/g, ''))}
-          placeholder="    수량"
-          style={{width: 205, color: '#000000'}}
+          placeholder="수량"
+          style={{flex: 1, color: '#000000'}}
           keyboardType="number-pad"
         />
         {/* Inputext 내의 Touch 글자 */}
@@ -163,7 +169,7 @@ const PointCh = ({navigation, route}) => {
         }
         style={{marginTop: 35, alignSelf: 'center', color: '#FD7F36'}}
       />
-    </View>
+    </ScrollView>
   );
 };
 

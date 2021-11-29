@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
+  ScrollView,
   Text,
   View,
   Dimensions,
@@ -87,7 +88,7 @@ const view = ({navigation, route}) => {
   }, []);
 
   return (
-    <View>
+    <ScrollView>
       <View style={styles.back}>
         <Text style={styles.tx1}>나의 현재 터치콘</Text>
         <View style={styles.point}>
@@ -156,7 +157,7 @@ const view = ({navigation, route}) => {
         }
         style={{marginTop: 35, alignSelf: 'center', color: '#FD7F36'}}
       />
-    </View>
+    </ScrollView>
   );
 };
 
