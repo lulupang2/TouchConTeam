@@ -70,7 +70,7 @@ const view = ({navigation}) => {
             source={require('../../../assets/icons/stacking_arrow.png')}
           />
           <TouchableOpacity
-            onPress={() => setVisible(true)}
+            onPress={() => navigation.navigate('Staking')}
             style={styles.stackingBtn}>
             <NormalBoldLabel text={'신청'} style={{color: '#fff'}} />
           </TouchableOpacity>

@@ -10,6 +10,7 @@ import {
   SafeAreaView,
   ScrollView,
   FlatList,
+  Alert,
 } from 'react-native';
 
 import Swiper from 'react-native-swiper';
@@ -102,6 +103,10 @@ const view = () => {
           }}>
           <TouchableOpacity
             onPress={() => {
+              if (item.path === '') {
+                Alert.alert('준비 중 입니다.');
+                return;
+              }
               navigation.navigate(item.path);
             }}>
             <View style={styles.adScreen}>
