@@ -143,16 +143,15 @@ const view = () => {
       <SwiperAd />
 
       {/* 광고 리스트들 */}
-      <View style={{height: '80%'}}>
-        <FlatList
-          columnWrapperStyle={{justifyContent: 'space-between'}}
-          contentContainerStyle={styles.flatListContainer}
-          data={formatData(dataList, numColumns)}
-          renderItem={adView}
-          keyExtractor={(item, index) => index.toString()}
-          numColumns={3}
-        />
-      </View>
+
+      <FlatList
+        columnWrapperStyle={{justifyContent: 'space-between'}}
+        contentContainerStyle={styles.flatListContainer}
+        data={formatData(dataList, numColumns)}
+        renderItem={adView}
+        keyExtractor={(item, index) => index.toString()}
+        numColumns={3}
+      />
     </WhiteSafeAreaView>
   );
 };

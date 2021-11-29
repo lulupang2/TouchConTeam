@@ -58,7 +58,6 @@ const view = ({navigation}) => {
 
       <ScrollView
         style={{
-          height: '60%',
           backgroundColor: '#fff',
           position: 'relative',
           top: 24,

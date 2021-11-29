@@ -42,7 +42,6 @@ const view = ({navigation}) => {
     <WhiteSafeAreaView>
       {/* 스와이프 들어갈 곳 start*/}
       <SwiperAd />
-      <View style={{height: '80%'}}></View>
 
       {/* 스와이프 들어갈 곳 end */}
 
