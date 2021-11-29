@@ -53,11 +53,12 @@ const view = ({navigation}) => {
         </ColumnView>
       </ModalPoup>
       {/* 스와이프 들어갈 곳 start*/}
-      <SwiperAd paginationStyle={{marginBottom: 10}} />
+      <SwiperAd />
       {/* 스와이프 들어갈 곳 end */}
 
       <ScrollView
         style={{
+          height: '60%',
           backgroundColor: '#fff',
           position: 'relative',
           top: 24,

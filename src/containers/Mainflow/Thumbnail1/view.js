@@ -10,9 +10,7 @@ import {
   SafeAreaView,
   ScrollView,
 } from 'react-native';
-import Swiper from 'react-native-swiper';
-import {NormalBoldLabel} from '../../../components/Label';
-import RowView from '../../../components/RowView';
+
 import SwiperAd from '../../../components/SwiperAd';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import Touchable from '../../../components/Touchable';
@@ -43,7 +41,8 @@ const view = ({navigation}) => {
   return (
     <WhiteSafeAreaView>
       {/* 스와이프 들어갈 곳 start*/}
-      <SwiperAd paginationStyle={{marginBottom: 535}} />
+      <SwiperAd />
+      <View style={{height: '80%'}}></View>
 
       {/* 스와이프 들어갈 곳 end */}
 

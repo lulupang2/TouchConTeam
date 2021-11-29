@@ -140,18 +140,19 @@ const view = () => {
       {/* 스와이프 들어갈 곳 start*/}
 
       {/* 스와이프 들어갈 곳 end */}
-      <SwiperAd paginationStyle={{marginBottom: 55}} />
+      <SwiperAd />
 
       {/* 광고 리스트들 */}
-
-      <FlatList
-        columnWrapperStyle={{justifyContent: 'space-between'}}
-        contentContainerStyle={styles.flatListContainer}
-        data={formatData(dataList, numColumns)}
-        renderItem={adView}
-        keyExtractor={(item, index) => index.toString()}
-        numColumns={3}
-      />
+      <View style={{height: '80%'}}>
+        <FlatList
+          columnWrapperStyle={{justifyContent: 'space-between'}}
+          contentContainerStyle={styles.flatListContainer}
+          data={formatData(dataList, numColumns)}
+          renderItem={adView}
+          keyExtractor={(item, index) => index.toString()}
+          numColumns={3}
+        />
+      </View>
     </WhiteSafeAreaView>
   );
 };
