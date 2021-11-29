@@ -38,7 +38,7 @@ const Imgdata = [
 const view4 = props => {
   return (
     <WhiteSafeAreaView>
-      <ScrollView>
+      <ScrollView style={{flex: 1}}>
         <ColumnView style={{maxHeight: 5300}}>
           <Text style={styles.text1}>Premium Pore Original Pack</Text>
           <Image

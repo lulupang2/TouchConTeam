@@ -18,7 +18,7 @@ const Imgdata = [
 const view3 = props => {
   return (
     <WhiteSafeAreaView>
-      <ScrollView style={{height: 1000}}>
+      <ScrollView style={{flex: 1}}>
         <ColumnView style={{maxHeight: 3000}}>
           <Text style={styles.text1}>Relipy Relaxing Cream</Text>
           <Image

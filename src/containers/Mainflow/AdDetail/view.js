@@ -7,7 +7,7 @@ import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 const view = props => {
   return (
     <WhiteSafeAreaView>
-      <ScrollView style={{height: 1000}}>
+      <ScrollView style={{flex: 1}}>
         <ColumnView style={{maxHeight: 3000}}>
           <Text style={styles.text1}>Daily Vital Wash Pure Bubble</Text>
           <Image

@@ -34,7 +34,7 @@ const Imgdata = [
 const view2 = props => {
   return (
     <WhiteSafeAreaView>
-      <ScrollView style={{height: 1000}}>
+      <ScrollView style={{flex: 1}}>
         <ColumnView style={{maxHeight: 3000}}>
           <Text style={styles.text1}>Peace Water Aqua Drop Gel Night Mask</Text>
           <Image
