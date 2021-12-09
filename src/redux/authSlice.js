@@ -21,6 +21,7 @@ const intialState = {
   loginSuccess: false,
   logoutSuccess: false,
   editProfileSuccess: false,
+  count: 0,
 };
 const userSlice = createSlice({
   name: 'auth',
@@ -37,6 +38,7 @@ const userSlice = createSlice({
     loginSuccess: false,
     logoutSuccess: false,
     editProfileSuccess: false,
+    count: 0,
   },
   reducers: {
     resetAuth: state => intialState,
@@ -80,10 +82,18 @@ const userSlice = createSlice({
     saveWallet(state, action) {
       state.walletAddress = action.payload;
     },
+    addCount(state, action) {
+      state.count += 1;
+    },
+    resetCount(state, action) {
+      state.count = 0;
+    },
   },
 });
 
 export const {
+  resetCount,
+  addCount,
   saveSignUpSuccess,
   resetSignUp,
   saveUserInfo,
