@@ -3,7 +3,8 @@ import {View, Image, Text, ScrollView, StyleSheet} from 'react-native';
 import BottomButton from '../../../components/BottomButton';
 import ColumnView from '../../../components/ColumnView';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
-
+// #FD7F36 : 주황
+// #5F408F : 보라
 const view = props => {
   return (
     <WhiteSafeAreaView>
