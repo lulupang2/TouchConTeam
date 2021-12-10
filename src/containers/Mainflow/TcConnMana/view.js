@@ -13,7 +13,7 @@ import {
 
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import RowView from '../../../components/RowView';
-import WhiteSafeAreaView from "../../../components/WhiteSafeAreaView";
+import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 
 const Title = [
   {id: 1, title: 'CAOLION', path: 'GfCaolion'},
@@ -48,19 +48,17 @@ const BtnConn = ({text, onPress}) => {
           fontWeight: 'bold',
           fontSize: 15,
           marginVertical: 18,
-        }}
-      >
+        }}>
         {text.title}
       </Text>
       <TouchableOpacity
         style={{
-          backgroundColor: '#FD7F36',
+          backgroundColor: '#5F408F',
           width: 79,
           height: 35,
           borderRadius: 53,
         }}
-        onPress={onPress}
-      >
+        onPress={onPress}>
         <Text
           style={{
             fontSize: 20,
@@ -68,8 +66,7 @@ const BtnConn = ({text, onPress}) => {
             color: '#FFFFFF',
             marginLeft: 20,
             marginTop: 3,
-          }}
-        >
+          }}>
           연결
         </Text>
       </TouchableOpacity>

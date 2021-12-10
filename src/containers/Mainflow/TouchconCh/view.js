@@ -159,7 +159,7 @@ const view = ({navigation, route}) => {
           marginTop: 35,
           marginBottom: 30,
           alignSelf: 'center',
-          color: '#FD7F36',
+          color: '#5F408F',
         }}
       />
     </ScrollView>
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     // width: 390,
     // height: 230,
     minHeight: 230,
-    backgroundColor: '#FD7F36',
+    backgroundColor: '#5F408F',
     borderBottomLeftRadius: 35,
     borderBottomRightRadius: 35,
     justifyContent: 'space-between',

@@ -83,7 +83,7 @@ const view = ({navigation}) => {
           }}>
           <View
             style={{
-              backgroundColor: '#fd7f36',
+              backgroundColor: '#5F408F',
               height: 45,
               width: 7,
               borderTopRightRadius: 6,

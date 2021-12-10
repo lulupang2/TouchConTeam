@@ -34,7 +34,7 @@ export const MenuItem = ({onPress, title, style, id}) => {
           onPress={() => off()}
           circleColorOff="#FFFFFF"
           circleColorOn="#FFFFFF"
-          backgroundColorOn="#FD7F36"
+          backgroundColorOn="#5F408F"
           backgroundColorOff="#C4C4C4"
           containerStyle={{
             marginTop: 8,

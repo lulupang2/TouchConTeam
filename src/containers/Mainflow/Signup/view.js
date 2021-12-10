@@ -631,7 +631,7 @@ const styles = StyleSheet.create({
   },
   verifySendBtn: {
     borderRadius: 53,
-    backgroundColor: '#fd7f36',
+    backgroundColor: '#5F408F',
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 10,
@@ -639,7 +639,7 @@ const styles = StyleSheet.create({
   },
   remaining: {
     fontSize: 12,
-    color: '#FD7F36',
+    color: '#5F408F',
   },
 });
 

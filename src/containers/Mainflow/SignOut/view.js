@@ -330,7 +330,7 @@ const styles = StyleSheet.create({
   },
   TitleBox: {
     height: 40,
-    backgroundColor: '#FD7F36',
+    backgroundColor: '#5F408F',
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
     justifyContent: 'center',

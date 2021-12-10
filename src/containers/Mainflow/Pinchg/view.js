@@ -26,7 +26,7 @@ const Circle = ({isOrange}) => {
   return (
     <View
       style={{
-        backgroundColor: isOrange ? '#FD7F36' : '#c4c4c4',
+        backgroundColor: isOrange ? '#5F408F' : '#c4c4c4',
         width: isOrange ? 10 : 7,
         height: isOrange ? 10 : 7,
         borderRadius: isOrange ? 5 : 3.5,

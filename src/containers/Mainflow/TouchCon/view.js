@@ -220,7 +220,7 @@ const view = ({navigation}) => {
             <View
               style={{
                 borderWidth: 11,
-                borderColor: '#fd7f36',
+                borderColor: '#5F408F',
                 alignSelf: 'center',
                 marginTop: 30,
               }}>
@@ -290,7 +290,7 @@ const WhiteLine = () => (
 
 const styles = StyleSheet.create({
   topContainer: {
-    backgroundColor: '#fd7f36',
+    backgroundColor: '#5F408F',
     padding: 19,
     paddingBottom: 29,
     borderBottomLeftRadius: 35,

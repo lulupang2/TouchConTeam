@@ -68,7 +68,7 @@ const CalendarTc = ({dates}) => {
       endingDay: true,
       textColor: '#fff',
       selectedColor: 'purple',
-      color: '#FD7F36',
+      color: '#5F408F',
     };
   });
   useEffect(() => {
@@ -118,11 +118,11 @@ const CalendarTc = ({dates}) => {
           week: {
             flexDirection: 'row',
             justifyContent: 'space-around',
-            backgroundColor: '#FD7F36',
+            backgroundColor: '#5F408F',
           },
         },
         disabledArrowColor: '#adadad',
-        todayTextColor: '#FD7F36',
+        todayTextColor: '#5F408F',
       }}
       minDate={dayjs(new Date()).format('YYYY-MM-DD')}
       // onDayPress={day => {

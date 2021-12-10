@@ -12,7 +12,7 @@ const BottomButton = ({onPress, text, style}) => {
       style={{
         paddingVertical: 15,
         borderRadius: 53,
-        backgroundColor: '#fd7f36',
+        backgroundColor: '#5F408F',
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',
@@ -20,8 +20,7 @@ const BottomButton = ({onPress, text, style}) => {
         marginBottom: 32,
         ...style,
         // position: 'absolute', width: width-48, bottom: 32,
-      }}
-    >
+      }}>
       <NormalBoldLabel
         text={text}
         style={{fontSize: 20, lineHeight: 24, color: '#fff'}}

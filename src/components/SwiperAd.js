@@ -21,7 +21,7 @@ const SwiperAd = ({style, paginationStyle}) => {
           marginLeft: 20,
         }}
         activeDotStyle={{
-          backgroundColor: '#FD7F36',
+          backgroundColor: '#5F408F',
           width: 10,
           height: 10,
           borderRadius: 5,
@@ -86,7 +86,7 @@ const SwiperAd = ({style, paginationStyle}) => {
               광고스캔 랜덤보상{'\n'}매월 매년 참여 업체가 늘어납니다!
             </Text>
           </RowView>
-          
+
         </View> */}
           <Image
             source={require('../assets/images/thumnail_swiper4.png')}
