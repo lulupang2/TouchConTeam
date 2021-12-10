@@ -14,14 +14,20 @@ import Touchable from '../../../components/Touchable';
 import {NormalBoldLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';
 import {useDispatch, useSelector} from 'react-redux';
-import {pinLogin, saveEmail, saveSessionToken} from '../../../redux/authSlice';
+import {
+  addCount,
+  pinLogin,
+  resetAuth,
+  resetCount,
+  saveEmail,
+  saveSessionToken,
+} from '../../../redux/authSlice';
 import axios from 'axios';
 import api from '../../../api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 
 const {height, width} = Dimensions.get('window');
-
 const vh = height / 100;
 const vw = width / 100;
 
@@ -54,6 +60,8 @@ const Circle = ({isOrange}) => {
 
 export default function Pinlogin({route}) {
   const dispatch = useDispatch();
+
+  const {count} = useSelector(state => state.auth);
   const auth = useSelector(state => state.auth);
   const {pin, sessionToken, loginSuccess, email} = auth; // pin 현재 기본값 0000000
   const [pwd, onChangePwd] = React.useState('');
@@ -63,8 +71,32 @@ export default function Pinlogin({route}) {
   const navigation = useNavigation();
   useEffect(() => {
     // getPinRegister();
+    // navigation.navigate('Signup');
   }, []);
   useEffect(() => {}, []);
+  const fetchWithdrawal = async () => {
+    let body = {sessionToken: auth.sessionToken};
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('unregister', JSON.stringify(body), config);
+      if (res?.data?.Result === 'success') {
+        dispatch(resetAuth());
+        Alert.alert('5회 실패로 인해 회원탈퇴되었습니다');
+        // navigation.navigate('Splash');
+        navigation.navigate('Signup');
+      }
+      // console.log(res);
+      // navigation.navigate('Wallet');
+      // console.log('test', res.data.Result);
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
+  };
   const getPinRegister = () => {
     //등록시 사용하는 이벤트입니다
     let Email = route.params.Email;
@@ -124,15 +156,22 @@ export default function Pinlogin({route}) {
           console.log(res);
           if (res.data.Result !== 'success' || res.status !== 200) {
             setPwdbool(pwdbool + 1);
+            dispatch(addCount());
             onChangePwd('');
-            console.log('login fail');
+            // console.log('login fail');
             console.log('pwd = ', pwd);
-            console.log('pwdbool= ', pwdbool);
+            // console.log('pwdbool= ', pwdbool);
+            if (count === 4) {
+              fetchWithdrawal();
+              return;
+            }
+
             return;
           }
           console.log(res);
 
           Alert.alert('로그인이 성공하였습니다');
+          dispatch(resetCount());
           navigation.navigate('Main');
           // console.log( res?.data?.Result);
         })
@@ -200,11 +239,10 @@ export default function Pinlogin({route}) {
         caretHidden={true}
         // onKeyPress 비밀번호 확인 작업
       />
-
-      {pwdbool > 0 && (
+      {count > 0 && (
         <Text style={styles.errMsg}>
           {`5회 오류 시 PIN번호를\n재설정 해야 합니다. `}
-          <Text style={{color: '#fd7f36'}}>{`(${5 - pwdbool}회남음)`}</Text>
+          <Text style={{color: '#fd7f36'}}>{`(${5 - count}회남음)`}</Text>
         </Text>
       )}
       <Touchable onPress={() => null} style={{marginTop: 14}}>

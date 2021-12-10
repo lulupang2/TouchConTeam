@@ -42,6 +42,9 @@ const view = ({navigation}) => {
           key={menu.id}
           title={menu.title}
           onPress={() => {
+            if (menu.path === '') {
+              return;
+            }
             navigation.navigate(menu.path);
           }}
         />

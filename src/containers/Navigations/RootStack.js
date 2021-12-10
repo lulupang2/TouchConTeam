@@ -307,21 +307,21 @@ const RootStack = () => (
       options={{title: '터치콘 전환'}}
     />
     {/*---- 터치콘전환  end---- */}
-    <Stack.Screen
-      name="GfCaolion"
-      component={GfCaolion}
-      options={{headerShown: false}}
-    />
-    <Stack.Screen
-      name="GfMegaMall"
-      component={GfMegaMall}
-      options={{headerShown: false}}
-    />
-    <Stack.Screen
-      name="GfGukBab"
-      component={GfGukBab}
-      options={{headerShown: false}}
-    />
+    {/*<Stack.Screen*/}
+    {/*  name="GfCaolion"*/}
+    {/*  component={GfCaolion}*/}
+    {/*  options={{headerShown: false}}*/}
+    {/*/>*/}
+    {/*<Stack.Screen*/}
+    {/*  name="GfMegaMall"*/}
+    {/*  component={GfMegaMall}*/}
+    {/*  options={{headerShown: false}}*/}
+    {/*/>*/}
+    {/*<Stack.Screen*/}
+    {/*  name="GfGukBab"*/}
+    {/*  component={GfGukBab}*/}
+    {/*  options={{headerShown: false}}*/}
+    {/*/>*/}
     <Stack.Screen name="Tos" component={Tos} options={{title: '이용약관'}} />
     <Stack.Screen
       name="Ppp"
