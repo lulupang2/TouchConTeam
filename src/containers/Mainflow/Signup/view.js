@@ -54,6 +54,11 @@ function Signup({props, navigation}) {
   // axios 테스트
   const getVerifyCode = async Email => {
     let body = {Email};
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+    if (reg.test(Email) === false) {
+      Alert.alert('이메일을 형식에 맞춰서 입력해주세요');
+      return;
+    }
     Alert.alert('이메일을 전송하는 중입니다');
     setIsDisabled(true);
     api
