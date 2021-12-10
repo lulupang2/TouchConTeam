@@ -318,16 +318,16 @@ const RootStack = () => (
     {/*  component={GfCaolion}*/}
     {/*  options={{headerShown: false}}*/}
     {/*/>*/}
-    <Stack.Screen
-      name="GfMegaMall"
-      component={GfMegaMall}
-      options={{headerShown: false}}
-    />
-    <Stack.Screen
-      name="GfGukBab"
-      component={GfGukBab}
-      options={{headerShown: false}}
-    />
+    {/*<Stack.Screen*/}
+    {/*  name="GfMegaMall"*/}
+    {/*  component={GfMegaMall}*/}
+    {/*  options={{headerShown: false}}*/}
+    {/*/>*/}
+    {/*<Stack.Screen*/}
+    {/*  name="GfGukBab"*/}
+    {/*  component={GfGukBab}*/}
+    {/*  options={{headerShown: false}}*/}
+    {/*/>*/}
     <Stack.Screen name="Tos" component={Tos} options={{title: '이용약관'}} />
     <Stack.Screen
       name="Ppp"
