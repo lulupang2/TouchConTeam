@@ -71,6 +71,7 @@ export default function Pinlogin({route}) {
   const navigation = useNavigation();
   useEffect(() => {
     // getPinRegister();
+    // navigation.navigate('Signup');
   }, []);
   useEffect(() => {}, []);
   const fetchWithdrawal = async () => {
@@ -85,7 +86,8 @@ export default function Pinlogin({route}) {
       if (res?.data?.Result === 'success') {
         dispatch(resetAuth());
         Alert.alert('5회 실패로 인해 회원탈퇴되었습니다');
-        navigation.navigate('Splash');
+        // navigation.navigate('Splash');
+        navigation.navigate('Signup');
       }
       // console.log(res);
       // navigation.navigate('Wallet');
