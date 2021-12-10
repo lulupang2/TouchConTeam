@@ -117,7 +117,7 @@ const ScHistory = ({menu, index}) => {
           style={{justifyContent: 'space-between', width: 166, marginLeft: 22}}>
           <NormalBoldLabel text={menu?.Date} style={styles.day} />
 
-          <NormalBoldLabel text={menu?.Amount} style={{color: '#FD7F36'}} />
+          <NormalBoldLabel text={menu?.Amount} style={{color: '#5F408F'}} />
         </RowView>
         <NormalBoldLabel text={menu?.Company} style={styles.company} />
       </RowView>

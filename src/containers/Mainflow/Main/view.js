@@ -113,7 +113,7 @@ export default function Main({navigation}) {
             marginLeft: 20,
           }}
           activeDotStyle={{
-            backgroundColor: '#FD7F36',
+            backgroundColor: '#5F408F',
             width: 10,
             height: 10,
             borderRadius: 5,
@@ -280,7 +280,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingLeft: 12,
     paddingRight: 20,
-    borderColor: '#FD7F36',
+    borderColor: '#5F408F',
     borderRadius: 5,
     borderTopWidth: 1.5,
     borderBottomWidth: 1.5,
@@ -353,7 +353,7 @@ const styles = StyleSheet.create({
     paddingRight: 13,
   },
   adBtn: {
-    backgroundColor: '#FD7F36',
+    backgroundColor: '#5F408F',
     borderRadius: 53,
     paddingVertical: 7.5,
     paddingHorizontal: 25,
@@ -369,7 +369,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginHorizontal: 24,
     paddingVertical: 15,
-    backgroundColor: '#FD7F36',
+    backgroundColor: '#5F408F',
     borderRadius: 53,
     flexDirection: 'row',
     justifyContent: 'flex-end',

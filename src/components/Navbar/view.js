@@ -26,15 +26,14 @@ export default function Navbar() {
       {/* Navbar 바탕컬러 start */}
       <RowView
         style={{
-          backgroundColor: '#FD7F36',
+          backgroundColor: '#5F408F',
           justifyContent: 'space-between',
           paddingVertical: 11,
           paddingLeft: 15,
           paddingRight: 25,
           // width: width,
           // height: height * 0.06,
-        }}
-      >
+        }}>
         <Image
           source={require('../../assets/images/nav_logo.png')}
           style={{

@@ -99,8 +99,8 @@ const view = ({navigation}) => {
                 style={{
                   ...styles.btnWrapper,
                   backgroundColor:
-                    selectedMenu === item ? '#fd7f36' : '#f7f7f7',
-                  borderColor: selectedMenu === item ? '#fd7f36' : '#c4c4c4',
+                    selectedMenu === item ? '#5F408F' : '#f7f7f7',
+                  borderColor: selectedMenu === item ? '#5F408F' : '#c4c4c4',
                 }}>
                 <NormalBoldLabel
                   text={item}

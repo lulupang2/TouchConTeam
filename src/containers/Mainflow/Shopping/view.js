@@ -118,7 +118,7 @@ const Menu = ({menu}) => {
         {/* <NormalBoldLabel text={menu.name} style={{marginTop: 4}} /> */}
         <NormalBoldLabel
           text={menu.price + ' TOP'}
-          style={{color: '#FD7F36', marginTop: 4}}
+          style={{color: '#5F408F', marginTop: 4}}
         />
       </View>
     </Touchable>
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 24,
     marginBottom: 32,
     paddingVertical: 15,
-    backgroundColor: '#FD7F36',
+    backgroundColor: '#5F408F',
     borderRadius: 53,
     justifyContent: 'center',
     alignItems: 'center',

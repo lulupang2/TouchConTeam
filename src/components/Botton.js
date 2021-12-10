@@ -5,7 +5,7 @@ export const LongButton = ({text, tcStyle, txStyle}) => {
   return (
     <TouchableOpacity
       style={{
-        backgroundColor: '#FD7F36',
+        backgroundColor: '#5F408F',
         width: '85%',
         // width: 327,
         height: 50,
@@ -72,7 +72,7 @@ export const GoButton = ({onPress, tcStyle, txStyle}) => {
   return (
     <TouchableOpacity
       style={{
-        backgroundColor: '#FD7F36',
+        backgroundColor: '#5F408F',
         width: 79,
         height: 35,
         borderRadius: 53,

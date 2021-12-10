@@ -264,7 +264,7 @@ const RootStack = () => (
       component={RandomSc}
       options={{
         title: '스캔으로 랜덤 잭팟을!',
-        headerStyle: {backgroundColor: '#FD7F36'},
+        headerStyle: {backgroundColor: '#5F408F'},
         // headerTintColor: '#fff',
         headerTitleStyle: {
           color: '#fff',
@@ -278,7 +278,7 @@ const RootStack = () => (
       component={MyCoupon}
       options={{
         title: '스캔 이용',
-        headerStyle: {backgroundColor: '#FD7F36'},
+        headerStyle: {backgroundColor: '#5F408F'},
         headerTintColor: '#fff',
         headerTitleStyle: {
           color: '#fff',

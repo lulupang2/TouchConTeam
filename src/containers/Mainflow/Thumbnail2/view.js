@@ -123,7 +123,7 @@ const view = ({navigation}) => {
             marginLeft: 20,
           }}
           activeDotStyle={{
-            backgroundColor: '#FD7F36',
+            backgroundColor: '#5F408F',
             width: 10,
             height: 10,
             borderRadius: 5,

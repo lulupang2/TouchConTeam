@@ -17,7 +17,7 @@ export const Input = styled.TextInput`
 export const Button = styled.TouchableOpacity`
   height: 35px;
   width: 79px;
-  background-color: #fd7f36;
+  background-color: #5f408f;
   justify-content: center;
   flex-direction: row;
   align-items: center;
@@ -61,7 +61,7 @@ export const BottomContainer = styled.View`
   padding: 0px 24px;
 `;
 export const Division = styled.View`
-  background-color: #fd7f36;
+  background-color: #5f408f;
   height: 100%;
   width: 7px;
   margin-right: 14px;
@@ -91,7 +91,7 @@ export const CalendarInformation = styled.Text`
   padding: 8px 0px;
   font-size: 12px;
   font-weight: ${props => (props.total || props.bold ? 'bold' : 'normal')};
-  color: ${props => (props.color ? '#FD7F36' : '#000000')};
+  color: ${props => (props.color ? '#5F408F' : '#000000')};
 `;
 
 export const JoinBtn = styled.TouchableOpacity`
@@ -100,7 +100,7 @@ export const JoinBtn = styled.TouchableOpacity`
   flex: 1;
   width: 100%;
   border-radius: 53px;
-  background: #fd7f36;
+  background: #5f408f;
   justify-content: center;
   align-items: center;
 `;
@@ -112,7 +112,7 @@ export const Join = styled.Text`
 export const Warning = styled.Text`
   font-weight: bold;
   font-size: 12px;
-  color: #fd7f36;
+  color: #5f408f;
   margin-top: 68px;
   margin-bottom: 14px;
   text-align: center;

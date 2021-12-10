@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   upper_back: {
     height: 276,
     width: '100%',
-    backgroundColor: '#FD7F36',
+    backgroundColor: '#5F408F',
     position: 'absolute',
     top: 130,
     zIndex: -1,
@@ -149,7 +149,7 @@ const Btnwhite = ({onPress, text, style}) => {
       }}>
       <NormalBoldLabel
         text={text}
-        style={{fontSize: 20, lineHeight: 24, color: '#fd7f36'}}
+        style={{fontSize: 20, lineHeight: 24, color: '#5F408F'}}
       />
     </TouchableOpacity>
   );

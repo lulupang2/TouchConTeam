@@ -48,7 +48,7 @@ const Circle = ({isOrange}) => {
   return (
     <View
       style={{
-        backgroundColor: isOrange ? '#FD7F36' : '#c4c4c4',
+        backgroundColor: isOrange ? '#5F408F' : '#c4c4c4',
         width: isOrange ? 10 : 7,
         height: isOrange ? 10 : 7,
         borderRadius: isOrange ? 5 : 3.5,
@@ -242,7 +242,7 @@ export default function Pinlogin({route}) {
       {count > 0 && (
         <Text style={styles.errMsg}>
           {`5회 오류 시 PIN번호를\n재설정 해야 합니다. `}
-          <Text style={{color: '#fd7f36'}}>{`(${5 - count}회남음)`}</Text>
+          <Text style={{color: '#5F408F'}}>{`(${5 - count}회남음)`}</Text>
         </Text>
       )}
       <Touchable onPress={() => null} style={{marginTop: 14}}>

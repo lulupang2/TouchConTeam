@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
   },
   cao: {
-    color: '#FD7F36',
+    color: '#5F408F',
     fontSize: 20,
   },
   h4: {

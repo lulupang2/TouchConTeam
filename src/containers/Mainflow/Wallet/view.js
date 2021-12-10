@@ -283,7 +283,7 @@ const view = ({navigation, sendmodal, route}) => {
               <TouchableOpacity onPress={() => clickedTouchCon()}>
                 <RowView
                   style={{
-                    backgroundColor: '#FD7F36',
+                    backgroundColor: '#5F408F',
                     width: 104,
                     height: 40,
                     justifyContent: 'space-between',
@@ -337,7 +337,7 @@ const view = ({navigation, sendmodal, route}) => {
               <TouchableOpacity onPress={() => clickedEthereum()}>
                 <RowView
                   style={{
-                    backgroundColor: '#FD7F36',
+                    backgroundColor: '#5F408F',
                     width: 104,
                     height: 40,
                     justifyContent: 'space-between',
@@ -439,7 +439,7 @@ const BtnPass = ({onPress}) => {
     <TouchableOpacity onPress={onPress}>
       <RowView
         style={{
-          backgroundColor: '#FD7F36',
+          backgroundColor: '#5F408F',
           width: 104,
           height: 40,
           justifyContent: 'space-between',
