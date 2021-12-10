@@ -4,8 +4,7 @@ import Intro2 from '../Mainflow/Intro2/view';
 import Intro3 from '../Mainflow/Intro3/view';
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import TestButton from '../Mainflow/TestButton/view';
-import TestThumbnail from '../Mainflow/TestThumbnail/view';
+
 import {DrawerStack} from './DrawerStack';
 import Wallet from '../Mainflow/Wallet/view';
 import SignOut from '../Mainflow/SignOut/view';
@@ -81,11 +80,6 @@ const RootStack = () => (
       headerBackTitleVisible: false,
     }}>
     {/* 버튼 모음  start */}
-    <Stack.Screen
-      name="TestButton"
-      component={TestButton}
-      options={{headerShown: false}}
-    />
     <Stack.Screen
       name="AdDetail1"
       component={AdDetatil1}
