@@ -544,7 +544,7 @@ function Signup({props, navigation}) {
         }}>
         {/* 전화번호 picker : 010,011,017 */}
 
-        <Text
+        {/* <Text
           style={{
             borderWidth: 1,
             borderColor: '#E3E5E5',
@@ -556,13 +556,13 @@ function Signup({props, navigation}) {
             textAlignVertical: 'center',
           }}>
           010
-        </Text>
+        </Text> */}
         {/* 전화번호 picker : 010,011,017 */}
 
         <TextInput
           onChangeText={setPhone}
           keyboardType="phone-pad"
-          maxLength={8}
+          maxLength={11}
           style={{
             flex: 1,
             marginLeft: 7,

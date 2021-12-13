@@ -215,7 +215,7 @@ android {
 }
 
 dependencies {
-    compile project(':rn-qr-generator')
+    implementation project(':rn-qr-generator')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules

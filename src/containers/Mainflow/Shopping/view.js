@@ -25,7 +25,7 @@ const vw = width / 100;
 const MENU_LIST = [
   {
     id: 1,
-    shop: 'CAORION',
+    shop: 'CAOLION',
     name: 'Premium Pore Original Pack',
     price: '190',
     img: require('../../../assets/images/original/ca_origin_main.png'),
@@ -33,7 +33,7 @@ const MENU_LIST = [
   },
   {
     id: 2,
-    shop: 'CAORION',
+    shop: 'CAOLION',
     name: 'Relipy Relaxing Cream',
     price: '390',
     img: require('../../../assets/images/relaxing/ca_relax_main.png'),
@@ -41,7 +41,7 @@ const MENU_LIST = [
   },
   {
     id: 3,
-    shop: 'CAORION',
+    shop: 'CAOLION',
     name: 'Peace Water Aqua Drop Gel Night Mask',
     price: '550',
     img: require('../../../assets/images/dropgel/ca_drop_main.png'),
@@ -49,7 +49,7 @@ const MENU_LIST = [
   },
   {
     id: 4,
-    shop: 'CAORION',
+    shop: 'CAOLION',
     name: 'Daily Vital Wash Pure Bubble',
     price: '280',
     img: require('../../../assets/images/daily/ca_dail_main.png'),
