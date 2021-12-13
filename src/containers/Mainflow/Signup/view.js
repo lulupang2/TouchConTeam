@@ -109,7 +109,7 @@ function Signup({props, navigation}) {
     dispatch(checkVerifyCode(email, code));
   };
   const checkVertyCode = () => {
-    let body = {Email: email, Verification: verti};
+    let body = {Email: email, Verification: verti, Phone: phone};
     api
       .post(
         'http://3.35.210.171:5055/emailverification',
@@ -561,6 +561,7 @@ function Signup({props, navigation}) {
 
         <TextInput
           onChangeText={setPhone}
+          placeholder="'-' 없이 연락처를 입력해주세요"
           keyboardType="phone-pad"
           maxLength={11}
           style={{
