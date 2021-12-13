@@ -11,9 +11,9 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		459D50792673BA9265F92B37 /* libPods-TouchCon-TouchConTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D8F927253DBB96098EF8DF /* libPods-TouchCon-TouchConTests.a */; };
+		29FA879A6849D3AC74F16DA4 /* libPods-TouchCon-TouchConTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBB663879CA10E81E414F74B /* libPods-TouchCon-TouchConTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		946D07EFB5FB14D22757A2F2 /* libPods-TouchCon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DB8C10E898B01CB6267551F /* libPods-TouchCon.a */; };
+		E56AE3EEFEFB5C28D9C4FDFA /* libPods-TouchCon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9915F73E19671AB642B162 /* libPods-TouchCon.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,20 +30,20 @@
 		00E356EE1AD99517003FC87E /* TouchConTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouchConTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* TouchConTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchConTests.m; sourceTree = "<group>"; };
-		0323B68B6A742BBB1085BF71 /* Pods-TouchCon-TouchConTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchCon-TouchConTests.release.xcconfig"; path = "Target Support Files/Pods-TouchCon-TouchConTests/Pods-TouchCon-TouchConTests.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* TouchCon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchCon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = TouchCon/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = TouchCon/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TouchCon/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = TouchCon/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = TouchCon/main.m; sourceTree = "<group>"; };
-		49D8F927253DBB96098EF8DF /* libPods-TouchCon-TouchConTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TouchCon-TouchConTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6205E1635331BA881907F270 /* Pods-TouchCon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchCon.release.xcconfig"; path = "Target Support Files/Pods-TouchCon/Pods-TouchCon.release.xcconfig"; sourceTree = "<group>"; };
-		7DB8C10E898B01CB6267551F /* libPods-TouchCon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TouchCon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = TouchCon/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		860882E24F366E6AB1A7DE41 /* Pods-TouchCon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchCon.debug.xcconfig"; path = "Target Support Files/Pods-TouchCon/Pods-TouchCon.debug.xcconfig"; sourceTree = "<group>"; };
-		9C5F5EFD78A0B0984C5FE828 /* Pods-TouchCon-TouchConTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchCon-TouchConTests.debug.xcconfig"; path = "Target Support Files/Pods-TouchCon-TouchConTests/Pods-TouchCon-TouchConTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B511D5AAE36F724294CCB12E /* Pods-TouchCon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchCon.release.xcconfig"; path = "Target Support Files/Pods-TouchCon/Pods-TouchCon.release.xcconfig"; sourceTree = "<group>"; };
+		BBB663879CA10E81E414F74B /* libPods-TouchCon-TouchConTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TouchCon-TouchConTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD9915F73E19671AB642B162 /* libPods-TouchCon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TouchCon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F0406A8EB0741EFC9A8DBC6D /* Pods-TouchCon-TouchConTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchCon-TouchConTests.debug.xcconfig"; path = "Target Support Files/Pods-TouchCon-TouchConTests/Pods-TouchCon-TouchConTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F3A5054A8EBA64C2D3629924 /* Pods-TouchCon-TouchConTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchCon-TouchConTests.release.xcconfig"; path = "Target Support Files/Pods-TouchCon-TouchConTests/Pods-TouchCon-TouchConTests.release.xcconfig"; sourceTree = "<group>"; };
+		FDCB8E046DA2988026BAAFEB /* Pods-TouchCon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouchCon.debug.xcconfig"; path = "Target Support Files/Pods-TouchCon/Pods-TouchCon.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				459D50792673BA9265F92B37 /* libPods-TouchCon-TouchConTests.a in Frameworks */,
+				29FA879A6849D3AC74F16DA4 /* libPods-TouchCon-TouchConTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				946D07EFB5FB14D22757A2F2 /* libPods-TouchCon.a in Frameworks */,
+				E56AE3EEFEFB5C28D9C4FDFA /* libPods-TouchCon.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,10 +99,10 @@
 		2CD4AED1FEC6CEF25B110EC7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				860882E24F366E6AB1A7DE41 /* Pods-TouchCon.debug.xcconfig */,
-				6205E1635331BA881907F270 /* Pods-TouchCon.release.xcconfig */,
-				9C5F5EFD78A0B0984C5FE828 /* Pods-TouchCon-TouchConTests.debug.xcconfig */,
-				0323B68B6A742BBB1085BF71 /* Pods-TouchCon-TouchConTests.release.xcconfig */,
+				FDCB8E046DA2988026BAAFEB /* Pods-TouchCon.debug.xcconfig */,
+				B511D5AAE36F724294CCB12E /* Pods-TouchCon.release.xcconfig */,
+				F0406A8EB0741EFC9A8DBC6D /* Pods-TouchCon-TouchConTests.debug.xcconfig */,
+				F3A5054A8EBA64C2D3629924 /* Pods-TouchCon-TouchConTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -111,8 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				7DB8C10E898B01CB6267551F /* libPods-TouchCon.a */,
-				49D8F927253DBB96098EF8DF /* libPods-TouchCon-TouchConTests.a */,
+				BD9915F73E19671AB642B162 /* libPods-TouchCon.a */,
+				BBB663879CA10E81E414F74B /* libPods-TouchCon-TouchConTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -155,12 +155,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "TouchConTests" */;
 			buildPhases = (
-				2FFC26CBE59FE94F3E530EDD /* [CP] Check Pods Manifest.lock */,
+				AEA59C7B4630C857CEEE3BFC /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				EAE3E56755437D8974604FFD /* [CP] Embed Pods Frameworks */,
-				E2677EA6FB909E708FC8F23A /* [CP] Copy Pods Resources */,
+				BF886CBA0D6A058C2A2D0D21 /* [CP] Embed Pods Frameworks */,
+				31DC49B9F15C623A2B6D838A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,14 +176,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "TouchCon" */;
 			buildPhases = (
-				BF4EA9752BA89EEA1BCB27A1 /* [CP] Check Pods Manifest.lock */,
+				37E2DDD56BFE51AC2B42CA17 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				9EFD8B1A93B5F72F2B3DAF02 /* [CP] Embed Pods Frameworks */,
-				EEF229BEE39DBC196D8C4E5B /* [CP] Copy Pods Resources */,
+				36F963F0E20F651348AA3329 /* [CP] Embed Pods Frameworks */,
+				0BA2C8EC535954C6A5A01800 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,29 +264,41 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		2FFC26CBE59FE94F3E530EDD /* [CP] Check Pods Manifest.lock */ = {
+		0BA2C8EC535954C6A5A01800 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TouchCon/Pods-TouchCon-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TouchCon-TouchConTests-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-TouchCon/Pods-TouchCon-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TouchCon/Pods-TouchCon-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9EFD8B1A93B5F72F2B3DAF02 /* [CP] Embed Pods Frameworks */ = {
+		31DC49B9F15C623A2B6D838A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TouchCon-TouchConTests/Pods-TouchCon-TouchConTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TouchCon-TouchConTests/Pods-TouchCon-TouchConTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TouchCon-TouchConTests/Pods-TouchCon-TouchConTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		36F963F0E20F651348AA3329 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -303,7 +315,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TouchCon/Pods-TouchCon-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BF4EA9752BA89EEA1BCB27A1 /* [CP] Check Pods Manifest.lock */ = {
+		37E2DDD56BFE51AC2B42CA17 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -325,24 +337,29 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E2677EA6FB909E708FC8F23A /* [CP] Copy Pods Resources */ = {
+		AEA59C7B4630C857CEEE3BFC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TouchCon-TouchConTests/Pods-TouchCon-TouchConTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TouchCon-TouchConTests/Pods-TouchCon-TouchConTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TouchCon-TouchConTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TouchCon-TouchConTests/Pods-TouchCon-TouchConTests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EAE3E56755437D8974604FFD /* [CP] Embed Pods Frameworks */ = {
+		BF886CBA0D6A058C2A2D0D21 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -357,23 +374,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TouchCon-TouchConTests/Pods-TouchCon-TouchConTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EEF229BEE39DBC196D8C4E5B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TouchCon/Pods-TouchCon-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TouchCon/Pods-TouchCon-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TouchCon/Pods-TouchCon-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -428,7 +428,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C5F5EFD78A0B0984C5FE828 /* Pods-TouchCon-TouchConTests.debug.xcconfig */;
+			baseConfigurationReference = F0406A8EB0741EFC9A8DBC6D /* Pods-TouchCon-TouchConTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -455,7 +455,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0323B68B6A742BBB1085BF71 /* Pods-TouchCon-TouchConTests.release.xcconfig */;
+			baseConfigurationReference = F3A5054A8EBA64C2D3629924 /* Pods-TouchCon-TouchConTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -479,7 +479,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 860882E24F366E6AB1A7DE41 /* Pods-TouchCon.debug.xcconfig */;
+			baseConfigurationReference = FDCB8E046DA2988026BAAFEB /* Pods-TouchCon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -507,7 +507,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6205E1635331BA881907F270 /* Pods-TouchCon.release.xcconfig */;
+			baseConfigurationReference = B511D5AAE36F724294CCB12E /* Pods-TouchCon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

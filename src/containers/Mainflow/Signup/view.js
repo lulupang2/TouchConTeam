@@ -95,6 +95,8 @@ function Signup({props, navigation}) {
       errMsg = '인증시간이 초과되었습니다.';
     } else if (code !== verti) {
       errMsg = '인증번호가 틀립니다.';
+    } else if (phone.length < 8) {
+      errMsg = '휴대폰번호를 입력해주세요';
     }
 
     if (errMsg) {
@@ -106,29 +108,44 @@ function Signup({props, navigation}) {
       return;
     }
     checkVertyCode();
-    dispatch(checkVerifyCode(email, code));
+    // dispatch(checkVerifyCode(email, code));
   };
-  const checkVertyCode = () => {
+  // const checkVertyCode = () => {
+  //   let body = {Email: email, Verification: verti, Phone: phone};
+  //   api
+  //     .post('emailverify', JSON.stringify(body), {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     })
+  //     .then(res => {
+  //       if (res.status !== 200) {
+  //         return;
+  //       }
+  //       navigation.navigate('Pinlogin', {Email: email});
+  //     })
+  //     .catch(err => {
+  //       Alert.alert('회원기입 실패하였습니다');
+  //       console.log('에러메세지', err);
+  //     });
+  // };
+  const checkVertyCode = async () => {
     let body = {Email: email, Verification: verti, Phone: phone};
-    api
-      .post(
-        'http://3.35.210.171:5055/emailverification',
-        JSON.stringify(body),
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
+    console.log(body);
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
         },
-      )
-      .then(res => {
-        if (res.status !== 200) {
-          return;
-        }
+      };
+      const res = await api.post('emailverify', JSON.stringify(body), config);
+      if (res?.data?.Result === 'success') {
         navigation.navigate('Pinlogin', {Email: email});
-      })
-      .catch(err => {
-        console.log('에러메세지', err);
-      });
+      }
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
   };
   const onCheckAllAgree = (ser_agree, per_agree, mark_agree) => {
     if (!allagree && ser_agree && per_agree && mark_agree) {
