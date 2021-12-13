@@ -7,15 +7,18 @@ import {
   StatusBar,
   ImageBackground,
   Text,
+  Alert,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {resetAuth} from '../../redux/authSlice';
+import {DeviceEventEmitter} from 'react-native';
 
 const {height, width} = Dimensions.get('window');
 
 export default function Splash({navigation}) {
   const auth = useSelector(state => state.auth);
   const {loginSuccess} = auth;
+  console.log(auth.email);
   useEffect(() => {
     setTimeout(() => {
       if (auth.email !== null) {

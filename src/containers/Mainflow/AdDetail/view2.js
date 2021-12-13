@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image, Text, ScrollView, StyleSheet} from 'react-native';
+import {View, Image, Text, ScrollView, StyleSheet, Alert} from 'react-native';
 import BottomButton from '../../../components/BottomButton';
 import ColumnView from '../../../components/ColumnView';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
@@ -44,7 +44,12 @@ const view2 = props => {
           />
 
           <Text style={styles.text2}>판매가격: 550 TOP</Text>
-          <BottomButton text={'구매'} />
+          <BottomButton
+            text={'구매'}
+            onPress={() => {
+              Alert.alert('준비중입니다.');
+            }}
+          />
           {Imgdata.map(data => (
             <Image
               source={data.img}

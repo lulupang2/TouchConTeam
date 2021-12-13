@@ -59,6 +59,7 @@ const Circle = ({isOrange}) => {
 };
 
 export default function Pinlogin({route}) {
+  console.log('PinLogin', route);
   const dispatch = useDispatch();
 
   const {count} = useSelector(state => state.auth);
@@ -69,11 +70,7 @@ export default function Pinlogin({route}) {
   const [pwdbool, setPwdbool] = useState(0); // pwErrCount
   // const email = route.params.Email ? route.params.Email : auth.email;
   const navigation = useNavigation();
-  useEffect(() => {
-    // getPinRegister();
-    // navigation.navigate('Signup');
-  }, []);
-  useEffect(() => {}, []);
+
   const fetchWithdrawal = async () => {
     let body = {sessionToken: auth.sessionToken};
     try {
@@ -228,7 +225,11 @@ export default function Pinlogin({route}) {
         {/*{pwd.length >= 7 ? <Orange /> : <Gray />}*/}
       </RowView>
       <TextInput
-        style={{width: width * 0.6, color: 'transparent', marginTop: -32}}
+        style={{
+          width: width * 0.6,
+          color: 'transparent',
+          marginTop: -32,
+        }}
         // onKeyPress={handleKeyPress}
         value={pwd}
         onSubmitEditing={handleKeyPress}
@@ -248,6 +249,42 @@ export default function Pinlogin({route}) {
       <Touchable onPress={() => null} style={{marginTop: 14}}>
         <NormalBoldLabel text={'PIN 번호 분실'} style={{color: '#0068D9'}} />
       </Touchable>
+
+      <NormalBoldLabel
+        text={'* 주의 '}
+        style={{
+          color: '#FF0000',
+          marginTop: 40,
+          textAlign: 'left',
+          width: '100%',
+          paddingHorizontal: 50,
+          fontSize: 13,
+        }}
+      />
+
+      <NormalBoldLabel
+        text={
+          'PIN 번호는 7자리를 초과해서는 적용 될 수 없으며,적용 된 만큼 PIN의 색이 차오릅니다.'
+        }
+        style={{
+          fontSize: 12,
+          marginTop: 10,
+          marginHorizontal: 50,
+          textAlign: 'left',
+        }}
+      />
+
+      <NormalBoldLabel
+        text={
+          '한번 회원가입 된 이메일로 다시 회원가입을 할 경우,마지막에 시도한 비밀번호만 적용 됩니다.'
+        }
+        style={{
+          fontSize: 12,
+          marginTop: 10,
+          marginHorizontal: 50,
+          textAlign: 'left',
+        }}
+      />
       {/*<View>*/}
       {/*  <TouchableOpacity>*/}
       {/*    /!* PIN 번호 분실 text start *!/*/}

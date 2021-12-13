@@ -10,6 +10,7 @@ import {
   SafeAreaView,
   ScrollView,
   FlatList,
+  Alert,
 } from 'react-native';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
@@ -71,7 +72,11 @@ const view = ({navigation}) => {
           keyExtractor={(item, idx) => item.id + idx.toString()}
         />
       </View>
-      <Touchable style={styles.addBtn}>
+      <Touchable
+        style={styles.addBtn}
+        onPress={() => {
+          Alert.alert('준비중입니다.');
+        }}>
         <NormalBoldLabel
           text={'추가'}
           style={{color: '#fff', fontSize: 20, lineHeight: 24}}
