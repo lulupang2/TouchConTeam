@@ -116,6 +116,7 @@ const view = ({navigation, route}) => {
           marginTop: 35,
           borderColor: '#c4c4c4',
           marginHorizontal: 24,
+          justifyContent: 'space-between',
         }}>
         <TextInput
           value={tokens}
@@ -125,11 +126,20 @@ const view = ({navigation, route}) => {
           keyboardType="number-pad"
         />
         {/* Inputext 내의 Touch 글자 */}
-        <Image
+        {/* <Image
           source={require('../../../assets/images/signup_touch_text.png')}
           resizeMode="contain"
           style={{width: 89, height: 19, marginHorizontal: 19}}
-        />
+        /> */}
+        <Text
+          style={{
+            fontSize: 19,
+            color: '#000000',
+            fontWeight: 'bold',
+            marginRight: 19,
+          }}>
+          TouchPoint
+        </Text>
       </RowView>
 
       <BottomButton

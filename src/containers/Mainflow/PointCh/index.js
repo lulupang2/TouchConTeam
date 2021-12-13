@@ -140,7 +140,7 @@ const PointCh = ({navigation, route}) => {
             color: '#000000',
             fontWeight: 'bold',
           }}>
-          TouchConPoint
+          TouchCon
         </Text>
       </RowView>
 
