@@ -39,7 +39,7 @@ function Signup({props, navigation}) {
   const [code, onChangeCode] = React.useState('');
   const [remaining, setRemaining] = useState(0);
   const [hasSent, setHasSent] = useState(false);
-  const [phone, setPhone] = useState('');
+  const [phone, onChangePhone] = React.useState('');
   const [isDisabled, setIsDisabled] = useState(false);
   // const [phoneNum, setPhoneNum] = useState('010');
   {
@@ -111,15 +111,11 @@ function Signup({props, navigation}) {
   const checkVertyCode = () => {
     let body = {Email: email, Verification: verti, Phone: phone};
     api
-      .post(
-        'http://3.35.210.171:5055/emailverification',
-        JSON.stringify(body),
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
+      .post('http://3.35.210.171:5055/emailverify', JSON.stringify(body), {
+        headers: {
+          'Content-Type': 'application/json',
         },
-      )
+      })
       .then(res => {
         if (res.status !== 200) {
           return;
@@ -560,7 +556,7 @@ function Signup({props, navigation}) {
         {/* 전화번호 picker : 010,011,017 */}
 
         <TextInput
-          onChangeText={setPhone}
+          onChangeText={onChangePhone}
           placeholder="'-' 없이 연락처를 입력해주세요"
           keyboardType="phone-pad"
           maxLength={11}
