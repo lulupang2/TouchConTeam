@@ -41,23 +41,33 @@ const DATA = [
 const Staking = () => {
   const auth = useSelector(state => state.auth);
   const isFocused = useIsFocused();
-  const [interest, setInterest] = useState('1000000000');
+  const [interest, setInterest] = useState('start');
   const [sumInput, onChangeSumInput] = useState('');
   const [touchPoint, setTouchPoint] = useState('');
-  let interestInforFirst = parseInt(parseInt(interest) * 0.07);
-  let interestInforTwo = parseInt(
-    (interestInforFirst + parseInt(interest)) * 0.07,
-  );
-  let interestInforThree = parseInt(
-    (interestInforTwo + interestInforFirst + parseInt(interest)) * 0.07,
-  );
-  let interestInforFour = parseInt(
-    (interestInforThree +
-      interestInforTwo +
-      interestInforFirst +
-      parseInt(interest)) *
-      0.07,
-  );
+
+  // let interestInforFirst = parseInt(parseInt(interest) * 0.07);
+  // let interestInforTwo = parseInt(
+  //   (interestInforFirst + parseInt(interest)) * 0.07,
+  // );
+  // let interestInforThree = parseInt(
+  //   (interestInforTwo + interestInforFirst + parseInt(interest)) * 0.07,
+  // );
+  // let interestInforFour = parseInt(
+  //   (interestInforThree +
+  //     interestInforTwo +
+  //     interestInforFirst +
+  //     parseInt(interest)) *
+  //     0.07,
+  // );
+  // let Add = parseInt(parseInt(interest) * 0.07);
+  let interestInforFirst =
+    interest === 'start' ? 560000 : parseInt(parseInt(interest) * 0.07);
+  let interestInforTwo =
+    interest === 'start' ? 560000 : parseInt(parseInt(interest) * 0.07);
+  let interestInforThree =
+    interest === 'start' ? 560000 : parseInt(parseInt(interest) * 0.07);
+  let interestInforFour =
+    interest === 'start' ? 795000 : parseInt(parseInt(interest) * 0.07);
   let totals =
     interestInforTwo +
     interestInforFour +
@@ -123,7 +133,7 @@ const Staking = () => {
   }, []);
   useEffect(() => {
     getbalance();
-    setInterest('1000000000');
+    setInterest('start');
     onChangeSumInput('');
   }, [isFocused]);
   const getbalance = async () => {
@@ -170,8 +180,6 @@ const Staking = () => {
   };
 
   const onClickSum = () => {
-    setInterest(sumInput);
-
     if (sumInput.length === 0) {
       Alert.alert('수량을 입력해주세요');
       return;
@@ -180,6 +188,8 @@ const Staking = () => {
       Alert.alert('1000 이상만 가능합니다');
       return;
     }
+    setInterest(sumInput);
+
     try {
       Alert.alert('계산완료');
     } catch (e) {
