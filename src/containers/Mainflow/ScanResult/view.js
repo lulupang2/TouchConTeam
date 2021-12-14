@@ -18,12 +18,9 @@ import {NormalBoldLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';
 
 const view = ({navigation}) => {
-  const [accumulate, setAccumulate] = useState(500); //충전 할 포인트
-  const [allCharge, setAllCharge] = useState(2500); // 현재 총 보유 중인 포인트
-
   return (
     <WhiteSafeAreaView>
-      <Navbar />
+      {/*<Navbar />*/}
       {/* 별,축하합니다. 이미지  */}
       <Image
         source={require('../../../assets/images/star_congra.png')}
@@ -37,7 +34,7 @@ const view = ({navigation}) => {
             <RowView style={styles.ro1}>
               <Text style={{color: '#ffffff', fontSize: 30, marginTop: 25}}>
                 {/* 충전하기 */}
-                {accumulate}
+                {500}
               </Text>
               <Image
                 source={require('../../../assets/images/touch_blue_text.png')}
@@ -72,7 +69,7 @@ const view = ({navigation}) => {
             현재 적립액
           </Text>
           {/* 현재 보유중인  총 충전 금액 */}
-          <Text style={{fontSize: 20, color: '#fff'}}>{allCharge}</Text>
+          <Text style={{fontSize: 20, color: '#fff'}}>{2500}</Text>
           <Image
             source={require('../../../assets/images/touch_blue_text.png')}
             resizeMode="contain"
