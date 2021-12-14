@@ -169,7 +169,6 @@ const view = ({navigation}) => {
       // console.log('test', res.data.Result);
     } catch (err) {
       Alert.alert('', '서버와 통신에 실패');
-      navigation.navigate('ScanResult', {touchPoint: 10});
       console.log('err', err);
     }
   };

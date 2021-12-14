@@ -8,7 +8,6 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
-  Touchable,
   ScrollView,
   Alert,
 } from 'react-native';
@@ -21,6 +20,9 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import api from '../../../api';
+
+const window_width = Dimensions.get('window').width;
+const window_height = Dimensions.get('window').height;
 
 const view = ({route}) => {
   const navigation = useNavigation();
@@ -63,10 +65,39 @@ const view = ({route}) => {
       {console.log(balance, touchPoint)}
       {/*<Navbar />*/}
       {/* 별,축하합니다. 이미지  */}
+      <View
+        style={{
+          // position:"relative",
+          backgroundColor: '#5F408F',
+          width: window_width * 1,
+          height: window_height * 0.08,
+        }}>
+        {/* <TouchableOpacity
+          onPress={() => {
+            console.warn('!!');
+            navigation.navigate('Main');
+          }}>
+          <Image
+            source={require('../../../assets/images/point_x.png')}
+            resizeMode={'contain'}
+            style={{
+              width: 32,
+              height: 32,
+              alignSelf: 'flex-end',
+              marginRight: 10,
+              marginTop: 10,
+            }}
+          />
+        </TouchableOpacity> */}
+      </View>
       <Image
         source={require('../../../assets/images/star_congra.png')}
         resizeMode="contain"
-        style={{width: '100%', position: 'relative', top: -161}}
+        style={{
+          width: '100%',
+          position: 'relative',
+          top: -160.5,
+        }}
       />
       {/* 별,축하합니다 아래 View로 배경 작업 */}
       <View style={styles.upper_back}>
@@ -94,18 +125,18 @@ const view = ({route}) => {
       </View>
 
       {/* 하단 부분 스크롤 */}
-      <ScrollView>
+      <View style={{flex: 1, justifyContent: 'center'}}>
         <View
           style={{
             minHeight: 100,
             marginHorizontal: 52,
             backgroundColor: 'rgba(14, 15, 15, 0.8)',
-            marginTop: 84,
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignContent: 'center',
             alignItems: 'center',
+            height: 100,
           }}>
           <Text style={{marginLeft: 20, fontSize: 15, color: '#fff'}}>
             현재 적립액
@@ -124,14 +155,13 @@ const view = ({route}) => {
             }}
           />
         </View>
-        <BottomButton
-          text={'나의 지갑가기'}
-          style={{marginTop: 104}}
-          onPress={() => {
-            navigation.navigate('Main');
-          }}
-        />
-      </ScrollView>
+      </View>
+      <BottomButton
+        text={'나의 지갑가기'}
+        onPress={() => {
+          navigation.navigate('Main');
+        }}
+      />
     </WhiteSafeAreaView>
   );
 };
@@ -160,7 +190,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#5F408F',
     position: 'absolute',
-    top: 130,
+    top: 131.5,
     zIndex: -1,
     borderBottomLeftRadius: 35,
     borderBottomRightRadius: 35,
