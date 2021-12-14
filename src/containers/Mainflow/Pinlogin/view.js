@@ -169,7 +169,14 @@ export default function Pinlogin({route}) {
 
           Alert.alert('로그인이 성공하였습니다');
           dispatch(resetCount());
-          navigation.navigate('Main');
+          // navigation.navigate('Main');
+          navigation.reset({
+            routes: [
+              {
+                name: 'Main',
+              },
+            ],
+          });
           // console.log( res?.data?.Result);
         })
         .catch(err => {
