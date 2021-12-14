@@ -43,6 +43,7 @@ const view = ({navigation, sendmodal, route}) => {
 
   const copyClipboard = () => {
     Clipboard.setString(walletAddress);
+    Alert.alert('복사되었습니다.');
   };
 
   useEffect(() => {

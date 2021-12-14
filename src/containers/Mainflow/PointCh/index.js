@@ -94,7 +94,7 @@ const PointCh = ({navigation, route}) => {
   return (
     <ScrollView>
       <View style={styles.back}>
-        <Text style={styles.tx1}>전확액 만큼 터치콘이 차감 됩니다.</Text>
+        <Text style={styles.tx1}>전환액 만큼 터치콘이 차감 됩니다.</Text>
         <View style={styles.point}>
           <Image
             source={require('../../../assets/icons/coin_icon.png')}

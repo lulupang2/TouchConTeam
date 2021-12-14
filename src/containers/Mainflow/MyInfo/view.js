@@ -5,6 +5,7 @@ import {NormalBoldLabel} from '../../../components/Label';
 import {MenuItem} from '../../../components/MenuItem';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import {useSelector} from 'react-redux';
+import {Alert} from 'react-native';
 
 const MENU = [
   {id: 1, title: '터치코인 연결관리', path: 'TcConnMana'},

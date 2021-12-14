@@ -3,13 +3,15 @@ import Touchable from './Touchable';
 import {NormalBoldLabel} from './Label';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import SwitchToggle from 'react-native-switch-toggle';
+import {Alert} from 'react-native';
+import {IgnorePattern} from 'react-native/Libraries/LogBox/LogBox';
 
 export const MenuItem = ({onPress, title, style, id}) => {
   const [on, setOn] = useState(false);
 
-  const off = () => {
-    setOn(!on);
-  };
+  // const off = () => {
+  //   setOn(!on);
+  // };
 
   const [select, setSelect] = useState(101);
 
@@ -31,7 +33,14 @@ export const MenuItem = ({onPress, title, style, id}) => {
       {select === id ? (
         <SwitchToggle
           switchOn={on}
-          onPress={() => off()}
+          onPress={() => {
+            if (on === false) {
+              setOn(true);
+              Alert.alert('준비중입니다.');
+            } else {
+              setOn(false);
+            }
+          }}
           circleColorOff="#FFFFFF"
           circleColorOn="#FFFFFF"
           backgroundColorOn="#5F408F"
