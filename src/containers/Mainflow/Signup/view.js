@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
+  Modal,
   Alert,
 } from 'react-native';
 import BottomButton from '../../../components/BottomButton';
@@ -17,6 +18,8 @@ import RowView from '../../../components/RowView';
 import {useDispatch, useSelector} from 'react-redux';
 import {checkVerifyCode} from '../../../redux/authSlice';
 import api from '../../../api';
+import Modals from '../../../components/Modal';
+import {Privacy, SendMsg, USE} from '../../../utils/data';
 
 const {height, width} = Dimensions.get('window');
 
@@ -26,6 +29,7 @@ const vw = width / 100;
 let interval;
 
 function Signup({props, navigation}) {
+  const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
   const {isVerified} = auth;
@@ -41,6 +45,7 @@ function Signup({props, navigation}) {
   const [hasSent, setHasSent] = useState(false);
   const [phone, onChangePhone] = React.useState('');
   const [isDisabled, setIsDisabled] = useState(false);
+  const [content, setContent] = useState('');
   // const [phoneNum, setPhoneNum] = useState('010');
   {
     // console.log('인증번호: ', verti);
@@ -208,6 +213,11 @@ function Signup({props, navigation}) {
 
   return (
     <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
+      <Modals
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        content={content}
+      />
       <View style={{paddingLeft: 24}}>
         <NormalBoldLabel
           keyboardType="email-address"
@@ -337,7 +347,14 @@ function Signup({props, navigation}) {
               {/* 중간 확인 */}
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              //
+              {
+                setContent(USE);
+                setModalVisible(true);
+              }
+            }>
             <Image
               source={require('../../../assets/images/detailview.png')}
               style={{
@@ -404,7 +421,14 @@ function Signup({props, navigation}) {
               {/* 중간 확인 */}
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              //
+              {
+                setContent(Privacy);
+                setModalVisible(true);
+              }
+            }>
             <Image
               source={require('../../../assets/images/detailview.png')}
               style={{
@@ -468,8 +492,11 @@ function Signup({props, navigation}) {
               </Text>
             </TouchableOpacity>
           </View>
-
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setContent(SendMsg);
+              setModalVisible(true);
+            }}>
             <Image
               source={require('../../../assets/images/detailview.png')}
               style={{
