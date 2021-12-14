@@ -22,6 +22,9 @@ import {Type} from 'react-native/ReactCommon/hermes/inspector/tools/msggen/src/T
 import api from '../../../api';
 import {useDispatch, useSelector} from 'react-redux';
 
+const window_width = Dimensions.get('window').width;
+const window_height = Dimensions.get('window').height;
+
 const PointCh = ({navigation, route}) => {
   const [ponit, setPonit] = useState('10000.11');
   const [tokens, onChangetokens] = useState('');
@@ -160,7 +163,14 @@ const PointCh = ({navigation, route}) => {
           alignItems: 'center',
         }}
       /> */}
-      <NormalLabel
+
+      <Image
+        source={require('../../../assets/images/content_info.png')}
+        resizeMode={'contain'}
+        style={{width: window_height * 0.4, alignSelf: 'center'}}
+      />
+
+      {/* <NormalLabel
         text={
           '[유의사항]\n\n' +
           '●  개인정보 입력에 유의해 주세요.\n' +
@@ -175,7 +185,7 @@ const PointCh = ({navigation, route}) => {
           alignSelf: 'center',
           color: '#5F408F',
         }}
-      />
+      /> */}
     </ScrollView>
   );
 };

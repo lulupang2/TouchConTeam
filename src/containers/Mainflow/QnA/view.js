@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
   },
   btnText: {
     paddingHorizontal: 4,
-    fontSize: 18,
+    fontSize: 17,
     lineHeight: 20,
   },
   qnaBtnWrapper: {

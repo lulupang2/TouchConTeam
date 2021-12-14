@@ -422,6 +422,7 @@ function Signup({props, navigation}) {
             alignItems: 'center',
             justifyContent: 'space-evenly',
             borderColor: '#c4c4c4',
+            marginBottom: 22,
           }}>
           {mark_agree ? (
             <TouchableOpacity onPress={chg_mark}>

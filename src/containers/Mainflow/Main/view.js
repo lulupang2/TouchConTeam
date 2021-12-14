@@ -337,7 +337,8 @@ const AdMenu = ({menu, index}) => {
     <RowView
       style={{
         ...styles.adContent,
-        borderBottomWidth: index !== AD_MENU.length - 1 ? 1 : 0,
+        // borderBottomWidth: index !== AD_MENU.length - 1 ? 1 : 0,
+        borderBottomWidth: 1,
       }}>
       {/* <NormalBoldLabel text={menu.name} style={{color: '#555'}} /> */}
       <Image
