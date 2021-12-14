@@ -27,6 +27,7 @@ import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import api from '../../../api';
 import {useSelector} from 'react-redux';
+import {NormalBoldLabel} from '../../../components/Label';
 const DATA = [
   '기준 : 매 분기 1회 진행',
   '년간 총 4회 (리워드 풀 매년 수량의 5% 책정)',
@@ -261,8 +262,17 @@ const Staking = () => {
               placeholder="수량"
               onChangeText={onChangeSumInput}
             />
-            <TouchImage
+            {/* <TouchImage
               source={require('../../../assets/images/touchLogo.png')}
+            /> */}
+            <NormalBoldLabel
+              text={'TOC'}
+              style={{
+                fontSize: 15,
+                lineHeight: 34,
+                color: '#000',
+                marginRight: 20,
+              }}
             />
           </TextInputContainer>
           <Button

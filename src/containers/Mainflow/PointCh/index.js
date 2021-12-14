@@ -13,7 +13,7 @@ import {
   Alert,
 } from 'react-native';
 import {HeaderWalletBottomLine} from '../../../components/HeaderBottomLine';
-import {NormalLabel} from '../../../components/Label';
+import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 import BottomButton from '../../../components/BottomButton';
 import RowView from '../../../components/RowView';
 import Touchable from '../../../components/Touchable';
@@ -91,7 +91,7 @@ const PointCh = ({navigation, route}) => {
   return (
     <ScrollView>
       <View style={styles.back}>
-        <Text style={styles.tx1}>전환액 만큼 터치콘이 차감 됩니다.</Text>
+        <Text style={styles.tx1}>전확액 만큼 터치콘이 차감 됩니다.</Text>
         <View style={styles.point}>
           <Image
             source={require('../../../assets/icons/coin_icon.png')}
@@ -101,11 +101,13 @@ const PointCh = ({navigation, route}) => {
             }}
           />
           <Text style={styles.tx2}>{coins?.TouchPoint}</Text>
-          <Image
-            source={require('../../../assets/images/tx_touch.png')}
+          <NormalBoldLabel
+            text={'TOP'}
             style={{
-              width: 91,
-              height: 28,
+              fontSize: 30,
+              lineHeight: 34,
+              color: '#fff',
+              marginRight: 20,
             }}
           />
         </View>
@@ -140,12 +142,12 @@ const PointCh = ({navigation, route}) => {
             color: '#000000',
             fontWeight: 'bold',
           }}>
-          TouchCon
+          TOP
         </Text>
       </RowView>
 
       <BottomButton
-        text={'포인트 전환'}
+        text={'TOP 전환'}
         style={{marginVertical: 32}}
         onPress={ChangeTokenToPoint}
       />
@@ -162,9 +164,9 @@ const PointCh = ({navigation, route}) => {
         text={
           '[유의사항]\n\n' +
           '●  개인정보 입력에 유의해 주세요.\n' +
-          '●  터치토큰 이외의 주소로는 송금되지 않아요.\n' +
+          '●  터치토큰 이외의 주소로는 전송되지 않아요.\n' +
           '●  터치토큰을 전송할 경우에는 이더리움 가스비가\n' +
-          '    필요합니다.\n' +
+          '     필요합니다.\n' +
           '●  미리 이더리움을 충전해 놓으시길 바랍니다.'
         }
         style={{

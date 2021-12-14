@@ -61,10 +61,14 @@ export default function Main({navigation}) {
                 height: 70,
               }}
             />
-            <View style={{alignItems: 'flex-end'}}>
+            <View style={{alignItems: 'flex-start', width: '100%', margin: 20}}>
               <NormalBoldLabel
-                text={'내 터치콘 지갑'}
-                style={{fontSize: 20, lineHeight: 24, color: '#000000'}}
+                text={'내 터치콘'}
+                style={{
+                  fontSize: 20,
+                  lineHeight: 24,
+                  color: '#000000',
+                }}
               />
             </View>
           </TouchableNoFeedback>
@@ -237,7 +241,7 @@ export default function Main({navigation}) {
         onPress={() => {
           navigation.navigate('SaveCoupon');
         }}>
-        <NormalBoldLabel text={'나의 리워드콘'} style={{color: '#fff'}} />
+        <NormalBoldLabel text={'리워드콘 스캔 이력'} style={{color: '#fff'}} />
       </Touchable>
     </WhiteSafeAreaView>
   );
