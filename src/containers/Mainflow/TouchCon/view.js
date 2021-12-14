@@ -150,12 +150,21 @@ const view = ({navigation}) => {
               text={coin?.TouchPoint}
               style={{fontSize: 30, lineHeight: 34}}
             />
-            <Image
+            {/* <Image
               source={require('../../../assets/images/logo_wallet.png')}
               style={{
                 width: 91,
                 height: 28,
                 marginRight: 5,
+              }}
+            /> */}
+            <NormalBoldLabel
+              text={'TOP'}
+              style={{
+                fontSize: 30,
+                lineHeight: 34,
+                color: '#fff',
+                marginRight: 20,
               }}
             />
           </RowView>

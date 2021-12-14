@@ -20,9 +20,60 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import api from '../../../api';
 
 const AD_MENU = [
-  {id: 1, name: 'CAOLION', path: 'GfCaolion'},
-  {id: 2, name: 'MEGAM', path: 'GfMegaMall'},
-  {id: 3, name: '안동국밥', path: 'GfGukBab'},
+  {
+    id: 1,
+    name: 'CAOLION',
+    path: 'GfCaolion',
+    img: require('../../../assets/images/taa/taa_log3.png'),
+  },
+  {
+    id: 2,
+    name: 'MEGAM',
+    path: 'GfMegaMall',
+    img: require('../../../assets/images/taa/taa_log2.jpg'),
+  },
+  {
+    id: 3,
+    name: '안동국밥',
+    path: 'GfGukBab',
+    img: require('../../../assets/images/main/main_andong.png'),
+  },
+  {
+    id: 4,
+    name: 'MUKKEBI',
+    path: '',
+    img: require('../../../assets/images/main/main_mukkei.png'),
+  },
+  {
+    id: 5,
+    name: 'SANABA',
+    path: '',
+    img: require('../../../assets/images/main/main_sanava.png'),
+  },
+  {
+    id: 6,
+    name: 'KRFOOD',
+    path: '',
+    img: require('../../../assets/images/main/main_krfood.png'),
+  },
+  {
+    id: 7,
+    name: 'MEGABOX',
+    path: '',
+    img: require('../../../assets/images/main/main_megabox.png'),
+  },
+  {
+    id: 8,
+    name: 'JAPAN DRUG',
+    path: '',
+    img: require('../../../assets/images/main/main_japan.jpg'),
+  },
+  {
+    id: 9,
+    name: '제주안심코드',
+    path: '',
+    img: require('../../../assets/images/main/main_jeju.png'),
+  },
 ];
 
 function leftPad(value) {
@@ -88,10 +139,14 @@ export default function Main({navigation}) {
                 height: 70,
               }}
             />
-            <View style={{alignItems: 'flex-end'}}>
+            <View style={{alignItems: 'flex-start', width: '100%', margin: 20}}>
               <NormalBoldLabel
-                text={'내 터치콘 지갑'}
-                style={{fontSize: 20, lineHeight: 24, color: '#000000'}}
+                text={'내 터치콘'}
+                style={{
+                  fontSize: 20,
+                  lineHeight: 24,
+                  color: '#000000',
+                }}
               />
             </View>
           </TouchableNoFeedback>
@@ -269,7 +324,7 @@ export default function Main({navigation}) {
         onPress={() => {
           navigation.navigate('SaveCoupon');
         }}>
-        <NormalBoldLabel text={'나의 리워드콘'} style={{color: '#fff'}} />
+        <NormalBoldLabel text={'리워드콘 스캔 이력'} style={{color: '#fff'}} />
       </Touchable>
     </WhiteSafeAreaView>
   );
@@ -284,11 +339,22 @@ const AdMenu = ({menu, index}) => {
         ...styles.adContent,
         borderBottomWidth: index !== AD_MENU.length - 1 ? 1 : 0,
       }}>
-      <NormalBoldLabel text={menu.name} style={{color: '#555'}} />
+      {/* <NormalBoldLabel text={menu.name} style={{color: '#555'}} /> */}
+      <Image
+        source={menu.img}
+        style={{width: 100, height: 20}}
+        resizeMode={'contain'}
+      />
       <RowView>
         <NormalBoldLabel text={menu.name} style={{color: '#555'}} />
         <Touchable
-          onPress={() => navigation.navigate(menu.path)}
+          onPress={() => {
+            if (menu.path === '') {
+              Alert.alert('준비중입니다.');
+              return;
+            }
+            navigation.navigate(menu.path);
+          }}
           style={styles.adBtn}>
           <NormalBoldLabel
             text={'GO'}
@@ -348,10 +414,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 17.5,
     paddingVertical: 9.5,
     paddingHorizontal: 21,
-    backgroundColor: '#0E0F0FCC',
+    // backgroundColor: '#0E0F0FCC',
+    backgroundColor: '#46BEFF',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    borderRadius: 10,
   },
   stackingBtn: {
     paddingVertical: 7,
@@ -395,7 +463,10 @@ const styles = StyleSheet.create({
     paddingVertical: 15.5,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(14, 15, 15, 0.8)',
+    // backgroundColor: 'rgba(14, 15, 15, 0.8)',
+    backgroundColor: '#46BEFF',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
   shoppingBtn: {
     marginTop: 40,

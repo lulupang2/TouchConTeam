@@ -13,7 +13,7 @@ import {
   Alert,
 } from 'react-native';
 import {HeaderWalletBottomLine} from '../../../components/HeaderBottomLine';
-import {NormalLabel} from '../../../components/Label';
+import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 import BottomButton from '../../../components/BottomButton';
 import RowView from '../../../components/RowView';
 import Touchable from '../../../components/Touchable';
@@ -100,11 +100,13 @@ const view = ({navigation, route}) => {
             }}
           />
           <Text style={styles.tx2}>{coins?.TouchPoint}</Text>
-          <Image
-            source={require('../../../assets/images/tx_touch.png')}
+          <NormalBoldLabel
+            text={'TOC'}
             style={{
-              width: 91,
-              height: 28,
+              fontSize: 30,
+              lineHeight: 34,
+              color: '#fff',
+              marginRight: 20,
             }}
           />
         </View>
@@ -138,12 +140,12 @@ const view = ({navigation, route}) => {
             fontWeight: 'bold',
             marginRight: 19,
           }}>
-          TouchPoint
+          TOP
         </Text>
       </RowView>
 
       <BottomButton
-        text={'터치콘 전환'}
+        text={'TOC 전환'}
         style={{marginVertical: 32}}
         onPress={ChangeTokenToPoint}
       />
@@ -160,9 +162,9 @@ const view = ({navigation, route}) => {
         text={
           '[유의사항]\n\n' +
           '●  개인정보 입력에 유의해 주세요.\n' +
-          '●  터치토큰 이외의 주소로는 송금되지 않아요.\n' +
+          '●  터치토큰 이외의 주소로는 전송되지 않아요.\n' +
           '●  터치토큰을 전송할 경우에는 이더리움 가스비가\n' +
-          '    필요합니다.\n' +
+          '     필요합니다.\n' +
           '●  미리 이더리움을 충전해 놓으시길 바랍니다.'
         }
         style={{
