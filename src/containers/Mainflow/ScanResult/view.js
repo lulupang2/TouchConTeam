@@ -1,4 +1,4 @@
-import React, {useState, version} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,16 +10,57 @@ import {
   SafeAreaView,
   Touchable,
   ScrollView,
+  Alert,
 } from 'react-native';
 import Navbar from '../../../components/Navbar/view';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import BottomButton from '../../../components/BottomButton';
 import {NormalBoldLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import api from '../../../api';
 
-const view = ({navigation}) => {
+const view = ({route}) => {
+  const navigation = useNavigation();
+  const [balance, setBalance] = useState('');
+  let touchPoint = route.params.touchPoint;
+  const auth = useSelector(state => state.auth);
+
+  useEffect(() => {
+    getbalance();
+  }, []);
+
+  const getbalance = async () => {
+    let body = {sessionToken: auth.sessionToken};
+    let touchcon;
+    let touchPoint;
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('balance', JSON.stringify(body), config);
+      setBalance(res?.data?.Result?.TouchPoint);
+      // console.log('잔고', res.data.Result.TouchCon);
+      // console.log('잔고2', res.data.Result.TouchPoint);
+      // touchcon = res.data.Result.TouchCon;
+      // touchPoint = res.data.Result.TouchPoint;
+
+      // console.log(res);
+      // navigation.navigate('Wallet');
+      // console.log('test', res.data.Result);
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
+  };
+
   return (
     <WhiteSafeAreaView>
+      {console.log(balance, touchPoint)}
       {/*<Navbar />*/}
       {/* 별,축하합니다. 이미지  */}
       <Image
@@ -32,23 +73,24 @@ const view = ({navigation}) => {
         <View style={styles.upper_point}>
           <View style={styles.wh_line}>
             <RowView style={styles.ro1}>
-              <Text style={{color: '#ffffff', fontSize: 30, marginTop: 25}}>
-                {/* 충전하기 */}
-                {500}
-              </Text>
+              <Text style={{color: '#ffffff', fontSize: 30}}>{touchPoint}</Text>
               <Image
                 source={require('../../../assets/images/touch_blue_text.png')}
                 resizeMode="contain"
                 style={{
                   width: 64,
                   height: 19,
-                  marginTop: 35,
                 }}
               />
             </RowView>
           </View>
         </View>
-        <Btnwhite text={'적립하기'} />
+        <Btnwhite
+          text={'적립하기'}
+          onPress={() => {
+            navigation.navigate('Main');
+          }}
+        />
       </View>
 
       {/* 하단 부분 스크롤 */}
@@ -69,7 +111,9 @@ const view = ({navigation}) => {
             현재 적립액
           </Text>
           {/* 현재 보유중인  총 충전 금액 */}
-          <Text style={{fontSize: 20, color: '#fff'}}>{2500}</Text>
+          <Text style={{fontSize: 20, color: '#fff'}}>
+            {touchPoint + balance}
+          </Text>
           <Image
             source={require('../../../assets/images/touch_blue_text.png')}
             resizeMode="contain"
@@ -80,7 +124,13 @@ const view = ({navigation}) => {
             }}
           />
         </View>
-        <BottomButton text={'나의 지갑가기'} style={{marginTop: 104}} />
+        <BottomButton
+          text={'나의 지갑가기'}
+          style={{marginTop: 104}}
+          onPress={() => {
+            navigation.navigate('Main');
+          }}
+        />
       </ScrollView>
     </WhiteSafeAreaView>
   );
@@ -95,6 +145,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginLeft: 56,
     marginRight: 41,
+    marginVertical: 30,
   },
   wh_line: {
     borderColor: '#fff',

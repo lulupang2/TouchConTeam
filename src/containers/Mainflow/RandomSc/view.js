@@ -130,6 +130,7 @@ const view = ({navigation}) => {
   // };
 
   const fetchQRCode = async (Qr, name) => {
+    let touchPoint;
     let endPoint = name === '내부' ? 'internalscan' : 'scan';
     let body = {sessionToken: auth.sessionToken, Qr: Qr};
     console.log(body);
@@ -139,6 +140,7 @@ const view = ({navigation}) => {
           'Content-Type': 'application/json',
         },
       };
+
       const res = await api.post(endPoint, JSON.stringify(body), config);
       if (res.data.Result === '터치콘 포인트가 부족합니다.') {
         Alert.alert(res?.data?.Result);
@@ -150,19 +152,24 @@ const view = ({navigation}) => {
         return;
       }
       if (res.data.Result !== 'success') {
+        // navigation.navigate('ScanResult', {touchPoint: 10});
         Alert.alert(`${name}스캔 실패했습니다`);
         // navigation.goBack();
         return;
       }
       Alert.alert(`${name}스캔 성공하였습니다`);
-      console.log(res);
+      navigation.navigate('ScanResult', {touchPoint: res?.data?.Amount});
+      console.log('Amount확인', res.data.Amount);
+      //  navigation.navigate('ScanResult', {touchPoint: touchPoint});
       // navigation.goBack();
-      navigation.navigate('ScanResult');
+      // navigation.navigate(touchPoint, 'ScanResult');
+
       // console.log(res);
       // navigation.navigate('Wallet');
       // console.log('test', res.data.Result);
     } catch (err) {
       Alert.alert('', '서버와 통신에 실패');
+      navigation.navigate('ScanResult', {touchPoint: 10});
       console.log('err', err);
     }
   };
