@@ -100,7 +100,14 @@ const view = () => {
       if (res?.data?.Result === 'success') {
         dispatch(resetAuth());
         Alert.alert('회원탈퇴 성공하였습니다');
-        navigation.navigate('Splash');
+        // navigation.navigate('Splash');
+        navigation.reset({
+          routes: [
+            {
+              name: 'Splash',
+            },
+          ],
+        });
       }
       // console.log(res);
       // navigation.navigate('Wallet');

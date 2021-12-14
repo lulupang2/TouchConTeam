@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -6,6 +6,7 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Navbar from '../../../components/Navbar/view';
@@ -16,6 +17,7 @@ import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import TouchableNoFeedback from '../../../components/TouchableNoFeedback';
 import Entypo from 'react-native-vector-icons/Entypo';
+import api from '../../../api';
 
 const AD_MENU = [
   {id: 1, name: 'CAOLION', path: 'GfCaolion'},
@@ -38,6 +40,31 @@ function toStringByFormatting(source, delimiter = '-') {
 }
 
 export default function Main({navigation}) {
+  const [noticePosts, setNoticePosts] = useState([]); //0번째 공지사항 저장
+  const fetchNotice = async () => {
+    let body = {Type: 'notice'};
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('notices', JSON.stringify(body), config);
+      // console.log(res);
+      if (res?.data.Result === 'no notices') {
+        return;
+      }
+      setNoticePosts(res?.data?.Result[0]);
+      // navigation.navigate('Wallet');
+      console.log(res.data.Result);
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
+  };
+  useEffect(() => {
+    fetchNotice();
+  }, []);
   return (
     <WhiteSafeAreaView>
       <Navbar />
@@ -91,19 +118,24 @@ export default function Main({navigation}) {
         </RowView>
 
         {/* 공지 글 들어올 자리 */}
-        <NormalLabel
-          style={{
-            textAlign: 'center',
-            color: '#555',
-            paddingVertical: 4,
-            marginTop: 17,
-            backgroundColor: 'rgba(14, 15, 15, 0.15)',
-          }}
-          text={
-            '[공지] 신규 광고주 제휴안내' +
-            toStringByFormatting(new Date(), '.')
-          }
-        />
+        {noticePosts && (
+          <NormalLabel
+            style={{
+              textAlign: 'center',
+              color: '#555',
+              paddingVertical: 4,
+              marginTop: 17,
+              backgroundColor: 'rgba(14, 15, 15, 0.15)',
+            }}
+            // title={list.Title}
+            // content={list.Subject}
+            // date={list.Date}
+            text={
+              `[공지] 신규 광고주 제휴안내 ${noticePosts?.Title} ${noticePosts?.Date}`
+              // toStringByFormatting(new Date(), '.')
+            }
+          />
+        )}
 
         {/* 이벤트 스와이프 */}
         <Swiper

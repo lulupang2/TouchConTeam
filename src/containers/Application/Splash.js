@@ -14,8 +14,9 @@ import {resetAuth} from '../../redux/authSlice';
 import {DeviceEventEmitter} from 'react-native';
 
 const {height, width} = Dimensions.get('window');
-
+import {useIsFocused} from '@react-navigation/native';
 export default function Splash({navigation}) {
+  const isFocused = useIsFocused();
   const auth = useSelector(state => state.auth);
   const {loginSuccess} = auth;
   console.log(auth.email);
@@ -27,7 +28,7 @@ export default function Splash({navigation}) {
         navigation.navigate('Intro');
       }
     }, 1500);
-  }, []);
+  }, [isFocused]);
 
   return (
     <ImageBackground

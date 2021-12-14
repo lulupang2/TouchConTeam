@@ -157,7 +157,7 @@ const view = ({navigation}) => {
       Alert.alert(`${name}스캔 성공하였습니다`);
       console.log(res);
       navigation.goBack();
-
+      // navigation.navigate('ScanResult');
       // console.log(res);
       // navigation.navigate('Wallet');
       // console.log('test', res.data.Result);
