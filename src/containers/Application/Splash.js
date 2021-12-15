@@ -93,12 +93,12 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   samllText: {
-    height: '100%',
-    width: '100%',
     fontSize: 7,
     fontWeight: 'bold',
     position: 'absolute',
-    top: 630,
-    left: 120,
+    bottom: 60,
+    // left: 120,
+    alignSelf: 'center',
+    // bottom: '-5%'
   },
 });

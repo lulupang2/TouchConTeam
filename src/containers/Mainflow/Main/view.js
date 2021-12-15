@@ -169,7 +169,7 @@ export default function Main({navigation}) {
         </RowView>
 
         {/* 공지 글 들어올 자리 */}
-        {noticePosts && (
+        {noticePosts?.Title && (
           <NormalLabel
             style={{
               textAlign: 'center',

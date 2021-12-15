@@ -62,7 +62,7 @@ const view = ({route}) => {
 
   return (
     <WhiteSafeAreaView>
-      {console.log(balance, touchPoint)}
+      {/*{console.log(balance, touchPoint)}*/}
       {/*<Navbar />*/}
       {/* 별,축하합니다. 이미지  */}
       <View
@@ -125,6 +125,7 @@ const view = ({route}) => {
       </View>
 
       {/* 하단 부분 스크롤 */}
+
       <View style={{flex: 1, justifyContent: 'center'}}>
         <View
           style={{
@@ -142,9 +143,8 @@ const view = ({route}) => {
             현재 적립액
           </Text>
           {/* 현재 보유중인  총 충전 금액 */}
-          <Text style={{fontSize: 20, color: '#fff'}}>
-            {touchPoint + balance}
-          </Text>
+
+          <Text style={{fontSize: 20, color: '#fff'}}>{parseInt(balance)}</Text>
           <Image
             source={require('../../../assets/images/touch_blue_text.png')}
             resizeMode="contain"

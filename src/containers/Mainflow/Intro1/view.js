@@ -25,7 +25,7 @@ export default function Intro1({navigation}) {
             position: 'relative',
             top: -50,
           }}>
-          터치콘에서 세로운 보상의 세계를 만나보세요!
+          터치콘에서 새로운 보상의 세계를 만나보세요!
         </Text>
         <Image
           source={require('../../../assets/images/intro2_cat.png')}
