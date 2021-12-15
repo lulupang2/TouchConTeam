@@ -73,6 +73,9 @@ const view = ({navigation}) => {
       };
       const res = await api.post('scanhistory', JSON.stringify(body), config);
       console.log(res);
+      if (res?.data?.Result?.length === 0) {
+        return;
+      }
       setHistoryPosts(res?.data.Result);
       // navigation.navigate('Wallet');
       // console.log('test', res.data.Result);
@@ -81,6 +84,7 @@ const view = ({navigation}) => {
       console.log('err', err);
     }
   };
+
   return (
     <WhiteSafeAreaView>
       <HeaderBottomLine />
@@ -90,7 +94,7 @@ const view = ({navigation}) => {
         <Text style={styles.tx3}>제휴업체</Text>
       </RowView>
       <ScrollView style={styles.scContainer}>
-        {historyPosts.map((menu, i) => (
+        {historyPosts?.map((menu, i) => (
           <ScHistory menu={menu} index={i} key={i} />
         ))}
       </ScrollView>

@@ -52,7 +52,7 @@ export default function Splash({navigation}) {
         }}
       />
       <Image
-        source={require('../../assets/images/start_content.png')}
+        source={require('../../assets/images/start_contents.png')}
         style={{
           zIndex: 4,
           height: '60%',
