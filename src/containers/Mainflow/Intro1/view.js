@@ -17,7 +17,7 @@ export default function Intro1({navigation}) {
         <Text
           style={{
             color: '#FFFFFF',
-            width: 200,
+            width: '100%',
             height: 225,
             fontSize: 36,
             fontWeight: 'bold',
@@ -25,7 +25,7 @@ export default function Intro1({navigation}) {
             position: 'relative',
             top: -50,
           }}>
-          터치콘에서 새로운 보상의 세계를 만나보세요!
+          {'터치콘에서 새로운 \n보상의 세계를 \n만나보세요!'}
         </Text>
         <Image
           source={require('../../../assets/images/intro2_cat.png')}

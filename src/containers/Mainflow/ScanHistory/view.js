@@ -82,6 +82,7 @@ const view = ({navigation}) => {
     } catch (err) {
       Alert.alert('', '서버와 통신에 실패');
       console.log('err', err);
+      console.log('err.res', err.response);
     }
   };
 

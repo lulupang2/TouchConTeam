@@ -8,8 +8,7 @@ export default function Intro2({navigation}) {
       <ImageBackground
         source={require('../../../assets/images/intro2_back.png')}
         resizeMode="cover"
-        style={{width: '100%', height: '100%'}}
-      >
+        style={{width: '100%', height: '100%'}}>
         <Image
           source={require('../../../assets/images/intro3_h2.png')}
           style={styles.h2}
@@ -17,13 +16,16 @@ export default function Intro2({navigation}) {
         <Text style={styles.content}>
           터치콘 브랜드 파트너에서 보내는 리워드콘을 획득하세요!
         </Text>
+
         <Text style={styles.content}>
-          최소 10 코인부터, 최대 30만 코인까지, 랜덤 잭팟이 기다립니다. 10
-          코인이상 당첨 확률 무려 100%!!!
+          {
+            '\n최소 10 코인부터, 최대 30만 코인까지, 랜덤 잭팟이 기다립니다. 10 코인이상 당첨 확률 무려 100%!!!'
+          }
         </Text>
         <Text style={styles.content}>
-          리워드콘에 있는 QR코드를 확인하세요. 그리고 터치콘앱으로 스캔하세요.
-          리워드콘은 “꽝”이 없습니다. 꾸준히 적립만 해도 목돈이 됩니다!!!
+          {
+            '리워드콘에 있는 QR코드를 확인하세요.\n\n그리고 터치콘앱으로 스캔하세요.리워드콘은\n“꽝”이 없습니다. 꾸준히 적립만 해도 목돈이 됩니다!!!'
+          }
         </Text>
         <Image
           source={require('../../../assets/images/intro3_bottom.png')}
@@ -52,6 +54,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     alignSelf: 'center',
-    width: 262,
+    width: '85%',
   },
 });
