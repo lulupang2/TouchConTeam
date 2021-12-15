@@ -47,7 +47,7 @@ const view = ({navigation, route}) => {
       Alert.alert('보유하신 터치콘 토큰을 초과 할 수없습니다 ');
       return;
     }
-    if (parseInt(coins.TouchCon) > parseInt(tokens)) {
+    if (parseInt(coins.TouchCon) >= parseInt(tokens)) {
       fetchChangeToken();
     }
   };
