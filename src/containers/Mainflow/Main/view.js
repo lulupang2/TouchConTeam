@@ -20,18 +20,18 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import api from '../../../api';
 
 const AD_MENU = [
-  {
-    id: 1,
-    name: 'CAOLION',
-    path: 'GfCaolion',
-    img: require('../../../assets/images/taa/taa_log3.png'),
-  },
-  {
-    id: 2,
-    name: 'MEGAM',
-    path: 'GfMegaMall',
-    img: require('../../../assets/images/taa/taa_log2.jpg'),
-  },
+  // {
+  //   id: 1,
+  //   name: 'CAOLION',
+  //   path: 'GfCaolion',
+  //   img: require('../../../assets/images/taa/taa_log3.png'),
+  // },
+  // {
+  //   id: 2,
+  //   name: 'MEGAM',
+  //   path: 'GfMegaMall',
+  //   img: require('../../../assets/images/taa/taa_log2.jpg'),
+  // },
   {
     id: 3,
     name: '안동국밥',
@@ -332,7 +332,7 @@ export default function Main({navigation}) {
 
 const AdMenu = ({menu, index}) => {
   const navigation = useNavigation();
-
+  const width = Dimensions.get('window').width;
   return (
     <RowView
       style={{
@@ -343,7 +343,7 @@ const AdMenu = ({menu, index}) => {
       {/* <NormalBoldLabel text={menu.name} style={{color: '#555'}} /> */}
       <Image
         source={menu.img}
-        style={{width: 100, height: 20}}
+        style={{width: width / 4.5, height: 20, maxWidth: 100}}
         resizeMode={'contain'}
       />
       <RowView>

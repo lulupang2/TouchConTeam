@@ -11,6 +11,7 @@ import {
   ScrollView,
   TextInput,
   Alert,
+  Linking,
 } from 'react-native';
 
 import {HeaderThickBottomLine} from '../../../components/HeaderBottomLine';
@@ -321,12 +322,26 @@ const view = ({navigation, sendmodal, route}) => {
               </ColumnView>
             </RowView>
           </View>
+          <Text
+            style={{
+              color: '#777',
+              fontSize: 8,
+              marginBottom: 26,
+              alignSelf: 'center',
+              marginTop: 5,
+            }}>
+            * 시세 제공 : STEX Exchange(www.stex.com)
+          </Text>
           {/*{console.log(coins)}*/}
           {/* 터치콘 */}
           <BottomButton
             text={'거래소 가기'}
             onPress={() => {
-              Alert.alert('준비중입니다.');
+              Linking.openURL(
+                'https://app.stex.com/en/trading/pair/ETH/TOC/1D',
+              );
+              // https://app.stex.com/en/trading/pair/ETH/TOC/1D
+              // Alert.alert('준비중입니다.');
             }}
           />
 
@@ -395,7 +410,7 @@ const styles = StyleSheet.create({
   },
   back1: {
     marginHorizontal: 15,
-    marginVertical: 26,
+    marginTop: 26,
     borderRadius: 15,
     borderWidth: 2,
     borderColor: '#c4c4c4c',

@@ -258,7 +258,7 @@ export default function Pinlogin({route}) {
       </Touchable>
 
       <NormalBoldLabel
-        text={'* 주의 '}
+        text={'(주의)'}
         style={{
           color: '#FF0000',
           marginTop: 40,
@@ -271,27 +271,28 @@ export default function Pinlogin({route}) {
 
       <NormalBoldLabel
         text={
-          'PIN 번호는 7자리를 초과해서는 적용 될 수 없으며,적용 된 만큼 PIN의 색이 차오릅니다.'
+          '이미 회원으로 가입한 이메일로 재가입을 할 경우에는 마지막에 가입한 비밀번호가 적용됩니다'
         }
         style={{
+          width: 320,
           fontSize: 12,
           marginTop: 10,
-          marginHorizontal: 50,
+          // marginHorizontal: 50,
           textAlign: 'left',
         }}
       />
 
-      <NormalBoldLabel
-        text={
-          '한번 회원가입 된 이메일로 다시 회원가입을 할 경우,마지막에 시도한 비밀번호만 적용 됩니다.'
-        }
-        style={{
-          fontSize: 12,
-          marginTop: 10,
-          marginHorizontal: 50,
-          textAlign: 'left',
-        }}
-      />
+      {/*<NormalBoldLabel*/}
+      {/*  text={*/}
+      {/*    '한번 회원가입 된 이메일로 다시 회원가입을 할 경우,마지막에 시도한 비밀번호만 적용 됩니다.'*/}
+      {/*  }*/}
+      {/*  style={{*/}
+      {/*    fontSize: 12,*/}
+      {/*    marginTop: 10,*/}
+      {/*    marginHorizontal: 50,*/}
+      {/*    textAlign: 'left',*/}
+      {/*  }}*/}
+      {/*/>*/}
       {/*<View>*/}
       {/*  <TouchableOpacity>*/}
       {/*    /!* PIN 번호 분실 text start *!/*/}

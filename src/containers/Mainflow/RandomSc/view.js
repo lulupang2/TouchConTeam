@@ -184,6 +184,11 @@ const view = ({navigation}) => {
         onRead={onSuccess}
         reactivateTimeout={3500}
         cameraStyle={{height: height - 50}}
+        markerStyle={{
+          marginTop: (width * 0.7) / -2,
+          width: width * 0.7,
+          height: width * 0.7,
+        }}
       />
       <TouchableOpacity
         style={{position: 'absolute', top: 20, left: 10}}

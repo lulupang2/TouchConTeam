@@ -203,7 +203,7 @@ const view = () => {
                 justifyContent: 'center',
                 marginVertical: 11,
               }}>
-              <Text style={{color: '#FF0000', fontSize: 15, fontWeight: '700'}}>
+              <Text style={{color: '#의', fontSize: 15, fontWeight: '700'}}>
                 *아래 주의사항 꼭 읽어주세요!'
               </Text>
             </RowView>

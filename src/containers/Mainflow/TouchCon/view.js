@@ -315,7 +315,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   menuText: {
-    fontSize: 16,
+    fontSize: 14,
     lineHeight: 20,
     color: '#fff',
     textAlign: 'center',
