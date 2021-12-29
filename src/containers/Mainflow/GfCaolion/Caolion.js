@@ -9,6 +9,7 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
+  Alert,
 } from 'react-native';
 
 import {GoButton} from '../../../components/Botton';
@@ -21,15 +22,19 @@ const {height, width} = Dimensions.get('window');
 const vh = height / 100;
 const vw = width / 100;
 
-const Caolion = () => {
+const Caolion = ({route}) => {
+  let data = route.params.menu;
   const navigation = useNavigation();
   const moveShopping = () => {
-    navigation.navigate('Shopping');
+    if (data.buttonUrl !== '') {
+      navigation.navigate('Shopping');
+    } else {
+      Alert.alert('준비중입니다');
+    }
   };
   return (
     <WhiteSafeAreaView>
       <Navbar />
-
       <View style={styles.back}>
         <Image
           source={require('../../../assets/images/taa/taa_log3.png')}
@@ -43,16 +48,17 @@ const Caolion = () => {
       </View>
 
       <RowView style={styles.dis}>
-        <Text style={styles.cao}>CAOLION</Text>
+        <Text style={styles.cao}>{data?.title}</Text>
         <GoButton onPress={moveShopping} />
       </RowView>
 
-      <Text style={styles.h4}>한국 천연화장품의 메카, 카오리온</Text>
-
-      <Image
-        source={require('../../../assets/images/caolion_bottom.png')}
-        style={{width: width * 1, height: height * 1, resizeMode: 'contain'}}
-      />
+      <Text style={styles.h4}>{data?.subtitle}</Text>
+      <View style={{flex: 1}} />
+      <Text style={styles.footers}>{data?.footer}</Text>
+      {/*<Image*/}
+      {/*  source={require('../../../assets/images/caolion_bottom.png')}*/}
+      {/*  style={{width: width * 1, height: height * 1, resizeMode: 'contain'}}*/}
+      {/*/>*/}
     </WhiteSafeAreaView>
   );
 };
@@ -60,6 +66,15 @@ const Caolion = () => {
 export default Caolion;
 
 const styles = StyleSheet.create({
+  footers: {
+    backgroundColor: 'rgba(14, 15, 15, 0.8)',
+    fontWeight: 'bold',
+    color: '#fff',
+    fontSize: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 20,
+    lineHeight: 16,
+  },
   back: {
     marginHorizontal: 25,
     maxHeight: 141,
@@ -79,6 +94,8 @@ const styles = StyleSheet.create({
   h4: {
     fontSize: 15,
     color: '#000000',
-    marginLeft: 34,
+    alignSelf: 'center',
+    fontWeight: 'bold',
+    // marginLeft: 34,
   },
 });

@@ -58,7 +58,7 @@ const MENU_LIST = [
   },
 ];
 
-const view = ({navigation}) => {
+const view = ({route}) => {
   return (
     <WhiteSafeAreaView>
       <HeaderBottomLine />
@@ -78,8 +78,8 @@ const view = ({navigation}) => {
           Alert.alert('준비중입니다.');
         }}>
         <NormalBoldLabel
-          text={'추가'}
-          style={{color: '#fff', fontSize: 20, lineHeight: 24}}
+          text={'RAP 얼라이언스 MALL 바로가기'}
+          style={{color: '#fff', fontSize: 15.5, lineHeight: 24}}
         />
       </Touchable>
     </WhiteSafeAreaView>
