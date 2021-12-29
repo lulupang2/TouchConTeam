@@ -84,7 +84,7 @@ const view = ({navigation}) => {
           return;
         }
         console.log('ddd:', res);
-        setHistoryPosts(res.data.Result);
+        setHistoryPosts(res?.data?.Result);
       })
       .catch(err => console.log('에러메세지', err));
   };

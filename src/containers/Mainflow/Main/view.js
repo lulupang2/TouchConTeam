@@ -117,6 +117,7 @@ export default function Main({navigation}) {
           'Content-Type': 'application/json',
         },
       };
+
       const res = await api.post('notices', JSON.stringify(body), config);
       // console.log(res);
       if (res?.data.Result === 'no notices') {
@@ -187,22 +188,27 @@ export default function Main({navigation}) {
 
         {/* 공지 글 들어올 자리 */}
         {noticePosts?.Title && (
-          <NormalLabel
-            style={{
-              textAlign: 'center',
-              color: '#555',
-              paddingVertical: 4,
-              marginTop: 17,
-              backgroundColor: 'rgba(14, 15, 15, 0.15)',
-            }}
-            // title={list.Title}
-            // content={list.Subject}
-            // date={list.Date}
-            text={
-              `[공지] 신규 광고주 제휴안내 ${noticePosts?.Title} ${noticePosts?.Date}`
-              // toStringByFormatting(new Date(), '.')
-            }
-          />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Notice');
+            }}>
+            <NormalLabel
+              style={{
+                textAlign: 'center',
+                color: '#555',
+                paddingVertical: 4,
+                marginTop: 17,
+                backgroundColor: 'rgba(14, 15, 15, 0.15)',
+              }}
+              // title={list.Title}
+              // content={list.Subject}
+              // date={list.Date}
+              text={
+                `[공지] ${noticePosts?.Title} ${noticePosts?.Date}`
+                // toStringByFormatting(new Date(), '.')
+              }
+            />
+          </TouchableOpacity>
         )}
 
         {/* 이벤트 스와이프 */}
