@@ -20,12 +20,12 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import api from '../../../api';
 
 const AD_MENU = [
-  // {
-  //   id: 1,
-  //   name: 'CAOLION',
-  //   path: 'GfCaolion',
-  //   img: require('../../../assets/images/taa/taa_log3.png'),
-  // },
+  {
+    id: 1,
+    name: 'CAOLION',
+    path: 'GfCaolion',
+    img: require('../../../assets/images/taa/taa_log3.png'),
+  },
   // {
   //   id: 2,
   //   name: 'MEGAM',

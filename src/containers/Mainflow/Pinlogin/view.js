@@ -262,9 +262,9 @@ export default function Pinlogin({route}) {
         style={{
           color: '#FF0000',
           marginTop: 40,
-          textAlign: 'left',
-          width: '100%',
-          paddingHorizontal: 50,
+          // textAlign: 'left',
+          width: 320,
+          // paddingHorizontal: 50,
           fontSize: 13,
         }}
       />

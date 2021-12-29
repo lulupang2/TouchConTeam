@@ -19,6 +19,7 @@ import SwiperAd from '../../../components/SwiperAd';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Touchable from '../../../components/Touchable';
+import {maxWidth} from 'yarn/lib/cli';
 
 const view = ({navigation}) => {
   const [visible, setVisible] = useState(false);
@@ -60,8 +61,60 @@ const view = ({navigation}) => {
         style={{
           backgroundColor: '#fff',
           position: 'relative',
-          top: 24,
         }}>
+        {/*<RowView style={styles.stackingWrapper}>*/}
+        {/*  <NormalBoldLabel text={'TOC 스테이킹 하기'} style={{color: '#fff'}} />*/}
+
+        {/*  <Image*/}
+        {/*    style={{width: 25, height: 16}}*/}
+        {/*    source={require('../../../assets/icons/stacking_arrow.png')}*/}
+        {/*  />*/}
+        {/*  <TouchableOpacity*/}
+        {/*    onPress={() => navigation.navigate('Staking')}*/}
+        {/*    style={styles.stackingBtn}>*/}
+        {/*    <NormalBoldLabel text={'신청'} style={{color: '#fff'}} />*/}
+        {/*  </TouchableOpacity>*/}
+        {/*</RowView>*/}
+
+        <RowView
+          style={{
+            paddingHorizontal: 24,
+          }}>
+          <View
+            style={{
+              backgroundColor: '#5F408F',
+              height: 45,
+              width: 7,
+              borderTopRightRadius: 6,
+              borderBottomRightRadius: 6,
+            }}
+          />
+          <Text style={styles.text}>터치-스테이킹 안내</Text>
+        </RowView>
+
+        <NormalLabel
+          style={{
+            paddingTop: 20,
+            paddingHorizontal: 22,
+            color: '#777',
+            fontSize: 11,
+            maxWidth: 360,
+            fontWeight: 'bold',
+          }}
+          text={
+            '\u2022 터치-스테이킹이란?\n' +
+            '터치콘 웰렛 앱 내에서 사용하지 않고 보유하신 터치콘을 예치하시면 분기단위로 예치 수량에 대해 일정한 보상을 드리는 제도입니다.\n\n' +
+            '\u2022 시행 시기는?\n' +
+            '매 분기 첫 달에 해당하는 10일까지 신청을 받습니다. 자세한 것은 공지사항을 참조하시기 바랍니다.\n\n' +
+            '\u2022 보상이자율은?\n' +
+            '매년 리워드 풀에서 5%의 재원으로 보상해드립니다. 분기별 예치 수량과 지급 수량을 환산하여 보상해 드리며 평균 3%~7%로 추정하고 있습니다\n\n' +
+            '\u2022 예치 최저수량은?\n' +
+            '서비스 초기는 최소 1000TOC 이상입니다\n\n' +
+            '\u2022 터치-스테이킹이란?\n' +
+            '매 분기가 끝나는 시점에 자동으로 지갑에 전송해드립니다' +
+            '\n\n'
+          }
+        />
         <RowView style={styles.stackingWrapper}>
           <NormalBoldLabel text={'TOC 스테이킹 하기'} style={{color: '#fff'}} />
 
@@ -75,38 +128,6 @@ const view = ({navigation}) => {
             <NormalBoldLabel text={'신청'} style={{color: '#fff'}} />
           </TouchableOpacity>
         </RowView>
-
-        <RowView
-          style={{
-            paddingTop: 18,
-            paddingHorizontal: 24,
-          }}>
-          <View
-            style={{
-              backgroundColor: '#5F408F',
-              height: 45,
-              width: 7,
-              borderTopRightRadius: 6,
-              borderBottomRightRadius: 6,
-            }}
-          />
-          <Text style={styles.text}>스테킹 계산하기</Text>
-        </RowView>
-
-        <NormalLabel
-          style={{paddingVertical: 19, paddingHorizontal: 23}}
-          text={
-            '언제 어디서나 스캔하자 터치콘 팀입니다.\n\n' +
-            '카오리온이 터치콘이 실시하는 광고스캔 랜덤 보상\n' +
-            '의 첫 광고주로 선정되었습니다. 카오리온은 1990\n' +
-            '년 설립된 천연화장품의 원조 업체로서 유럽을 비롯\n' +
-            '한 동구권에서 높은 품질을 인정 받고 있습니다.\n\n' +
-            '터치콘은 카오리온의 핵심 상품에 스마트 큐알을 동\n' +
-            '봉하여 랜덤보상을 실시하게 됩니다.\n' +
-            '감사합니다.\n\n' +
-            '터치콘 드림'
-          }
-        />
       </ScrollView>
     </WhiteSafeAreaView>
   );
@@ -139,6 +160,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     backgroundColor: '#0E0F0FCC',
     justifyContent: 'space-between',
+    marginBottom: 30,
   },
   modal_text: {
     color: '#000',
