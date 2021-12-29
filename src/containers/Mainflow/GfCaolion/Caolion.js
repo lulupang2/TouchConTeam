@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Alert,
+  ScrollView,
 } from 'react-native';
 
 import {GoButton} from '../../../components/Botton';
@@ -34,31 +35,43 @@ const Caolion = ({route}) => {
   };
   return (
     <WhiteSafeAreaView>
-      <Navbar />
-      <View style={styles.back}>
+      <ScrollView>
+        <Navbar />
+        <View style={styles.back}>
+          <Image
+            source={require('../../../assets/images/taa/taa_log3.png')}
+            resizeMode="contain"
+            style={{
+              width: 257,
+              height: 111,
+              alignSelf: 'center',
+            }}
+          />
+        </View>
+
+        <RowView style={styles.dis}>
+          <Text style={styles.cao}>{data?.title}</Text>
+          <GoButton onPress={moveShopping} />
+        </RowView>
+
+        <Text style={styles.h4}>{data?.subtitle}</Text>
         <Image
-          source={require('../../../assets/images/taa/taa_log3.png')}
+          source={imageObject[data?.name]}
           resizeMode="contain"
           style={{
-            width: 257,
-            height: 111,
-            alignSelf: 'center',
+            width: '100%',
+            height: 300,
+            resizeMode: 'stretch',
+            marginBottom: 50,
           }}
         />
-      </View>
-
-      <RowView style={styles.dis}>
-        <Text style={styles.cao}>{data?.title}</Text>
-        <GoButton onPress={moveShopping} />
-      </RowView>
-
-      <Text style={styles.h4}>{data?.subtitle}</Text>
-      <View style={{flex: 1}} />
-      <Text style={styles.footers}>{data?.footer}</Text>
-      {/*<Image*/}
-      {/*  source={require('../../../assets/images/caolion_bottom.png')}*/}
-      {/*  style={{width: width * 1, height: height * 1, resizeMode: 'contain'}}*/}
-      {/*/>*/}
+        <View style={{flex: 1}} />
+        <Text style={styles.footers}>{data?.footer}</Text>
+        {/*<Image*/}
+        {/*  source={require('../../../assets/images/caolion_bottom.png')}*/}
+        {/*  style={{width: width * 1, height: height * 1, resizeMode: 'contain'}}*/}
+        {/*/>*/}
+      </ScrollView>
     </WhiteSafeAreaView>
   );
 };
@@ -71,7 +84,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#fff',
     fontSize: 10,
-    paddingHorizontal: 10,
+    paddingLeft: 24,
+    // paddingHorizontal: 10,
     paddingVertical: 20,
     lineHeight: 16,
   },
@@ -96,6 +110,15 @@ const styles = StyleSheet.create({
     color: '#000000',
     alignSelf: 'center',
     fontWeight: 'bold',
+    marginBottom: 10,
     // marginLeft: 34,
   },
 });
+// source={require('../../assets/X.png')} />
+let imageObject = {
+  CAOLION: require('../../../assets/CompanyImages/Product1.jpg'),
+  크리에이션엘: require('../../../assets/CompanyImages/Product2.jpg'),
+  안동국밥: require('../../../assets/CompanyImages/Product3.jpg'),
+
+  // 안동국밥: require('../../../assets/icons/copy.png'),
+};

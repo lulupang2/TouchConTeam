@@ -374,7 +374,7 @@ const view = ({navigation, sendmodal, route}) => {
             </RowView>
             <RowView>
               <Image
-                source={require('../../../assets/icons/wallet_logo.png')}
+                source={require('../../../assets/images/Ether.png')}
                 style={styles.logo}
               />
               <ColumnView style={{marginBottom: 26}}>

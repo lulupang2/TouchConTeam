@@ -34,9 +34,9 @@ const AD_MENU = [
   },
   {
     id: 2,
-    name: 'MEGAM',
+    name: '크리에이션엘',
     path: 'GfCaolion',
-    img: require('../../../assets/images/taa/taa_log2.jpg'),
+    img: require('../../../assets/images/taa/log1.jpg'),
     title: '크리에이션엘',
     subtitle: "프랑스 정통 브랜드 '루이까또즈'",
     buttonUrl: '',
