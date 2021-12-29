@@ -11,6 +11,7 @@ import {
   ScrollView,
   FlatList,
   Alert,
+  Linking,
 } from 'react-native';
 import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
@@ -62,26 +63,38 @@ const view = ({route}) => {
   return (
     <WhiteSafeAreaView>
       <HeaderBottomLine />
-      <View style={{flex: 1, paddingTop: 13}}>
-        <FlatList
-          numColumns={2}
-          contentContainerStyle={{paddingBottom: 50}}
-          style={{paddingHorizontal: 16}}
-          data={MENU_LIST}
-          renderItem={({item, index}) => <Menu menu={item} />}
-          keyExtractor={(item, idx) => item.id + idx.toString()}
-        />
-      </View>
-      <Touchable
-        style={styles.addBtn}
-        onPress={() => {
-          Alert.alert('준비중입니다.');
-        }}>
-        <NormalBoldLabel
-          text={'RAP 얼라이언스 MALL 바로가기'}
-          style={{color: '#fff', fontSize: 15.5, lineHeight: 24}}
-        />
-      </Touchable>
+      <ScrollView>
+        <Touchable
+          style={styles.addBtn1}
+          onPress={() => {
+            Linking.openURL('https://www.rewardcon.com');
+          }}>
+          <NormalBoldLabel
+            text={'TOUCH - MALL 쇼핑하기'}
+            style={{color: '#fff', fontSize: 15.5, lineHeight: 24}}
+          />
+        </Touchable>
+        <View style={{flex: 1, paddingTop: 13}}>
+          <FlatList
+            numColumns={2}
+            contentContainerStyle={{paddingBottom: 50}}
+            style={{paddingHorizontal: 16}}
+            data={MENU_LIST}
+            renderItem={({item, index}) => <Menu menu={item} />}
+            keyExtractor={(item, idx) => item.id + idx.toString()}
+          />
+        </View>
+        <Touchable
+          style={styles.addBtn}
+          onPress={() => {
+            Alert.alert('준비중입니다.');
+          }}>
+          <NormalBoldLabel
+            text={'RAP 얼라이언스 MALL 바로가기'}
+            style={{color: '#fff', fontSize: 15.5, lineHeight: 24}}
+          />
+        </Touchable>
+      </ScrollView>
     </WhiteSafeAreaView>
   );
 };
@@ -144,6 +157,16 @@ const styles = StyleSheet.create({
   addBtn: {
     marginHorizontal: 24,
     marginBottom: 32,
+    paddingVertical: 15,
+    backgroundColor: '#5F408F',
+    borderRadius: 53,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  addBtn1: {
+    marginHorizontal: 24,
+    marginBottom: 12,
+    marginTop: 12,
     paddingVertical: 15,
     backgroundColor: '#5F408F',
     borderRadius: 53,
