@@ -146,7 +146,7 @@ const view = ({route}) => {
 
           <Text style={{fontSize: 20, color: '#fff'}}>{parseInt(balance)}</Text>
           <Image
-            source={require('../../../assets/images/touch_blue_text.png')}
+            source={require('../../../assets/images/touch_w_text.png')}
             resizeMode="contain"
             style={{
               width: 64,

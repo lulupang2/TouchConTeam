@@ -62,7 +62,7 @@ const dataList = [
   },
   {
     id: 43,
-    title: '재팬트럭',
+    title: '재팬드럭',
     path: '',
     img: require('../../../assets/images/taa/japan.jpg'),
   },
@@ -76,7 +76,7 @@ const dataList = [
 
   {
     id: 73,
-    title: '메가몰',
+    title: '크리에이션엘',
     path: '',
     img: require('../../../assets/images/taa/log1.jpg'),
   },
