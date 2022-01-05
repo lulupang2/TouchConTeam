@@ -119,7 +119,7 @@ const view = ({route}) => {
         <Btnwhite
           text={'적립하기'}
           onPress={() => {
-            navigation.navigate('Main');
+            navigation.navigate('ScanHistory');
           }}
         />
       </View>
@@ -159,7 +159,7 @@ const view = ({route}) => {
       <BottomButton
         text={'나의 지갑가기'}
         onPress={() => {
-          navigation.navigate('Main');
+          navigation.navigate('TouchCon');
         }}
       />
     </WhiteSafeAreaView>
@@ -214,7 +214,7 @@ const Btnwhite = ({onPress, text, style}) => {
       style={{
         width: 327,
         height: 50,
-        paddingVertical: 15,
+
         borderRadius: 53,
         backgroundColor: '#fff',
         justifyContent: 'center',
@@ -225,10 +225,8 @@ const Btnwhite = ({onPress, text, style}) => {
         ...style,
         // position: 'absolute', width: width-48, bottom: 32,
       }}>
-      <NormalBoldLabel
-        text={text}
-        style={{fontSize: 20, lineHeight: 24, color: '#5F408F'}}
-      />
+      <Text style={{fontSize: 20, color: '#5F408F'}}>{text}</Text>
+      {/*<NormalBoldLabel text={text} style={{fontSize: 20, color: '#5F408F'}} />*/}
     </TouchableOpacity>
   );
 };

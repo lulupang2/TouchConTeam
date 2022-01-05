@@ -148,9 +148,18 @@ const PointCh = ({navigation, route}) => {
           TOP
         </Text>
       </RowView>
-
+      <Text
+        style={{
+          fontSize: 8.5,
+          color: '#FF0000',
+          alignSelf: 'center',
+          fontWeight: 'bold',
+          marginTop: 2,
+        }}>
+        * 터치콘(TOC)으로 전환하실 수량을 기재해 주세요. 전환 비율은 1:1 입니다
+      </Text>
       <BottomButton
-        text={'TOP 전환'}
+        text={'TOC 전환'}
         style={{marginVertical: 32}}
         onPress={ChangeTokenToPoint}
       />
@@ -164,28 +173,28 @@ const PointCh = ({navigation, route}) => {
         }}
       /> */}
 
-      <Image
-        source={require('../../../assets/images/content_info.png')}
-        resizeMode={'contain'}
-        style={{width: window_height * 0.4, alignSelf: 'center'}}
-      />
+      {/*<Image*/}
+      {/*  source={require('../../../assets/images/content_info.png')}*/}
+      {/*  resizeMode={'contain'}*/}
+      {/*  style={{width: window_height * 0.4, alignSelf: 'center'}}*/}
+      {/*/>*/}
 
-      {/* <NormalLabel
+      <NormalLabel
         text={
-          '[유의사항]\n\n' +
-          '●  개인정보 입력에 유의해 주세요.\n' +
-          '●  터치토큰 이외의 주소로는 전송되지 않아요.\n' +
-          '●  터치토큰을 전송할 경우에는 이더리움 가스비가\n' +
-          '     필요합니다.\n' +
-          '●  미리 이더리움을 충전해 놓으시길 바랍니다.'
+          '(유의사항)\n\n' +
+          '\u2022 TOP는 앱내에서 사용하는 포인트 단위입니다.\n' +
+          '\u2022 TOP는 언제든지 TOC(터치토큰)로 전환하실 수 있습니다.\n' +
+          '\u2022 TOP와 TOC의 전환 비율은 1:1 입니다\n' +
+          '\u2022 TOC로 전환 후에 다시 TOP로 전환하실 수 있습니다.'
         }
         style={{
           marginTop: 35,
           marginBottom: 30,
           alignSelf: 'center',
-          color: '#5F408F',
+          color: '#777',
+          fontSize: 12,
         }}
-      /> */}
+      />
     </ScrollView>
   );
 };

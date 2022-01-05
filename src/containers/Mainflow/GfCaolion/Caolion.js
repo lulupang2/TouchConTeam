@@ -9,6 +9,8 @@ import {
   Image,
   TouchableOpacity,
   SafeAreaView,
+  Alert,
+  ScrollView,
 } from 'react-native';
 
 import {GoButton} from '../../../components/Botton';
@@ -21,38 +23,55 @@ const {height, width} = Dimensions.get('window');
 const vh = height / 100;
 const vw = width / 100;
 
-const Caolion = () => {
+const Caolion = ({route}) => {
+  let data = route.params.menu;
   const navigation = useNavigation();
   const moveShopping = () => {
-    navigation.navigate('Shopping');
+    if (data.buttonUrl !== '') {
+      navigation.navigate('Shopping');
+    } else {
+      Alert.alert('준비중입니다');
+    }
   };
   return (
     <WhiteSafeAreaView>
-      <Navbar />
+      <ScrollView>
+        <Navbar />
+        <View style={styles.back}>
+          <Image
+            source={require('../../../assets/images/taa/taa_log3.png')}
+            resizeMode="contain"
+            style={{
+              width: 257,
+              height: 111,
+              alignSelf: 'center',
+            }}
+          />
+        </View>
 
-      <View style={styles.back}>
+        <RowView style={styles.dis}>
+          <Text style={styles.cao}>{data?.title}</Text>
+          <GoButton onPress={moveShopping} />
+        </RowView>
+
+        <Text style={styles.h4}>{data?.subtitle}</Text>
         <Image
-          source={require('../../../assets/images/taa/taa_log3.png')}
+          source={imageObject[data?.name]}
           resizeMode="contain"
           style={{
-            width: 257,
-            height: 111,
-            alignSelf: 'center',
+            width: '100%',
+            height: 300,
+            resizeMode: 'stretch',
+            marginBottom: 50,
           }}
         />
-      </View>
-
-      <RowView style={styles.dis}>
-        <Text style={styles.cao}>CAOLION</Text>
-        <GoButton onPress={moveShopping} />
-      </RowView>
-
-      <Text style={styles.h4}>한국 천연화장품의 메카, 카오리온</Text>
-
-      <Image
-        source={require('../../../assets/images/caolion_bottom.png')}
-        style={{width: width * 1, height: height * 1, resizeMode: 'contain'}}
-      />
+        <View style={{flex: 1}} />
+        <Text style={styles.footers}>{data?.footer}</Text>
+        {/*<Image*/}
+        {/*  source={require('../../../assets/images/caolion_bottom.png')}*/}
+        {/*  style={{width: width * 1, height: height * 1, resizeMode: 'contain'}}*/}
+        {/*/>*/}
+      </ScrollView>
     </WhiteSafeAreaView>
   );
 };
@@ -60,6 +79,16 @@ const Caolion = () => {
 export default Caolion;
 
 const styles = StyleSheet.create({
+  footers: {
+    backgroundColor: 'rgba(14, 15, 15, 0.8)',
+    fontWeight: 'bold',
+    color: '#fff',
+    fontSize: 10,
+    paddingLeft: 24,
+    // paddingHorizontal: 10,
+    paddingVertical: 20,
+    lineHeight: 16,
+  },
   back: {
     marginHorizontal: 25,
     maxHeight: 141,
@@ -79,6 +108,17 @@ const styles = StyleSheet.create({
   h4: {
     fontSize: 15,
     color: '#000000',
-    marginLeft: 34,
+    alignSelf: 'center',
+    fontWeight: 'bold',
+    marginBottom: 10,
+    // marginLeft: 34,
   },
 });
+// source={require('../../assets/X.png')} />
+let imageObject = {
+  CAOLION: require('../../../assets/CompanyImages/Product1.jpg'),
+  크리에이션엘: require('../../../assets/CompanyImages/Product2.jpg'),
+  안동국밥: require('../../../assets/CompanyImages/Product3.jpg'),
+
+  // 안동국밥: require('../../../assets/icons/copy.png'),
+};

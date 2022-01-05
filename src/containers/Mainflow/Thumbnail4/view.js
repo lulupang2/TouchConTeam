@@ -31,22 +31,54 @@ const dataList = [
     img: require('../../../assets/images/taa/taa_log3.png'),
   },
   {
-    id: 2,
-    title: '메가박스',
+    id: 4,
+    title: '안동본가국밥',
     path: '',
-    img: require('../../../assets/images/taa/taa_log1.png'),
-  },
-  {
-    id: 3,
-    title: '메가몰',
-    path: '',
-    img: require('../../../assets/images/taa/taa_log2.jpg'),
+    img: require('../../../assets/images/taa/taa_log4.png'),
   },
   {
     id: 4,
-    title: '안동국밥',
+    title: '먹깨비',
     path: '',
-    img: require('../../../assets/images/taa/taa_log4.png'),
+    img: require('../../../assets/images/taa/muk.png'),
+  },
+  {
+    id: 41,
+    title: '사나바',
+    path: '',
+    img: require('../../../assets/images/taa/sana.png'),
+  },
+  {
+    id: 42,
+    title: '케이알푸드',
+    path: '',
+    img: require('../../../assets/images/taa/kr.png'),
+  },
+  {
+    id: 2,
+    title: '메가박스',
+    path: '',
+    img: require('../../../assets/images/taa/mega.png'),
+  },
+  {
+    id: 43,
+    title: '재팬트럭',
+    path: '',
+    img: require('../../../assets/images/taa/japan.jpg'),
+  },
+
+  {
+    id: 84,
+    title: '제주안심코드',
+    path: '',
+    img: require('../../../assets/images/taa/jeju.jpg'),
+  },
+
+  {
+    id: 73,
+    title: '메가몰',
+    path: '',
+    img: require('../../../assets/images/taa/log1.jpg'),
   },
 ];
 
@@ -100,6 +132,7 @@ const view = () => {
           style={{
             justifyContent: 'center',
             alignItems: 'center',
+            marginBottom: 15,
           }}>
           <TouchableOpacity
             onPress={() => {
@@ -112,10 +145,8 @@ const view = () => {
             <View style={styles.adScreen}>
               <Image
                 style={{
-                  maxHeight: 100,
-                  maxWidth: 100,
-                  borderTopLeftRadius: 5,
-                  borderTopRightRadius: 5,
+                  maxHeight: 70,
+                  maxWidth: 70,
                 }}
                 source={item.img}
                 resizeMode={'contain'}
@@ -124,7 +155,8 @@ const view = () => {
           </TouchableOpacity>
           <Text
             style={{
-              fontSize: 15,
+              fontWeight: 'bold',
+              fontSize: 14,
               color: '#000',
             }}>
             {item.title}
@@ -171,7 +203,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: 100,
-    maxWidth: 100,
+    width: 100,
     borderRadius: 8,
     borderWidth: 1,
   },

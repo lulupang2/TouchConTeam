@@ -70,10 +70,10 @@ const view = ({navigation}) => {
         text={'지금 스캔하기'}
         onPress={() => navigation.navigate('RandomSc')}
       />
-      <NormalLabel
-        text={'발행된 쿠폰은 스캔하여 사용 하실 수 있습니다.'}
-        style={{alignSelf: 'center'}}
-      />
+      {/*<NormalLabel*/}
+      {/*  text={'발행된 쿠폰은 스캔하여 사용 하실 수 있습니다.'}*/}
+      {/*  style={{alignSelf: 'center'}}*/}
+      {/*/>*/}
     </View>
   );
 };

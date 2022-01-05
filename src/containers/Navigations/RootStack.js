@@ -277,7 +277,7 @@ const RootStack = () => (
       name="MyCoupon"
       component={MyCoupon}
       options={{
-        title: '스캔 이용',
+        title: '스캔 안내',
         headerStyle: {backgroundColor: '#5F408F'},
         headerTintColor: '#fff',
         headerTitleStyle: {

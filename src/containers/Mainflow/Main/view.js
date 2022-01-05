@@ -25,18 +25,35 @@ const AD_MENU = [
     name: 'CAOLION',
     path: 'GfCaolion',
     img: require('../../../assets/images/taa/taa_log3.png'),
+    //
+    title: 'CAOLION',
+    subtitle: '한국 천연화장품의 메카, 카오리온',
+    buttonUrl: 'Shopping',
+    footer:
+      '카오리온 화장품에서 취급하는 모든 제품 구매에 리워드콘이 제공됩니다.\n자세한 것은 카오리온 이벤트를 참조하시기 바랍니다.',
   },
   {
     id: 2,
-    name: 'MEGAM',
-    path: 'GfMegaMall',
-    img: require('../../../assets/images/taa/taa_log2.jpg'),
+    name: '크리에이션엘',
+    path: 'GfCaolion',
+    img: require('../../../assets/images/taa/log1.jpg'),
+    title: '크리에이션엘',
+    subtitle: "프랑스 정통 브랜드 '루이까또즈'",
+    buttonUrl: '',
+    footer:
+      '크리에이션엘에서 구매하시는 모든 제품 및 서비스에 대하여 리워드콘 1매씩을\n증정합니다.자세한 것은 크리에이션엘 홈페이지를 참조해 주세요.',
   },
+
   {
     id: 3,
     name: '안동국밥',
-    path: 'GfGukBab',
+    path: 'GfCaolion',
     img: require('../../../assets/images/main/main_andong.png'),
+    title: 'ANDONGGUKBOB',
+    subtitle: '전통 한식 문화의 장을 열어가는 웰빙 안동본가국밥',
+    buttonUrl: '',
+    footer:
+      '안동본가국밥 프랜차이즈 직영점 및 가맹점에서 식사 및 주문하시는 모든 분께\n리워드콘 1매씩을 증정합니다. 자세한 것은 홈페이지를 참조해 주세요.',
   },
   {
     id: 4,
@@ -100,6 +117,7 @@ export default function Main({navigation}) {
           'Content-Type': 'application/json',
         },
       };
+
       const res = await api.post('notices', JSON.stringify(body), config);
       // console.log(res);
       if (res?.data.Result === 'no notices') {
@@ -170,22 +188,27 @@ export default function Main({navigation}) {
 
         {/* 공지 글 들어올 자리 */}
         {noticePosts?.Title && (
-          <NormalLabel
-            style={{
-              textAlign: 'center',
-              color: '#555',
-              paddingVertical: 4,
-              marginTop: 17,
-              backgroundColor: 'rgba(14, 15, 15, 0.15)',
-            }}
-            // title={list.Title}
-            // content={list.Subject}
-            // date={list.Date}
-            text={
-              `[공지] 신규 광고주 제휴안내 ${noticePosts?.Title} ${noticePosts?.Date}`
-              // toStringByFormatting(new Date(), '.')
-            }
-          />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Notice');
+            }}>
+            <NormalLabel
+              style={{
+                textAlign: 'center',
+                color: '#555',
+                paddingVertical: 4,
+                marginTop: 17,
+                backgroundColor: 'rgba(14, 15, 15, 0.15)',
+              }}
+              // title={list.Title}
+              // content={list.Subject}
+              // date={list.Date}
+              text={
+                `[공지] ${noticePosts?.Title} ${noticePosts?.Date}`
+                // toStringByFormatting(new Date(), '.')
+              }
+            />
+          </TouchableOpacity>
         )}
 
         {/* 이벤트 스와이프 */}
@@ -332,7 +355,7 @@ export default function Main({navigation}) {
 
 const AdMenu = ({menu, index}) => {
   const navigation = useNavigation();
-
+  const width = Dimensions.get('window').width;
   return (
     <RowView
       style={{
@@ -343,7 +366,7 @@ const AdMenu = ({menu, index}) => {
       {/* <NormalBoldLabel text={menu.name} style={{color: '#555'}} /> */}
       <Image
         source={menu.img}
-        style={{width: 100, height: 20}}
+        style={{width: width / 4.5, height: 20, maxWidth: 100}}
         resizeMode={'contain'}
       />
       <RowView>
@@ -354,7 +377,7 @@ const AdMenu = ({menu, index}) => {
               Alert.alert('준비중입니다.');
               return;
             }
-            navigation.navigate(menu.path);
+            navigation.navigate(menu.path, {menu});
           }}
           style={styles.adBtn}>
           <NormalBoldLabel
