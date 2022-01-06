@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
   SafeAreaView,
+  Alert,
 } from 'react-native';
 
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
@@ -56,7 +57,13 @@ const view = ({navigation}) => {
         <BtnConn
           menu={menu}
           key={i}
-          onPress={() => navigation.navigate(menu.path, {menu})}
+          onPress={() => {
+            if (menu.path === '') {
+              Alert.alert('준비중입니다.');
+              return;
+            }
+            navigation.navigate(menu.path, {menu});
+          }}
         />
       ))}
     </WhiteSafeAreaView>
