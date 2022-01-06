@@ -39,7 +39,7 @@ const Caolion = ({route}) => {
         <Navbar />
         <View style={styles.back}>
           <Image
-            source={require('../../../assets/images/taa/taa_log3.png')}
+            source={data?.img}
             resizeMode="contain"
             style={{
               width: 257,
