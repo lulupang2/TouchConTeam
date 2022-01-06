@@ -23,10 +23,23 @@ export default function Intro1({navigation}) {
             fontWeight: 'bold',
             marginLeft: 47,
             position: 'relative',
-            top: -50,
           }}>
-          {'터치콘에서 새로운 \n보상의 세계를 \n만나보세요!'}
+          {'터치콘에서\n랜덤 보상의 세계를 \n만나보세요!'}
         </Text>
+        <Text
+          style={{
+            color: '#FFFFFF',
+            width: '100%',
+            fontSize: 14,
+            fontWeight: 'bold',
+            position: 'absolute',
+            zIndex: 3,
+            top: 300,
+            right: -50,
+          }}>
+          글로벌 최초 디지털 자산 랜덤 리워드 - 터치콘
+        </Text>
+
         <Image
           source={require('../../../assets/images/intro2_cat.png')}
           style={styles.cat}
@@ -43,13 +56,13 @@ const styles = StyleSheet.create({
     height: 384,
     alignSelf: 'center',
     position: 'relative',
-    top: -60,
+    top: -20,
   },
   h2: {
     resizeMode: 'contain',
     width: '80%',
     alignSelf: 'center',
     position: 'relative',
-    top: -20,
+    top: -2,
   },
 });

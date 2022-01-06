@@ -104,7 +104,7 @@ const view = ({navigation}) => {
         fetchQRCode(res?.assets[0]?.base64, '내부');
       })
       .catch(err => {
-        console.log(err);
+        console.log('ㅇㅇㅇㅇㅇ:', err);
       });
   };
 

@@ -26,14 +26,11 @@ export default function Intro3({navigation}) {
       />
       <View style={{marginLeft: 43, marginTop: 31}}>
         <Text style={styles.content}>
-          {'터치콘 시스템은 특허등록 인증된\n' +
+          {'터치콘 특허로 등록된\n' +
             '디지털 자산 전용 리워드 게임입니다.\n' +
             '\n' +
-            '글로벌 브랜드 파트너가 드리는\n' +
-            '리워드콘을 잊지말고 꼭 획득하세요!\n' +
-            '\n' +
-            '터치콘 얼라이언스 RAP 광고주와 함께\n' +
-            '잭팟 행운의 주인공이 되세요!'}
+            '터치콘 얼라이언스 RAP 파트너와 함께\n' +
+            '멋진 행운의 주인공이 되세요!'}
         </Text>
         <Text style={styles.h3}>Anyone, Anytime, Anywhere</Text>
 
@@ -41,10 +38,12 @@ export default function Intro3({navigation}) {
       </View>
       <Image
         source={require('../../../assets/images/intro4_bottom.png')}
+        resizeMode="contain"
         style={{
           // resizeMode: 'contain',
-          // width: '100%',
+          width: '100%',
           marginTop: 27,
+          height: 128,
           // position: 'relative',
           // top: 500,
         }}
@@ -102,8 +101,8 @@ const styles = StyleSheet.create({
     marginTop: 44,
     fontSize: 18,
     lineHeight: 22,
-    fontWeight: '800',
-    color: '#ffffff',
+    fontWeight: 'bold',
+    color: '#FFC700',
     // position: 'relative',
     // top: -50,
   },
