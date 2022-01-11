@@ -7,6 +7,7 @@ import {
   FlatList,
   ScrollView,
   Linking,
+  Text,
 } from 'react-native';
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import RowView from '../../../components/RowView';
@@ -66,23 +67,52 @@ const view = ({navigation}) => {
 
   const renderQuestionView = btnMenu => {
     let list = btnMenu === '전체' ? QUESTION_LIST : menuList[btnMenu];
+    console.log('list', list);
 
-    return list?.map((question, index) => (
-      <QnaMenu
-        // index는 어떤 값을 반환하는 지모르 겠다.
-        key={index}
-        onPress={() => {
-          if (selectedQuestion === question.id) {
-            setSelectedQuestion(null);
-          } else {
-            setSelectedQuestion(question.id);
-          }
-        }}
-        isOpen={question.id === selectedQuestion}
-        title={question.title}
-        content={question.content}
-      />
-    ));
+    if (list?.length > 0) {
+      return list?.map((question, index) => (
+        <QnaMenu
+          // index는 어떤 값을 반환하는 지모르 겠다.
+          key={index}
+          onPress={() => {
+            if (selectedQuestion === question.id) {
+              setSelectedQuestion(null);
+            } else {
+              setSelectedQuestion(question.id);
+            }
+          }}
+          isOpen={question.id === selectedQuestion}
+          title={question.title}
+          content={question.content}
+        />
+      ));
+    } else {
+      return (
+        <View
+          style={{
+            flex: 1,
+            alignSelf: 'center',
+            marginTop: 170,
+          }}>
+          <Image
+            source={require('../../../assets/images/question_gray.png')}
+            resizeMode="contain"
+            style={{
+              alignSelf: 'center',
+            }}
+          />
+          <NormalLabel
+            text={'Q&A 준비중 입니다.'}
+            style={{
+              marginTop: 19,
+              fontSize: 17,
+              fontWeight: 'bold',
+              color: '#c4c4c4',
+            }}
+          />
+        </View>
+      );
+    }
   };
 
   return (
