@@ -92,7 +92,7 @@ const view = ({navigation}) => {
           style={{
             flex: 1,
             alignSelf: 'center',
-            marginTop: 170,
+            marginTop: vh * 19,
           }}>
           <Image
             source={require('../../../assets/images/question_gray.png')}

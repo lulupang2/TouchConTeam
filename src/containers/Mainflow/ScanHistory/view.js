@@ -106,34 +106,30 @@ const view = ({navigation}) => {
 export default view;
 
 const ScHistory = ({menu, index}) => {
-  const navigation = useNavigation();
-
   return (
-    <View>
-      <RowView
-        style={{
-          justifyContent: 'space-between',
-          width: 359,
-          borderWidth: 1,
-          borderColor: '#c4c4c4',
-          backgroundColor: index % 2 === 1 ? '#EBEBEB' : '#FFFFFF',
-        }}>
-        <RowView
-          style={{justifyContent: 'space-between', width: 166, marginLeft: 22}}>
-          <NormalBoldLabel text={menu?.Date} style={styles.day} />
+    <RowView
+      style={{
+        justifyContent: 'space-between',
+        borderWidth: 1,
+        borderColor: '#c4c4c4',
+        backgroundColor: index % 2 === 1 ? '#EBEBEB' : '#FFFFFF',
+      }}>
+      <NormalBoldLabel text={menu?.Date} style={styles.day} />
 
-          <NormalBoldLabel text={menu?.Amount} style={{color: '#5F408F'}} />
-        </RowView>
-        <NormalBoldLabel text={menu?.Company} style={styles.company} />
-      </RowView>
-    </View>
+      <NormalBoldLabel
+        text={menu?.Amount}
+        style={{color: '#5F408F', position: 'relative', left: -40}}
+      />
+
+      <NormalBoldLabel text={menu?.Company} style={styles.company} />
+    </RowView>
   );
 };
 
 const styles = StyleSheet.create({
   company: {width: 60, position: 'relative', left: -30},
   scContainer: {
-    marginHorizontal: 17,
+    marginHorizontal: 16,
   },
   listHeaderBack: {
     backgroundColor: 'rgba(14, 15, 15, 0.8)',
@@ -144,7 +140,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
-  day: {marginVertical: 17},
+  day: {marginVertical: 17, marginLeft: 20},
   tx1: {
     color: '#fff',
     fontSize: 15,
