@@ -18,8 +18,7 @@ export const NormalBoldLabel = ({text, style}) => {
         color: '#000',
         fontWeight: 'bold',
         ...style,
-      }}
-    >
+      }}>
       {text}
     </Text>
   );

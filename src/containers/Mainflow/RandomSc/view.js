@@ -12,7 +12,7 @@ import {
   Linking,
   Alert,
 } from 'react-native';
-import RNQRGenerator from 'rn-qr-generator';
+
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import {RNCamera} from 'react-native-camera';

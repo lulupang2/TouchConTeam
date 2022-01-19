@@ -8366,7 +8366,7 @@ react-native-permissions@^3.1.0:
 
 react-native-qrcode-scanner@^1.5.4:
   version "1.5.4"
-  resolved "https://registry.npmjs.org/react-native-qrcode-scanner/-/react-native-qrcode-scanner-1.5.4.tgz"
+  resolved "https://registry.yarnpkg.com/react-native-qrcode-scanner/-/react-native-qrcode-scanner-1.5.4.tgz#5e96189260942db3287739545eb3f6a16f7c0178"
   integrity sha512-FqY6C+vi+1u7XUunCfCBoBGTjEhK9mIOhthOBgmCWH2xAXZkytrRV7ycCmnkTIFMqOIWzomlfSc7l+2vF01BzA==
   dependencies:
     "@react-native-async-storage/async-storage" "^1.13.4"

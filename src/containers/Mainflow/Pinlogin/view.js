@@ -1,22 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
-  Image,
   Text,
   View,
   Dimensions,
-  Button,
   TextInput,
-  TouchableOpacity,
   Alert,
+  Modal,
 } from 'react-native';
 import Touchable from '../../../components/Touchable';
-import {NormalBoldLabel} from '../../../components/Label';
+import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
 import RowView from '../../../components/RowView';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   addCount,
-  pinLogin,
   resetAuth,
   resetCount,
   saveEmail,
@@ -40,7 +37,7 @@ const vw = width / 100;
 //         height: height * 0.03,
 //         resizeMode: 'contain',
 //       }}
-//     />
+//     />x
 //   );
 // }
 
@@ -67,9 +64,11 @@ export default function Pinlogin({route}) {
   const {pin, sessionToken, loginSuccess, email} = auth; // pin 현재 기본값 0000000
   const [pwd, onChangePwd] = React.useState('');
   const [test, setTest] = useState('0000000');
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [pwdbool, setPwdbool] = useState(0); // pwErrCount
   // const email = route.params.Email ? route.params.Email : auth.email;
   const navigation = useNavigation();
+  const [tempEmail, setTempEmail] = useState('');
 
   const fetchWithdrawal = async () => {
     let body = {sessionToken: auth.sessionToken};
@@ -196,10 +195,94 @@ export default function Pinlogin({route}) {
     }
   };
   //
+  const sendEmail = async () => {
+    if (tempEmail === '') {
+      Alert.alert('', '이메일을 입력해주세요.');
+      return;
+    }
 
+    try {
+      let body = {
+        email: tempEmail,
+      };
+      console.log('body', body);
+      let res = await api.post(``, JSON.stringify(body));
+      console.log('res', res);
+      setIsModalVisible(false);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
   //
   return (
     <View style={styles.pinglogin_container}>
+      <Modal visible={isModalVisible}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: 'rgba(0,0,0,0.4)',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <View
+            style={{
+              backgroundColor: '#fff',
+              borderRadius: 10,
+              paddingHorizontal: 7,
+              paddingBottom: 13,
+              paddingTop: 37,
+              width: width / 1.0997,
+            }}>
+            <NormalLabel
+              text={'입력하신 이메일로\n임시 PIN번호가 전송됩니다.'}
+              style={{
+                fontSize: 20,
+                lineHeight: 24,
+                textAlign: 'center',
+                fontWeight: '700',
+              }}
+            />
+            <TextInput
+              value={tempEmail}
+              onChangeText={text => setTempEmail(text)}
+              style={{
+                // paddingVertical: 15,
+                paddingHorizontal: 20,
+                borderWidth: 0.8,
+                borderColor: '#C4C4C4',
+                borderRadius: 5,
+                marginTop: 25,
+                marginHorizontal: 21,
+                height: 50,
+                // flex: 1,
+              }}
+              placeholder="이메일 주소"
+              placeholderTextColor={'#C4C4C4'}
+            />
+
+            <Touchable
+              onPress={sendEmail}
+              style={{
+                paddingVertical: 15,
+                backgroundColor: '#FD7F36',
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderRadius: 53,
+                marginTop: 39,
+              }}>
+              <NormalLabel
+                style={{
+                  fontSize: 20,
+                  lineHeight: 24,
+                  fontWeight: '700',
+                  color: '#fff',
+                }}
+                text={'전송'}
+              />
+            </Touchable>
+          </View>
+        </View>
+      </Modal>
       {/*{console.log(auth.sessionToken)}*/}
       <View style={{marginTop: height * 0.1}}>
         {/* PIN 번호 간편 로그인 */}
@@ -253,7 +336,9 @@ export default function Pinlogin({route}) {
           <Text style={{color: '#5F408F'}}>{`(${5 - count}회남음)`}</Text>
         </Text>
       )}
-      <Touchable onPress={() => null} style={{marginTop: 14}}>
+      <Touchable
+        onPress={() => setIsModalVisible(true)}
+        style={{marginTop: 14}}>
         <NormalBoldLabel text={'PIN 번호 분실'} style={{color: '#0068D9'}} />
       </Touchable>
 
