@@ -7,6 +7,8 @@ import {
   TextInput,
   Alert,
   Modal,
+  Image,
+  TouchableOpacity,
 } from 'react-native';
 import Touchable from '../../../components/Touchable';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';
@@ -205,10 +207,27 @@ export default function Pinlogin({route}) {
       let body = {
         email: tempEmail,
       };
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
       console.log('body', body);
-      let res = await api.post(``, JSON.stringify(body));
-      console.log('res', res);
-      setIsModalVisible(false);
+      let res = await api.post(
+        'sendtemppassword',
+        JSON.stringify(body),
+        config,
+      );
+      if (res?.data?.Result === 'success') {
+        Alert.alert('임시 비밀번호가 전송 되었습니다.');
+        setIsModalVisible(false);
+      }
+      if (res?.data?.Result === 'No email') {
+        Alert.alert('회원가입이 안되어있는 이메일 입니다.');
+      }
+      if (res?.data?.Result === 'failed') {
+        Alert.alert('유효하지 않는 이메일 입니다.');
+      }
     } catch (error) {
       console.log(error.response);
     }
@@ -233,6 +252,17 @@ export default function Pinlogin({route}) {
               paddingTop: 37,
               width: width / 1.0997,
             }}>
+            <TouchableOpacity
+              onPress={() => {
+                setIsModalVisible(false);
+              }}
+              style={{position: 'absolute', right: 20, top: 20}}>
+              <Image
+                source={require('../../../assets/X.png')}
+                style={{width: 20, height: 20}}
+                resizeMode={'contain'}
+              />
+            </TouchableOpacity>
             <NormalLabel
               text={'입력하신 이메일로\n임시 PIN번호가 전송됩니다.'}
               style={{
@@ -254,6 +284,7 @@ export default function Pinlogin({route}) {
                 marginTop: 25,
                 marginHorizontal: 21,
                 height: 50,
+                color: '#000000',
                 // flex: 1,
               }}
               placeholder="이메일 주소"
