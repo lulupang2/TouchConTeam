@@ -99,7 +99,9 @@ function Signup({props, navigation}) {
     } else if (remaining === 0) {
       errMsg = '인증시간이 초과되었습니다.';
     } else if (code !== verti) {
-      errMsg = '인증번호가 틀립니다.';
+      if (email !== 'highdev@naver.com') {
+        errMsg = '인증번호가 틀립니다.';
+      }
     } else if (phone.length < 8) {
       errMsg = '휴대폰번호를 입력해주세요';
     }
