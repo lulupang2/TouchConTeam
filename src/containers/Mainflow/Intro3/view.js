@@ -55,7 +55,13 @@ export default function Intro3({navigation}) {
         style={styles.bottomBtnWrapper}>
         <RowView style={styles.bottomBtnInner}>
           <Image
-            style={{width: 32, height: 32, marginRight: 56}}
+            style={{
+              width: 32,
+              height: 32,
+              marginRight: 66,
+              position: 'absolute',
+              left: 20,
+            }}
             source={require('../../../assets/icons/intro3_right_arrow.png')}
           />
           <NormalLabel
@@ -80,6 +86,7 @@ const styles = StyleSheet.create({
     height: 85.93,
     width: '100%',
     marginTop: 34,
+
     // alignSelf: 'center',
     // position: 'relative',
     // top: -20,
@@ -110,5 +117,6 @@ const styles = StyleSheet.create({
     paddingTop: 17,
     paddingBottom: 13,
     paddingHorizontal: 14,
+    justifyContent: 'center',
   },
 });
