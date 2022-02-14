@@ -85,7 +85,7 @@ const CheckStaking = ({navigation}) => {
     });
   }, []);
   useEffect(() => {
-    // fetchTotalCoin();
+    fetchTotalCoin();
     chageDate();
   }, []);
   const fetchTotalCoin = async () => {
