@@ -111,7 +111,7 @@ const Staking = () => {
       '4',
       '10.01-10.10',
       interestInforFour?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-      '11,375,000',
+      '11,375,140',
       '01.10',
     ],
     [
