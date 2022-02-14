@@ -35,32 +35,27 @@ const CheckStaking = ({navigation}) => {
       id: 1,
       Date: '21.10.05',
       ApplingAmount: '200',
-      ExpirationAmount: '200',
     },
-    {id: 2, Date: '21.04.05', ApplingAmount: '10', ExpirationAmount: '10'},
+    {id: 2, Date: '21.04.05', ApplingAmount: '10'},
     {
       id: 3,
-      Date: '21.04.05',
-      ApplingAmount: '3,000',
-      ExpirationAmount: '3,000',
+      Date: '21.05.10',
+      ApplingAmount: '30000',
     },
     {
       id: 4,
       Date: '21.04.05',
-      ApplingAmount: '3,000',
-      ExpirationAmount: '3,000',
+      ApplingAmount: '3000',
     },
     {
       id: 5,
       Date: '21.04.05',
-      ApplingAmount: '3,000',
-      ExpirationAmount: '3,000',
+      ApplingAmount: '30000',
     },
     {
       id: 6,
       Date: '21.04.05',
-      ApplingAmount: '3,000',
-      ExpirationAmount: '3,000',
+      ApplingAmount: '3000',
     },
   ];
   const [historyPosts, setHistoryPosts] = useState(ScInventory);
@@ -101,6 +96,7 @@ const CheckStaking = ({navigation}) => {
       if (res?.data?.Result?.length === 0) {
         return;
       }
+      console.log('ddddd', res?.data.Result);
       setHistoryPosts(res?.data.Result);
       setChangingDate(res?.data.Result.date);
       // navigation.navigate('Wallet');
@@ -193,10 +189,20 @@ const ScHistory = ({menu, index}) => {
       }}>
       <NormalBoldLabel text={menu?.Date} style={styles.day} />
       <NormalBoldLabel
-        text={menu?.ApplingAmount}
+        text={menu?.ApplingAmount.toString().replace(
+          /\B(?=(\d{3})+(?!\d))/g,
+          ',',
+        )}
         style={styles.applingAmount}
       />
-      <NormalBoldLabel text={menu?.ExpirationAmount} style={styles.company} />
+      <NormalBoldLabel
+        text={(menu?.ApplingAmount * 1.07)
+          .toFixed(0)
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+        // text={(parseFloat(menu?.ExpirationAmount) * 1.07).toFixed(2)}
+        style={styles.company}
+      />
     </RowView>
   );
 };
