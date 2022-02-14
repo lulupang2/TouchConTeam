@@ -27,11 +27,11 @@ const {width} = Dimensions.get('window');
 
 const CheckStaking = ({navigation}) => {
   const auth = useSelector(state => state.auth);
-  const [changingDate, setChangingDate] = useState('21.10.05');
+  const [changingDate, setChangingDate] = useState('');
   const [releaseYear, setReleaseYear] = useState('');
   const [releaseMonth, setReleaseMonth] = useState('');
   const [historyPosts, setHistoryPosts] = useState([]);
-
+  console.log('changingDate', changingDate);
   const ScInventory = [
     {
       id: 1,
@@ -82,7 +82,7 @@ const CheckStaking = ({navigation}) => {
   }, []);
   useEffect(() => {
     fetchTotalCoin();
-    chageDate();
+    changeDate();
   }, []);
   const fetchTotalCoin = async () => {
     let body = {sessionToken: auth.sessionToken};
@@ -109,30 +109,40 @@ const CheckStaking = ({navigation}) => {
     }
   };
 
-  const chageDate = () => {
-    const newDate = changingDate.split('-');
-    let yaer = 20 + newDate[0];
-    let month = newDate[1];
-    yaer = parseInt(yaer);
-    month = parseInt(month);
-
-    if (month === 10) {
-      yaer = yaer + 1;
-      month = 1;
+  const changeDate = () => {
+    if (changingDate.substring(5, 7) === '01' || '02' || '03') {
+      setReleaseMonth('04');
+      setReleaseYear(changingDate.substring(0, 4));
+    } else if (changingDate.substring(5, 7) === '04' || '05' || '06') {
+      setReleaseMonth('07');
+      setReleaseYear(changingDate.substring(0, 4));
+    } else if (changingDate.substring(5, 7) === '07' || '08' || '09') {
+      setReleaseMonth('10');
+      setReleaseYear(changingDate.substring(0, 4));
     } else {
-      month = month + 3;
+      setReleaseMonth('01');
+      setReleaseYear(parseInt(changingDate.substring(0, 4)) + 1);
     }
 
-    month = Number(month).toString();
-    if (Number(month) < 10 && month.length == 1) {
-      month = '0' + month;
-    }
-
-    console.log('0', yaer);
-    console.log('1', month);
-
-    setReleaseYear(yaer);
-    setReleaseMonth(month);
+    // const newDate = changingDate.split('-');
+    // let yaer = 20 + newDate[0];
+    // let month = newDate[1];
+    // yaer = parseInt(yaer);
+    // month = parseInt(month);
+    // if (month === 10) {
+    //   yaer = yaer + 1;
+    //   month = 1;
+    // } else {
+    //   month = month + 3;
+    // }
+    // month = Number(month).toString();
+    // if (Number(month) < 10 && month.length == 1) {
+    //   month = '0' + month;
+    // }
+    // console.log('0', yaer);
+    // console.log('1', month);
+    // setReleaseYear(yaer);
+    // setReleaseMonth(month);
   };
 
   return (
@@ -151,14 +161,15 @@ const CheckStaking = ({navigation}) => {
             height: historyPosts.length > 4 ? 225 : 100,
           }}
           nestedScrollEnabled={true}>
-          {historyPosts?.map((menu, i) => (
-            <ScHistory menu={menu} index={i} key={i} />
-          ))}
+          {historyPosts?.map((menu, i) => {
+            return <ScHistory menu={menu} index={i} key={i} />;
+          })}
         </ScrollView>
         <View style={styles.contentBox}>
           <ContextView
             text={'해제일자'}
             textValue={`${releaseYear}.${releaseMonth}.27`}
+            // textValue={`${releaseYear}.${releaseMonth}.27`}
           />
           <ContextView text={'예치이자'} textValue={'약 3~7% 이내'} />
           <NormalLabel
@@ -185,6 +196,8 @@ const CheckStaking = ({navigation}) => {
 export default CheckStaking;
 
 const ScHistory = ({menu, index}) => {
+  let dotDate = menu?.ApplicationDate.substring(2, 10);
+
   return (
     <RowView
       style={{
@@ -193,7 +206,7 @@ const ScHistory = ({menu, index}) => {
         borderColor: '#c4c4c4',
         backgroundColor: index % 2 === 1 ? '#EBEBEB' : '#FFFFFF',
       }}>
-      <NormalBoldLabel text={menu?.ApplicationDate} style={styles.day} />
+      <NormalBoldLabel text={dotDate.replaceAll('-', '.')} style={styles.day} />
       <NormalBoldLabel
         text={menu?.ApplingAmount.toString().replace(
           /\B(?=(\d{3})+(?!\d))/g,
@@ -267,7 +280,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
-  day: {marginVertical: 17, marginLeft: 20, color: '#000'},
+  day: {marginVertical: 17, marginLeft: 38, color: '#000'},
   tx1: {
     color: '#fff',
     fontSize: 15,
