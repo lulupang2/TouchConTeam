@@ -20,11 +20,14 @@ import WhiteSafeAreaView from '../../../components/WhiteSafeAreaView';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Touchable from '../../../components/Touchable';
 import api from '../../../api';
+import dayjs from 'dayjs';
 import {useSelector} from 'react-redux';
+
+const {width} = Dimensions.get('window');
 
 const CheckStaking = ({navigation}) => {
   const auth = useSelector(state => state.auth);
-  const [historyPosts, setHistoryPosts] = useState(ScInventory);
+  const [changingDate, setChangingDate] = useState('21.04.05');
 
   const ScInventory = [
     {
@@ -59,6 +62,7 @@ const CheckStaking = ({navigation}) => {
       ExpirationAmount: '3,000',
     },
   ];
+  const [historyPosts, setHistoryPosts] = useState(ScInventory);
 
   useEffect(() => {
     navigation.setOptions({
@@ -81,6 +85,7 @@ const CheckStaking = ({navigation}) => {
   }, []);
   useEffect(() => {
     // fetchTotalCoin();
+    chageDate();
   }, []);
   const fetchTotalCoin = async () => {
     let body = {sessionToken: auth.sessionToken};
@@ -90,12 +95,17 @@ const CheckStaking = ({navigation}) => {
           'Content-Type': 'application/json',
         },
       };
-      const res = await api.post('scanhistory', JSON.stringify(body), config);
+      const res = await api.post(
+        'userstakinglist',
+        JSON.stringify(body),
+        config,
+      );
       console.log(res);
       if (res?.data?.Result?.length === 0) {
         return;
       }
       setHistoryPosts(res?.data.Result);
+      setChangingDate(res?.data.Result.date);
       // navigation.navigate('Wallet');
       // console.log('test', res.data.Result);
     } catch (err) {
@@ -103,6 +113,16 @@ const CheckStaking = ({navigation}) => {
       console.log('err', err);
       console.log('err.res', err.response);
     }
+  };
+
+  const chageDate = () => {
+    const newDate = changingDate.split('.');
+    let yaer = 20 + newDate[0];
+    let month = newDate[1];
+    console.log('0', yaer);
+    console.log('1', month);
+
+    return {yaer, month};
   };
 
   return (
@@ -116,12 +136,15 @@ const CheckStaking = ({navigation}) => {
           <Text style={styles.tx3}>만기시 수량</Text>
         </RowView>
         <ScrollView style={styles.scContainer} nestedScrollEnabled={true}>
-          {ScInventory?.map((menu, i) => (
+          {historyPosts?.map((menu, i) => (
             <ScHistory menu={menu} index={i} key={i} />
           ))}
         </ScrollView>
         <View style={styles.contentBox}>
-          <ContextView text={'해제일자'} textValue={'2022.04.27'} />
+          <ContextView
+            text={'해제일자'}
+            textValue={dayjs(new Date()).format('YYYY-MM-DD')}
+          />
           <ContextView text={'예치이자'} textValue={'약 3~7% 이내'} />
           <NormalLabel
             text={
@@ -186,7 +209,7 @@ const styles = StyleSheet.create({
     color: '#FD7F36',
     textAlign: 'center',
     position: 'relative',
-    left: -20,
+    left: -27,
   },
   contentValue: {
     borderRadius: 5,
@@ -219,7 +242,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
-  day: {marginVertical: 17, marginLeft: 20, color: '#000'},
+  day: {marginVertical: 17, marginLeft: 38, color: '#000'},
   tx1: {
     color: '#fff',
     fontSize: 15,
