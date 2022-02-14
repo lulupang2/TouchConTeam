@@ -170,7 +170,7 @@ const view = ({navigation, route}) => {
       {/*/>*/}
       <NormalLabel
         text={
-          '(유의사항)\n\n' +
+          '[유의사항]\n\n' +
           '\u2022 TOC는 터치코인으로 디지털 자산을 의미합니다.\n' +
           '\u2022 TOC와 TOP의 전환 비율은 1:1 입니다\n' +
           '\u2022 TOP로 전환 후에 다시 TOC로 전환하실 수 있습니다.'

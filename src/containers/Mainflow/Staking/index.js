@@ -54,7 +54,7 @@ const Staking = () => {
   const [interest, setInterest] = useState('start');
   const [sumInput, onChangeSumInput] = useState('');
   const [touchPoint, setTouchPoint] = useState('');
-  const [isVisible, setIsVisible] = useState(false);
+  // const [isVisible, setIsVisible] = useState(false);
 
   // let interestInforFirst = parseInt(parseInt(interest) * 0.07);
   // let interestInforTwo = parseInt(
@@ -274,7 +274,7 @@ const Staking = () => {
   return (
     <WhiteSafeAreaView>
       <HeaderBottomLine style={{height: 3}} />
-      <ModalPoup3 visible={isVisible}>
+      {/* <ModalPoup3 visible={isVisible}>
         <View style={{marginHorizontal: 20}}>
           <View style={styles.modalTitleBox}>
             <NormalBoldLabel
@@ -335,7 +335,7 @@ const Staking = () => {
             />
           </RowView>
         </View>
-      </ModalPoup3>
+      </ModalPoup3> */}
       <Container contentContainerStyle={{paddingBottom: 50}}>
         <TopContainer>
           <TextInputContainer>
@@ -396,7 +396,7 @@ const Staking = () => {
           />
           <Touchable
             style={styles.stackingBtn}
-            onPress={() => setIsVisible(true)}>
+            onPress={() => navigation.navigate('CheckStacking')}>
             <NormalBoldLabel text={'확인'} style={{color: '#fff'}} />
           </Touchable>
         </View>

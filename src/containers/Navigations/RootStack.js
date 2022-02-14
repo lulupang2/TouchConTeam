@@ -48,6 +48,7 @@ import PointCh from '../Mainflow/PointCh';
 import Staking from '../Mainflow/Staking';
 
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import CheckStaking from '../Mainflow/CheckStaking/CheckStaking';
 
 const Stack = createStackNavigator();
 const Tab = createMaterialTopTabNavigator();
@@ -344,6 +345,11 @@ const RootStack = () => (
       name="PointCh"
       component={PointCh}
       options={{title: '포인트 전환'}}
+    />
+    <Stack.Screen
+      name="CheckStacking"
+      component={CheckStaking}
+      options={{title: '나의 스테이킹 현황'}}
     />
   </Stack.Navigator>
 );
