@@ -27,12 +27,13 @@ const {width} = Dimensions.get('window');
 
 const CheckStaking = ({navigation}) => {
   const auth = useSelector(state => state.auth);
-  const [changingDate, setChangingDate] = useState('21.04.05');
-
+  const [changingDate, setChangingDate] = useState('21.10.05');
+  const [releaseYear, setReleaseYear] = useState('');
+  const [releaseMonth, setReleaseMonth] = useState('');
   const ScInventory = [
     {
       id: 1,
-      Date: '21.04.05',
+      Date: '21.10.05',
       ApplingAmount: '200',
       ExpirationAmount: '200',
     },
@@ -95,11 +96,7 @@ const CheckStaking = ({navigation}) => {
           'Content-Type': 'application/json',
         },
       };
-      const res = await api.post(
-        'userstakinglist',
-        JSON.stringify(body),
-        config,
-      );
+      const res = await api.post('stakinguser', JSON.stringify(body), config);
       console.log(res);
       if (res?.data?.Result?.length === 0) {
         return;
@@ -119,10 +116,26 @@ const CheckStaking = ({navigation}) => {
     const newDate = changingDate.split('.');
     let yaer = 20 + newDate[0];
     let month = newDate[1];
+    yaer = parseInt(yaer);
+    month = parseInt(month);
+
+    if (month === 10) {
+      yaer = yaer + 1;
+      month = 1;
+    } else {
+      month = month + 3;
+    }
+
+    month = Number(month).toString();
+    if (Number(month) < 10 && month.length == 1) {
+      month = '0' + month;
+    }
+
     console.log('0', yaer);
     console.log('1', month);
 
-    return {yaer, month};
+    setReleaseYear(yaer);
+    setReleaseMonth(month);
   };
 
   return (
@@ -143,7 +156,7 @@ const CheckStaking = ({navigation}) => {
         <View style={styles.contentBox}>
           <ContextView
             text={'해제일자'}
-            textValue={dayjs(new Date()).format('YYYY-MM-DD')}
+            textValue={`${releaseYear}.${releaseMonth}.27`}
           />
           <ContextView text={'예치이자'} textValue={'약 3~7% 이내'} />
           <NormalLabel
