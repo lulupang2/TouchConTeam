@@ -149,22 +149,23 @@ const Staking = () => {
   }, [isFocused]);
   const getbalance = async () => {
     let body = {sessionToken: auth.sessionToken};
-    try {
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      };
-      const res = await api.post('balance', JSON.stringify(body), config);
-      console.log(res.data?.Result?.TouchPoint);
-      setTouchPoint(res?.data?.Result?.TouchPoint);
-    } catch (err) {
-      Alert.alert('', '서버와 통신에 실패');
-      console.log('err', err);
-    }
+    // try {
+    //   const config = {
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //   };
+    //   const res = await api.post('balance', JSON.stringify(body), config);
+    //   console.log(res.data?.Result?.TouchPoint);
+    //   setTouchPoint(res?.data?.Result?.TouchPoint);
+    // } catch (err) {
+    //   Alert.alert('', '서버와 통신에 실패');
+    //   console.log('err', err);
+    // }
   };
   const getStacking = async () => {
     let body = {sessionToken: auth.sessionToken, Amount: interest};
+    console.log('body', body);
     try {
       const config = {
         headers: {
@@ -344,6 +345,10 @@ const Staking = () => {
           <Warning>*신청은 선착순 마감입니다.</Warning>
           <JoinBtn
             onPress={() => {
+              if (interest === 'start') {
+                Alert.alert('계산 후 신청해주세요.');
+                return;
+              }
               fetchStaking();
             }}>
             <Join>신청하기</Join>

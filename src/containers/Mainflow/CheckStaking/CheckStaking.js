@@ -30,6 +30,8 @@ const CheckStaking = ({navigation}) => {
   const [changingDate, setChangingDate] = useState('21.10.05');
   const [releaseYear, setReleaseYear] = useState('');
   const [releaseMonth, setReleaseMonth] = useState('');
+  const [historyPosts, setHistoryPosts] = useState([]);
+
   const ScInventory = [
     {
       id: 1,
@@ -58,7 +60,6 @@ const CheckStaking = ({navigation}) => {
       ApplingAmount: '3000',
     },
   ];
-  const [historyPosts, setHistoryPosts] = useState(ScInventory);
 
   useEffect(() => {
     navigation.setOptions({
@@ -98,7 +99,7 @@ const CheckStaking = ({navigation}) => {
       }
       console.log('ddddd', res?.data.Result);
       setHistoryPosts(res?.data.Result);
-      setChangingDate(res?.data.Result.date);
+      setChangingDate(res?.data.Result[0].ApplicationDate);
       // navigation.navigate('Wallet');
       // console.log('test', res.data.Result);
     } catch (err) {
@@ -109,7 +110,7 @@ const CheckStaking = ({navigation}) => {
   };
 
   const chageDate = () => {
-    const newDate = changingDate.split('.');
+    const newDate = changingDate.split('-');
     let yaer = 20 + newDate[0];
     let month = newDate[1];
     yaer = parseInt(yaer);
@@ -144,7 +145,12 @@ const CheckStaking = ({navigation}) => {
           <Text style={styles.tx2}>신청수량</Text>
           <Text style={styles.tx3}>만기시 수량</Text>
         </RowView>
-        <ScrollView style={styles.scContainer} nestedScrollEnabled={true}>
+        <ScrollView
+          style={{
+            marginHorizontal: 16,
+            height: historyPosts.length > 4 ? 225 : 100,
+          }}
+          nestedScrollEnabled={true}>
           {historyPosts?.map((menu, i) => (
             <ScHistory menu={menu} index={i} key={i} />
           ))}
@@ -187,7 +193,7 @@ const ScHistory = ({menu, index}) => {
         borderColor: '#c4c4c4',
         backgroundColor: index % 2 === 1 ? '#EBEBEB' : '#FFFFFF',
       }}>
-      <NormalBoldLabel text={menu?.Date} style={styles.day} />
+      <NormalBoldLabel text={menu?.ApplicationDate} style={styles.day} />
       <NormalBoldLabel
         text={menu?.ApplingAmount.toString().replace(
           /\B(?=(\d{3})+(?!\d))/g,
@@ -250,7 +256,7 @@ const styles = StyleSheet.create({
   },
   scContainer: {
     marginHorizontal: 16,
-    height: 225,
+    // height: 225,
   },
   listHeaderBack: {
     backgroundColor: 'rgba(14, 15, 15, 0.8)',
@@ -261,7 +267,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
-  day: {marginVertical: 17, marginLeft: 38, color: '#000'},
+  day: {marginVertical: 17, marginLeft: 20, color: '#000'},
   tx1: {
     color: '#fff',
     fontSize: 15,
