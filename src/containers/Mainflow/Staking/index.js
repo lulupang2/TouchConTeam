@@ -36,6 +36,7 @@ import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import api from '../../../api';
 import {useSelector} from 'react-redux';
 import {NormalBoldLabel} from '../../../components/Label';
+import {ModalPoup2} from '../../../components/Modals';
 const DATA = [
   '기준 : 매 분기 1회 진행',
   '년간 총 4회 (리워드 풀 매년 수량의 5% 책정)',
@@ -271,6 +272,7 @@ const Staking = () => {
   return (
     <WhiteSafeAreaView>
       <HeaderBottomLine style={{height: 3}} />
+      <ModalPoup2></ModalPoup2>
       <Container contentContainerStyle={{paddingBottom: 50}}>
         <TopContainer>
           <TextInputContainer>
