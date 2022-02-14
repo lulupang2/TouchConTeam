@@ -1,6 +1,15 @@
 import React from 'react';
-import {StyleSheet, Text, Image, ImageBackground, View} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  Image,
+  ImageBackground,
+  View,
+  Dimensions,
+} from 'react-native';
 import TouchableNoFeedback from '../../../components/TouchableNoFeedback';
+
+const {height} = Dimensions.get('window');
 
 export default function Intro2({navigation}) {
   return (
@@ -50,7 +59,7 @@ export default function Intro2({navigation}) {
           style={{
             resizeMode: 'contain',
             width: '100%',
-            height: 334,
+            height: height * 0.5,
           }}
         />
       </ImageBackground>

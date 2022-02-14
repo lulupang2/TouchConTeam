@@ -1,7 +1,16 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, Text, Image, ImageBackground, Alert} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  Image,
+  ImageBackground,
+  Alert,
+  Dimensions,
+} from 'react-native';
 import api from '../../../api';
 import TouchableNoFeedback from '../../../components/TouchableNoFeedback';
+
+const {height} = Dimensions.get('window');
 
 export default function Intro1({navigation}) {
   return (
@@ -53,7 +62,7 @@ const styles = StyleSheet.create({
   cat: {
     resizeMode: 'contain',
     width: '100%',
-    height: 384,
+    height: height * 0.555,
     alignSelf: 'center',
     position: 'relative',
     top: -20,
