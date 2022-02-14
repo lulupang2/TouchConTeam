@@ -274,68 +274,6 @@ const Staking = () => {
   return (
     <WhiteSafeAreaView>
       <HeaderBottomLine style={{height: 3}} />
-      {/* <ModalPoup3 visible={isVisible}>
-        <View style={{marginHorizontal: 20}}>
-          <View style={styles.modalTitleBox}>
-            <NormalBoldLabel
-              text={'나의 스테이킹 현황'}
-              style={{
-                color: '#fff',
-                textAlign: 'center',
-              }}
-            />
-          </View>
-
-          {[1, 2, 3].map(index => (
-            <RowView
-              style={{
-                borderWidth: 1,
-                marginTop: index === 1 ? 20 : 10,
-              }}>
-              <NormalBoldLabel
-                text={'신청일자'}
-                style={{
-                  color: '#000',
-                  textAlign: 'center',
-                  borderRightWidth: 1,
-                  padding: 8,
-                }}
-              />
-              <NormalBoldLabel
-                text={''}
-                style={{
-                  flex: 1,
-                  color: '#000',
-                  textAlign: 'center',
-                }}
-              />
-            </RowView>
-          ))}
-          <RowView
-            style={{
-              borderWidth: 1,
-              marginTop: 10,
-            }}>
-            <NormalBoldLabel
-              text={'예치이자'}
-              style={{
-                color: '#000',
-                textAlign: 'center',
-                borderRightWidth: 1,
-                padding: 8,
-              }}
-            />
-            <NormalBoldLabel
-              text={'약 3~7% 이내'}
-              style={{
-                flex: 1,
-                color: '#000',
-                textAlign: 'center',
-              }}
-            />
-          </RowView>
-        </View>
-      </ModalPoup3> */}
       <Container contentContainerStyle={{paddingBottom: 50}}>
         <TopContainer>
           <TextInputContainer>

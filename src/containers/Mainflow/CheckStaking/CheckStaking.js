@@ -24,7 +24,42 @@ import {useSelector} from 'react-redux';
 
 const CheckStaking = ({navigation}) => {
   const auth = useSelector(state => state.auth);
-  const [historyPosts, setHistoryPosts] = useState([]);
+  const [historyPosts, setHistoryPosts] = useState(ScInventory);
+
+  const ScInventory = [
+    {
+      id: 1,
+      Date: '21.04.05',
+      ApplingAmount: '200',
+      ExpirationAmount: '200',
+    },
+    {id: 2, Date: '21.04.05', ApplingAmount: '10', ExpirationAmount: '10'},
+    {
+      id: 3,
+      Date: '21.04.05',
+      ApplingAmount: '3,000',
+      ExpirationAmount: '3,000',
+    },
+    {
+      id: 4,
+      Date: '21.04.05',
+      ApplingAmount: '3,000',
+      ExpirationAmount: '3,000',
+    },
+    {
+      id: 5,
+      Date: '21.04.05',
+      ApplingAmount: '3,000',
+      ExpirationAmount: '3,000',
+    },
+    {
+      id: 6,
+      Date: '21.04.05',
+      ApplingAmount: '3,000',
+      ExpirationAmount: '3,000',
+    },
+  ];
+
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -45,7 +80,7 @@ const CheckStaking = ({navigation}) => {
     });
   }, []);
   useEffect(() => {
-    fetchTotalCoin();
+    // fetchTotalCoin();
   }, []);
   const fetchTotalCoin = async () => {
     let body = {sessionToken: auth.sessionToken};
@@ -72,36 +107,38 @@ const CheckStaking = ({navigation}) => {
 
   return (
     <WhiteSafeAreaView>
-      <HeaderBottomLine />
-      <RowView style={styles.listHeaderBack}>
-        <Text style={styles.tx1}>신청일자</Text>
-        <Text style={styles.tx3}>신청수량</Text>
-      </RowView>
-      <ScrollView style={styles.scContainer}>
-        {historyPosts?.map((menu, i) => (
-          <ScHistory menu={menu} index={i} key={i} />
-        ))}
+      <ScrollView>
+        <HeaderBottomLine />
 
-        {/* <View style={styles.contentBox}> */}
-
-        <ContextView text={'해제일자'} textValue={'2022.04.27'} />
-        <ContextView text={'예치이자'} textValue={'약 3~7% 이내'} />
-        <NormalLabel
-          text={
-            '[유의사항]\n\n' +
-            '\t• 해제일자에 예치원금 및 이자가 함께 일괄 지급\n\t\t될 예정입니다.\n\n' +
-            '\t• 송금 받는 지갑은 앱에 등록된 지갑을 기준으로\n\t\t전송됩니다.'
-          }
-          style={{
-            marginTop: 47,
-            marginBottom: 30,
-            color: '#5F408F',
-            fontSize: 15,
-            lineHeight: 19,
-            fontWeight: '700',
-          }}
-        />
-        {/* </View> */}
+        <RowView style={styles.listHeaderBack}>
+          <Text style={styles.tx1}>신청일자</Text>
+          <Text style={styles.tx2}>신청수량</Text>
+          <Text style={styles.tx3}>만기시 수량</Text>
+        </RowView>
+        <ScrollView style={styles.scContainer} nestedScrollEnabled={true}>
+          {ScInventory?.map((menu, i) => (
+            <ScHistory menu={menu} index={i} key={i} />
+          ))}
+        </ScrollView>
+        <View style={styles.contentBox}>
+          <ContextView text={'해제일자'} textValue={'2022.04.27'} />
+          <ContextView text={'예치이자'} textValue={'약 3~7% 이내'} />
+          <NormalLabel
+            text={
+              '[유의사항]\n\n' +
+              '\t• 해제일자에 예치원금 및 이자가 함께 일괄 지급\n\t\t될 예정입니다.\n\n' +
+              '\t• 송금 받는 지갑은 앱에 등록된 지갑을 기준으로\n\t\t전송됩니다.'
+            }
+            style={{
+              marginTop: 47,
+              marginBottom: 30,
+              color: '#5F408F',
+              fontSize: 15,
+              lineHeight: 19,
+              fontWeight: '700',
+            }}
+          />
+        </View>
       </ScrollView>
     </WhiteSafeAreaView>
   );
@@ -119,11 +156,11 @@ const ScHistory = ({menu, index}) => {
         backgroundColor: index % 2 === 1 ? '#EBEBEB' : '#FFFFFF',
       }}>
       <NormalBoldLabel text={menu?.Date} style={styles.day} />
-
       <NormalBoldLabel
-        text={menu?.Amount}
-        style={{color: '#5F408F', position: 'relative', left: -40}}
+        text={menu?.ApplingAmount}
+        style={styles.applingAmount}
       />
+      <NormalBoldLabel text={menu?.ExpirationAmount} style={styles.company} />
     </RowView>
   );
 };
@@ -145,6 +182,12 @@ const ContextView = ({menu, text, textValue}) => {
 };
 
 const styles = StyleSheet.create({
+  applingAmount: {
+    color: '#FD7F36',
+    textAlign: 'center',
+    position: 'relative',
+    left: -20,
+  },
   contentValue: {
     borderRadius: 5,
     color: '#000',
@@ -156,9 +199,16 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
   contentBox: {marginHorizontal: 16},
-  company: {width: 60, position: 'relative', left: -30},
+  company: {
+    width: 60,
+    position: 'relative',
+    left: -45,
+    color: '#FD7F36',
+    textAlign: 'center',
+  },
   scContainer: {
     marginHorizontal: 16,
+    height: 225,
   },
   listHeaderBack: {
     backgroundColor: 'rgba(14, 15, 15, 0.8)',
@@ -169,7 +219,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
-  day: {marginVertical: 17, marginLeft: 20},
+  day: {marginVertical: 17, marginLeft: 20, color: '#000'},
   tx1: {
     color: '#fff',
     fontSize: 15,
