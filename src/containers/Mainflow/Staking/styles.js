@@ -113,7 +113,7 @@ export const Warning = styled.Text`
   font-weight: bold;
   font-size: 12px;
   color: #5f408f;
-  margin-top: 68px;
+  margin-top: 30px;
   margin-bottom: 14px;
   text-align: center;
 `;

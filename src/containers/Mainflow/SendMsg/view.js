@@ -26,7 +26,7 @@ const view = ({navigation}) => {
   const onSend = () => {};
 
   return (
-    <WhiteSafeAreaView>
+    <WhiteSafeArㄷeaView>
       <HeaderBottomLine />
       <ScrollView>
         <RowView
@@ -61,7 +61,7 @@ const view = ({navigation}) => {
         />
         {/* <LongButton text={'등록'} tcStyle={styles.btn} /> */}
       </ScrollView>
-    </WhiteSafeAreaView>
+    </WhiteSafeArㄷeaView>
   );
 };
 

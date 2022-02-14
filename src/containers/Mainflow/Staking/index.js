@@ -1,5 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, FlatList, SafeAreaView, Alert} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  SafeAreaView,
+  Alert,
+  StyleSheet,
+  Image,
+} from 'react-native';
 import {
   Container,
   Input,
@@ -32,7 +40,7 @@ const DATA = [
   '기준 : 매 분기 1회 진행',
   '년간 총 4회 (리워드 풀 매년 수량의 5% 책정)',
   '2022년 1분기 터치-스테이킹이 아래와 같이 시작됩니다.',
-  '신청기간 : 2022년 01월 01일 ~ 01월 10일',
+  '신청기간 : 2022년 04월 01일 ~ 04월 10일',
   '최소 신청수량 : 1,000 Touch',
   '지급(예상)이자 : 7%',
   '이자 지급 계산은 위의 표를 참고해주시길 바랍니다.',
@@ -312,6 +320,20 @@ const Staking = () => {
             keyExtractor={(item, index) => index.toString()}
           />
         </BottomContainer>
+        <View style={styles.stackingWrapper}>
+          <NormalBoldLabel
+            text={'나의 스테이킹 확인하기'}
+            style={{color: '#fff'}}
+          />
+          <Image
+            style={{width: 25, height: 16}}
+            source={require('../../../assets/icons/stacking_arrow.png')}
+          />
+          <Touchable style={styles.stackingBtn} onPress={() => null}>
+            <NormalBoldLabel text={'확인'} style={{color: '#fff'}} />
+          </Touchable>
+        </View>
+
         <View style={{paddingHorizontal: 25}}>
           <Warning>*신청은 선착순 마감입니다.</Warning>
           <JoinBtn
@@ -327,3 +349,26 @@ const Staking = () => {
 };
 
 export default Staking;
+
+const styles = StyleSheet.create({
+  stackingWrapper: {
+    marginTop: 25,
+    marginHorizontal: 17.5,
+    paddingVertical: 9.5,
+    paddingHorizontal: 21,
+    // backgroundColor: '#0E0F0FCC',
+    // backgroundColor: '#46BEFF',
+    backgroundColor: '#606060',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderRadius: 10,
+  },
+  stackingBtn: {
+    paddingVertical: 7,
+    paddingHorizontal: 10.5,
+    borderWidth: 2,
+    borderColor: '#fff',
+    borderRadius: 10,
+  },
+});
