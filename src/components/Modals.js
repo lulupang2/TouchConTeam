@@ -23,6 +23,16 @@ export const ModalPoup2 = ({visible, children, input}) => {
   );
 };
 
+export const ModalPoup3 = ({visible, children, input}) => {
+  return (
+    <Modal transparent visible={visible}>
+      <View style={styles.modalBackground}>
+        <View style={styles.modalContanier3}>{children}</View>
+      </View>
+    </Modal>
+  );
+};
+
 const styles = StyleSheet.create({
   modalBackground: {
     flex: 1,
@@ -51,6 +61,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 7,
     minWidth: 341,
     minHeight: 325,
+    borderRadius: 10,
+  },
+  modalContanier3: {
+    marginHorizontal: 17,
+    backgroundColor: 'white',
+    paddingHorizontal: 7,
+    minWidth: 341,
+    minHeight: 500,
     borderRadius: 10,
   },
 });

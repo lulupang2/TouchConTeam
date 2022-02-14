@@ -36,7 +36,8 @@ import HeaderBottomLine from '../../../components/HeaderBottomLine';
 import api from '../../../api';
 import {useSelector} from 'react-redux';
 import {NormalBoldLabel} from '../../../components/Label';
-import {ModalPoup2} from '../../../components/Modals';
+import {ModalPoup3} from '../../../components/Modals';
+import RowView from '../../../components/RowView';
 const DATA = [
   '기준 : 매 분기 1회 진행',
   '년간 총 4회 (리워드 풀 매년 수량의 5% 책정)',
@@ -273,15 +274,68 @@ const Staking = () => {
   return (
     <WhiteSafeAreaView>
       <HeaderBottomLine style={{height: 3}} />
-      <ModalPoup2 visible={false}>
-        <View
-          style={{
-            backgroundColor: '#606060',
-            marginHorizontal: 20,
-            height: 40,
-            marginTop: 30,
-          }}></View>
-      </ModalPoup2>
+      <ModalPoup3 visible={isVisible}>
+        <View style={{marginHorizontal: 20}}>
+          <View style={styles.modalTitleBox}>
+            <NormalBoldLabel
+              text={'나의 스테이킹 현황'}
+              style={{
+                color: '#fff',
+                textAlign: 'center',
+              }}
+            />
+          </View>
+
+          {[1, 2, 3].map(index => (
+            <RowView
+              style={{
+                borderWidth: 1,
+                marginTop: index === 1 ? 20 : 10,
+              }}>
+              <NormalBoldLabel
+                text={'신청일자'}
+                style={{
+                  color: '#000',
+                  textAlign: 'center',
+                  borderRightWidth: 1,
+                  padding: 8,
+                }}
+              />
+              <NormalBoldLabel
+                text={''}
+                style={{
+                  flex: 1,
+                  color: '#000',
+                  textAlign: 'center',
+                }}
+              />
+            </RowView>
+          ))}
+          <RowView
+            style={{
+              borderWidth: 1,
+              marginTop: 10,
+            }}>
+            <NormalBoldLabel
+              text={'예치이자'}
+              style={{
+                color: '#000',
+                textAlign: 'center',
+                borderRightWidth: 1,
+                padding: 8,
+              }}
+            />
+            <NormalBoldLabel
+              text={'약 3~7% 이내'}
+              style={{
+                flex: 1,
+                color: '#000',
+                textAlign: 'center',
+              }}
+            />
+          </RowView>
+        </View>
+      </ModalPoup3>
       <Container contentContainerStyle={{paddingBottom: 50}}>
         <TopContainer>
           <TextInputContainer>
@@ -383,5 +437,11 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#fff',
     borderRadius: 10,
+  },
+  modalTitleBox: {
+    backgroundColor: '#606060',
+    height: 40,
+    marginTop: 30,
+    justifyContent: 'center',
   },
 });
