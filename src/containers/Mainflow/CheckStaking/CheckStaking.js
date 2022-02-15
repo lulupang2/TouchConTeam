@@ -163,7 +163,7 @@ const CheckStaking = ({navigation}) => {
         <ScrollView
           style={{
             marginHorizontal: 16,
-            height: historyPosts.length > 4 ? 225 : 100,
+            height: historyPosts.length > 4 ? 225 : 150,
           }}
           nestedScrollEnabled={true}>
           {historyPosts?.map((menu, i) => {

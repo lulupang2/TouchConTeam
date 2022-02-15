@@ -28,8 +28,10 @@ const {width} = Dimensions.get('window');
 const view = ({navigation}) => {
   const auth = useSelector(state => state.auth);
   const [dates, setDates] = useState([]);
+  const [coin, setCoin] = useState([]);
   let today = dayjs(new Date()).format('YYYY-MM-DD');
   useEffect(() => {
+    fetchTotalCoin();
     AttendanceRecord();
   }, []);
   useEffect(() => {
@@ -59,7 +61,9 @@ const view = ({navigation}) => {
   const Attendance = async () => {
     if (dates.filter(date => date[1] === today).length !== 0) {
       Alert.alert('금일은 출석 완료하였습니다');
-      navigation.navigate('Main');
+
+      navigation.navigate('PointCh', {coins: coin});
+
       return;
     }
     let body = {sessionToken: auth.sessionToken, Date: today};
@@ -75,7 +79,7 @@ const view = ({navigation}) => {
           return;
         }
         console.log(res.status);
-        navigation.navigate('Main');
+        navigation.navigate('PointCh', {coins: coin});
         Alert.alert('출석 되었습니다.');
       })
       .catch(err => {
@@ -105,6 +109,27 @@ const view = ({navigation}) => {
       .catch(err => {
         console.log('에러메세지 Record', err);
       });
+  };
+
+  const fetchTotalCoin = async () => {
+    let body = {sessionToken: auth.sessionToken};
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('balance', JSON.stringify(body), config);
+      console.log(res?.data?.Result);
+      setCoin(res?.data?.Result);
+
+      console.log('coin', coin);
+      // navigation.navigate('Wallet');
+      // console.log('test', res.data.Result);
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
   };
 
   return (
