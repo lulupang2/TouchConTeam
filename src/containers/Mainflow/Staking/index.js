@@ -54,6 +54,8 @@ const Staking = () => {
   const [interest, setInterest] = useState('start');
   const [sumInput, onChangeSumInput] = useState('');
   const [touchPoint, setTouchPoint] = useState('');
+  console.log('sumInput', sumInput);
+  console.log('touchPoint', touchPoint);
   // const [isVisible, setIsVisible] = useState(false);
 
   // let interestInforFirst = parseInt(parseInt(interest) * 0.07);
@@ -149,19 +151,19 @@ const Staking = () => {
   }, [isFocused]);
   const getbalance = async () => {
     let body = {sessionToken: auth.sessionToken};
-    // try {
-    //   const config = {
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //   };
-    //   const res = await api.post('balance', JSON.stringify(body), config);
-    //   console.log(res.data?.Result?.TouchPoint);
-    //   setTouchPoint(res?.data?.Result?.TouchPoint);
-    // } catch (err) {
-    //   Alert.alert('', '서버와 통신에 실패');
-    //   console.log('err', err);
-    // }
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const res = await api.post('balance', JSON.stringify(body), config);
+      console.log('dddd', res.data?.Result?.TouchPoint);
+      setTouchPoint(res?.data?.Result?.TouchPoint);
+    } catch (err) {
+      Alert.alert('', '서버와 통신에 실패');
+      console.log('err', err);
+    }
   };
   const getStacking = async () => {
     let body = {sessionToken: auth.sessionToken, Amount: interest};
