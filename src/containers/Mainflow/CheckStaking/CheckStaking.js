@@ -31,7 +31,7 @@ const CheckStaking = ({navigation}) => {
   const [releaseYear, setReleaseYear] = useState('');
   const [releaseMonth, setReleaseMonth] = useState('');
   const [historyPosts, setHistoryPosts] = useState([]);
-  console.log('changingDate', changingDate);
+
   const ScInventory = [
     {
       id: 1,
@@ -97,7 +97,7 @@ const CheckStaking = ({navigation}) => {
       if (res?.data?.Result?.length === 0) {
         return;
       }
-      console.log('ddddd', res?.data.Result);
+
       setHistoryPosts(res?.data.Result);
       setChangingDate(res?.data.Result[0].ApplicationDate);
       // navigation.navigate('Wallet');
@@ -110,18 +110,18 @@ const CheckStaking = ({navigation}) => {
   };
 
   const changeDate = () => {
-    if (changingDate.substring(5, 7) === '01' || '02' || '03') {
+    if (changingDate?.substring(5, 7) === '01' || '02' || '03') {
       setReleaseMonth('04');
-      setReleaseYear(changingDate.substring(0, 4));
-    } else if (changingDate.substring(5, 7) === '04' || '05' || '06') {
+      setReleaseYear(changingDate?.substring(0, 4));
+    } else if (changingDate?.substring(5, 7) === '04' || '05' || '06') {
       setReleaseMonth('07');
-      setReleaseYear(changingDate.substring(0, 4));
-    } else if (changingDate.substring(5, 7) === '07' || '08' || '09') {
+      setReleaseYear(changingDate?.substring(0, 4));
+    } else if (changingDate?.substring(5, 7) === '07' || '08' || '09') {
       setReleaseMonth('10');
-      setReleaseYear(changingDate.substring(0, 4));
+      setReleaseYear(changingDate?.substring(0, 4));
     } else {
       setReleaseMonth('01');
-      setReleaseYear(parseInt(changingDate.substring(0, 4)) + 1);
+      setReleaseYear(parseInt(changingDate?.substring(0, 4)) + 1);
     }
 
     // const newDate = changingDate.split('-');

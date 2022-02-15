@@ -50,6 +50,8 @@ function Signup({props, navigation}) {
   {
     // console.log('인증번호: ', verti);
   }
+
+  console.log('remaing', remaining);
   useEffect(() => {
     if (isVerified) {
       navigation.navigate('Pinlogin');
@@ -200,7 +202,7 @@ function Signup({props, navigation}) {
   };
 
   const countDown = () => {
-    let time = 300;
+    let time = 30000;
     if (interval) {
       clearInterval(interval);
     }
