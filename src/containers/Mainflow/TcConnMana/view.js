@@ -10,6 +10,7 @@ import {
   TouchableNativeFeedback,
   SafeAreaView,
   Alert,
+  Linking,
 } from 'react-native';
 
 import HeaderBottomLine from '../../../components/HeaderBottomLine';
@@ -59,7 +60,8 @@ const view = ({navigation}) => {
           key={i}
           onPress={() => {
             if (menu.path === '') {
-              Alert.alert('준비중입니다.');
+              Linking.openURL('https://www.megabox.co.kr');
+              // Alert.alert('준비중입니다.');
               return;
             }
             navigation.navigate(menu.path, {menu});

@@ -11,6 +11,7 @@ import {
   SafeAreaView,
   Alert,
   ScrollView,
+  Linking,
 } from 'react-native';
 
 import {GoButton} from '../../../components/Botton';
@@ -30,7 +31,8 @@ const Caolion = ({route}) => {
     if (data.buttonUrl !== '') {
       navigation.navigate('Shopping');
     } else {
-      Alert.alert('준비중입니다');
+      // Alert.alert('준비중입니다');
+      Linking.openURL('https://bit.ly/3v68Na3');
     }
   };
   return (

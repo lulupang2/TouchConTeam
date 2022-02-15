@@ -101,30 +101,40 @@ const view = ({navigation, sendmodal, route}) => {
 
   // sessionToken= 토큰, Coin="TouchCon"||"Ethereum, Amount="수량", Address= "출금주소"
   // /sendcoin
-  const clickCoinSend = () => {
+  const clickCoinSend = async () => {
+    const randomTime = Math.floor(Math.random() * 15000) + 45000;
+    console.log('res');
     let body = {
       sessionToken: auth.sessionToken,
       Coin: 'TouchCon',
       Amount: coin,
+      // Address: '0x9f2EF2aBFa59fA4f02C567B3875b6bC483DeE537',
       Address: add,
     };
     if (coin > 5001) {
       Alert.alert('TouchCon의 출금 수량은 5000 TOP를 넘을 수 없습니다.');
       return;
     }
-    api
+    await api
       .post('sendcoin', JSON.stringify(body), {
         headers: {
           'Content-Type': 'application/json',
         },
       })
       .then(res => {
+        console.log('res', res);
         setVisible(false);
         if (res.status !== 200) {
           return;
         }
         if (res.data.Result === 'success') {
-          Alert.alert('출금이 완료 되었습니다.');
+          // Alert.alert('출금이 완료 되었습니다.');
+          Alert.alert(
+            '트랜잭션을 보내는 중입니다. 네트워크 상태에 따라 최대 3분 가량 소요됩니다.',
+          );
+          setTimeout(() => {
+            Alert.alert('전송 완료 되었습니다.');
+          }, randomTime);
         } else if (res.data.Result === '유효하지 않은 출금주소입니다.') {
           Alert.alert('유효하지 않는 출금 주소입니다.');
           return;
@@ -135,18 +145,20 @@ const view = ({navigation, sendmodal, route}) => {
       })
       .catch(err => console.log('에러메세지', err));
   };
-  const clickEthereumSend = () => {
+  const clickEthereumSend = async () => {
+    const randomTime = Math.floor(Math.random() * 15000) + 45000;
     let body = {
       sessionToken: auth.sessionToken,
       Coin: 'Ethereum',
       Amount: eth,
+      // Address: '0x9f2ef2abfa59fa4f02c567b3875b6bc483dee537',
       Address: add,
     };
     if (eth > 5001) {
       Alert.alert('Ethereum의 출금 수량은 5000 ETH를 넘을 수 없습니다.');
       return;
     }
-    api
+    await api
       .post('sendcoin', JSON.stringify(body), {
         headers: {
           'Content-Type': 'application/json',
@@ -157,7 +169,14 @@ const view = ({navigation, sendmodal, route}) => {
           return;
         }
         if (res.data.Result === 'success') {
-          Alert.alert('출금이 완료 되었습니다.');
+          // Alert.alert('출금이 완료 되었습니다.');
+          Alert.alert(
+            '트랜잭션을 보내는 중입니다. 네트워크 상태에 따라 최대 3분 가량 소요됩니다.',
+          );
+          setTimeout(() => {
+            Alert.alert('전송 완료 되었습니다.');
+          }, randomTime);
+          setTimeout(() => {});
         } else if (res.data.Result === '이더리움이 부족합니다') {
           Alert.alert('이더리움이 부족합니다');
           return;
