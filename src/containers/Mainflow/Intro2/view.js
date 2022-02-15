@@ -36,7 +36,7 @@ export default function Intro2({navigation}) {
           style={{
             resizeMode: 'stretch',
             width: '100%',
-            height: height * 0.6,
+            height: height * 0.5,
           }}
         />
       </TouchableNoFeedback>
