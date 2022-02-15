@@ -8,6 +8,7 @@ import {
   ScrollView,
   TouchableOpacity,
   ImageBackground,
+  SafeAreaView,
 } from 'react-native';
 import {LongButton} from '../../../components/Botton';
 import BottomButton from '../../../components/BottomButton';
@@ -17,37 +18,37 @@ import RowView from '../../../components/RowView';
 
 export default function Intro3({navigation}) {
   return (
-    <ScrollView
-      contentContainerStyle={{paddingBottom: 50}}
-      style={{flex: 1, backgroundColor: '#123169'}}>
-      <Image
-        source={require('../../../assets/images/intro4_h2.png')}
-        style={styles.topImage}
-      />
-      <View style={{marginLeft: 43, marginTop: 31}}>
-        <Text style={styles.content}>
-          {'터치콘 특허로 등록된\n' +
-            '디지털 자산 전용 리워드 게임입니다.\n' +
-            '\n' +
-            '터치콘 얼라이언스 RAP 파트너와 함께\n' +
-            '멋진 행운의 주인공이 되세요!'}
-        </Text>
-        <Text style={styles.h3}>Anyone, Anytime, Anywhere</Text>
+    <SafeAreaView style={{backgroundColor: '#123169', flex: 1}}>
+      <View style={{flex: 1}}>
+        <Image
+          source={require('../../../assets/images/intro4_h2.png')}
+          style={styles.topImage}
+        />
+        <View style={{marginLeft: 43, marginTop: 31}}>
+          <Text style={styles.content}>
+            {'터치콘 특허로 등록된\n' +
+              '디지털 자산 전용 리워드 게임입니다.\n' +
+              '\n' +
+              '터치콘 얼라이언스 RAP 파트너와 함께\n' +
+              '멋진 행운의 주인공이 되세요!'}
+          </Text>
+          <Text style={styles.h3}>Anyone, Anytime, Anywhere</Text>
 
-        {/*하단 이미지 부분 */}
+          {/*하단 이미지 부분 */}
+        </View>
+        <Image
+          source={require('../../../assets/images/intro4_bottom.png')}
+          resizeMode="contain"
+          style={{
+            // resizeMode: 'contain',
+            width: '100%',
+            marginTop: 27,
+            height: 128,
+            // position: 'relative',
+            // top: 500,
+          }}
+        />
       </View>
-      <Image
-        source={require('../../../assets/images/intro4_bottom.png')}
-        resizeMode="contain"
-        style={{
-          // resizeMode: 'contain',
-          width: '100%',
-          marginTop: 27,
-          height: 128,
-          // position: 'relative',
-          // top: 500,
-        }}
-      />
 
       <Touchable
         // onPress={() => navigation.navigate('Signup')}
@@ -76,7 +77,7 @@ export default function Intro3({navigation}) {
           />
         </RowView>
       </Touchable>
-    </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -108,7 +109,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 29.5,
     borderRadius: 60,
     padding: 3,
-    marginTop: 58,
+    marginBottom: 51,
   },
   bottomBtnInner: {
     borderWidth: 3,

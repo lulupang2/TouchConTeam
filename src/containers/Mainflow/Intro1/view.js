@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch',
     width: '100%',
     height: height * 0.6,
-    bottom: 0,
   },
   h2: {
     resizeMode: 'contain',
