@@ -87,7 +87,7 @@ const view = ({route}) => {
         <Touchable
           style={styles.addBtn}
           onPress={() => {
-            Alert.alert('준비중입니다.');
+            Linking.openURL('https://www.rewardcon.com');
           }}>
           <NormalBoldLabel
             text={'RAP 얼라이언스 MALL 바로가기'}

@@ -7,6 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Alert,
+  Linking,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Navbar from '../../../components/Navbar/view';
@@ -23,7 +24,7 @@ const AD_MENU = [
   {
     id: 1,
     name: 'CAOLION',
-    path: 'GfCaolion',
+    path: 'https://www.caolion.com',
     img: require('../../../assets/images/taa/taa_log3.png'),
     //
     title: 'CAOLION',
@@ -35,7 +36,7 @@ const AD_MENU = [
   {
     id: 2,
     name: '크리에이션엘',
-    path: 'GfCaolion',
+    path: 'https://www.stylelq.com',
     img: require('../../../assets/images/taa/log1.jpg'),
     title: '크리에이션엘',
     subtitle: "프랑스 정통 브랜드 '루이까또즈'",
@@ -47,7 +48,7 @@ const AD_MENU = [
   {
     id: 3,
     name: '안동국밥',
-    path: 'GfCaolion',
+    path: 'https://bit.ly/3v68Na3',
     img: require('../../../assets/images/main/main_andong.png'),
     title: 'ANDONGGUKBOB',
     subtitle: '전통 한식 문화의 장을 열어가는 웰빙 안동본가국밥',
@@ -58,37 +59,37 @@ const AD_MENU = [
   {
     id: 4,
     name: 'MUKKEBI',
-    path: '',
+    path: 'https://www.mukkebi.com',
     img: require('../../../assets/images/main/main_mukkei.png'),
   },
   {
     id: 5,
     name: 'SANABA',
-    path: '',
+    path: 'https://sanava.me',
     img: require('../../../assets/images/main/main_sanava.png'),
   },
   {
     id: 6,
     name: 'KRFOOD',
-    path: '',
+    path: 'http://www.krfood.org',
     img: require('../../../assets/images/main/main_krfood.png'),
   },
   {
     id: 7,
     name: 'MEGABOX',
-    path: '',
+    path: 'https://www.megabox.co.kr',
     img: require('../../../assets/images/main/main_megabox.png'),
   },
   {
     id: 8,
     name: 'JAPAN DRUG',
-    path: '',
+    path: 'https://japandrug.jp',
     img: require('../../../assets/images/main/main_japan.jpg'),
   },
   {
     id: 9,
     name: '제주안심코드',
-    path: '',
+    path: 'https://bit.ly/3Bopbnq',
     img: require('../../../assets/images/main/main_jeju.png'),
   },
 ];
@@ -307,7 +308,7 @@ export default function Main({navigation}) {
 
         <View style={styles.adContainer}>
           <NormalBoldLabel
-            text={'광고 스캔 랜덤 보상 제휴업체'}
+            text={'터치콘 RAP 얼라이언스 파트너'}
             style={styles.adTopText}
           />
           {AD_MENU.map((menu, i) => (
@@ -377,7 +378,7 @@ const AdMenu = ({menu, index}) => {
               Alert.alert('준비중입니다.');
               return;
             }
-            navigation.navigate(menu.path, {menu});
+            Linking.openURL(menu.path);
           }}
           style={styles.adBtn}>
           <NormalBoldLabel
