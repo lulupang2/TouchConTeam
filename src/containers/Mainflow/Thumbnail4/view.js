@@ -11,6 +11,7 @@ import {
   ScrollView,
   FlatList,
   Alert,
+  Linking,
 } from 'react-native';
 
 import Swiper from 'react-native-swiper';
@@ -27,57 +28,57 @@ const dataList = [
   {
     id: 1,
     title: '카오리온',
-    path: 'Shopping',
+    path: 'https://www.caolion.com',
     img: require('../../../assets/images/taa/taa_log3.png'),
   },
   {
     id: 4,
     title: '안동본가국밥',
-    path: '',
+    path: 'https://bit.ly/3v68Na3',
     img: require('../../../assets/images/taa/taa_log4.png'),
   },
   {
     id: 4,
     title: '먹깨비',
-    path: '',
+    path: 'https://www.mukkebi.com',
     img: require('../../../assets/images/taa/muk.png'),
   },
   {
     id: 41,
     title: '사나바',
-    path: '',
+    path: 'https://sanava.me',
     img: require('../../../assets/images/taa/sana.png'),
   },
   {
     id: 42,
     title: '케이알푸드',
-    path: '',
+    path: 'http://www.krfood.org',
     img: require('../../../assets/images/taa/kr.png'),
   },
   {
     id: 2,
     title: '메가박스',
-    path: '',
+    path: 'https://www.megabox.co.kr',
     img: require('../../../assets/images/taa/mega.png'),
   },
   {
     id: 43,
     title: '재팬드럭',
-    path: '',
+    path: 'https://japandrug.jp',
     img: require('../../../assets/images/taa/japan.jpg'),
   },
 
   {
     id: 84,
     title: '제주안심코드',
-    path: '',
+    path: 'https://bit.ly/3Bopbnq',
     img: require('../../../assets/images/taa/jeju.jpg'),
   },
 
   {
     id: 73,
     title: '크리에이션엘',
-    path: '',
+    path: 'https://www.stylelq.com',
     img: require('../../../assets/images/taa/log1.jpg'),
   },
 ];
@@ -140,7 +141,7 @@ const view = () => {
                 Alert.alert('준비중입니다.');
                 return;
               }
-              navigation.navigate(item.path);
+              Linking.openURL(item.path);
             }}>
             <View style={styles.adScreen}>
               <Image

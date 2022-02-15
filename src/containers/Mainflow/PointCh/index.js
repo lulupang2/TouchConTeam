@@ -11,6 +11,7 @@ import {
   SafeAreaView,
   TextInput,
   Alert,
+  Linking,
 } from 'react-native';
 import {HeaderWalletBottomLine} from '../../../components/HeaderBottomLine';
 import {NormalBoldLabel, NormalLabel} from '../../../components/Label';

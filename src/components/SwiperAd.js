@@ -8,6 +8,18 @@ import {useNavigation} from '@react-navigation/native';
 const SwiperAd = ({style, paginationStyle}) => {
   const navigation = useNavigation();
 
+  const menu = {
+    id: 1,
+    name: 'CAOLION',
+    path: 'GfCaolion',
+    img: require('../assets/images/taa/taa_log3.png'),
+    title: 'CAOLION',
+    subtitle: '한국 천연화장품의 메카, 카오리온',
+    buttonUrl: 'Shopping',
+    footer:
+      '카오리온 화장품에서 취급하는 모든 제품 구매에 리워드콘이 제공됩니다.\n자세한 것은 카오리온 이벤트를 참조하시기 바랍니다.',
+  };
+
   return (
     <View style={{height: 130}}>
       <Swiper
@@ -30,7 +42,10 @@ const SwiperAd = ({style, paginationStyle}) => {
         // paginationStyle={{position: 'absolute', top: 85, bottom: undefined}}
         paginationStyle={[styles.pagination, paginationStyle]}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Thumbnail1')}
+          onPress={() =>
+            // navigation.navigate('Thumbnail1')
+            navigation.navigate('GfCaolion', {menu})
+          }
           style={{justifyContent: 'center'}}>
           {/* <View style={styles.back}>
           <RowView style={styles.arr}>

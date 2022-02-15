@@ -22,25 +22,11 @@ import Touchable from '../../../components/Touchable';
 import api from '../../../api';
 import {useSelector} from 'react-redux';
 
-const ScInventory = [
-  {id: 1, date: '21.04.05', compensation: '200', ba: '카오리온'},
-  {id: 2, date: '21.04.05', compensation: '10', ba: '메가'},
-  {id: 3, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 4, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 5, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 6, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 7, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 8, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 9, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 10, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 11, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 12, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-  {id: 13, date: '21.04.05', compensation: '3,000', ba: '안동국밥'},
-];
-
 const view = ({navigation}) => {
   const auth = useSelector(state => state.auth);
   const [historyPosts, setHistoryPosts] = useState([]);
+
+  console.log('historyPosts', historyPosts);
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
