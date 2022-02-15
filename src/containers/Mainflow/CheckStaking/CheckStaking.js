@@ -32,6 +32,7 @@ const CheckStaking = ({navigation}) => {
   const [releaseMonth, setReleaseMonth] = useState('');
   const [historyPosts, setHistoryPosts] = useState([]);
 
+  console.log('dsfsdljfk', releaseYear);
   const ScInventory = [
     {
       id: 1,
@@ -112,16 +113,20 @@ const CheckStaking = ({navigation}) => {
   const changeDate = () => {
     if (changingDate?.substring(5, 7) === '01' || '02' || '03') {
       setReleaseMonth('04');
-      setReleaseYear(changingDate?.substring(0, 4));
+      // setReleaseYear(changingDate?.substring(0, 4).toString());
+      setReleaseYear(dayjs(new Date()).format('YYYY'));
     } else if (changingDate?.substring(5, 7) === '04' || '05' || '06') {
       setReleaseMonth('07');
-      setReleaseYear(changingDate?.substring(0, 4));
+      // setReleaseYear(changingDate?.substring(0, 4));
+      setReleaseYear(dayjs(new Date()).format('YYYY'));
     } else if (changingDate?.substring(5, 7) === '07' || '08' || '09') {
       setReleaseMonth('10');
-      setReleaseYear(changingDate?.substring(0, 4));
+      // setReleaseYear(changingDate?.substring(0, 4));
+      setReleaseYear(dayjs(new Date()).format('YYYY'));
     } else {
       setReleaseMonth('01');
-      setReleaseYear(parseInt(changingDate?.substring(0, 4)) + 1);
+      // setReleaseYear(parseInt(changingDate?.substring(0, 4)) + 1);
+      setReleaseYear(parseInt(dayjs(new Date()).format('YYYY')) + 1);
     }
 
     // const newDate = changingDate.split('-');
@@ -196,8 +201,10 @@ const CheckStaking = ({navigation}) => {
 export default CheckStaking;
 
 const ScHistory = ({menu, index}) => {
-  let dotDate = menu?.ApplicationDate.substring(2, 10);
+  const dotDate = menu.ApplicationDate.substring(2, 10).replace(/-/gi, '.');
 
+  // const dotDate = newDate.substring(2, 10).replaceAll('-', '.');
+  // console.log('dotDate', dotDate);
   return (
     <RowView
       style={{
@@ -206,7 +213,7 @@ const ScHistory = ({menu, index}) => {
         borderColor: '#c4c4c4',
         backgroundColor: index % 2 === 1 ? '#EBEBEB' : '#FFFFFF',
       }}>
-      <NormalBoldLabel text={dotDate.replaceAll('-', '.')} style={styles.day} />
+      <NormalBoldLabel text={dotDate} style={styles.day} />
       <NormalBoldLabel
         text={menu?.ApplingAmount.toString().replace(
           /\B(?=(\d{3})+(?!\d))/g,
