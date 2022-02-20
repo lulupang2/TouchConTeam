@@ -50,7 +50,7 @@ const RightDrawer = () => {
           borderBottomColor: '#c4c4c4',
         }}>
         <NormalBoldLabel text={'버전 정보'} />
-        <NormalBoldLabel text={'V7.0.1'} style={{color: '#5F408F'}} />
+        <NormalBoldLabel text={'V7.0.2'} style={{color: '#5F408F'}} />
       </RowView>
     </WhiteSafeAreaView>
   );
