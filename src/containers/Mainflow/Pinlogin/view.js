@@ -381,6 +381,7 @@ export default function Pinlogin({route}) {
           // textAlign: 'left',
           width: 320,
           // paddingHorizontal: 50,
+          paddingLeft: 20,
           fontSize: 13,
         }}
       />
@@ -393,8 +394,8 @@ export default function Pinlogin({route}) {
           width: 320,
           fontSize: 12,
           marginTop: 10,
-          // marginHorizontal: 50,
           textAlign: 'left',
+          paddingHorizontal: 20,
         }}
       />
 

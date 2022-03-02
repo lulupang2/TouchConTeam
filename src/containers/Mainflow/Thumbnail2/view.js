@@ -35,7 +35,7 @@ const view = ({navigation}) => {
 
   let today = dayjs(new Date()).format('YYYY-MM-DD');
   useEffect(() => {
-    fetchTotalCoin();
+    // fetchTotalCoin();
     AttendanceRecord();
   }, []);
   useEffect(() => {
@@ -163,7 +163,7 @@ const view = ({navigation}) => {
         style={styles.container}
         contentContainerStyle={styles.scrollContainer}>
         <Swiper
-          scrollEnabled={false}
+          // scrollEnabled={false}
           autoplay
           style={styles.swiperContainer}
           dotStyle={{

@@ -51,7 +51,7 @@ const view = ({route}) => {
       // touchcon = res.data.Result.TouchCon;
       // touchPoint = res.data.Result.TouchPoint;
 
-      // console.log(res);
+      // console.log('res', res);
       // navigation.navigate('Wallet');
       // console.log('test', res.data.Result);
     } catch (err) {
@@ -140,7 +140,7 @@ const view = ({route}) => {
             height: 100,
           }}>
           <Text style={{marginLeft: 20, fontSize: 15, color: '#fff'}}>
-            현재 적립액
+            현재 적립
           </Text>
           {/* 현재 보유중인  총 충전 금액 */}
 
