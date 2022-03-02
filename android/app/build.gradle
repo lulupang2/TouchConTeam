@@ -141,8 +141,8 @@ android {
         applicationId "com.touchcon"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 13
-        versionName "7.0.3"
+        versionCode 14
+        versionName "7.0.4"
 
 
          // 아래 부분 추가
