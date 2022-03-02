@@ -26,7 +26,7 @@ const view = ({navigation}) => {
   const onSend = () => {};
 
   return (
-    <WhiteSafeArㄷeaView>
+    <WhiteSafeAreaView>
       <HeaderBottomLine />
       <ScrollView>
         <RowView
@@ -50,8 +50,7 @@ const view = ({navigation}) => {
           <Text style={styles.text}>제목</Text>
           <TitleInput value={title} onChangeText={setTitle} />
         </RowView>
-        <ContentInput value={content} onChangeText={setContent} />
-
+        <ContentInput value={content} multiline onChangeText={setContent} />
         <BottomButton
           onPress={() => {
             Alert.alert('준비중입니다.');
@@ -61,7 +60,7 @@ const view = ({navigation}) => {
         />
         {/* <LongButton text={'등록'} tcStyle={styles.btn} /> */}
       </ScrollView>
-    </WhiteSafeArㄷeaView>
+    </WhiteSafeAreaView>
   );
 };
 
