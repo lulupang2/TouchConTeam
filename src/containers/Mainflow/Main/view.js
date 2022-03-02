@@ -225,7 +225,7 @@ export default function Main({navigation}) {
 
         {/* 이벤트 스와이프 */}
         <Swiper
-          scrollEnabled={false}
+          // scrollEnabled={false}
           autoplay
           style={styles.swiperContainer}
           dotStyle={{

@@ -163,7 +163,7 @@ const view = ({navigation}) => {
         style={styles.container}
         contentContainerStyle={styles.scrollContainer}>
         <Swiper
-          scrollEnabled={false}
+          // scrollEnabled={false}
           autoplay
           style={styles.swiperContainer}
           dotStyle={{
