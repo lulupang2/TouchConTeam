@@ -31,7 +31,7 @@ const view = ({navigation}) => {
   const [coin, setCoin] = useState([]);
   const [isEnable, setIsEnable] = useState(true);
 
-  console.log(isEnable)
+  console.log(isEnable);
 
   let today = dayjs(new Date()).format('YYYY-MM-DD');
   useEffect(() => {
@@ -72,8 +72,7 @@ const view = ({navigation}) => {
       return;
     }
 
-
-     console.log(isEnable)
+    console.log(isEnable);
     if (isEnable === false) {
       return;
     }
@@ -164,6 +163,7 @@ const view = ({navigation}) => {
         style={styles.container}
         contentContainerStyle={styles.scrollContainer}>
         <Swiper
+          scrollEnabled={false}
           autoplay
           style={styles.swiperContainer}
           dotStyle={{
