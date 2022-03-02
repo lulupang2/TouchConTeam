@@ -26,9 +26,11 @@ const window_height = Dimensions.get('window').height;
 
 const view = ({route}) => {
   const navigation = useNavigation();
-  const [balance, setBalance] = useState('');
+  const [balance, setBalance] = useState('-');
   let touchPoint = route.params.touchPoint;
   const auth = useSelector(state => state.auth);
+
+  console.log('balance', balance);
 
   useEffect(() => {
     getbalance();
@@ -45,7 +47,11 @@ const view = ({route}) => {
         },
       };
       const res = await api.post('balance', JSON.stringify(body), config);
-      setBalance(res?.data?.Result?.TouchPoint);
+
+      let newBalance = res?.data?.Result?.TouchPoint;
+
+      setBalance(parseInt(newBalance));
+      console.log('res', res);
       // console.log('잔고', res.data.Result.TouchCon);
       // console.log('잔고2', res.data.Result.TouchPoint);
       // touchcon = res.data.Result.TouchCon;
@@ -57,6 +63,7 @@ const view = ({route}) => {
     } catch (err) {
       // Alert.alert('', '서버와 통신에 실패');
       console.log('errdddjjdlfjds', err);
+      console.log('err.response', err.response);
     }
   };
 
@@ -127,34 +134,38 @@ const view = ({route}) => {
       {/* 하단 부분 스크롤 */}
 
       <View style={{flex: 1, justifyContent: 'center'}}>
-        <View
-          style={{
-            minHeight: 100,
-            marginHorizontal: 52,
-            backgroundColor: 'rgba(14, 15, 15, 0.8)',
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignContent: 'center',
-            alignItems: 'center',
-            height: 100,
-          }}>
-          <Text style={{marginLeft: 20, fontSize: 15, color: '#fff'}}>
-            현재 적립
-          </Text>
-          {/* 현재 보유중인  총 충전 금액 */}
-
-          <Text style={{fontSize: 20, color: '#fff'}}>{parseInt(balance)}</Text>
-          <Image
-            source={require('../../../assets/images/touch_w_text.png')}
-            resizeMode="contain"
+        {balance === NaN || null || '-' ? (
+          <></>
+        ) : (
+          <View
             style={{
-              width: 64,
-              height: 19,
-              marginRight: 9,
-            }}
-          />
-        </View>
+              minHeight: 100,
+              marginHorizontal: 52,
+              backgroundColor: 'rgba(14, 15, 15, 0.8)',
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignContent: 'center',
+              alignItems: 'center',
+              height: 100,
+            }}>
+            <Text style={{marginLeft: 20, fontSize: 15, color: '#fff'}}>
+              현재 적립
+            </Text>
+            {/* 현재 보유중인  총 충전 금액 */}
+
+            <Text style={{fontSize: 20, color: '#fff'}}>{balance}</Text>
+            <Image
+              source={require('../../../assets/images/touch_w_text.png')}
+              resizeMode="contain"
+              style={{
+                width: 64,
+                height: 19,
+                marginRight: 9,
+              }}
+            />
+          </View>
+        )}
       </View>
       <BottomButton
         text={'나의 지갑가기'}
