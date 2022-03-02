@@ -53,7 +53,6 @@ function Signup({props, navigation}) {
     }
   }, [dispatch]);
 
-
   // axios 테스트
   const getVerifyCode = async Email => {
     let body = {Email};
@@ -89,7 +88,7 @@ function Signup({props, navigation}) {
   const onCheckVerifyCode = () => {
     let errMsg = null;
 
-    if (!allagree) {
+    if (!ser_agree || !per_agree) {
       errMsg = '서비스 이용 약관에 동의해 주세요.';
     } else if (email === '' || code === '') {
       errMsg = '이메일과 인증번호를 꼭 입력해주세요.';
