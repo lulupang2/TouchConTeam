@@ -13,12 +13,13 @@ const TitleInput = ({value, onChangeText, style}) => {
 
 export default TitleInput;
 
-export const ContentInput = ({value, onChangeText, style}) => {
+export const ContentInput = ({value, onChangeText, style, multiline}) => {
   return (
     <TextInput
       value={value}
       onChangeText={onChangeText}
       style={[styles.content, style]}
+      multiline={multiline}
     />
   );
 };
