@@ -28,10 +28,8 @@ const {width} = Dimensions.get('window');
 const view = ({navigation}) => {
   const auth = useSelector(state => state.auth);
   const [dates, setDates] = useState([]);
-  const [coin, setCoin] = useState([]);
+  // const [coin, setCoin] = useState([]);
   const [isEnable, setIsEnable] = useState(true);
-
-  console.log(isEnable);
 
   let today = dayjs(new Date()).format('YYYY-MM-DD');
   useEffect(() => {
@@ -58,12 +56,10 @@ const view = ({navigation}) => {
         </Touchable>
       ),
     });
-    //  sesstionToken,Date ='YYYY-MM-DD'
-    console.log('today', today);
   }, []);
 
   const Attendance = async () => {
-    if (dates.filter(date => date[1] === today).length !== 0) {
+    if (dates?.filter(date => date[1] === today).length !== 0) {
       Alert.alert('금일은 출석 완료하였습니다');
 
       // navigation.navigate('PointCh', {coins: coin});
@@ -72,14 +68,14 @@ const view = ({navigation}) => {
       return;
     }
 
-    console.log(isEnable);
+    // console.log(isEnable);
     if (isEnable === false) {
       return;
     }
     setIsEnable(false);
 
     let body = {sessionToken: auth.sessionToken, Date: today};
-    console.log(body);
+    // console.log(body);
     api
       .post('attendance', JSON.stringify(body), {
         headers: {
@@ -102,8 +98,7 @@ const view = ({navigation}) => {
   };
 
   const AttendanceRecord = async () => {
-    let body = {sessionToken: auth.sessionToken};
-    console.log(body);
+    let body = {sessionToken: auth?.sessionToken};
     api
       .post('attendancerecord', JSON.stringify(body), {
         headers: {
@@ -111,6 +106,7 @@ const view = ({navigation}) => {
         },
       })
       .then(res => {
+        console.log(res);
         if (res.status !== 200) {
           return;
         }
@@ -118,6 +114,7 @@ const view = ({navigation}) => {
         // console.log('11111', res);
         // console.log(res?.data.Result);
         console.log(res?.data.Result);
+        console.log('/////////////////////////////////////////');
         setDates(res?.data?.Result);
       })
       .catch(err => {
@@ -126,7 +123,7 @@ const view = ({navigation}) => {
   };
 
   const fetchTotalCoin = async () => {
-    let body = {sessionToken: auth.sessionToken};
+    let body = {sessionToken: auth?.sessionToken};
     try {
       const config = {
         headers: {
@@ -134,10 +131,10 @@ const view = ({navigation}) => {
         },
       };
       const res = await api.post('balance', JSON.stringify(body), config);
-      console.log(res?.data?.Result);
-      setCoin(res?.data?.Result);
+      // console.log(res?.data?.Result);
+      // setCoin(res?.data?.Result);
 
-      console.log('coin', coin);
+      // console.log('coin', coin);
       // navigation.navigate('Wallet');
       // console.log('test', res.data.Result);
     } catch (err) {
@@ -243,7 +240,7 @@ const view = ({navigation}) => {
 
         <BottomButton
           text={
-            dates.filter(date => date[1] === today).length !== 0
+            dates?.filter(date => date[1] === today).length !== 0
               ? '금일 출석완료'
               : '오늘 출석하기'
           }

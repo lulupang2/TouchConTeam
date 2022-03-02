@@ -54,27 +54,27 @@ const view = ({navigation}) => {
       ),
     });
 
-    if (Platform.OS === 'android') {
-      // console.log(' 111 ');
-      PermissionsAndroid.requestMultiple([
-        PermissionsAndroid.PERMISSIONS.CAMERA,
-        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-        PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
-      ]).then(result => {
-        // console.log(result);
-        /*
-              if (
-                result['android.permission.CAMERA'] === 'granted' &&
-                result['android.permission.WRITE_EXTERNAL_STORAGE'] === 'granted' &&
-                result['android.permission.RECORD_AUDIO'] === 'granted'
-              ) {
-                this.setState({permissionsGranted: true, showPermsAlert: false});
-              } else {
-                this.setState({permissionsGranted: false, showPermsAlert: true});
-              }
-              */
-      });
-    }
+    // if (Platform.OS === 'android') {
+    //   // console.log(' 111 ');
+    //   PermissionsAndroid.requestMultiple([
+    //     PermissionsAndroid.PERMISSIONS.CAMERA,
+    //     PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+    //     PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
+    //   ]).then(result => {
+    //     // console.log(result);
+    //     /*
+    //           if (
+    //             result['android.permission.CAMERA'] === 'granted' &&
+    //             result['android.permission.WRITE_EXTERNAL_STORAGE'] === 'granted' &&
+    //             result['android.permission.RECORD_AUDIO'] === 'granted'
+    //           ) {
+    //             this.setState({permissionsGranted: true, showPermsAlert: false});
+    //           } else {
+    //             this.setState({permissionsGranted: false, showPermsAlert: true});
+    //           }
+    //           */
+    //   });
+    // }
   }, []);
 
   // render({navigation}) {
