@@ -161,7 +161,7 @@ const Staking = () => {
       console.log('dddd', res.data?.Result?.TouchPoint);
       setTouchPoint(res?.data?.Result?.TouchPoint);
     } catch (err) {
-      Alert.alert('', '서버와 통신에 실패');
+      // Alert.alert('', '서버와 통신에 실패');
       console.log('err', err);
     }
   };
@@ -188,7 +188,7 @@ const Staking = () => {
       Alert.alert('Staking success');
       navigation.goBack();
     } catch (err) {
-      Alert.alert('', '서버와 통신에 실패');
+      // Alert.alert('', '서버와 통신에 실패');
       console.log('err', err);
       console.log('err', err.respon);
     }

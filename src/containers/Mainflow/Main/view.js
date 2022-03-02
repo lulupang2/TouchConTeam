@@ -139,7 +139,7 @@ export default function Main({navigation}) {
       // navigation.navigate('Wallet');
       console.log(res.data.Result);
     } catch (err) {
-      Alert.alert('', '서버와 통신에 실패');
+      // Alert.alert('', '서버와 통신에 실패');
       console.log('err', err);
     }
   };

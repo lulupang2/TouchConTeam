@@ -104,7 +104,7 @@ const CheckStaking = ({navigation}) => {
       // navigation.navigate('Wallet');
       // console.log('test', res.data.Result);
     } catch (err) {
-      Alert.alert('', '서버와 통신에 실패');
+      // Alert.alert('', '서버와 통신에 실패');
       console.log('err', err);
       console.log('err.res', err.response);
     }

@@ -159,7 +159,7 @@ export const checkVerifyCode = (Email, Verification) => async dispatch => {
     // dispatch(saveEditProfileSuccess());
     // dispatch(saveUserInfo(data));
   } catch (err) {
-    Alert.alert('', '서버와 통신에 실패하였습니다.');
+    // Alert.alert('', '서버와 통신에 실패하였습니다.');
     console.log(err.response);
   }
 };
@@ -172,7 +172,7 @@ export const pinRegister = (pin, Email) => async dispatch => {
       dispatch(saveSignUpSuccess());
     }
   } catch (err) {
-    Alert.alert('', '서버와 통신에 실패하였습니다.');
+    // Alert.alert('', '서버와 통신에 실패하였습니다.');
     console.log(err.response);
   }
 };
@@ -202,7 +202,7 @@ export const walletGenerator = userId => async dispatch => {
       ),
     );
   } catch (err) {
-    Alert.alert('', '서버와 통신에 실패하였습니다.');
+    // Alert.alert('', '서버와 통신에 실패하였습니다.');
     console.log(err.response);
   }
 };

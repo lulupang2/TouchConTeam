@@ -68,7 +68,7 @@ const PointCh = ({navigation, route}) => {
         navigation.goBack();
       }
     } catch (err) {
-      Alert.alert('', '서버와 통신에 실패');
+      // Alert.alert('', '서버와 통신에 실패');
       console.log('err', err);
     }
   };
