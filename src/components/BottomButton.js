@@ -5,9 +5,10 @@ import {NormalBoldLabel} from './Label';
 
 const {width} = Dimensions.get('window');
 
-const BottomButton = ({onPress, text, style}) => {
+const BottomButton = ({onPress, text, style, disabled}) => {
   return (
     <Touchable
+      disabled={disabled}
       onPress={onPress}
       style={{
         paddingVertical: 15,

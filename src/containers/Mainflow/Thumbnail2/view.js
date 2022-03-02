@@ -29,6 +29,10 @@ const view = ({navigation}) => {
   const auth = useSelector(state => state.auth);
   const [dates, setDates] = useState([]);
   const [coin, setCoin] = useState([]);
+  const [isEnable, setIsEnable] = useState(true);
+
+  console.log(isEnable)
+
   let today = dayjs(new Date()).format('YYYY-MM-DD');
   useEffect(() => {
     fetchTotalCoin();
@@ -54,7 +58,7 @@ const view = ({navigation}) => {
         </Touchable>
       ),
     });
-    // 오늘 출석하기 sesstionToken,Date ='YYYY-MM-DD'
+    //  sesstionToken,Date ='YYYY-MM-DD'
     console.log('today', today);
   }, []);
 
@@ -62,10 +66,19 @@ const view = ({navigation}) => {
     if (dates.filter(date => date[1] === today).length !== 0) {
       Alert.alert('금일은 출석 완료하였습니다');
 
-      navigation.navigate('PointCh', {coins: coin});
+      // navigation.navigate('PointCh', {coins: coin});
+      navigation.navigate('Main');
 
       return;
     }
+
+
+     console.log(isEnable)
+    if (isEnable === false) {
+      return;
+    }
+    setIsEnable(false);
+
     let body = {sessionToken: auth.sessionToken, Date: today};
     console.log(body);
     api
@@ -79,11 +92,13 @@ const view = ({navigation}) => {
           return;
         }
         console.log(res.status);
-        navigation.navigate('PointCh', {coins: coin});
-        Alert.alert('출석 되었습니다.');
+        // navigation.navigate('PointCh', { coins: coin });
+        navigation.navigate('Main');
+        // Alert.alert('출석 되었습니다.');
       })
       .catch(err => {
         console.log('에러메세지', err);
+        setIsEnable(true);
       });
   };
 

@@ -44,18 +44,15 @@ function Signup({props, navigation}) {
   const [remaining, setRemaining] = useState(0);
   const [hasSent, setHasSent] = useState(false);
   const [phone, onChangePhone] = React.useState('');
-  const [isDisabled, setIsDisabled] = useState(false);
   const [content, setContent] = useState('');
   // const [phoneNum, setPhoneNum] = useState('010');
-  {
-    // console.log('인증번호: ', verti);
-  }
 
   useEffect(() => {
     if (isVerified) {
       navigation.navigate('Pinlogin');
     }
   }, [dispatch]);
+
 
   // axios 테스트
   const getVerifyCode = async Email => {
@@ -66,7 +63,7 @@ function Signup({props, navigation}) {
       return;
     }
     Alert.alert('이메일을 전송하는 중입니다');
-    setIsDisabled(true);
+
     api
       .post('emailverification', JSON.stringify(body), {
         headers: {
@@ -82,7 +79,6 @@ function Signup({props, navigation}) {
         Alert.alert('전송이 완료됐습니다');
         console.log(res.data.Result);
         setVerti(res.data.Result);
-        setIsDisabled(false);
       })
       .catch(err => {
         Alert.alert('전송오류 발생하였습니다');
