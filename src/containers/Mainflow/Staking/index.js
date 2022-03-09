@@ -177,14 +177,16 @@ const Staking = () => {
 
       const res = await api.post('staking', JSON.stringify(body), config);
       console.log(res);
-      if (res.data.Result === 'too much') {
-        Alert.alert('보유하신 포인트보다 큰 포인트는 사용하지 못합니다');
-        return;
-      }
       if (res.data.Result === 'incorrect time') {
         Alert.alert('현재 모집기간이 아닙니다');
         return;
       }
+
+      if (res.data.Result === 'too much') {
+        Alert.alert('보유하신 포인트보다 큰 포인트는 사용하지 못합니다');
+        return;
+      }
+
       Alert.alert('Staking success');
       navigation.goBack();
     } catch (err) {

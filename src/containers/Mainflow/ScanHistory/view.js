@@ -80,11 +80,20 @@ const view = ({navigation}) => {
         <Text style={styles.tx2}>보상액</Text>
         <Text style={styles.tx3}>제휴업체</Text>
       </RowView>
-      <ScrollView style={styles.scContainer}>
-        {historyPosts?.map((menu, i) => (
-          <ScHistory menu={menu} index={i} key={i} />
-        ))}
-      </ScrollView>
+      {historyPosts?.length === 0 ? (
+        <View style={{flex: 1, justifyContent: 'center'}}>
+          <NormalBoldLabel
+            text={'스캔된\n 내역이 없습니다.'}
+            style={styles.nodata}
+          />
+        </View>
+      ) : (
+        <ScrollView style={styles.scContainer}>
+          {historyPosts?.map((menu, i) => (
+            <ScHistory menu={menu} index={i} key={i} />
+          ))}
+        </ScrollView>
+      )}
     </WhiteSafeAreaView>
   );
 };
@@ -113,6 +122,13 @@ const ScHistory = ({menu, index}) => {
 };
 
 const styles = StyleSheet.create({
+  nodata: {
+    textAlign: 'center',
+    justifyContent: 'center',
+    fontSize: 26,
+    lineHeight: 40,
+    color: '#c4c4c4',
+  },
   company: {width: 60, position: 'relative', left: -30},
   scContainer: {
     marginHorizontal: 16,

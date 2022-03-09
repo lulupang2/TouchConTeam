@@ -160,16 +160,32 @@ const CheckStaking = ({navigation}) => {
           <Text style={styles.tx2}>신청수량</Text>
           <Text style={styles.tx3}>만기시 수량</Text>
         </RowView>
-        <ScrollView
-          style={{
-            marginHorizontal: 16,
-            height: historyPosts.length > 4 ? 225 : 150,
-          }}
-          nestedScrollEnabled={true}>
-          {historyPosts?.map((menu, i) => {
-            return <ScHistory menu={menu} index={i} key={i} />;
-          })}
-        </ScrollView>
+
+        {historyPosts?.length === 0 ? (
+          <View style={{flex: 1, justifyContent: 'center'}}>
+            <NormalBoldLabel
+              text={'스테이킹 내역이 없습니다.'}
+              style={{
+                textAlign: 'center',
+                padding: 45,
+                lineHeight: 26,
+                color: '#c4c4c4',
+              }}
+            />
+          </View>
+        ) : (
+          <ScrollView
+            style={{
+              marginHorizontal: 16,
+              height: historyPosts.length > 4 ? 225 : 150,
+            }}
+            nestedScrollEnabled={true}>
+            {historyPosts?.map((menu, i) => {
+              return <ScHistory menu={menu} index={i} key={i} />;
+            })}
+          </ScrollView>
+        )}
+
         <View style={styles.contentBox}>
           <ContextView
             text={'해제일자'}

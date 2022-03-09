@@ -146,21 +146,30 @@ const view = ({navigation}) => {
         <Text style={styles.tx3}>회사</Text>
       </RowView>
 
-      <ScrollView style={styles.scContainer}>
-        {historyPosts.map((menu, index) => (
-          <TouchableOpacity
-            key={index}
-            onPress={() => {
-              setVisible(true);
-              setQrNum(menu.Qr);
-              setDate(menu.Date);
-              setAmount(menu.Amount);
-              setCompany(menu.Company);
-            }}>
-            <ScHistory menu={menu} index={index} />
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+      {historyPosts?.length === 0 ? (
+        <View style={styles.nodata}>
+          <NormalBoldLabel
+            text={'스캔된\n내역이 없습니다.'}
+            style={styles.nodataText}
+          />
+        </View>
+      ) : (
+        <ScrollView style={styles.scContainer}>
+          {historyPosts.map((menu, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => {
+                setVisible(true);
+                setQrNum(menu.Qr);
+                setDate(menu.Date);
+                setAmount(menu.Amount);
+                setCompany(menu.Company);
+              }}>
+              <ScHistory menu={menu} index={index} />
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      )}
     </WhiteSafeAreaView>
   );
 };
@@ -195,6 +204,18 @@ const ScHistory = ({menu, index}) => {
 
 const styles = StyleSheet.create({
   company: {width: 60, position: 'relative', left: -30},
+  nodata: {
+    marginHorizontal: 16,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  nodataText: {
+    fontSize: 26,
+    lineHeight: 34,
+    textAlign: 'center',
+    color: '#c4c4c4',
+  },
   scContainer: {
     marginHorizontal: 16,
   },
