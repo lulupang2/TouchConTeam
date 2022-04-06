@@ -105,7 +105,7 @@ const view = ({navigation, sendmodal, route}) => {
     let body = {
       sessionToken: auth.sessionToken,
       Coin: 'TouchCon',
-
+      Amount: coin,
       Address: add,
     };
     if (0 >= add.length) {
@@ -146,11 +146,11 @@ const view = ({navigation, sendmodal, route}) => {
           Alert.alert('잔액을 확인해 주세요');
           return;
         }
-        setVisible(false);
+
         console.log('res', res);
       })
       .catch(err => {
-        Alert.alert('네트워크 에러입니다.');
+        Alert.alert('네트워크 상태를 확인 해주세요.');
         console.log('에러메세지', err);
       });
   };
@@ -201,11 +201,10 @@ const view = ({navigation, sendmodal, route}) => {
           Alert.alert('유효하지 않는 출금 주소입니다.');
           return;
         }
-        setVisible(false);
         console.log('eth : ', res);
       })
       .catch(err => {
-        Alert.alert('네트워크 에러입니다.');
+        Alert.alert('네트워크 상태를 확인 해주세요.');
         console.log('에러메세지', err);
       });
   };
@@ -268,8 +267,10 @@ const view = ({navigation, sendmodal, route}) => {
               onChangeText={text => {
                 if (divide) {
                   setCoin(text);
+                  setVisible(false);
                 } else {
                   setEth(text);
+                  setVisible(false);
                 }
               }}
               keyboardType="number-pad"
