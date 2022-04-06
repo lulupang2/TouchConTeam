@@ -146,12 +146,15 @@ const view = ({navigation, sendmodal, route}) => {
           Alert.alert('잔액을 확인해 주세요');
           return;
         }
-
         console.log('res', res);
+        setAdd('');
+        setCoin(0);
       })
       .catch(err => {
         Alert.alert('네트워크 상태를 확인 해주세요.');
         console.log('에러메세지', err);
+        setAdd('');
+        setCoin(0);
       });
   };
   const clickEthereumSend = async () => {
@@ -202,10 +205,14 @@ const view = ({navigation, sendmodal, route}) => {
           return;
         }
         console.log('eth : ', res);
+        setAdd('');
+        setEth(0);
       })
       .catch(err => {
         Alert.alert('네트워크 상태를 확인 해주세요.');
         console.log('에러메세지', err);
+        setAdd('');
+        setEth(0);
       });
   };
 
