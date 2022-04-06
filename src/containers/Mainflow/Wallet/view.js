@@ -120,7 +120,7 @@ const view = ({navigation, sendmodal, route}) => {
       Alert.alert('정확한 TOC 수량을 기입해주세요.');
       return;
     }
-
+    setVisible(false);
     await api
       .post('sendcoin', JSON.stringify(body), {
         headers: {
@@ -174,7 +174,7 @@ const view = ({navigation, sendmodal, route}) => {
       Alert.alert('정확한 이더리움 수량을 기입해주세요.');
       return;
     }
-
+    setVisible(false);
     await api
       .post('sendcoin', JSON.stringify(body), {
         headers: {
@@ -267,10 +267,8 @@ const view = ({navigation, sendmodal, route}) => {
               onChangeText={text => {
                 if (divide) {
                   setCoin(text);
-                  setVisible(false);
                 } else {
                   setEth(text);
-                  setVisible(false);
                 }
               }}
               keyboardType="number-pad"
