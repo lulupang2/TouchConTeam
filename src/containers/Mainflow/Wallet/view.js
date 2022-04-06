@@ -30,11 +30,11 @@ import api from '../../../api';
 
 const view = ({navigation, sendmodal, route}) => {
   let coins = route.params.coins;
+  console.log('coins=>>>>', coins);
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
   const {walletAddress, walletURL} = auth;
 
-  // let coins = route.params.coins;
   const [visible, setVisible] = useState(false);
   const [coin, setCoin] = useState(0);
   const [coinPrice, setCoinPrice] = useState([]);
@@ -115,6 +115,19 @@ const view = ({navigation, sendmodal, route}) => {
     //   Alert.alert('TouchCon의 출금 수량은 5000 TOP를 넘을 수 없습니다.');
     //   return;
     // }
+    if (0 >= add.length) {
+      Alert.alert('출금 주소를 기입해주세요.');
+      return;
+    }
+    if (coin > coins.TouchCon) {
+      Alert.alert('보유하신 TOC를 넘어서 출금하실 수 없습니다.');
+      return;
+    }
+    if (0 >= coin) {
+      Alert.alert('정확한 TOC 수량을 기입해주세요.');
+      return;
+    }
+
     await api
       .post('sendcoin', JSON.stringify(body), {
         headers: {
@@ -122,8 +135,6 @@ const view = ({navigation, sendmodal, route}) => {
         },
       })
       .then(res => {
-        console.log('res', res);
-        setVisible(false);
         if (res.status !== 200) {
           return;
         }
@@ -142,6 +153,8 @@ const view = ({navigation, sendmodal, route}) => {
           Alert.alert('잔액을 확인해 주세요');
           return;
         }
+        console.log('res', res);
+        setVisible(false);
       })
       .catch(err => {
         Alert.alert('네트워크 에러입니다.');
@@ -154,13 +167,13 @@ const view = ({navigation, sendmodal, route}) => {
       sessionToken: auth.sessionToken,
       Coin: 'Ethereum',
       Amount: eth,
-      // Address: '0x9f2ef2abfa59fa4f02c567b3875b6bc483dee537',
       Address: add,
     };
-    // if (eth > 5001) {
-    //   Alert.alert('Ethereum의 출금 수량은 5000 ETH를 넘을 수 없습니다.');
-    //   return;
-    // }
+    if (0 >= eth) {
+      Alert.alert('보내고자 할 이더리움 값을 기입해주세요.');
+      return;
+    }
+
     await api
       .post('sendcoin', JSON.stringify(body), {
         headers: {
@@ -260,7 +273,6 @@ const view = ({navigation, sendmodal, route}) => {
               onPress={() => {
                 if (divide === true) {
                   clickCoinSend();
-                  setVisible(false);
                 } else {
                   clickEthereumSend();
                   setVisible(false);
