@@ -95,7 +95,7 @@ const PointCh = ({navigation, route}) => {
   return (
     <ScrollView>
       <View style={styles.back}>
-        <Text style={styles.tx1}>전환액 만큼 터치콘이 차감 됩니다.</Text>
+        <Text style={styles.tx1}>전환액 만큼 TOP가 차감 됩니다.</Text>
         <View style={styles.point}>
           <Image
             source={require('../../../assets/icons/coin_icon.png')}
@@ -183,7 +183,8 @@ const PointCh = ({navigation, route}) => {
       <NormalLabel
         text={
           '[유의사항]\n\n' +
-          '\u2022 TOP는 앱내에서 사용하는 포인트 단위입니다.\n' +
+          // '\u2022 TOP는 앱내에서 사용하는 포인트 단위입니다.\n' +
+          '\u2022 TOP는 앱내에서 사용하는 보상 단위입니다.\n' +
           '\u2022 TOP는 언제든지 TOC(터치토큰)로 전환하실 수 있습니다.\n' +
           '\u2022 TOP와 TOC의 전환 비율은 1:1 입니다\n' +
           '\u2022 TOC로 전환 후에 다시 TOP로 전환하실 수 있습니다.'

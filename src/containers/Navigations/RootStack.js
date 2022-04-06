@@ -305,7 +305,7 @@ const RootStack = () => (
     <Stack.Screen
       name="TouchConCh"
       component={TouchConCh}
-      options={{title: '터치콘 전환'}}
+      options={{title: 'TOC 전환'}}
     />
     {/*---- 터치콘전환  end---- */}
     {/*<Stack.Screen*/}
@@ -344,7 +344,7 @@ const RootStack = () => (
     <Stack.Screen
       name="PointCh"
       component={PointCh}
-      options={{title: '포인트 전환'}}
+      options={{title: 'TOP 전환'}}
     />
     <Stack.Screen
       name="CheckStacking"

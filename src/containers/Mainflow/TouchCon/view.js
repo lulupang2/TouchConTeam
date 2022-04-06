@@ -32,7 +32,7 @@ const QR_CODE = require('../../../assets/images/qr_code.png');
 
 const view = ({navigation}) => {
   const isFocused = useIsFocused();
-  const [touchPonint, setTouchPoint] = useState(10000.11);
+  const [touchPonint, setTouchPoint] = useState(0);
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
   const [coin, setCoin] = useState([]);
@@ -41,9 +41,9 @@ const view = ({navigation}) => {
     Clipboard.setString(walletAddress);
   };
   const MENU = [
-    {name: '포인트\n전환', path: 'PointCh'},
+    {name: 'TOP\n전환', path: 'PointCh'},
     {name: auth.walletAddress ? '지갑\n보기' : '지갑\n생성', path: 'Wallet'},
-    {name: '터치콘\n전환', path: 'TouchConCh'},
+    {name: 'TOC\n전환', path: 'TouchConCh'},
     {name: '스캔\n보기', path: 'ScanHistory'},
   ];
   // const fetchCopiedText = async () => {

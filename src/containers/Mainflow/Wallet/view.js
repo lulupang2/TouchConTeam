@@ -39,7 +39,7 @@ const view = ({navigation, sendmodal, route}) => {
   const [coin, setCoin] = useState(0);
   const [coinPrice, setCoinPrice] = useState([]);
   const [eth, setEth] = useState(0);
-  const [add, setAdd] = useState('0x45fe5c2a4b30239b3d5b0a3d4170B0E8e45FF449');
+  const [add, setAdd] = useState('');
   const [divide, setDivide] = useState(true);
 
   const copyClipboard = () => {
@@ -111,10 +111,10 @@ const view = ({navigation, sendmodal, route}) => {
       // Address: '0x9f2EF2aBFa59fA4f02C567B3875b6bC483DeE537',
       Address: add,
     };
-    if (coin > 5001) {
-      Alert.alert('TouchCon의 출금 수량은 5000 TOP를 넘을 수 없습니다.');
-      return;
-    }
+    // if (coin > 5001) {
+    //   Alert.alert('TouchCon의 출금 수량은 5000 TOP를 넘을 수 없습니다.');
+    //   return;
+    // }
     await api
       .post('sendcoin', JSON.stringify(body), {
         headers: {
@@ -139,11 +139,14 @@ const view = ({navigation, sendmodal, route}) => {
           Alert.alert('유효하지 않는 출금 주소입니다.');
           return;
         } else {
-          Alert.alert('출금 주소 혹은 잔액을 확인해 주세요');
+          Alert.alert('잔액을 확인해 주세요');
           return;
         }
       })
-      .catch(err => console.log('에러메세지', err));
+      .catch(err => {
+        Alert.alert('네트워크 에러입니다.');
+        console.log('에러메세지', err);
+      });
   };
   const clickEthereumSend = async () => {
     const randomTime = Math.floor(Math.random() * 15000) + 45000;
@@ -154,10 +157,10 @@ const view = ({navigation, sendmodal, route}) => {
       // Address: '0x9f2ef2abfa59fa4f02c567b3875b6bc483dee537',
       Address: add,
     };
-    if (eth > 5001) {
-      Alert.alert('Ethereum의 출금 수량은 5000 ETH를 넘을 수 없습니다.');
-      return;
-    }
+    // if (eth > 5001) {
+    //   Alert.alert('Ethereum의 출금 수량은 5000 ETH를 넘을 수 없습니다.');
+    //   return;
+    // }
     await api
       .post('sendcoin', JSON.stringify(body), {
         headers: {

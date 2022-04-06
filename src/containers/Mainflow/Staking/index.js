@@ -293,7 +293,7 @@ const Staking = () => {
               source={require('../../../assets/images/touchLogo.png')}
             /> */}
             <NormalBoldLabel
-              text={'TOC'}
+              text={'TOP'}
               style={{
                 fontSize: 15,
                 lineHeight: 34,
@@ -309,7 +309,7 @@ const Staking = () => {
             <Sum>계산</Sum>
           </Button>
         </TopContainer>
-        <Information>최소 신청수량은 1,000 TOC 입니다.</Information>
+        <Information>최소 신청수량은 1,000 TOP 입니다.</Information>
         <TableContainer>
           <FlatList
             data={calendarData}

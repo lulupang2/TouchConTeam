@@ -129,7 +129,7 @@ def nativeArchitectures = project.getProperties().get("reactNativeDebugArchitect
 android {
     ndkVersion rootProject.ext.ndkVersion
     dexOptions {
-       javaMaxHeapSize "4g"
+    javaMaxHeapSize "4g"
     }
 
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -141,8 +141,8 @@ android {
         applicationId "com.touchcon"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 15
-        versionName "7.0.5"
+        versionCode 18
+        versionName "7.0.6"
 
 
          // 아래 부분 추가
