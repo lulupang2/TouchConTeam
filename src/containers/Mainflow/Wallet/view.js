@@ -37,7 +37,7 @@ const view = ({navigation, sendmodal, route}) => {
   const [coin, setCoin] = useState(0);
   const [coinPrice, setCoinPrice] = useState([]);
   const [eth, setEth] = useState(0);
-  const [add, setAdd] = useState('0x9f2EF2aBFa59fA4f02C567B3875b6bC483DeE537');
+  const [add, setAdd] = useState('');
   const [divide, setDivide] = useState(true);
 
   const copyClipboard = () => {

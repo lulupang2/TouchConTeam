@@ -27,7 +27,6 @@ const window_width = Dimensions.get('window').width;
 const window_height = Dimensions.get('window').height;
 
 const PointCh = ({navigation, route}) => {
-  const [ponit, setPonit] = useState('10000.11');
   const [tokens, onChangetokens] = useState('');
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);

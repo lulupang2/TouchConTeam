@@ -32,36 +32,6 @@ const CheckStaking = ({navigation}) => {
   const [releaseMonth, setReleaseMonth] = useState('');
   const [historyPosts, setHistoryPosts] = useState([]);
 
-  console.log('dsfsdljfk', releaseYear);
-  const ScInventory = [
-    {
-      id: 1,
-      Date: '21.10.05',
-      ApplingAmount: '200',
-    },
-    {id: 2, Date: '21.04.05', ApplingAmount: '10'},
-    {
-      id: 3,
-      Date: '21.05.10',
-      ApplingAmount: '30000',
-    },
-    {
-      id: 4,
-      Date: '21.04.05',
-      ApplingAmount: '3000',
-    },
-    {
-      id: 5,
-      Date: '21.04.05',
-      ApplingAmount: '30000',
-    },
-    {
-      id: 6,
-      Date: '21.04.05',
-      ApplingAmount: '3000',
-    },
-  ];
-
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (

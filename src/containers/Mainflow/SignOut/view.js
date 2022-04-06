@@ -28,7 +28,7 @@ import {checkVerifyCode, resetAuth} from '../../../redux/authSlice';
 const view = () => {
   const [mark, setMark] = useState(true);
   const [toc, setToc] = useState();
-  const [krw, setKrw] = useState('50,210');
+  const [krw, setKrw] = useState('');
   const [top, setTop] = useState();
   const navigation = useNavigation();
   const dispatch = useDispatch();

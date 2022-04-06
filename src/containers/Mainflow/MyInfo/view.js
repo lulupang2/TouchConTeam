@@ -16,7 +16,6 @@ const MENU = [
 ];
 
 const view = ({navigation}) => {
-  const [email, setEmail] = useState('ngm1224@gmail.com');
   const auth = useSelector(state => state.auth);
   return (
     <WhiteSafeAreaView>

@@ -65,7 +65,6 @@ export default function Pinlogin({route}) {
   const auth = useSelector(state => state.auth);
   const {pin, sessionToken, loginSuccess, email} = auth; // pin 현재 기본값 0000000
   const [pwd, onChangePwd] = React.useState('');
-  const [test, setTest] = useState('0000000');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [pwdbool, setPwdbool] = useState(0); // pwErrCount
   // const email = route.params.Email ? route.params.Email : auth.email;

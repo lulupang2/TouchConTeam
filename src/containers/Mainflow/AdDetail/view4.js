@@ -9,22 +9,6 @@ const Imgdata = [
     id: 1,
     img: require('../../../assets/images/original/ca_origin_detail1.jpeg'),
   },
-  // {
-  //   id: 2,
-  //   img: require('../../../assets/images/original/ca_origin_detail2.jpeg'),
-  // },
-  // {
-  //   id: 3,
-  //   img: require('../../../assets/images/original/ca_origin_detail3.jpeg'),
-  // },
-  // {
-  //   id: 4,
-  //   img: require('../../../assets/images/original/ca_origin_detail4.jpeg'),
-  // },
-  // {
-  //   id: 5,
-  //   img: require('../../../assets/images/original/ca_origin_detail5.jpeg'),
-  // },
   {
     id: 6,
     img: require('../../../assets/images/original/ca_origin_detail6.jpeg'),
