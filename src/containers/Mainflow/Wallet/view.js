@@ -171,7 +171,7 @@ const view = ({navigation, sendmodal, route}) => {
       return;
     }
     if (0 >= eth) {
-      Alert.alert('정확한 TOC 수량을 기입해주세요.');
+      Alert.alert('정확한 이더리움 수량을 기입해주세요.');
       return;
     }
 
