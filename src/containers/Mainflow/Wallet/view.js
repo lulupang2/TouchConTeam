@@ -30,16 +30,14 @@ import api from '../../../api';
 
 const view = ({navigation, sendmodal, route}) => {
   let coins = route.params.coins;
-  console.log('coins=>>>>', coins);
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
   const {walletAddress, walletURL} = auth;
-
   const [visible, setVisible] = useState(false);
   const [coin, setCoin] = useState(0);
   const [coinPrice, setCoinPrice] = useState([]);
   const [eth, setEth] = useState(0);
-  const [add, setAdd] = useState('');
+  const [add, setAdd] = useState('0x9f2EF2aBFa59fA4f02C567B3875b6bC483DeE537');
   const [divide, setDivide] = useState(true);
 
   const copyClipboard = () => {
@@ -107,20 +105,15 @@ const view = ({navigation, sendmodal, route}) => {
     let body = {
       sessionToken: auth.sessionToken,
       Coin: 'TouchCon',
-      Amount: coin,
-      // Address: '0x9f2EF2aBFa59fA4f02C567B3875b6bC483DeE537',
+
       Address: add,
     };
-    // if (coin > 5001) {
-    //   Alert.alert('TouchCon의 출금 수량은 5000 TOP를 넘을 수 없습니다.');
-    //   return;
-    // }
     if (0 >= add.length) {
       Alert.alert('출금 주소를 기입해주세요.');
       return;
     }
     if (coin > coins.TouchCon) {
-      Alert.alert('보유하신 TOC를 넘어서 출금하실 수 없습니다.');
+      Alert.alert('보유하신 TOC를 넘어서 보낼 수 없습니다.');
       return;
     }
     if (0 >= coin) {
@@ -153,8 +146,8 @@ const view = ({navigation, sendmodal, route}) => {
           Alert.alert('잔액을 확인해 주세요');
           return;
         }
-        console.log('res', res);
         setVisible(false);
+        console.log('res', res);
       })
       .catch(err => {
         Alert.alert('네트워크 에러입니다.');
@@ -169,8 +162,16 @@ const view = ({navigation, sendmodal, route}) => {
       Amount: eth,
       Address: add,
     };
+    if (0 >= add.length) {
+      Alert.alert('출금 주소를 기입해주세요.');
+      return;
+    }
+    if (eth > coins.Ethereum) {
+      Alert.alert('보유하신 이더리움을 넘어서 보낼 수 없습니다.');
+      return;
+    }
     if (0 >= eth) {
-      Alert.alert('보내고자 할 이더리움 값을 기입해주세요.');
+      Alert.alert('정확한 TOC 수량을 기입해주세요.');
       return;
     }
 
@@ -198,10 +199,15 @@ const view = ({navigation, sendmodal, route}) => {
           return;
         } else if (res.data.Result === '유효하지 않은 출금주소입니다.') {
           Alert.alert('유효하지 않는 출금 주소입니다.');
+          return;
         }
+        setVisible(false);
         console.log('eth : ', res);
       })
-      .catch(err => console.log('에러메세지', err));
+      .catch(err => {
+        Alert.alert('네트워크 에러입니다.');
+        console.log('에러메세지', err);
+      });
   };
 
   return (
@@ -275,7 +281,6 @@ const view = ({navigation, sendmodal, route}) => {
                   clickCoinSend();
                 } else {
                   clickEthereumSend();
-                  setVisible(false);
                 }
               }}
             />
