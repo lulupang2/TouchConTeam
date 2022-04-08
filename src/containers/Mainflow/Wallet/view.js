@@ -39,6 +39,7 @@ const view = ({navigation, sendmodal, route}) => {
   const [eth, setEth] = useState(0);
   const [add, setAdd] = useState('');
   const [divide, setDivide] = useState(true);
+  const [waitTime, setWaitTime] = useState(0);
 
   const copyClipboard = () => {
     Clipboard.setString(walletAddress);
@@ -78,7 +79,6 @@ const view = ({navigation, sendmodal, route}) => {
         },
       };
       const res = await api.post('exchangerate', JSON.stringify(body), config);
-      // console.log(res?.data?.Result);
       setCoinPrice(res?.data?.Result);
     } catch (err) {
       // Alert.alert('', '서버와 통신에 실패');
@@ -112,7 +112,7 @@ const view = ({navigation, sendmodal, route}) => {
       Alert.alert('출금 주소를 기입해주세요.');
       return;
     }
-    if (coin > coins.TouchCon) {
+    if (parseFloat(coin) > parseFloat(coins.TouchCon)) {
       Alert.alert('보유하신 TOC를 넘어서 보낼 수 없습니다.');
       return;
     }
@@ -131,24 +131,23 @@ const view = ({navigation, sendmodal, route}) => {
         if (res.status !== 200) {
           return;
         }
-        if (res.data.Result === 'success') {
+        if (res?.data?.Result === 'success') {
           // Alert.alert('출금이 완료 되었습니다.');
           Alert.alert(
-            '트랜잭션을 보내는 중입니다. 네트워크 상태에 따라 최대 3분 가량 소요됩니다.',
+            `트랜잭션을 보내는 중입니다. 네트워크 상태에 따라 최대 ${res?.data?.Waittime}분 가량 소요됩니다.`,
           );
-          setTimeout(() => {
-            Alert.alert('전송 완료 되었습니다.');
-          }, randomTime);
-        } else if (res.data.Result === '유효하지 않은 출금주소입니다.') {
+        } else if (res?.data?.Result === '유효하지 않은 출금주소입니다.') {
           Alert.alert('유효하지 않는 출금 주소입니다.');
           return;
         } else {
           Alert.alert('잔액을 확인해 주세요');
           return;
         }
-        console.log('res', res);
         setAdd('');
         setCoin(0);
+        setTimeout(() => {
+          Alert.alert('전송 완료 되었습니다.');
+        }, randomTime);
       })
       .catch(err => {
         Alert.alert('네트워크 상태를 확인 해주세요.');
@@ -165,11 +164,11 @@ const view = ({navigation, sendmodal, route}) => {
       Amount: eth,
       Address: add,
     };
-    if (0 >= add.length) {
+    if (0 >= add?.length) {
       Alert.alert('출금 주소를 기입해주세요.');
       return;
     }
-    if (eth > coins.Ethereum) {
+    if (parseFloat(eth) > parseFloat(coins?.Ethereum)) {
       Alert.alert('보유하신 이더리움을 넘어서 보낼 수 없습니다.');
       return;
     }
@@ -185,28 +184,27 @@ const view = ({navigation, sendmodal, route}) => {
         },
       })
       .then(res => {
-        if (res.status !== 200) {
+        if (res?.status !== 200) {
           return;
         }
-        if (res.data.Result === 'success') {
+        if (res?.data?.Result === 'success') {
           // Alert.alert('출금이 완료 되었습니다.');
           Alert.alert(
-            '트랜잭션을 보내는 중입니다. 네트워크 상태에 따라 최대 3분 가량 소요됩니다.',
+            `트랜잭션을 보내는 중입니다. 네트워크 상태에 따라 최대 ${res?.data?.Waittime}분 가량 소요됩니다.`,
           );
-          setTimeout(() => {
-            Alert.alert('전송 완료 되었습니다.');
-          }, randomTime);
-          setTimeout(() => {});
-        } else if (res.data.Result === '이더리움이 부족합니다') {
+        } else if (res?.data?.Result === '이더리움이 부족합니다') {
           Alert.alert('이더리움이 부족합니다');
           return;
-        } else if (res.data.Result === '유효하지 않은 출금주소입니다.') {
+        } else if (res?.data?.Result === '유효하지 않은 출금주소입니다.') {
           Alert.alert('유효하지 않는 출금 주소입니다.');
           return;
         }
         console.log('eth : ', res);
         setAdd('');
         setEth(0);
+        setTimeout(() => {
+          Alert.alert('전송 완료 되었습니다.');
+        }, randomTime);
       })
       .catch(err => {
         Alert.alert('네트워크 상태를 확인 해주세요.');
