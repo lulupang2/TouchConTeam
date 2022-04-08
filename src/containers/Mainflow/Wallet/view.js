@@ -136,13 +136,19 @@ const view = ({navigation, sendmodal, route}) => {
           Alert.alert(
             `트랜잭션을 보내는 중입니다. 네트워크 상태에 따라 최대 ${res?.data?.Waittime}분 가량 소요됩니다.`,
           );
-        } else if (res?.data?.Result === '유효하지 않은 출금주소입니다.') {
+        } else{
+          Alert.alert(res?.data?.Result);
+          return;
+        }
+        /*
+        else if (res?.data?.Result === '유효하지 않은 출금주소입니다.') {
           Alert.alert('유효하지 않는 출금 주소입니다.');
           return;
         } else {
           Alert.alert('잔액을 확인해 주세요');
           return;
         }
+        */
         setAdd('');
         setCoin(0);
         setTimeout(() => {
@@ -192,13 +198,19 @@ const view = ({navigation, sendmodal, route}) => {
           Alert.alert(
             `트랜잭션을 보내는 중입니다. 네트워크 상태에 따라 최대 ${res?.data?.Waittime}분 가량 소요됩니다.`,
           );
-        } else if (res?.data?.Result === '이더리움이 부족합니다') {
+        } else {
+          Alert.alert(res?.data?.Result);
+          return;
+        }
+        /*
+        else if (res?.data?.Result === '이더리움이 부족합니다') {
           Alert.alert('이더리움이 부족합니다');
           return;
         } else if (res?.data?.Result === '유효하지 않은 출금주소입니다.') {
           Alert.alert('유효하지 않는 출금 주소입니다.');
           return;
         }
+        */
         console.log('eth : ', res);
         setAdd('');
         setEth(0);
