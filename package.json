@@ -34,6 +34,7 @@
     "moment": "^2.29.1",
     "react": "17.0.2",
     "react-native": "0.66.0",
+    "react-native-animated-pagination-dot": "^0.3.2",
     "react-native-calendars": "^1.1268.0",
     "react-native-camera": "^4.2.1",
     "react-native-gesture-handler": "^1.10.3",

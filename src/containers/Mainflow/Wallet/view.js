@@ -136,7 +136,7 @@ const view = ({navigation, sendmodal, route}) => {
           Alert.alert(
             `트랜잭션을 보내는 중입니다. 네트워크 상태에 따라 최대 ${res?.data?.Waittime}분 가량 소요됩니다.`,
           );
-        } else{
+        } else {
           Alert.alert(res?.data?.Result);
           return;
         }

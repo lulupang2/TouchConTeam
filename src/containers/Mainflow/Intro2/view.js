@@ -7,59 +7,123 @@ import {
   View,
   Dimensions,
   SafeAreaView,
+  Button,
 } from 'react-native';
 import TouchableNoFeedback from '../../../components/TouchableNoFeedback';
+import PaginationDot from 'react-native-animated-pagination-dot';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {IconButton} from 'react-native-paper';
 
 const {height} = Dimensions.get('window');
 
-export default function Intro2({navigation}) {
+export default function Intro2({navigation, style, img, mainText, subText}) {
+  const [curPage, setCurPage] = React.useState(0);
+  function paginationHandler(e) {
+    setCurPage(e);
+  }
   return (
-    <SafeAreaView style={{backgroundColor: '#123169', flex: 1}}>
+    <SafeAreaView style={{flex: 1}}>
       <TouchableNoFeedback
         onPress={() => navigation.navigate('Intro3')}
-        style={{flex: 1}}>
-        <View style={{flex: 1}}>
+        style={{
+          flex: 1,
+          position: 'relative',
+        }}>
+        <View style={styles.ImgBox}>
           <Image
-            source={require('../../../assets/images/intro3_h2.png')}
-            style={styles.h2}
+            style={styles.mainImg}
+            source={require('../../../assets/images/intro1_main_img.png')}
           />
-          <View style={{flexDirection: 'row', paddingLeft: 30}}>
-            <Text style={styles.content}>
-              {
-                '터치콘 RAP 파트너가 배부하는\n리워드콘을 획득하세요!\n\n최소 10 코인부터~\n최대 30만 코인까지~\n랜덤으로 잭팟 행운을 드립니다.\n100 코인이상 당첨 확률 무려 30%!!!\n\n리워드콘에 있는 QR코드를 확인하세요.\n그리고 터치콘 앱으로 스캔하세요.'
-              }
-            </Text>
-          </View>
+          {/* <Image
+            style={styles.mainImg}
+            source={img}
+          /> */}
         </View>
-        <Image
-          source={require('../../../assets/images/intro3_bottom.png')}
+        <View style={styles.PaginationBox}>
+          <PaginationDot
+            curPage={curPage}
+            maxPage={3}
+            activeDotColor={'#FA5C00'}
+            sizeRatio={2}
+          />
+        </View>
+        <View style={styles.TextBox}>
+          <Text style={styles.MainText}>
+            {'세상에서 가장 쉬운\n 리워드 앱'}
+            {mainText}
+          </Text>
+
+          <Text style={styles.SubText}>
+            {`터치콘 브랜드 파트너에서 보내는\n 리워드콘을 획득 하세요`}
+            {subText}
+          </Text>
+        </View>
+        <View
           style={{
-            resizeMode: 'stretch',
-            width: '100%',
-            height: height * 0.5,
-          }}
-        />
+            flex: 2,
+            alignItems: 'center',
+            marginTop: 30,
+          }}>
+          <IconButton
+            icon="arrow-right"
+            style={{backgroundColor: '#333'}}
+            color="#FFF"
+            size={56}
+            onPress={() => paginationHandler(curPage + 1)}
+          />
+        </View>
       </TouchableNoFeedback>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  h2: {
-    resizeMode: 'contain',
-    width: '80%',
-    alignSelf: 'center',
-    position: 'relative',
+  ImgBox: {
+    flex: 5,
+    paddingTop: 60,
   },
-
-  content: {
+  mainImg: {
+    resizeMode: 'contain',
+    height: '100%',
+    width: '100%',
+  },
+  PaginationBox: {
     flex: 1,
-    flexWrap: 'wrap',
-    color: '#FFFFFF',
-    // fontSize: 14,
-    // fontWeight: 'bold',
-    // alignSelf: 'center',
-    // width: '85%',
-    marginBottom: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+  },
+  TextBox: {
+    flex: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  MainText: {
+    fontFamily: 'GmarketSansTTFBold',
+    color: '#000000',
+    fontSize: 32,
+    textAlign: 'center',
+    paddingBottom: 15,
+  },
+  SubText: {
+    fontFamily: 'GmarketSansTTFMedium',
+    color: '#999',
+    fontSize: 15,
+    fontWeight: '400',
+    textAlign: 'center',
+    paddingTop: 15,
+    paddingBottom: 30,
+  },
+  Button: {
+    borderRadius: 100,
+    width: 56,
+    height: 56,
+    backgroundColor: '#333',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

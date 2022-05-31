@@ -1,78 +1,124 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
   Image,
   ImageBackground,
-  Alert,
-  Dimensions,
   View,
+  Dimensions,
   SafeAreaView,
+  Button,
 } from 'react-native';
-import api from '../../../api';
 import TouchableNoFeedback from '../../../components/TouchableNoFeedback';
+import PaginationDot from 'react-native-animated-pagination-dot';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {IconButton} from 'react-native-paper';
 
 const {height} = Dimensions.get('window');
 
-export default function Intro1({navigation}) {
+export default function Intro({navigation, style, img, mainText, subText}) {
+  const [curPage, setCurPage] = React.useState(0);
+  function paginationHandler(e) {
+    setCurPage(e);
+  }
   return (
-    <SafeAreaView style={{backgroundColor: '#123169', flex: 1}}>
+    <SafeAreaView style={{flex: 1}}>
       <TouchableNoFeedback
-        onPress={() => navigation.navigate('Intro2')}
-        style={{flex: 1}}>
-        <View style={{flex: 1}}>
+        onPress={() => navigation.navigate('Intro3')}
+        style={{
+          flex: 1,
+          position: 'relative',
+        }}>
+        <View style={styles.ImgBox}>
           <Image
-            source={require('../../../assets/images/intro2_h2.png')}
-            style={styles.h2}
+            style={styles.mainImg}
+            source={require('../../../assets/images/intro1_main_img.png')}
           />
-          <Text style={styles.MainText}>
-            {'터치콘에서\n랜덤 보상의 세계를 \n만나보세요!'}
-          </Text>
-          <Text style={styles.subText}>
-            글로벌 최초 디지털 자산 랜덤 리워드 - 터치콘
-          </Text>
+          {/* <Image
+            style={styles.mainImg}
+            source={img}
+          /> */}
         </View>
+        <View style={styles.PaginationBox}>
+          <PaginationDot
+            curPage={curPage}
+            maxPage={3}
+            activeDotColor={'#FA5C00'}
+            sizeRatio={2}
+          />
+        </View>
+        <View style={styles.TextBox}>
+          <Text style={styles.MainText}>{mainText}</Text>
 
-        <Image
-          source={require('../../../assets/images/intro2_cat.png')}
-          style={styles.cat}
-        />
+          <Text style={styles.SubText}>{subText}</Text>
+        </View>
+        <View
+          style={{
+            flex: 2,
+            alignItems: 'center',
+
+            marginTop: 30,
+          }}>
+          <IconButton
+            icon="arrow-right"
+            style={{backgroundColor: '#333'}}
+            color="#FFF"
+            size={56}
+            onPress={() => paginationHandler(curPage + 1)}
+          />
+        </View>
       </TouchableNoFeedback>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  subText: {
-    backgroundColor: '#123169',
-    color: '#FFFFFF',
+  ImgBox: {
+    flex: 5,
+    paddingTop: 60,
+  },
+  mainImg: {
+    resizeMode: 'contain',
+    height: '100%',
     width: '100%',
-    fontSize: 14,
-    fontWeight: 'bold',
+  },
+  PaginationBox: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     position: 'absolute',
-    zIndex: 3,
-    top: 300,
-    right: -50,
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+  },
+  TextBox: {
+    flex: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   MainText: {
-    backgroundColor: '#123169',
-    color: '#FFFFFF',
-    width: '100%',
-
-    fontSize: 36,
-    fontWeight: 'bold',
-    marginLeft: 47,
-    position: 'relative',
+    fontFamily: 'GmarketSansTTFBold',
+    color: '#000000',
+    fontSize: 32,
+    textAlign: 'center',
+    paddingBottom: 15,
   },
-  cat: {
-    resizeMode: 'stretch',
-    width: '100%',
-    height: height * 0.5,
+  SubText: {
+    fontFamily: 'GmarketSansTTFMedium',
+    color: '#999',
+    fontSize: 15,
+    fontWeight: '400',
+    textAlign: 'center',
+    paddingTop: 15,
+    paddingBottom: 30,
   },
-  h2: {
-    resizeMode: 'contain',
-    width: '80%',
-    alignSelf: 'center',
-    position: 'relative',
+  Button: {
+    borderRadius: 100,
+    width: 56,
+    height: 56,
+    backgroundColor: '#333',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

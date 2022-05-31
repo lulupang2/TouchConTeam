@@ -73,6 +73,9 @@
 		<string>NanumMyeongjo-Bold.ttf</string>
 		<string>NanumMyeongjo-ExtraBold.ttf</string>
 		<string>NanumMyeongjo-Regular.ttf</string>
+		<string>GmarketSansBold.otf</string>
+		<string>GmarketSansTTFBold.ttf</string>
+		<string>GmarketSansTTFMedium.ttf</string>
 	</array>
 </dict>
 </plist>
