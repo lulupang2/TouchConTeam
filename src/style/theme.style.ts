@@ -1,0 +1,17 @@
+export default {
+  FONT_SM: 13,
+  FONT_M: 16,
+  FONT_L: 20,
+  FONT_XL: 32,
+  Primary: '#FA5C00',
+  PrimaryActive: '#E15300',
+  PrimarySelected: '#FFF7F2',
+  SecondaryGreen: '#479E42',
+  SecondaryGreenActive: '#408E3B',
+  Black: '#000',
+  AccentBlue: '#0C29FF',
+  AccentPink: '#FF90A5',
+  AccentYellow: '#FFBC01',
+  FONT_REGULAR: 'GmarketSansTTFMedium',
+  FONT_BOLD: 'GmarketSansTTFBold',
+};
